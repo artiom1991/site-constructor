@@ -101,12 +101,45 @@ function createNewElement(element){
 
 
 siteConstructorContainer.addEventListener("click", function(e){ // Событие по клику которое  задает элементу класс target
+    let target = e.target
     let allSelections = document.querySelectorAll(".target") // Получение всех элементов с классом target
         allSelections.forEach(el=>{         // перебок каждого элемента
+        let selection = document.querySelector(".selection")
+            selection.remove()
             el.classList.remove("target")       // удаление класса target
         })
-    e.target.classList.add("target")        //Задает цели события класс target
+    target.classList.add("target")        //Задает цели события класс target
+
+    let styles = window.getComputedStyle(target)
+    let selection = document.createElement("div")
+        selection.classList.add("selection")
+        selection.style.width = styles.width
+        selection.style.height = styles.height
+        selection.style.margin = styles.margin
+        selection.style.padding = styles.padding
+        selection.style.left = styles.left
+        selection.style.top = styles.top
+    let topSelection = document.createElement("div")
+        topSelection.classList.add("topSelection")
+    let bottomSelection = document.createElement("div")
+        bottomSelection.classList.add("bottomSelection")
+    let leftSelection = document.createElement("div")
+        leftSelection.classList.add("leftSelection")
+    let leftTopCorner = document.createElement("div")
+        leftTopCorner.classList.add("leftTopCorner")
+    let leftBottomCorner = document.createElement("div")
+        leftBottomCorner.classList.add("leftBottomCorner")
+    let rightSelection = document.createElement("div")
+        rightSelection.classList.add("rightSelection")
+    let righTopCorner = document.createElement("div")
+        righTopCorner.classList.add("righTopCorner")
+    let righBottomCorner = document.createElement("div")
+        righBottomCorner.classList.add("righBottomCorner")
+        selection.append(topSelection,bottomSelection,leftSelection,leftTopCorner,leftBottomCorner,rightSelection,righTopCorner,righBottomCorner)
+        siteConstructorContainer.append(selection)
+
 })
+
 document.addEventListener("keydown", function(event) {  // Создает событие для документа которое отслеживает нажатие delete
     if (event.key === "Delete" || event.key === "Del" || event.code === "46") {     //Проверяет если нажата клавиша delete
       let target = document.querySelectorAll(".target")         // Получает все элементы с классом target
