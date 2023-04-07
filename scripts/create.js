@@ -1,3 +1,5 @@
+let siteConstructorContainer = document.querySelector(".site-constructor-content") // Поле для элементов конструктора
+
 // Создание нового элемента
 let createElement = document.querySelectorAll(".create")    // Получаем все кнопки для создания текста
     createElement.forEach((el,i)=>{                 // Циклом перебираем каждую
@@ -49,7 +51,6 @@ let createElement = document.querySelectorAll(".create")    // Получаем 
 
 
 function createNewElement(element){
-    let siteConstructorContainer = document.querySelector(".site-constructor-content") // Поле для элементов конструктора
     let newElement = document.createElement(`${element}`) //Создается новый элемент с переданым в функцию типом
         newElement.classList.add("element")   // Задается общий тег для всех элементов
         newElement.setAttribute("contenteditable", "true") // Задается атрибут который позволяет редактировать текст
@@ -98,3 +99,19 @@ function createNewElement(element){
 
 }
 
+
+siteConstructorContainer.addEventListener("click", function(e){ // Событие по клику которое  задает элементу класс target
+    let allSelections = document.querySelectorAll(".target") // Получение всех элементов с классом target
+        allSelections.forEach(el=>{         // перебок каждого элемента
+            el.classList.remove("target")       // удаление класса target
+        })
+    e.target.classList.add("target")        //Задает цели события класс target
+})
+document.addEventListener("keydown", function(event) {  // Создает событие для документа которое отслеживает нажатие delete
+    if (event.key === "Delete" || event.key === "Del" || event.code === "46") {     //Проверяет если нажата клавиша delete
+      let target = document.querySelectorAll(".target")         // Получает все элементы с классом target
+          target.forEach(el=>{          // Перебирает каждый элемент
+            el.remove()                 // удаляет элемент
+          })
+    }
+  });

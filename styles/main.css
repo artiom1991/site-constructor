@@ -16,8 +16,9 @@ body{
     border: 1px rgb(163, 161, 161) solid;
     box-shadow: 0 0 0 1px #ffffff;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center;
+    justify-content: center; */
+    padding-left: 200px;
 }
 .site-constructor-elements{
     position: fixed;
@@ -53,19 +54,46 @@ body{
     left: calc(50% - 450px);
 }
 
+
+
 /* Buttons */
+
+.text{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    height: 20px;
+    margin-top: 30px;
+    overflow: hidden;
+    transition: 0.3s all ease;
+}
+.text:hover{
+    height: 200px;
+    transition: 0.3s all ease;
+}
+.menuBtn{
+    padding: 1px 5px;
+    text-transform: uppercase;
+    text-align: center;
+}
 .btn{
-    background: #000;
+    /* background: #000;
     color: #eeeeee;
     width: 80px;
     height: 30px;
     border-radius: 5px;
+    cursor: pointer; */
     cursor: pointer;
+    padding: 1px 5px;
+    text-transform: uppercase;
+    text-align: center;
+}
+.btn:hover{
+    background: #000;
+    color: #fff;
 }
 
-.text{
-
-}
 
 .editable {
     border: none;
@@ -130,10 +158,20 @@ header{
     min-width: 5px;
     min-height: 10px;
 }
+.selection{
+
+}
+
+.target{
+    outline:1px #4042b5 solid; 
+}
+
 .element:hover{
     cursor:auto;
     user-select: none;
     outline:1px #4042b5 solid; 
+    /* resize: both;
+    overflow: auto; */
 }
 .element:active{
     cursor:move;
@@ -149,3 +187,4 @@ p{
     margin: 0;
     padding: 0;
 }
+
