@@ -164,6 +164,7 @@ header{
     height: 300px;
     left: 50px;
     top: 50px; */
+    z-index: -1;
 
 }
 
