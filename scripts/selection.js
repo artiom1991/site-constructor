@@ -34,6 +34,66 @@ function selectionElement(){
             target.focus()
             selection.remove()
         })
+
+
+
+                    // обработчик событий righTopCorner
+        righTopCorner.addEventListener("mousedown", function(){
+            window.addEventListener("mousemove",scaleRightTopCorner)
+        })
+        
+        window.addEventListener("mouseup", function(){
+            window.removeEventListener("mousemove", scaleRightTopCorner)
+        })
+    
+        function scaleRightTopCorner({movementX,movementY}){
+            let targetElement = document.querySelector(".target")
+            let targetStyle = window.getComputedStyle(targetElement)
+            let selectionStyle = window.getComputedStyle(selection)
+            let targetWidth = parseInt(targetStyle.width)
+            let targetHeigth = parseInt(targetStyle.height)
+            let targetTop = parseInt(targetStyle.top)
+            let selectionStyleWidth = parseInt(selectionStyle.width)
+            let selectionStyleHeigth = parseInt(selectionStyle.height)
+            let selectionStyleTop = parseInt(selectionStyle.top)
+
+            selection.style.height = `${selectionStyleHeigth+(-movementY)}px`
+            selection.style.top = `${selectionStyleTop+movementY}px`
+            targetElement.style.height = `${targetHeigth+(-movementY)}px`
+            targetElement.style.top = `${targetTop+movementY}px`
+            selection.style.width = `${selectionStyleWidth+movementX}px`
+            targetElement.style.width = `${targetWidth+movementX}px`
+        }
+
+
+
+            // обработчик событий righBottomCorner
+        righBottomCorner.addEventListener("mousedown", function(){
+            window.addEventListener("mousemove",scaleRightBottomCorner)
+        })
+        
+        window.addEventListener("mouseup", function(){
+            window.removeEventListener("mousemove", scaleRightBottomCorner)
+        })
+    
+        function scaleRightBottomCorner({movementX,movementY}){
+            let targetElement = document.querySelector(".target")
+            let targetStyle = window.getComputedStyle(targetElement)
+            let selectionStyle = window.getComputedStyle(selection)
+            let targetWidth = parseInt(targetStyle.width)
+            let targetHeigth = parseInt(targetStyle.height)
+            let selectionStyleWidth = parseInt(selectionStyle.width)
+            let selectionStyleHeight = parseInt(selectionStyle.height)
+            selection.style.width = `${selectionStyleWidth+movementX}px`
+            selection.style.height = `${selectionStyleHeight+movementY}px`
+            targetElement.style.width = `${targetWidth+movementX}px`
+            targetElement.style.height = `${targetHeigth+movementY}px`
+        }
+
+
+
+
+
             // обработчик событий rightSelection
         rightSelection.addEventListener("mousedown", function(){
             window.addEventListener("mousemove",scaleRightSelection)
