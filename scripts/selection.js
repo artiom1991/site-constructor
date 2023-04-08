@@ -36,6 +36,38 @@ function selectionElement(){
         })
 
 
+                    // обработчик событий righTopCorner
+        leftTopCorner.addEventListener("mousedown", function(){
+            window.addEventListener("mousemove",scaleLeftTopCorner)
+        })
+        
+        window.addEventListener("mouseup", function(){
+            window.removeEventListener("mousemove", scaleLeftTopCorner)
+        })
+    
+        function scaleLeftTopCorner({movementX,movementY}){
+            let targetElement = document.querySelector(".target")
+            let targetStyle = window.getComputedStyle(targetElement)
+            let selectionStyle = window.getComputedStyle(selection)
+            let targetWidth = parseInt(targetStyle.width)
+            let targetHeigth = parseInt(targetStyle.height)
+            let targetTop = parseInt(targetStyle.top)
+            let targetLeft = parseInt(targetStyle.left)
+            let selectionStyleWidth = parseInt(selectionStyle.width)
+            let selectionStyleHeigth = parseInt(selectionStyle.height)
+            let selectionStyleTop = parseInt(selectionStyle.top)
+            let selectionStyleLeft = parseInt(selectionStyle.left)
+
+            selection.style.width = `${selectionStyleWidth+(-movementX)}px`
+            selection.style.height = `${selectionStyleHeigth+(-movementY)}px`
+            selection.style.top = `${selectionStyleTop+movementY}px`
+            selection.style.left = `${selectionStyleLeft+movementX}px`
+            targetElement.style.width = `${targetWidth+(-movementX)}px`
+            targetElement.style.height = `${targetHeigth+(-movementY)}px`
+            targetElement.style.top = `${targetTop+movementY}px`
+            targetElement.style.left = `${targetLeft+movementX}px`
+        }
+
 
                     // обработчик событий righTopCorner
         righTopCorner.addEventListener("mousedown", function(){
