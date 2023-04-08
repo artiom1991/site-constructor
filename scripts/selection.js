@@ -35,6 +35,33 @@ function selectionElement(){
             selection.remove()
         })
 
+                    // обработчик событий righBottomCorner
+        leftBottomCorner.addEventListener("mousedown", function(){
+            window.addEventListener("mousemove",scaleLeftBottomCorner)
+        })
+        
+        window.addEventListener("mouseup", function(){
+            window.removeEventListener("mousemove", scaleLeftBottomCorner)
+        })
+    
+        function scaleLeftBottomCorner({movementX,movementY}){
+            let targetElement = document.querySelector(".target")
+            let targetStyle = window.getComputedStyle(targetElement)
+            let selectionStyle = window.getComputedStyle(selection)
+            let targetWidth = parseInt(targetStyle.width)
+            let targetHeigth = parseInt(targetStyle.height)
+            let targetLeft = parseInt(targetStyle.left)
+            let selectionStyleWidth = parseInt(selectionStyle.width)
+            let selectionStyleHeigth = parseInt(selectionStyle.height)
+            let selectionStyleLeft = parseInt(selectionStyle.left)
+            selection.style.width = `${selectionStyleWidth+(-movementX)}px`
+            selection.style.height = `${selectionStyleHeigth+movementY}px`
+            selection.style.left = `${selectionStyleLeft+movementX}px`
+            targetElement.style.width = `${targetWidth+(-movementX)}px`
+            targetElement.style.height = `${targetHeigth+movementY}px`
+            targetElement.style.left = `${targetLeft+movementX}px`
+        }
+
 
                     // обработчик событий righTopCorner
         leftTopCorner.addEventListener("mousedown", function(){
