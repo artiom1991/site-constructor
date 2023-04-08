@@ -56,14 +56,14 @@ function createNewElement(element){
 
         newElement.addEventListener("mousedown",(e)=>{ // Собтие удержания элемента для перемещения
             if(e.target.hasAttribute("contenteditable")  === false){ // проверка наличие атрибута для редактирования
-                window.addEventListener("mousemove",mousePath) // событие окна для установления координат
+                window.addEventListener("mousemove",moveElement) // событие окна для установления координат
             }
         })
         window.addEventListener("mouseup",()=>{ //Событие которое отслеживает когда отпустится кнопка мыши и элемент будет освобожден
-            window.removeEventListener("mousemove", mousePath) // удаление события отслеживания координат мышки
+            window.removeEventListener("mousemove", moveElement) // удаление события отслеживания координат мышки
         })
         
-        function mousePath({movementX,movementY}){ // Функция на отслеживание координат мышки и перемещения элемента на экране
+        function moveElement({movementX,movementY}){ // Функция на отслеживание координат мышки и перемещения элемента на экране
             let getStyle = window.getComputedStyle(newElement) // Получает стили элемента
             let left = parseInt(getStyle.left) // Преобразует строковые числа из стилей в обычное число
             let top = parseInt(getStyle.top)    // Преобразует строковые числа из стилей в обычное число
