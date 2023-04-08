@@ -55,27 +55,72 @@ function selectionElement(){
         }
 
 
-                    // обработчик событий bottomSelection
-                    bottomSelection.addEventListener("mousedown", function(){
-                        window.addEventListener("mousemove",scaleBottomSelection)
-                    })
-                    
-                    window.addEventListener("mouseup", function(){
-                        window.removeEventListener("mousemove", scaleBottomSelection)
-                    })
+            // обработчик событий bottomSelection
+            bottomSelection.addEventListener("mousedown", function(){
+                window.addEventListener("mousemove",scaleBottomSelection)
+            })
+            
+            window.addEventListener("mouseup", function(){
+                window.removeEventListener("mousemove", scaleBottomSelection)
+            })
                 
-                    function scaleBottomSelection({movementY}){
-                        let targetElement = document.querySelector(".target")
-                        let targetStyle = window.getComputedStyle(targetElement)
-                        let selectionStyle = window.getComputedStyle(selection)
-                        let targetHeigth = parseInt(targetStyle.height)
-                        let selectionStyleHeigth = parseInt(selectionStyle.height)
-                        selection.style.height = `${selectionStyleHeigth+movementY}px`
-                        selection.style.width = targetStyle.width
-                        targetElement.style.height = `${targetHeigth+movementY}px`
-                    }
+            function scaleBottomSelection({movementY}){
+                let targetElement = document.querySelector(".target")
+                let targetStyle = window.getComputedStyle(targetElement)
+                let selectionStyle = window.getComputedStyle(selection)
+                let targetHeigth = parseInt(targetStyle.height)
+                let selectionStyleHeigth = parseInt(selectionStyle.height)
+                selection.style.height = `${selectionStyleHeigth+movementY}px`
+                selection.style.width = targetStyle.width
+                targetElement.style.height = `${targetHeigth+movementY}px`
+            }
 
 
+                    // обработчик событий leftSelection
+            leftSelection.addEventListener("mousedown", function(){
+                window.addEventListener("mousemove",scaleLeftSelection)
+            })
+            
+            window.addEventListener("mouseup", function(){
+                window.removeEventListener("mousemove", scaleLeftSelection)
+            })
+        
+            function scaleLeftSelection({movementX}){
+                let targetElement = document.querySelector(".target")
+                let targetStyle = window.getComputedStyle(targetElement)
+                let selectionStyle = window.getComputedStyle(selection)
+                let targetWidth = parseInt(targetStyle.width)
+                let targetLeft = parseInt(targetStyle.left)
+                let selectionStyleWidth = parseInt(selectionStyle.width)
+                selection.style.width = `${selectionStyleWidth+(-movementX)}px`
+                selection.style.height = targetStyle.height
+                selection.style.left = targetStyle.left
+                targetElement.style.width = `${targetWidth+(-movementX)}px`
+                targetElement.style.left = `${targetLeft+movementX}px`
+            }
+
+                        // обработчик событий topSelection
+            topSelection.addEventListener("mousedown", function(){
+                window.addEventListener("mousemove",scaleTopSelection)
+            })
+            
+            window.addEventListener("mouseup", function(){
+                window.removeEventListener("mousemove", scaleTopSelection)
+            })
+                
+            function scaleTopSelection({movementY}){
+                let targetElement = document.querySelector(".target")
+                let targetStyle = window.getComputedStyle(targetElement)
+                let selectionStyle = window.getComputedStyle(selection)
+                let targetHeigth = parseInt(targetStyle.height)
+                let targetTop = parseInt(targetStyle.top)
+                let selectionStyleHeigth = parseInt(selectionStyle.height)
+                selection.style.height = `${selectionStyleHeigth+(-movementY)}px`
+                selection.style.width = targetStyle.width
+                targetElement.style.height = `${targetHeigth+(-movementY)}px`
+                selection.style.top = targetStyle.top
+                targetElement.style.top = `${targetTop+movementY}px`
+            }
 
 
     }
