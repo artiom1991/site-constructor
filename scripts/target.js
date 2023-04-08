@@ -1,5 +1,5 @@
 
-window.addEventListener("click", function(e){ // Событие по клику которое  задает элементу класс target
+siteConstructorContainer.addEventListener("click", function(e){ // Событие по клику которое  задает элементу класс target
     let targetClick = e.target
     let target = document.querySelectorAll(".target") // Получение всех элементов с классом target
     let selection = document.querySelector(".selection")
@@ -15,3 +15,4 @@ window.addEventListener("click", function(e){ // Событие по клику 
             }
         }
 })
+
