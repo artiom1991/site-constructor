@@ -5,8 +5,6 @@ body{
     margin: 0;
     padding: 0;
 }
-
-
 .site-constructor-instruments{
     position: fixed;
     top: 0;
@@ -14,8 +12,6 @@ body{
     height: 50px;
     background: #252525;
     display: flex;
-    /* align-items: center;
-    justify-content: center; */
     padding-left: 200px;
 }
 .site-constructor-elements{
@@ -40,9 +36,6 @@ body{
     border: 1px rgb(163, 161, 161) solid;
     box-shadow: 0 0 0 1px #ffffff;
 }
-
-
-
 .site-constructor-content{
     background: #f7f7f7;
     width: 900px;
@@ -52,30 +45,8 @@ body{
     left: calc(50% - 450px);
 }
 
+/* Styles Menu */
 
-
-/* Buttons */
-
-.text{
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    background: #252525;
-    color: #fff;
-    height: 20px;
-    margin-top: 15px;
-    overflow: hidden;
-    transition: 0.3s all ease;
-}
-.text:hover{
-    height: 200px;
-    transition: 0.3s all ease;
-}
-.menuBtn{
-    padding: 1px 5px;
-    text-transform: uppercase;
-    text-align: center;
-}
 .color{
     background: #252525;
     color: #d2ebf7;
@@ -124,6 +95,32 @@ body{
     background: #d2ebf7;
     transition: 0.5s all ease;
 }
+
+
+
+/* Create Element  */
+
+.text{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background: #252525;
+    color: #fff;
+    height: 20px;
+    margin-top: 15px;
+    overflow: hidden;
+    transition: 0.3s all ease;
+}
+.text:hover{
+    height: 200px;
+    transition: 0.3s all ease;
+}
+.menuBtn{
+    padding: 1px 5px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
 .btn{
     cursor: pointer;
     padding: 1px 5px;
@@ -136,6 +133,7 @@ body{
 }
 
 
+/* Created Element Style */
 .editable {
     border: none;
     outline: none;
@@ -148,81 +146,27 @@ body{
     margin: 0;
     cursor: text;
   }  
-
-
-  /* textarea {
-    writing-mode: vertical-rl !important;
-    text-rendering: auto;
-    color: red;
-    letter-spacing: normal;
-    word-spacing: normal;
-    line-height: normal;
-    text-transform:uppercase;
-    text-indent: 0px;
-    text-shadow: none;
-    display: inline-block;
-    text-align: start;
-    appearance:unset;
-    -webkit-rtl-ordering: none;
-    resize:vertical;
-    cursor: text;
-    white-space:unset;
-    overflow-wrap:normal;
-    background-color: field;
-    column-count: initial !important;
-    margin: 0em;
-    border-width: 1px;
-    border-style: solid;
-    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
-    border-image: initial;
-    padding: 2px;
-} */
-
-/* .wrapper{
-    background: #ffffff;
-    width: 300px;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    flex-direction: column;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-header{
-    background-color: #dfd9d9;
-} */
-
 .element{
     position: absolute;
     width: 200px;
     min-width: 5px;
     min-height: 10px;
 }
+
+/* Selection styles */
 .selection{
     position: absolute;
-    /* width: 300px;
-    height: 300px;
-    left: 50px;
-    top: 50px; */
     z-index: 999;
-
 }
-
-
 .topSelection,.bottomSelection{
     width: 100%;
     height: 10px;
-    /* background: rgb(46, 44, 150); */
     position: absolute;
-
 }
 .leftSelection,.rightSelection{
     height: 100%;
     width: 10px;
-    /* background: rgb(46, 44, 150); */
     position: absolute;
-
 }
 
 .leftTopCorner,.leftBottomCorner,.righTopCorner,.righBottomCorner{
@@ -230,7 +174,6 @@ header{
     height: 10px;
     background: #3853f0;
     position: absolute;
-    /* cursor: w-resize; */
 }
 
 .leftTopCorner{
@@ -254,9 +197,6 @@ header{
     bottom: -5px;
     cursor: nwse-resize;
 }
-
-
-
 .topSelection{
     left: 0;
     top: -10px;
@@ -302,8 +242,7 @@ header{
     cursor:auto;
     user-select: none;
     outline:1px #4042b5 solid; 
-    /* resize: both;
-    overflow: auto; */
+
 }
 .element:active{
     cursor:move;
