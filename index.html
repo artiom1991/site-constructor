@@ -5,28 +5,71 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SITE CONSTRUCTOR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/main.css">
+    
 </head>
 <body>
 
     <div class="site-constructor-menu">
         <div class="site-constructor-instruments">
-            <div class="text">
-                <div class="menuBtn">текст</div>
-                <div class="btn create p">параграф</div>
-                <div class="btn create span">текст</div>
-                <div class="btn create div">блок</div>
-                <div class="btn create h1">заголовок H1</div>
-                <div class="btn create h2">заголовок H2</div>
-                <div class="btn create h3">заголовок H3</div>
-                <div class="btn create h4">заголовок H4</div>
-                <div class="btn create h5">заголовок H5</div>
-                <div class="btn create h6">заголовок H6</div>
+            <div class="menu-container">
+                <div class="create-navigation">
+                    <div class="menuBtn">
+                        <div class="text"></div>
+                        <!-- <div class="menuBtn">текст</div>
+                        <div class="btn create p">параграф</div>
+                        <div class="btn create span">текст</div>
+                        <div class="btn create div">блок</div>
+                        <div class="btn create h1">заголовок H1</div>
+                        <div class="btn create h2">заголовок H2</div>
+                        <div class="btn create h3">заголовок H3</div>
+                        <div class="btn create h4">заголовок H4</div>
+                        <div class="btn create h5">заголовок H5</div>
+                        <div class="btn create h6">заголовок H6</div> -->
+                    </div>
+                    <div class="menuBtn">
+                        <div class="figure"></div>
+                    </div>
+                    <div class="menuBtn">
+                        <div class="form"></div>
+                    </div>
+                    <div class="menuBtn">
+                        <div class="media"></div>
+                    </div>
+                    <div class="menuBtn">
+                        <div class="table"></div>
+                    </div>
+                    <div class="menuBtn">
+                        <div class="button"></div>
+                    </div>
+                    <div class="menuBtn">
+                        <div class="link"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="menuScreen scale">
+                <div class="menuBtn">
+                    <div class="screen"></div>
+                </div>
+                <button class="scaleMinus">-</button>
+                <div class="scaleCount"><span class="curentCount">100</span><span>%</span></div>
+                <button class="scalePlus">+</button>
+            </div>
+            <div class="right-container">
+                <div class="save menuBtn">сохранить</div>
+                <div class="help"></div>
             </div>
         </div>
         <!-- <div class="site-constructor-elements"></div> -->
         <div class="site-constructor-element-style">
-            <h3 class="header3">Styles Menu</h3>
+            <div class="style-constructor-header">
+                <div class="design">Дизайн</div>
+                <div class="styles">Стили</div>
+            </div>
+            <!-- <h3 class="header3">Styles Menu</h3>
             <div class="font styleBtn">FONT</div>
             <div class="fontWeight styleBtn">Font Weight</div>
             <div class="color">
@@ -42,14 +85,17 @@
             <div class="height styleBtn">height 100%</div>
             <div class="flex styleBtn">display flex</div>
             <div class="jcc styleBtn">Justify content center</div>
-            <div class="alic styleBtn">Align items center</div>
+            <div class="alic styleBtn">Align items center</div> -->
         </div>
 
     </div>
     <div class="site-constructor-content">
+        <h1>Hello World</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat corporis molestiae perspiciatis facilis ipsa dignissimos harum officiis repudiandae quo sit! Nesciunt ratione libero quisquam placeat vero impedit nulla expedita obcaecati reiciendis nobis.</p>
         <!-- Все элементы создаются внутри этого блока -->
     </div>
-    <script src="scripts/main.js"></script>
+    <!-- <script src="scripts/main.js"></script> -->
+    <script src="scripts/scale.js"></script>
     <script src="scripts/create.js"></script>
     <script src="scripts/delete.js"></script>
     <script src="scripts/target.js"></script>

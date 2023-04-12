@@ -1,4 +1,4 @@
-let siteConstructorContainer = document.querySelector(".site-constructor-content") // Поле для элементов конструктора
+
 
 // Создание нового элемента
 let createElement = document.querySelectorAll(".create")    // Получаем все кнопки для создания текста
