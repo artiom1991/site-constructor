@@ -28,12 +28,10 @@ window.addEventListener('wheel', function(event) {
         event.preventDefault();
         if(count === -0.1 &&scale > 0.2){
             scale = Math.round((scale+count)*10)/10
-            console.log(scale)
             siteConstructorContainer.style.setProperty("transform", `scale(${scale})`)
             curentCount.textContent = Math.round(scale*100)
         }else if(count === 0.1 &&scale < 3){
             scale = Math.round((scale+count)*10)/10
-            console.log(scale)
             siteConstructorContainer.style.setProperty("transform", `scale(${scale})`)
             curentCount.textContent = Math.round(scale*100)
         }

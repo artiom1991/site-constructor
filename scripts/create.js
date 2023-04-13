@@ -17,6 +17,10 @@ let createElement = document.querySelectorAll(".create")    // Получаем 
                 console.log("div")
                 createNewElement("div")
                 break;
+            case el.classList.contains("a"):
+                console.log("a")
+                createNewElement("a")
+                break;
             case el.classList.contains("h1"):
                 console.log("h1")
                 createNewElement("h1")
@@ -55,7 +59,7 @@ function createNewElement(element){
         newElement.focus() //Авто выделение элемента
 
         newElement.addEventListener("mousedown",(e)=>{ // Собтие удержания элемента для перемещения
-            if(e.target.hasAttribute("contenteditable")  === false){ // проверка наличие атрибута для редактирования
+            if(e.target.hasAttribute("contenteditable")  === false && document.body.classList.contains("movable")=== false){ // проверка наличие атрибута для редактирования
                 window.addEventListener("mousemove",moveElement) // событие окна для установления координат
             }
         })

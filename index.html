@@ -14,44 +14,35 @@
 <body>
 
     <div class="site-constructor-menu">
+
         <div class="site-constructor-instruments">
             <div class="menu-container">
                 <div class="create-navigation">
-                    <div class="menuBtn">
+                    <div title="Создать текстовый элемент" class="menuBtn createText">
                         <div class="text"></div>
-                        <!-- <div class="menuBtn">текст</div>
-                        <div class="btn create p">параграф</div>
-                        <div class="btn create span">текст</div>
-                        <div class="btn create div">блок</div>
-                        <div class="btn create h1">заголовок H1</div>
-                        <div class="btn create h2">заголовок H2</div>
-                        <div class="btn create h3">заголовок H3</div>
-                        <div class="btn create h4">заголовок H4</div>
-                        <div class="btn create h5">заголовок H5</div>
-                        <div class="btn create h6">заголовок H6</div> -->
                     </div>
-                    <div class="menuBtn">
+                    <div title="Создать геометрическую фигуру" class="menuBtn createFigure">
                         <div class="figure"></div>
                     </div>
-                    <div class="menuBtn">
+                    <div title="Создать форму" class="menuBtn createForm">
                         <div class="form"></div>
                     </div>
-                    <div class="menuBtn">
+                    <div title="Создать медиа элемент" class="menuBtn createMedia">
                         <div class="media"></div>
                     </div>
-                    <div class="menuBtn">
+                    <div title="Создать таблицу" class="menuBtn createTable">
                         <div class="table"></div>
                     </div>
-                    <div class="menuBtn">
+                    <div  title="Создать кнопку" class="menuBtn">
                         <div class="button"></div>
                     </div>
-                    <div class="menuBtn">
+                    <div title="Добавить ссылку" class="menuBtn">
                         <div class="link"></div>
                     </div>
                 </div>
             </div>
             <div class="menuScreen scale">
-                <div class="menuBtn">
+                <div  title="Задать размер блока" class="menuBtn">
                     <div class="screen"></div>
                 </div>
                 <button class="scaleMinus">-</button>
@@ -63,6 +54,48 @@
                 <div class="help"></div>
             </div>
         </div>
+        <div class="hidenMenuContainer">
+            <div class="hidenMenu textList">
+                <div  title="Текстовый элемент для ввода обьемного текста" class="btn create p">paragraph</div>
+                <div  title="Текстовый элемент для ввода короткого текста" class="btn create span">span</div>
+                <div  title="Текстовый элемент для ввода короткого текста" class="btn create b">bold</div>
+                <div  title="Общий элемент контейнер" class="btn create div">division</div>
+                <div  title="Элемент список который маркеруется специальными символами" class="btn create ul">unordered list</div>
+                <div  title="Элемент нумерованный список который маркеруется арабскими или римскими числами а так же буквами" class="btn create ol">ordered list</div>
+                <div  title="Строка которая помещается в нумерованный или маркированный список" class="btn create li">list item</div>
+                <div  title="Элемент для создания ссылок с коротким текстом" class="btn create a">anchor</div>
+                <div  title="Главный заголовок имеющий самый большой шрифт и вес" class="btn create h1">heading level 1</div>
+                <div  title="Второстепенный заголовок, второй по размеру шрифта и весу" class="btn create h2">heading level 2</div>
+                <div  title="Второстепенный заголовок, средний по размеру шрифта и весу" class="btn create h3">heading level 3</div>
+                <div  title="Второстепенный заголовок, ниже среднего по размеру шрифта и весу" class="btn create h4">heading level 4</div>
+                <div  title="Второстепенный заголовок, предпоследний по размеру шрифта и весу" class="btn create h5">heading level 5</div>
+                <div  title="Второстепенный заголовок, последний по размеру шрифта и весу" class="btn create h6">heading level 6</div>
+            </div>
+            <div class="hidenMenu figureList">
+                <div title="Создает квадрат" class="btn create rectangle">rectangle</div>
+                <div title="Создает эллипс" class="btn create ellipse">ellipse</div>
+                <div title="Создает треугольник" class="btn create polygon">polygon</div>
+                <div title="Создает линию" class="btn create line">line</div>
+            </div>
+            <div class="hidenMenu formList">
+                <div title="Создает поле для ввода текста" class="btn create inputText">input-text</div>
+                <div title="Создает поле для ввода почты" class="btn create inputEmail">input-email</div>
+                <div title="Создает поле для ввода чисел" class="btn create inputNumber">input-number</div>
+                <div title="Создает поле для ввода даты" class="btn create pinutDate">input-date</div>
+            </div>
+            <div class="hidenMenu mediaList">
+                <div title="Создает фото элемент" class="btn create image">image</div>
+                <div title="Создает видео элемент" class="btn create video">video</div>
+                <div title="Создает фрейм в который можно поместить видео с другого сайта по типу youtube" class="btn create iframe">iframe</div>
+            </div>
+            <div class="hidenMenu tableList">
+                <div title="Создает элемент таблицу" class="btn create createNewTable">create-new-table</div>
+                <div title="Добавляет новую строку в таблицу" class="btn create addNewRow">add-row</div>
+                <div title="Добавляет новую строку в таблицу" class="btn create addNewColomn">add-column</div>
+            </div>
+        </div>
+
+
         <!-- <div class="site-constructor-elements"></div> -->
         <div class="site-constructor-element-style">
             <div class="style-constructor-header">
@@ -90,12 +123,14 @@
 
     </div>
     <div class="site-constructor-content">
-        <h1>Hello World</h1>
+        <h1 title="Привет Мир">Hello World</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat corporis molestiae perspiciatis facilis ipsa dignissimos harum officiis repudiandae quo sit! Nesciunt ratione libero quisquam placeat vero impedit nulla expedita obcaecati reiciendis nobis.</p>
+        <a href="http:\\google.com">google</a>
         <!-- Все элементы создаются внутри этого блока -->
     </div>
-    <!-- <script src="scripts/main.js"></script> -->
+    <script src="scripts/main.js"></script>
     <script src="scripts/scale.js"></script>
+    <script src="scripts/move.js"></script>
     <script src="scripts/create.js"></script>
     <script src="scripts/delete.js"></script>
     <script src="scripts/target.js"></script>

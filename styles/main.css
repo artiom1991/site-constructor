@@ -5,6 +5,10 @@ body{
     margin: 0;
     padding: 0;
     font-family: 'Merriweather', serif;
+    font-size: 16px;
+}
+.movable{
+    cursor: grabbing;
 }
 .site-constructor-instruments{
     position: fixed;
@@ -149,6 +153,38 @@ body{
     background-size: 25px auto;
     background-repeat: no-repeat;
 }
+.hidenMenu{
+    padding: 5px 15px;
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    background: #252525;
+    color: #d4d0d0;
+    top: 60px;
+    z-index: 10 ;
+    font-size: 14px;
+}
+.textList{
+    left: 45px;
+    display: none;
+}
+.figureList{
+    left: 120px;
+    display: none;
+}
+.formList{
+    left: 190px;
+    display: none;
+}
+.mediaList{
+    left: 270px;
+    display: none;
+}
+.tableList{
+    left: 340px;
+    display: none;
+}
+
 .figure{
     width: 25px;
     height: 25px;
@@ -284,8 +320,33 @@ body{
 .btn{
     cursor: pointer;
     padding: 1px 5px;
-    text-transform: uppercase;
-    text-align: center;
+    text-transform:capitalize;
+}
+.a{
+    text-decoration: underline;
+}
+
+.b{
+    font-weight: bold;
+    font-size: 1em;
+}
+.h1{
+    font-size: 2em;
+}
+.h2{
+    font-size: 1.5em;
+}
+.h3{
+    font-size: 1.17em;
+}
+.h4{
+    font-size: 1em;
+}
+.h5{
+    font-size: 0.83em;
+}
+.h6{
+    font-size: 0.67em;
 }
 .btn:hover{
     background: #ffffff;
