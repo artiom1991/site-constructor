@@ -54,6 +54,7 @@
                 <div class="help"></div>
             </div>
         </div>
+                                            <!-- Hiden menu -->
         <div class="hidenMenuContainer">
             <div class="hidenMenu textList">
                 <div  title="Текстовый элемент для ввода обьемного текста" class="btn create p">paragraph</div>
@@ -85,6 +86,8 @@
             </div>
             <div class="hidenMenu mediaList">
                 <div title="Создает фото элемент" class="btn create image">image</div>
+                <div title="Создает галлерею фото" class="btn create gallery">gallery</div>
+                <div title="Обьеденяет выделеные фото в слайдер" class="btn create slider">slider</div> 
                 <div title="Создает видео элемент" class="btn create video">video</div>
                 <div title="Создает фрейм в который можно поместить видео с другого сайта по типу youtube" class="btn create iframe">iframe</div>
             </div>
@@ -95,12 +98,92 @@
             </div>
         </div>
 
-
+                                                        <!-- Elements navigation menu -->
         <!-- <div class="site-constructor-elements"></div> -->
+                                                        <!-- Right menu / Style apply -->
         <div class="site-constructor-element-style">
             <div class="style-constructor-header">
-                <div class="design">Дизайн</div>
+                <div class="design active-style">Дизайн</div>
                 <div class="styles">Стили</div>
+            </div>
+            <div class="text-style-editor">
+                <div class="style-header">
+                    <div class="header-text">текст</div>
+                    <div class="style-helper"></div>
+                </div>
+                <div class="style-list">
+
+                    <div class="font style-element">
+                        <div class="style-title">
+                            <span>font:</span>
+                        </div>
+                        <div class="select">
+                            <select name="" id="">
+                                <option value="arial">Arial</option>
+                                <option value="inter">Inter</option>
+                                <option value="jaldi">Jaldi</option>
+                                <option value="marmelad">Marmelad</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="color style-element">
+                        <div class="style-title">
+                            <span>color:</span>
+                        </div>
+                        <div class="input">
+                            <input class="color-select" type="color" name="" id="">
+                            <span class="current-color">#f0f0f0</span>
+                        </div>
+                    </div>
+
+                    <div class="text-decoration style-element">
+                        <div class="style-title">
+                            <span>text-decoration:</span>
+                        </div>
+                        <div class="select">
+                            <select name="" id="">
+                                <option value="none">none</option>
+                                <option value="underline">underline</option>
+                                <option value="line-through">line-through</option>
+                                <option value="overline">overline</option>
+                            </select>
+                        </div>
+                        
+                    </div>
+
+                    <div class="font-size style-element">
+                        <div class="style-title">
+                            <span>font-size:</span>
+                        </div>
+                        <div class="select">
+                            <input class="input-number" type="number" name="" id="" value="16">
+                            <select class="selection-fz" name="" id="">
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                                <option value="24">24</option>
+                                <option value="28">28</option>
+                                <option value="32">32</option>
+                                <option value="36">36</option>
+                                <option value="40">40</option>
+                                <option value="48">48</option>
+                                <option value="64">64</option>
+                                <option value="96">96</option>
+                                <option value="128">128</option>
+                            </select>
+                        </div>
+                        
+                    </div>
+                </div>
             </div>
             <!-- <h3 class="header3">Styles Menu</h3>
             <div class="font styleBtn">FONT</div>
@@ -120,14 +203,15 @@
             <div class="jcc styleBtn">Justify content center</div>
             <div class="alic styleBtn">Align items center</div> -->
         </div>
-
     </div>
+                                        <!-- Editable area / Site constructor content  -->
     <div class="site-constructor-content">
         <h1 title="Привет Мир">Hello World</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat corporis molestiae perspiciatis facilis ipsa dignissimos harum officiis repudiandae quo sit! Nesciunt ratione libero quisquam placeat vero impedit nulla expedita obcaecati reiciendis nobis.</p>
         <a href="http:\\google.com">google</a>
         <!-- Все элементы создаются внутри этого блока -->
     </div>
+
     <script src="scripts/main.js"></script>
     <script src="scripts/scale.js"></script>
     <script src="scripts/move.js"></script>
