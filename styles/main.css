@@ -125,7 +125,13 @@ body{
     display: flex;
     height: 20px;
     align-items: end;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+}
+.style-elementDouble{
+    display: flex;
+    height: 43px;
+    align-items: center;
+    margin-bottom: 10px;
 }
 .font{
 
@@ -161,6 +167,7 @@ select:focus{
 .style-title span{
 
 }
+
 input[type=color]{
     display: none;
 }
@@ -173,6 +180,7 @@ input[type=color]{
     justify-content: center;
     border: 2px solid #676767;
     font-size: 14px;
+    
 }
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button {
@@ -197,13 +205,40 @@ input[type=number]::-webkit-outer-spin-button {
 .current-color{
 
 }
-
 .selection-fz{
     width: 20px;
     border-radius: 0 5px 5px 0;
 }
 
 
+.noBg{
+    background: transparent;
+    justify-content: space-between;
+}
+
+.letter-spacing, .line-height{
+    color: var(--font-light-color);
+    text-align: center;
+    height: 20px;
+    outline: none;
+    border: none;
+    background: #676767;
+    width: 70px;
+}
+
+.input-params{
+
+}
+.h-shadow,.v-shadow,.blur-radius{
+    color: var(--font-light-color);
+    text-align: center;
+    height: 20px;
+    outline: none;
+    border: none;
+    background: #676767;
+    width: 48px;
+    margin-bottom: 3px;
+}
 
 
 
