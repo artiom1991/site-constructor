@@ -67,9 +67,29 @@ window.addEventListener("paste", function(event){
     document.execCommand('insertText', false, text);
 })
 
+let hideBlock = document.querySelector(".hide-blocks")
+    hideBlock.addEventListener("click", function(event){
+        let siteConstructorElements = document.querySelector(".site-constructor-elements")
+        if(event.target.classList.contains('show-blocks')){
+            siteConstructorElements.classList.remove("site-constructor-elements-hide")
+            event.target.classList.remove("show-blocks")
+        }else{
+            siteConstructorElements.classList.add("site-constructor-elements-hide")
+            event.target.classList.add("show-blocks")
+        }
+    })
 
-
-
+    let hideStyles = document.querySelector(".hide-styles")
+        hideStyles.addEventListener("click", function(event){
+            let siteConstructorElementStyle = document.querySelector(".site-constructor-element-style")
+            if(event.target.classList.contains('show-blocks')){
+                siteConstructorElementStyle.classList.remove("site-constructor-element-style-hide")
+                event.target.classList.remove("show-blocks")
+            }else{
+                siteConstructorElementStyle.classList.add("site-constructor-element-style-hide")
+                event.target.classList.add("show-blocks")
+            }
+         })
 
 
 
