@@ -45,9 +45,12 @@ let createElement = document.querySelectorAll(".create")    // Получаем 
 //Функция которая создает ноый элемент
 function createNewElement(element){
     let newElement      //Создается пустая переменная в которую позже сохранится ссылка на новый элемент
+    let layoutElementLink       //Новый элемент ссылка на созданый обьект
+    let elementType  // ноый span в ссылке в котором будет показан тип элемента
+    let elementContent  //новый span в котором будет краткий текст из элемента
     let date = new Date();  // Получам текущую дату и время
     let id = date.getTime();    //Создаем переменную в которую запишется текущее время в формате числа в милисекундах
-
+    let blocks = document.querySelector(".blocks")
 //Создание нового элемента
         if(element==="rect"){       //Проверим входищий параметр в функцию и если это "rect"
                 newElement = document.createElement(`div`) //Создается новый элемент div
@@ -59,6 +62,20 @@ function createNewElement(element){
                 newElement.style.left = "40%"               // задает позиционирование с лева 40%
                 newElement.style.top = "40%"                // задает позиционирование с верху 40%
                 siteConstructorContainer.append(newElement) // помещает этот элемент на наш холст
+                layoutElementLink = document.createElement(`div`)   // Создается новый div ссылка на созданый основной элемент
+                layoutElementLink.classList.add("layout-element-link")  // задаетса класс
+                layoutElementLink.id = "link-"+id                       // задается уникальный id который состоит из link- + id основного элемента
+                layoutElementLink.addEventListener("click", function(){ // задается событие которое при клике на элемент ссылку имитирует клик по основному элементу
+                    let el = document.getElementById(`${id}`)           // получаем элемент
+                        el.click();                                     // имитируем клик
+                })
+                elementType = document.createElement(`span`)            // создаем span в котором будет хранится тип основного файла
+                elementType.classList.add("element-type")               // задаем ему класс
+                elementType.textContent = "Rectangle"                   // Задаем ему контент
+                elementContent = document.createElement(`span`)         
+                elementContent.classList.add("element-content")
+                layoutElementLink.append(elementType,elementContent)    // помещаем созданые span элементы в элемент ссылку
+                blocks.append(layoutElementLink)                           // помещаем элемент ссылку в родительский элемент блоков
         }else{      //в обратном случае выполняет другой код
                 newElement = document.createElement(`${element}`) //Создается новый элемент с переданым в функцию типом
                 newElement.classList.add("element")   // Задается общий тег для всех элементов
@@ -68,7 +85,22 @@ function createNewElement(element){
                 newElement.style.left = "40%"                   // задает позиционирование с лева 40%
                 newElement.style.top = "40%"                    // задает позиционирование с верху 40%
                 siteConstructorContainer.append(newElement) // Элемент помещается в родительский элемент конструктор
-                newElement.focus() //Авто выделение элемента
+                newElement.focus()                          //Авто выделение элемента
+                layoutElementLink = document.createElement(`div`)   //  Создается новый div ссылка на созданый основной элемент
+                layoutElementLink.classList.add("layout-element-link")  // Задаем новый класс
+                layoutElementLink.id = "link-"+id                       // задаем уникальный id состоящий из link- + уникальный id основного элемента на который будет ссылаться
+                layoutElementLink.addEventListener("click", function(){     // создаем событие клика
+                    let el = document.getElementById(`${id}`)               // получаем основной элемент
+                        el.click();                                         // имитируем клик по основному элементу
+                })
+                elementType = document.createElement(`span`)                // Создаем span 
+                elementType.classList.add("element-type")                   // Задаем класс
+                elementType.textContent = `${element}`                      // Задаем этому спану контент в виде название элемента на который он ссылается
+                elementContent = document.createElement(`span`)             // создаем новый спан
+                elementContent.classList.add("element-content")             // Задаем класс
+                elementContent.textContent = "Введите новый текст"          // Задаем стартовый контент
+                layoutElementLink.append(elementType,elementContent)        // Помещаем оба span в элемент ссылку
+                blocks.append(layoutElementLink)                            // Помещаем ссылку в элемент с блоками ссылок
         }
 
 //Создает событие для нового элемента
@@ -102,6 +134,8 @@ function createNewElement(element){
         })
 
         newElement.addEventListener("blur",function(e){    // Событие которое отслеживает прекращение выделения
+            let id = this.id
+            let linkContent = document.querySelector(`#link-${id} .element-content`)
             e.target.removeAttribute("contenteditable")     // Удаляет из элемента стрибут который позволяет редактировать текст
             if( e.target.textContent.length < 1){           // проверка на длину строки
                 e.target.remove()                           // Если строка короче 1 символа удаляет ее
@@ -111,5 +145,6 @@ function createNewElement(element){
             let newTxt1 = newTxt.replaceAll("<div>","<br>")         // Заменяеняет  блок на перенос
             let newTxt2 = newTxt1.replaceAll("</div>","")            // Заменяеняет  блок на перенос
             e.target.innerHTML = newTxt2                            // Задает элементу обработаный контент
+            linkContent.textContent = newTxt2                       // Дублирует новый текст в span элемента ссылки для удобной навигации
         })
 }
