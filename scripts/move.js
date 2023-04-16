@@ -5,7 +5,6 @@ window.addEventListener("keydown", function(event){
       }
 })
 function mouseDown(e){
-    console.log("MOUSEDOWN")
     window.addEventListener("mousemove",moveConstructorArea)
 }
 window.addEventListener("keyup", function(event){
@@ -25,9 +24,4 @@ function moveConstructorArea({movementX,movementY}){ // Функция на от
     siteConstructorContainer.style.top = `${top+movementY}px` // Просчитывает и задает параметр для движения элемента      
     siteConstructorContainer.style.left = `${left+movementX}px` // Просчитывает и задает параметр для движения элемента 
 } 
-
-
-// window.addEventListener("keydown", function(e){
-//     console.log(e.button)
-// })
 

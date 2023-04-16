@@ -30,20 +30,40 @@ function selectionElement(){    //Функция выделения элемен
         siteConstructorContainer.append(selection)  // Div Selection помещается в родительский элемент siteConstructorContainer
     
         selection.addEventListener("dblclick",function(){   //создается событие по двойному клику для элемента selection
-            target.setAttribute("contenteditable", "true")  //элементу с классом target задается атрибут contenteditable со значением true чтобы его редактировать
-            target.focus()                                  // создается фокус на элемент с классом target
-            selection.remove()                              // удаляется элемент выделения selection
+            if(!target.classList.contains("shape")){
+                target.setAttribute("contenteditable", "true")  //элементу с классом target задается атрибут contenteditable со значением true чтобы его редактировать
+                target.focus()                                  // создается фокус на элемент с классом target
+                selection.remove()                              // удаляется элемент выделения selection
+            }
         })
 
+        selection.addEventListener("mousedown", function(){
+            window.addEventListener("mousemove",moveSelection)
+        })
+        selection.addEventListener("mouseup", function(){
+            window.removeEventListener("mousemove",moveSelection)
+        })
+
+        function moveSelection({movementX,movementY}){ 
+            let getStyle = window.getComputedStyle(selection)
+            let left = parseInt(getStyle.left) 
+            let top = parseInt(getStyle.top)  
+            selection.style.top = `${top+movementY}px` 
+            selection.style.left = `${left+movementX}px` 
+            target.style.top = `${top+movementY}px` 
+            target.style.left = `${left+movementX}px` 
+        }
 
                     // обработчик событий righBottomCorner
-        leftBottomCorner.addEventListener("mousedown", function(){  // создается событие для элемента управления leftBottomCorner по удержанию левой кнопки мыши
+        leftBottomCorner.addEventListener("mousedown", function(event){  // создается событие для элемента управления leftBottomCorner по удержанию левой кнопки мыши
             window.addEventListener("mousemove",scaleLeftBottomCorner)  // задается событие для window которое вызывает функцию scaleLeftBottomCorner по движению мышки
+            event.stopPropagation()
         })
         window.addEventListener("mouseup", function(){  // создается событие для window при отпускании левой кнопки мыши
             window.removeEventListener("mousemove", scaleLeftBottomCorner)  //удаляется событие для window
         })
         function scaleLeftBottomCorner({movementX,movementY}){  // функция которая получает координаты мышки и рассчитывает куда она движится по оси X и Y
+            console.log("left-bottom")
             let targetElement = document.querySelector(".target")   // Получаем элемент с классом .target
             let targetStyle = window.getComputedStyle(targetElement)    //получаем стили элемента .target
             let selectionStyle = window.getComputedStyle(selection)     //Получает стили элемента selection
@@ -53,18 +73,23 @@ function selectionElement(){    //Функция выделения элемен
             let selectionStyleWidth = parseInt(selectionStyle.width)
             let selectionStyleHeigth = parseInt(selectionStyle.height)
             let selectionStyleLeft = parseInt(selectionStyle.left)
-            selection.style.width = `${selectionStyleWidth+(-movementX)}px` // задает ширину обьекту selection (старая ширина + движение по оси X с противоположным знаком) таким образом меняет ширину выделения
-            selection.style.height = `${selectionStyleHeigth+movementY}px`  // Рассчитывает высоту
-            selection.style.left = `${selectionStyleLeft+movementX}px`       // Рассчитывает позиционирование по оси X
-            targetElement.style.width = `${targetWidth+(-movementX)}px`     //Все стили selection и target идентичные
-            targetElement.style.height = `${targetHeigth+movementY}px`
-            targetElement.style.left = `${targetLeft+movementX}px`
+            if(selectionStyleWidth+(-movementX)>=10){
+                selection.style.width = `${selectionStyleWidth+(-movementX)}px` // задает ширину обьекту selection (старая ширина + движение по оси X с противоположным знаком) таким образом меняет ширину выделения
+                targetElement.style.width = `${targetWidth+(-movementX)}px`     //Все стили selection и target идентичные
+                selection.style.left = `${selectionStyleLeft+movementX}px`       // Рассчитывает позиционирование по оси X
+                targetElement.style.left = `${targetLeft+movementX}px`
+                }
+            if(selectionStyleHeigth+movementY>=10){
+                selection.style.height = `${selectionStyleHeigth+movementY}px`  // Рассчитывает высоту
+                targetElement.style.height = `${targetHeigth+movementY}px`
+                }
         }
 
 
                     // обработчик событий righTopCorner
-        leftTopCorner.addEventListener("mousedown", function(){
+        leftTopCorner.addEventListener("mousedown", function(event){
             window.addEventListener("mousemove",scaleLeftTopCorner)
+            event.stopPropagation()
         })
         window.addEventListener("mouseup", function(){
             window.removeEventListener("mousemove", scaleLeftTopCorner)
@@ -81,20 +106,25 @@ function selectionElement(){    //Функция выделения элемен
             let selectionStyleHeigth = parseInt(selectionStyle.height)
             let selectionStyleTop = parseInt(selectionStyle.top)
             let selectionStyleLeft = parseInt(selectionStyle.left)
-            selection.style.width = `${selectionStyleWidth+(-movementX)}px`
-            selection.style.height = `${selectionStyleHeigth+(-movementY)}px`
-            selection.style.top = `${selectionStyleTop+movementY}px`
-            selection.style.left = `${selectionStyleLeft+movementX}px`
-            targetElement.style.width = `${targetWidth+(-movementX)}px`
-            targetElement.style.height = `${targetHeigth+(-movementY)}px`
-            targetElement.style.top = `${targetTop+movementY}px`
-            targetElement.style.left = `${targetLeft+movementX}px`
+            if(selectionStyleWidth+(-movementX)>=10){
+                selection.style.width = `${selectionStyleWidth+(-movementX)}px`
+                targetElement.style.width = `${targetWidth+(-movementX)}px`
+                selection.style.left = `${selectionStyleLeft+movementX}px`
+                targetElement.style.left = `${targetLeft+movementX}px`
+                }
+            if(selectionStyleHeigth+(-movementY)>=10){
+                selection.style.height = `${selectionStyleHeigth+(-movementY)}px`
+                targetElement.style.height = `${targetHeigth+(-movementY)}px`
+                selection.style.top = `${selectionStyleTop+movementY}px`
+                targetElement.style.top = `${targetTop+movementY}px`
+                }
         }
 
 
                     // обработчик событий righTopCorner
-        righTopCorner.addEventListener("mousedown", function(){
+        righTopCorner.addEventListener("mousedown", function(event){
             window.addEventListener("mousemove",scaleRightTopCorner)
+            event.stopPropagation()
         })
         window.addEventListener("mouseup", function(){
             window.removeEventListener("mousemove", scaleRightTopCorner)
@@ -109,19 +139,24 @@ function selectionElement(){    //Функция выделения элемен
             let selectionStyleWidth = parseInt(selectionStyle.width)
             let selectionStyleHeigth = parseInt(selectionStyle.height)
             let selectionStyleTop = parseInt(selectionStyle.top)
-            selection.style.height = `${selectionStyleHeigth+(-movementY)}px`
-            selection.style.top = `${selectionStyleTop+movementY}px`
-            targetElement.style.height = `${targetHeigth+(-movementY)}px`
-            targetElement.style.top = `${targetTop+movementY}px`
-            selection.style.width = `${selectionStyleWidth+movementX}px`
-            targetElement.style.width = `${targetWidth+movementX}px`
+            if(selectionStyleHeigth+(-movementY)>=10){
+                selection.style.height = `${selectionStyleHeigth+(-movementY)}px`
+                targetElement.style.height = `${targetHeigth+(-movementY)}px`
+                selection.style.top = `${selectionStyleTop+movementY}px`
+                targetElement.style.top = `${targetTop+movementY}px`
+                }
+            if(selectionStyleWidth+movementX>=10){
+                selection.style.width = `${selectionStyleWidth+movementX}px`
+                targetElement.style.width = `${targetWidth+movementX}px`
+                }
         }
 
 
 
             // обработчик событий righBottomCorner
-        righBottomCorner.addEventListener("mousedown", function(){
+        righBottomCorner.addEventListener("mousedown", function(event){
             window.addEventListener("mousemove",scaleRightBottomCorner)
+            event.stopPropagation()
         })
         window.addEventListener("mouseup", function(){
             window.removeEventListener("mousemove", scaleRightBottomCorner)
@@ -134,54 +169,71 @@ function selectionElement(){    //Функция выделения элемен
             let targetHeigth = parseInt(targetStyle.height)
             let selectionStyleWidth = parseInt(selectionStyle.width)
             let selectionStyleHeight = parseInt(selectionStyle.height)
-            selection.style.width = `${selectionStyleWidth+movementX}px`
-            selection.style.height = `${selectionStyleHeight+movementY}px`
-            targetElement.style.width = `${targetWidth+movementX}px`
-            targetElement.style.height = `${targetHeigth+movementY}px`
+            if(selectionStyleWidth+movementX>=10){
+                selection.style.width = `${selectionStyleWidth+movementX}px`
+                targetElement.style.width = `${targetWidth+movementX}px`
+                }
+            if(targetHeigth+movementY>=10){
+                targetElement.style.height = `${targetHeigth+movementY}px`
+                selection.style.height = `${selectionStyleHeight+movementY}px`
+                }
         }
 
 
             // обработчик событий rightSelection
-        rightSelection.addEventListener("mousedown", function(){
+        rightSelection.addEventListener("mousedown", function(event){
             window.addEventListener("mousemove",scaleRightSelection)
+            event.stopPropagation()
         })
         window.addEventListener("mouseup", function(){
             window.removeEventListener("mousemove", scaleRightSelection)
         })
         function scaleRightSelection({movementX}){
+
             let targetElement = document.querySelector(".target")
             let targetStyle = window.getComputedStyle(targetElement)
             let selectionStyle = window.getComputedStyle(selection)
             let targetWidth = parseInt(targetStyle.width)
             let selectionStyleWidth = parseInt(selectionStyle.width)
-            selection.style.width = `${selectionStyleWidth+movementX}px`
             selection.style.height = targetStyle.height
-            targetElement.style.width = `${targetWidth+movementX}px`
+                if(selectionStyleWidth+movementX>=10){
+                    selection.style.width = `${selectionStyleWidth+movementX}px`
+                    }
+                if(targetWidth+movementX>=10){
+                    targetElement.style.width = `${targetWidth+movementX}px`
+                    }
         }
 
 
         // обработчик событий bottomSelection
-        bottomSelection.addEventListener("mousedown", function(){
+        bottomSelection.addEventListener("mousedown", function(event){
             window.addEventListener("mousemove",scaleBottomSelection)
+            event.stopPropagation()
         })
         window.addEventListener("mouseup", function(){
             window.removeEventListener("mousemove", scaleBottomSelection)
         })
         function scaleBottomSelection({movementY}){
+
             let targetElement = document.querySelector(".target")
             let targetStyle = window.getComputedStyle(targetElement)
             let selectionStyle = window.getComputedStyle(selection)
             let targetHeigth = parseInt(targetStyle.height)
             let selectionStyleHeigth = parseInt(selectionStyle.height)
-            selection.style.height = `${selectionStyleHeigth+movementY}px`
-            selection.style.width = targetStyle.width
-            targetElement.style.height = `${targetHeigth+movementY}px`
+                selection.style.width = targetStyle.width
+                if(selectionStyleHeigth+movementY>=10){
+                    selection.style.height = `${selectionStyleHeigth+movementY}px`
+                    }
+                if(targetHeigth+movementY>=10){
+                    targetElement.style.height = `${targetHeigth+movementY}px`
+                    }
         }
 
 
                 // обработчик событий leftSelection
-        leftSelection.addEventListener("mousedown", function(){
+        leftSelection.addEventListener("mousedown", function(event){
             window.addEventListener("mousemove",scaleLeftSelection)
+            event.stopPropagation()
         })
         window.addEventListener("mouseup", function(){
             window.removeEventListener("mousemove", scaleLeftSelection)
@@ -193,17 +245,20 @@ function selectionElement(){    //Функция выделения элемен
             let targetWidth = parseInt(targetStyle.width)
             let targetLeft = parseInt(targetStyle.left)
             let selectionStyleWidth = parseInt(selectionStyle.width)
-            selection.style.width = `${selectionStyleWidth+(-movementX)}px`
-            selection.style.height = targetStyle.height
-            selection.style.left = targetStyle.left
-            targetElement.style.width = `${targetWidth+(-movementX)}px`
-            targetElement.style.left = `${targetLeft+movementX}px`
+                selection.style.height = targetStyle.height
+                if(selectionStyleWidth+(-movementX)>=10){
+                    selection.style.left = `${targetLeft+movementX}px`
+                    selection.style.width = `${selectionStyleWidth+(-movementX)}px`
+                    targetElement.style.width = `${targetWidth+(-movementX)}px`
+                    targetElement.style.left = `${targetLeft+movementX}px`
+                }
         }
 
 
                     // обработчик событий topSelection
-        topSelection.addEventListener("mousedown", function(){
+        topSelection.addEventListener("mousedown", function(event){
             window.addEventListener("mousemove",scaleTopSelection)
+            event.stopPropagation()
         })
         window.addEventListener("mouseup", function(){
             window.removeEventListener("mousemove", scaleTopSelection)
@@ -215,10 +270,13 @@ function selectionElement(){    //Функция выделения элемен
             let targetHeigth = parseInt(targetStyle.height)
             let targetTop = parseInt(targetStyle.top)
             let selectionStyleHeigth = parseInt(selectionStyle.height)
-            selection.style.height = `${selectionStyleHeigth+(-movementY)}px`
-            selection.style.width = targetStyle.width
-            targetElement.style.height = `${targetHeigth+(-movementY)}px`
-            selection.style.top = targetStyle.top
-            targetElement.style.top = `${targetTop+movementY}px`
+            let selectionStyleTop = parseInt(selectionStyle.top)
+                selection.style.width = targetStyle.width
+                if(selectionStyleHeigth+(-movementY)>=10){
+                    selection.style.height = `${selectionStyleHeigth+(-movementY)}px`
+                    selection.style.top  = `${selectionStyleTop+movementY}px`
+                    targetElement.style.height = `${targetHeigth+(-movementY)}px`
+                    targetElement.style.top = `${targetTop+movementY}px`
+                }
         }
     }

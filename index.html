@@ -16,6 +16,9 @@
         <div class="site-constructor-instruments">
             <div class="menu-container">
                 <div class="create-navigation">
+                    <div title="Сохранить" class="menuBtn saveBlock">
+                        <div class="save"></div>
+                    </div>
                     <div title="Создать текстовый элемент" class="menuBtn createText">
                         <div class="text"></div>
                     </div>
@@ -38,18 +41,14 @@
                         <div class="link"></div>
                     </div>
                 </div>
-            </div>
-            <div class="menuScreen scale">
-                <div  title="Задать размер блока" class="menuBtn">
-                    <div class="screen"></div>
+                <div class="menuScreen scale">
+                    <div  title="Задать размер блока" class="menuBtn">
+                        <div class="screen"></div>
+                    </div>
+                    <button class="scaleMinus">-</button>
+                    <div class="scaleCount"><span class="curentCount">100</span><span>%</span></div>
+                    <button class="scalePlus">+</button>
                 </div>
-                <button class="scaleMinus">-</button>
-                <div class="scaleCount"><span class="curentCount">100</span><span>%</span></div>
-                <button class="scalePlus">+</button>
-            </div>
-            <div class="right-container">
-                <div class="save menuBtn">сохранить</div>
-                <div class="help"></div>
             </div>
         </div>
                                             <!-- Hiden menu -->
@@ -71,10 +70,7 @@
                 <div  title="Второстепенный заголовок, последний по размеру шрифта и весу" class="btn create h6">heading level 6</div>
             </div>
             <div class="hidenMenu figureList">
-                <div title="Создает квадрат" class="btn create rectangle">rectangle</div>
-                <div title="Создает эллипс" class="btn create ellipse">ellipse</div>
-                <div title="Создает треугольник" class="btn create polygon">polygon</div>
-                <div title="Создает линию" class="btn create line">line</div>
+                <div title="Создает квадрат" class="btn create rect">shape</div>
             </div>
             <div class="hidenMenu formList">
                 <div title="Создает поле для ввода текста" class="btn create inputText">input-text</div>
@@ -97,7 +93,22 @@
         </div>
 
                                                         <!-- Elements navigation menu -->
-        <!-- <div class="site-constructor-elements"></div> -->
+        <div class="site-constructor-elements">
+            <div class="blocks">
+                <div class="blocks-header">
+                    <div class="header-text">блоки</div>
+                    <div class="hide-blocks"></div>
+                </div>
+                <p class="layout-element-link">Heading level 1</p>
+                <p class="layout-element-link selected-link">Paragraph</p>
+                <p class="layout-element-link">Span</p>
+                <p class="layout-element-link">Shape</p>
+                <p class="layout-element-link">Span</p>
+                <p class="layout-element-link">Span</p>
+                <p class="layout-element-link">Span</p>
+            </div>
+
+        </div>
                                                         <!-- Right menu / Style apply -->
         <div class="site-constructor-element-style">
             <div class="style-constructor-header">
@@ -247,7 +258,7 @@
                             <span>text-shadow:</span>
                         </div>
                         <div class="style-interface">
-                            <div class="multi-input">
+                            <div class="multi-input small-width">
                                 <input class="input-number h-shadow" type="number" name="" id="" value="0">
                                 <input class="input-number v-shadow" type="number" name="" id="" value="0">
                                 <input class="input-number blur-radius" type="number" name="" id="" value="0">
@@ -285,29 +296,108 @@
                     </div>
                 </div>
 
+                <div class="height style-element">
+                    <div class="style-title">
+                        <span>width:</span>
+                    </div>
+                    <div class="style-interface bg">
+                        <input class="input-number" type="number" name="" id="" value="1200">
+                        <select class="small-select" name="" id="">
+                            <option value="px">px</option>
+                            <option value="%">%</option>
+                            <option value="vh">vh</option>
+                            <option value="svh">svh</option>
+                        </select>
+                    </div>
+                </div>
 
+                <div class="height style-element">
+                    <div class="style-title">
+                        <span>margin:</span>
+                    </div>
+                    <div class="style-interface multi-input">
+                        <input class="input-number margin-top" type="number" name="" id="" value="0">
+                        <input class="input-number margin-right" type="number" name="" id="" value="0">
+                        <input class="input-number margin-bottom" type="number" name="" id="" value="0">
+                        <input class="input-number margin-left" type="number" name="" id="" value="0">
+                    </div>
+                </div>
 
+                <div class="height style-element">
+                    <div class="style-title">
+                        <span>padding:</span>
+                    </div>
+                    <div class="style-interface multi-input">
+                        <input class="input-number padding-top" type="number" name="" id="" value="0">
+                        <input class="input-number padding-right" type="number" name="" id="" value="0">
+                        <input class="input-number padding-bottom" type="number" name="" id="" value="0">
+                        <input class="input-number padding-left" type="number" name="" id="" value="0">
+                    </div>
+                </div>
 
+                <div class="style-element"> 
+                    <div class="style-title">
+                        <span>position:</span>
+                    </div>
+                    <div class="style-interface">
+                        <select class="single-select" name="" id="">
+                            <option value="absolute">Absolute</option>
+                            <option value="relative">Relative</option>
+                            <option value="fixet">Fixed</option>
+                            <option value="static">Static</option>
+                            <option value="sticky">Sticky</option>
+                            <option value="initial">Initial</option>
+                            <option value="unset">Unset</option>
+                        </select>
+                    </div>
+                </div>
 
+                <div class="height style-element">
+                    <div class="style-title">
+                        <span>position-x:</span>
+                    </div>
+                    <div class="style-interface bg">
+                        <input class="input-number" type="number" name="" id="" value="200">
+                        <select class="small-select" name="" id="">
+                            <option value="px">px</option>
+                            <option value="%">%</option>
+                            <option value="vh">vw</option>
+                            <option value="svh">svw</option>
+                        </select>
+                    </div>
+                </div>
 
+                <div class="height style-element">
+                    <div class="style-title">
+                        <span>position-y:</span>
+                    </div>
+                    <div class="style-interface bg">
+                        <input class="input-number" type="number" name="" id="" value="200">
+                        <select class="small-select" name="" id="">
+                            <option value="px">px</option>
+                            <option value="%">%</option>
+                            <option value="vh">vh</option>
+                            <option value="svh">svh</option>
+                        </select>
+                    </div>
+                </div>
 
-
+                <div class="style-element">
+                    <div class="style-title">
+                        <span>background:</span>
+                    </div>
+                    <div class="input-color">
+                        <input class="color-select" type="color" name="" id="">
+                        <span class="current-color">#f0f0f0</span>
+                    </div>
+                </div>
 
             </div>
         </div>
 
-
-
-
-
-
     </div>
                                         <!-- Editable area / Site constructor content  -->
     <div class="site-constructor-content">
-        <!-- <h1 title="Привет Мир">Hello World</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat corporis molestiae perspiciatis facilis ipsa dignissimos harum officiis repudiandae quo sit! Nesciunt ratione libero quisquam placeat vero impedit nulla expedita obcaecati reiciendis nobis.</p>
-        <a href="http:\\google.com">google</a> -->
-        <!-- Все элементы создаются внутри этого блока -->
     </div>
 
     <script src="scripts/main.js"></script>
