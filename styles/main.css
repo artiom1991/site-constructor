@@ -338,11 +338,13 @@ input[type=number]::-webkit-outer-spin-button {
     display: flex;
     align-items: center;
     transition: 0.7s all ease;
+    filter: invert(100%);
 }
 .menuBtn:hover{
-    background: var(--background-color5);
+    background: var(--font-light-color);
     transition: 0.5s all ease;
     color: var(--font-light-color);
+    filter: invert(0%);
 }
 /* create-menu */
 .create-navigation{
@@ -350,7 +352,6 @@ input[type=number]::-webkit-outer-spin-button {
     align-items: center;
     width: min-content;
     border-radius: 5px;
-    filter: invert(100%);
 }
 .save{
     width: 25px;
@@ -423,7 +424,6 @@ input[type=number]::-webkit-outer-spin-button {
 .scale{
     display: flex;
     align-items: center;
-    filter: invert(100%);
 }
 .screen{
     width: 25px;
@@ -439,6 +439,7 @@ input[type=number]::-webkit-outer-spin-button {
     padding: 2px 10px;
     display: flex;
     justify-content: center;
+    filter: invert(100%);
 }
 .scalePlus{
     width: 15px;
@@ -448,9 +449,10 @@ input[type=number]::-webkit-outer-spin-button {
     background-repeat: no-repeat;
     margin: 0 5px;
     transition: 0.5s all ease;
+    filter: invert(100%);
 }
 .scalePlus:hover{
-    filter: invert(100%);
+    filter: invert(0%);
     transition: 0.5s all ease;
 }
 .scaleMinus{
@@ -461,9 +463,10 @@ input[type=number]::-webkit-outer-spin-button {
     background-repeat: no-repeat;
     margin: 0 5px;
     transition: 0.5s all ease;
+    filter: invert(100%);
 }
 .scaleMinus:hover{
-    filter: invert(100%);
+    filter: invert(0%);
     transition: 0.5s all ease;
 }
 /* hidden-menu */
