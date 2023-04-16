@@ -1,200 +1,96 @@
 
+// Событие которое исправляет баг copy+paste текста
+    window.addEventListener("paste", function(event){   //Событие для всего окна window для paste
+        event.preventDefault();                         //Отменяем стандартное поведение paste
+        const text = event.clipboardData.getData('text/plain'); //Получаем данные из событие и меняем их тип из html в текст
+        document.execCommand('insertText', false, text);        // Вставляет текст в место фокуса
+    })
 
-let createText = document.querySelector(".createText")
-    createText.addEventListener("click", function(event){
-        let textList = document.querySelector(".textList")
+
+//Скрываем панель навигации по элементам
+let hideBlock = document.querySelector(".hide-blocks")          // получаем элемент с классом hide-blocks
+    hideBlock.addEventListener("click", function(event){        // задаем событие элементу по клику которое задает новый класс site-constructor-elements и тем самым скрывает его 
+        let siteConstructorElements = document.querySelector(".site-constructor-elements")  //получаем элемент site-constructor-elements в котором хранятся ссылки на блоки
+            if(event.target.classList.contains('show-blocks')){                             // проверяем если у элемента есть класс show-blocks 
+                siteConstructorElements.classList.remove("site-constructor-elements-hide")     // удаляем класс site-constructor-elements-hide у site-constructor-elements
+                event.target.classList.remove("show-blocks")                                    // удаляется класс show-blocks у элемента hide-blocks
+            }else{
+                siteConstructorElements.classList.add("site-constructor-elements-hide")         //Добавляется класс site-constructor-elements-hide окну навигации чтобы его скрыть
+                event.target.classList.add("show-blocks")                                   // Добавляется класс цели события 
+            }
+    })
+
+//Скрываем панель стилей
+let hideStyles = document.querySelector(".hide-styles")                             // Получаем элемент который отвечает за скрытие панели стилей
+    hideStyles.addEventListener("click", function(event){                           // задаем событие которое будет добавлять классы с новыми стилями
+        let siteConstructorElementStyle = document.querySelector(".site-constructor-element-style")     // Получаем панель стилей
+            if(event.target.classList.contains('show-blocks')){                                         // проверяем есть ли класс show-blocks и если есть то удаляем его
+                siteConstructorElementStyle.classList.remove("site-constructor-element-style-hide")     // удаояем класс site-constructor-element-style-hide и возвращаем прежнее позиционирование
+                event.target.classList.remove("show-blocks")
+            }else{
+                siteConstructorElementStyle.classList.add("site-constructor-element-style-hide")        // Добавляем новый класс с стилями которые скрывают элемент
+                event.target.classList.add("show-blocks")                                           // задаем дополнительные стили кнопке
+            }
+    })
+
+//Отображение скрытых меню создания элементов
+let createText = document.querySelector(".createText")  // Получаем элемент меню который отвечает за создание текста
+    createText.addEventListener("click", function(event){   //задаем событие клика
+        let textList = document.querySelector(".textList")  //Получаем скрутый список с текстовыми элементами
+        let hidenMenu = document.querySelectorAll(".hidenMenu") // Получаем все элементы имеющие класс hidenMenu
+            hidenMenu.forEach(element => {                      //перебираем каждый элемент
+                element.style.display = "none"                  // задаем каждому стиль который скрывает элемент
+            })
+            textList.style.display = "block"                    //Списку с текстовыми элементами задается display block чтобы он отображался
+            event.stopPropagation();                        // Запрещаем событию спускаться в низ по DOM к родительским эелментам
+    })
+    window.addEventListener("click", function(){            //Создаем событие для window срабатывающее по клику которое скрывает все списки hidenMenu
+        let hidenMenu = document.querySelectorAll(".hidenMenu") //Получаем все элементы hidenMenu
+            hidenMenu.forEach(element => {                          // Перебираем каждый
+                element.style.display = "none"                      // Задаем display none чтобы скрыть каждый
+            })
+    })
+
+let createFigure = document.querySelector(".createFigure")
+    createFigure.addEventListener("click", function(event){
+        let figureList = document.querySelector(".figureList")
         let hidenMenu = document.querySelectorAll(".hidenMenu")
             hidenMenu.forEach(element => {
                 element.style.display = "none"
             })
-            textList.style.display = "block"
+            figureList.style.display = "block"
             event.stopPropagation();
     })
-    window.addEventListener("click", function(){
-        let hidenMenu = document.querySelectorAll(".hidenMenu")
-            hidenMenu.forEach(element => {
-                element.style.display = "none"
-            })
-    })
 
-    let createFigure = document.querySelector(".createFigure")
-        createFigure.addEventListener("click", function(event){
-            let figureList = document.querySelector(".figureList")
-            let hidenMenu = document.querySelectorAll(".hidenMenu")
-            hidenMenu.forEach(element => {
-                element.style.display = "none"
-            })
-                figureList.style.display = "block"
-                event.stopPropagation();
-    })
-
-    let createForm = document.querySelector(".createForm")
+let createForm = document.querySelector(".createForm")
     createForm.addEventListener("click", function(event){
         let formList = document.querySelector(".formList")
         let hidenMenu = document.querySelectorAll(".hidenMenu")
-        hidenMenu.forEach(element => {
-            element.style.display = "none"
-        })
-        formList.style.display = "block"
+            hidenMenu.forEach(element => {
+                element.style.display = "none"
+            })
+            formList.style.display = "block"
             event.stopPropagation();
-})
-    let createMedia = document.querySelector(".createMedia")
-        createMedia.addEventListener("click", function(event){
-        let mediaList = document.querySelector(".mediaList")
-        let hidenMenu = document.querySelectorAll(".hidenMenu")
-        hidenMenu.forEach(element => {
-            element.style.display = "none"
-        })
-        mediaList.style.display = "block"
-            event.stopPropagation();
-})
-    let createTable = document.querySelector(".createTable")
-        createTable.addEventListener("click", function(event){
-        let tableList = document.querySelector(".tableList")
-        let hidenMenu = document.querySelectorAll(".hidenMenu")
-        hidenMenu.forEach(element => {
-            element.style.display = "none"
-        })
-        tableList.style.display = "block"
-            event.stopPropagation();
-})
-
-
-
-window.addEventListener("paste", function(event){
-    event.preventDefault();
-    const text = event.clipboardData.getData('text/plain');
-    document.execCommand('insertText', false, text);
-})
-
-let hideBlock = document.querySelector(".hide-blocks")
-    hideBlock.addEventListener("click", function(event){
-        let siteConstructorElements = document.querySelector(".site-constructor-elements")
-        if(event.target.classList.contains('show-blocks')){
-            siteConstructorElements.classList.remove("site-constructor-elements-hide")
-            event.target.classList.remove("show-blocks")
-        }else{
-            siteConstructorElements.classList.add("site-constructor-elements-hide")
-            event.target.classList.add("show-blocks")
-        }
     })
 
-    let hideStyles = document.querySelector(".hide-styles")
-        hideStyles.addEventListener("click", function(event){
-            let siteConstructorElementStyle = document.querySelector(".site-constructor-element-style")
-            if(event.target.classList.contains('show-blocks')){
-                siteConstructorElementStyle.classList.remove("site-constructor-element-style-hide")
-                event.target.classList.remove("show-blocks")
-            }else{
-                siteConstructorElementStyle.classList.add("site-constructor-element-style-hide")
-                event.target.classList.add("show-blocks")
-            }
-         })
+let createMedia = document.querySelector(".createMedia")
+    createMedia.addEventListener("click", function(event){
+        let mediaList = document.querySelector(".mediaList")
+        let hidenMenu = document.querySelectorAll(".hidenMenu")
+            hidenMenu.forEach(element => {
+                element.style.display = "none"
+            })
+            mediaList.style.display = "block"
+            event.stopPropagation();
+    })
 
-
-
-
-
-
-
-
-
-
-
-// let font = document.querySelector(".font")
-//     font.addEventListener("click", function(){
-//         let selection = document.querySelector(".selection")
-//         let target = document.querySelector(".target")
-//         if(target){
-//             if(selection){
-//                 selection.remove()
-//             }
-//                 target.style.fontFamily = 'Arial, sans-serif';
-//                 target.style.fontSize = '30px';
-//                 selectionElement()
-//         }
-//     })
-
-// let fontWeight = document.querySelector(".fontWeight")
-//     fontWeight.addEventListener("click", function(){
-//         let target = document.querySelector(".target")
-//         if(target){
-//             let currentFontWeight = target.style.fontWeight;
-//             target.style.fontWeight = currentFontWeight === 'bold' ? 'normal' : 'bold';
-//         }
-//     })
-
-
-// let color = document.getElementById('color');
-//     color.addEventListener('input', (event) => {
-//         let selectedColor = event.target.value;
-//         let target = document.querySelector(".target")
-//         if(target){
-//             target.style.color = selectedColor
-//         }
-//     });
-// let background = document.getElementById('background');
-//     background.addEventListener('input', (event) => {
-//         let selectedColor = event.target.value;
-//         let target = document.querySelector(".target")
-//         if(target){
-//             target.style.background  = selectedColor
-//         }
-//     });
-// let textTransform = document.querySelector(".textTransform")
-//     textTransform.addEventListener("click", function(){
-//         let target = document.querySelector(".target")
-//         if(target){
-//             let currentTextTransform = target.style.textTransform;
-//             target.style.textTransform = currentTextTransform === 'lowercase' ? 'uppercase' : 'lowercase';
-//         }
-//     })
-
-
-// let width = document.querySelector(".width")
-//     width.addEventListener("click", function(){
-//         let selection = document.querySelector(".selection")
-//         let target = document.querySelector(".target")
-//         if(target){
-//             if(selection){
-//                 selection.remove()
-//             }
-//             target.style.width = "100%"
-//             selectionElement()
-//         }
-//     })
-// let height = document.querySelector(".height")
-//     height.addEventListener("click", function(){
-//         let target = document.querySelector(".target")
-//         let selection = document.querySelector(".selection")
-//         if(target){
-//             if(selection){
-//                 selection.remove()
-//             }
-//             target.style.height = "100%"
-//             selectionElement()
-//         }
-//     })
-// let flex = document.querySelector(".flex")
-//     flex.addEventListener("click", function(){
-//         let target = document.querySelector(".target")
-//         if(target){
-//             target.style.display = "flex"
-//         }
-//     })
-// let jcc = document.querySelector(".jcc")
-//     jcc.addEventListener("click", function(){
-//         let target = document.querySelector(".target")
-//         if(target){
-//             target.style.display = "flex"
-//             target.style.justifyContent = 'center';
-//         }
-//     })
-// let alic = document.querySelector(".alic")
-//     alic.addEventListener("click", function(){
-//         let target = document.querySelector(".target")
-//         if(target){
-//             target.style.display = "flex"
-//             target.style.alignItems = 'center';
-//         }
-//     })
+let createTable = document.querySelector(".createTable")
+    createTable.addEventListener("click", function(event){
+        let tableList = document.querySelector(".tableList")
+        let hidenMenu = document.querySelectorAll(".hidenMenu")
+            hidenMenu.forEach(element => {
+                element.style.display = "none"
+            })
+            tableList.style.display = "block"
+            event.stopPropagation();
+    })
