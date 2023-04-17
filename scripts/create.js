@@ -251,6 +251,13 @@ function createNewElement(element){
             let newTxt1 = newTxt.replaceAll("<div>","<br>")         // Заменяеняет  блок на перенос
             let newTxt2 = newTxt1.replaceAll("</div>","")            // Заменяеняет  блок на перенос
             e.target.innerHTML = newTxt2                            // Задает элементу обработаный контент
+            e.target.style.height = `auto`
             linkContent.textContent = newTxt2                       // Дублирует новый текст в span элемента ссылки для удобной навигации
+
+            layouts[1200][id].height = `auto`
+            layouts[960][id].height = `auto`
+            layouts[640][id].height = `auto`
+            layouts[480][id].height = `auto`
+            layouts[320][id].height = `auto`
         })
 }
