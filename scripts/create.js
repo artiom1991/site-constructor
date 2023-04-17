@@ -44,6 +44,7 @@ let createElement = document.querySelectorAll(".create")    // Получаем 
 
 //Функция которая создает ноый элемент
 function createNewElement(element){
+    console.log("1")
     let newElement      //Создается пустая переменная в которую позже сохранится ссылка на новый элемент
     let layoutElementLink       //Новый элемент ссылка на созданый обьект
     let elementType  // ноый span в ссылке в котором будет показан тип элемента
