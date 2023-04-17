@@ -59,7 +59,7 @@ function selectionElement(){    //Функция выделения элемен
         })
 
     function moveSelection({movementX,movementY}){          //функция которая задает позиционирование элементу selection и target
-        let layout = parseInt(layoutStyle.width)                            // Приводим ширину холста к числовому значению
+        let layout = parseInt(layoutStyle.width)            // Приводим ширину холста к числовому значению
         let id = target.id                                  // Поулчаем id элемента target
         let getStyle = window.getComputedStyle(selection)   // получение стилей элемента selection
         let left = parseInt(getStyle.left)                  // приводит позиционирование из left="100px" в число 100
@@ -68,9 +68,9 @@ function selectionElement(){    //Функция выделения элемен
         selection.style.left = `${left+movementX}px` 
         target.style.top = `${top+movementY}px` 
         target.style.left = `${left+movementX}px` 
-        switch (layout) {
-            case 1200:
-                layouts[960][id].inheridTop = `${top+movementY}px`
+        switch (layout) {                               // Проверяем значение переменной layout
+            case 1200:                      // Если оно равно 1200 то задаются стили для обьекта layout
+                layouts[960][id].inheridTop = `${top+movementY}px`      //Задается наследуемое позиционирование сверху для элемента в ширине layout 960px
                 layouts[640][id].inheridTop = `${top+movementY}px`
                 layouts[480][id].inheridTop = `${top+movementY}px`
                 layouts[320][id].inheridTop = `${top+movementY}px`
@@ -78,7 +78,7 @@ function selectionElement(){    //Функция выделения элемен
                 layouts[640][id].inheridLeft = `${left+movementX}px`
                 layouts[480][id].inheridLeft = `${left+movementX}px`
                 layouts[320][id].inheridLeft = `${left+movementX}px`
-                layouts[1200][id].left = `${left+movementX}px`
+                layouts[1200][id].left = `${left+movementX}px`              //Задается персональное значение позиционирования
                 layouts[1200][id].top = `${top+movementY}px`
                 break;
             case 960:

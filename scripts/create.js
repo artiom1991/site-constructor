@@ -183,8 +183,8 @@ function createNewElement(element){
             newElement.style.top = `${top+movementY}px` // Просчитывает и задает параметр для движения элемента
             newElement.style.left = `${left+movementX}px` // Просчитывает и задает параметр для движения элемента
 
-            switch (layout) {
-                case 1200:
+            switch (layout) {                               //Событие задает стили в зависимости от ширины layout наследуемые стили для layout меньшей ширины и личные для текущего layout
+                case 1200:                                  //Если ширина 1200 то применяет наследуемые стили этому элементу на layout меньшей ширины
                     layouts[960][id].inheridTop = `${top+movementY}px`
                     layouts[640][id].inheridTop = `${top+movementY}px`
                     layouts[480][id].inheridTop = `${top+movementY}px`
@@ -193,7 +193,7 @@ function createNewElement(element){
                     layouts[640][id].inheridLeft = `${left+movementX}px`
                     layouts[480][id].inheridLeft = `${left+movementX}px`
                     layouts[320][id].inheridLeft = `${left+movementX}px`
-                    layouts[1200][id].left = `${left+movementX}px`
+                    layouts[1200][id].left = `${left+movementX}px`              //Элементу на текущем layout задает персональные стили которые не меняются из других layout
                     layouts[1200][id].top = `${top+movementY}px`
                     break;
                 case 960:
@@ -253,8 +253,7 @@ function createNewElement(element){
             e.target.innerHTML = newTxt2                            // Задает элементу обработаный контент
             e.target.style.height = `auto`
             linkContent.textContent = newTxt2                       // Дублирует новый текст в span элемента ссылки для удобной навигации
-
-            layouts[1200][id].height = `auto`
+            layouts[1200][id].height = `auto`                   //При редактировании содержания текста для всех layout задается автоматическая высота
             layouts[960][id].height = `auto`
             layouts[640][id].height = `auto`
             layouts[480][id].height = `auto`

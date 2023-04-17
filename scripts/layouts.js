@@ -7,10 +7,10 @@ let vSmartphone = document.querySelector(".vertical-Smartphone")                
             siteConstructorContent.style.left = "50%"                           //Задаем позиционирование слева 50%
             siteConstructorContent.style.top = "50%"                            //Задаем позиционирование сверху 50%
             allElements.forEach(el=>{                                           //Перебираем каждый элемент с классом element
-                if(layouts[320][el.id].width === null){
-                    el.style.width = layouts[320][el.id].inheridWidth 
+                if(layouts[320][el.id].width === null){                         // Если для layout 320 у него не задана личная ширина то он будет использовать наследуемую общую ширину
+                    el.style.width = layouts[320][el.id].inheridWidth           //Задается наследуемая общая ширина
                 }else{
-                    el.style.width = layouts[320][el.id].width 
+                    el.style.width = layouts[320][el.id].width                  //Задается персональная ширина
                     }
                 if(layouts[320][el.id].height === null){
                     el.style.height = layouts[320][el.id].inheridHeight
