@@ -44,7 +44,30 @@ let createElement = document.querySelectorAll(".create")    // Получаем 
 
 //Функция которая создает ноый элемент
 function createNewElement(element){
-    console.log("1")
+    siteConstructorContent.style.width = "1200px"
+    let allElements = document.querySelectorAll(".element")
+        allElements.forEach(el=>{
+            if(layouts[1200][el.id].width === null){
+                el.style.width = layouts[1200][el.id].inheridWidth 
+            }else{
+                el.style.width = layouts[1200][el.id].width 
+                }
+            if(layouts[1200][el.id].height === null){
+                el.style.height = layouts[1200][el.id].inheridHeight
+            }else{
+                el.style.height = layouts[1200][el.id].height
+                }
+            if(layouts[1200][el.id].left === null){
+                layouts[1200][el.id].inheridLeft
+            }else{
+                el.style.left = layouts[1200][el.id].left
+                }
+            if(layouts[1200][el.id].top === null){
+                el.style.top = layouts[1200][el.id].inheridTop
+            }else{
+                el.style.top = layouts[1200][el.id].top
+            }
+        })
     let newElement      //Создается пустая переменная в которую позже сохранится ссылка на новый элемент
     let layoutElementLink       //Новый элемент ссылка на созданый обьект
     let elementType  // ноый span в ссылке в котором будет показан тип элемента
@@ -66,10 +89,14 @@ function createNewElement(element){
 // Сохраняем стили в layouts
             let newElementStyles = window.getComputedStyle(newElement)      //Получаем стили нового элемента
             let newElementLayoutStyles = {                                  //В новый обьект сохраняем стили нового элемента для сохранения в layouts
-                    width:newElementStyles.width,
-                    height:newElementStyles.height,
-                    top:newElementStyles.top,
-                    left:newElementStyles.left
+                    inheridWidth:newElementStyles.width,
+                    width:null,
+                    inheridHeight:newElementStyles.height,
+                    height:null,
+                    inheridTop:newElementStyles.top,
+                    top:null,
+                    inheridLeft:newElementStyles.left,
+                    left:null
                 }
                 layouts[320][id] = {...newElementLayoutStyles}       // Сохраняем стартовые стили для каждого из layouts нового элемента
                 layouts[480][id] = {...newElementLayoutStyles}
@@ -104,10 +131,14 @@ function createNewElement(element){
 // Сохраняем стили в layouts
             let newElementStyles = window.getComputedStyle(newElement)          //Получаем стили нового элемента
             let newElementLayoutStyles = {                                  //В новый обьект сохраняем стили нового элемента для сохранения в layouts
-                    width:newElementStyles.width,
-                    height:newElementStyles.height,
-                    top:newElementStyles.top,
-                    left:newElementStyles.left
+                inheridWidth:newElementStyles.width,
+                width:null,
+                inheridHeight:newElementStyles.height,
+                height:null,
+                inheridTop:newElementStyles.top,
+                top:null,
+                inheridLeft:newElementStyles.left,
+                left:null
                 }
                 layouts[320][id] = {...newElementLayoutStyles}       // Сохраняем стартовые стили для каждого из layouts нового элемента
                 layouts[480][id] = {...newElementLayoutStyles}
@@ -151,10 +182,52 @@ function createNewElement(element){
             let top = parseInt(getStyle.top)    // Преобразует строковые числа из стилей в обычное число
             newElement.style.top = `${top+movementY}px` // Просчитывает и задает параметр для движения элемента
             newElement.style.left = `${left+movementX}px` // Просчитывает и задает параметр для движения элемента
-            layouts[layout][id].top = `${top+movementY}px`  // Устонавливаем новое позиционирование в обьект хранящий стили layouts
-            layouts[layout][id].left = `${left+movementX}px`
-        }
 
+            switch (layout) {
+                case 1200:
+                    layouts[960][id].inheridTop = `${top+movementY}px`
+                    layouts[640][id].inheridTop = `${top+movementY}px`
+                    layouts[480][id].inheridTop = `${top+movementY}px`
+                    layouts[320][id].inheridTop = `${top+movementY}px`
+                    layouts[960][id].inheridLeft = `${left+movementX}px`
+                    layouts[640][id].inheridLeft = `${left+movementX}px`
+                    layouts[480][id].inheridLeft = `${left+movementX}px`
+                    layouts[320][id].inheridLeft = `${left+movementX}px`
+                    layouts[1200][id].left = `${left+movementX}px`
+                    layouts[1200][id].top = `${top+movementY}px`
+                    break;
+                case 960:
+                    layouts[640][id].inheridTop = `${top+movementY}px`
+                    layouts[480][id].inheridTop = `${top+movementY}px`
+                    layouts[320][id].inheridTop = `${top+movementY}px`
+                    layouts[640][id].inheridLeft = `${left+movementX}px`
+                    layouts[480][id].inheridLeft = `${left+movementX}px`
+                    layouts[320][id].inheridLeft = `${left+movementX}px`
+                    layouts[960][id].left = `${left+movementX}px`
+                    layouts[960][id].top = `${top+movementY}px` 
+                    break;
+                case 640:
+                    layouts[480][id].inheridTop = `${top+movementY}px`
+                    layouts[320][id].inheridTop = `${top+movementY}px`
+                    layouts[480][id].inheridLeft = `${left+movementX}px`
+                    layouts[320][id].inheridLeft = `${left+movementX}px`
+                    layouts[640][id].left = `${left+movementX}px`
+                    layouts[640][id].top = `${top+movementY}px` 
+                    break;
+                case 480:
+                    layouts[320][id].inheridTop = `${top+movementY}px`
+                    layouts[320][id].inheridLeft = `${left+movementX}px`
+                    layouts[480][id].left = `${left+movementX}px`
+                    layouts[480][id].top = `${top+movementY}px` 
+                    break;
+                case 320:
+                    layouts[320][id].left = `${left+movementX}px`
+                    layouts[320][id].top = `${top+movementY}px`
+                    break;
+                default:
+                    break;
+            }
+        }
 
         newElement.addEventListener("dblclick",function(e){ // Задается созданому элементу событие по двойному клику
             e.target.setAttribute("contenteditable", "true") // Элементу задается атрибут который позволяет редактировать текст
