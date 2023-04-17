@@ -94,3 +94,15 @@ let createTable = document.querySelector(".createTable")
             tableList.style.display = "block"
             event.stopPropagation();
     })
+
+let showLayouts = document.querySelector(".showLayouts")
+    showLayouts.addEventListener("click", function(event){
+        let layoutList = document.querySelector(".layoutList")
+        let hidenMenu = document.querySelectorAll(".hidenMenu")
+            hidenMenu.forEach(element => {
+                element.style.display = "none"
+            })
+            console.log(layoutList)
+            layoutList.style.display = "block"
+            event.stopPropagation();
+    })

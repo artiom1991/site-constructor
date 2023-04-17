@@ -40,15 +40,14 @@ body{
     padding: 10px 10px;
     height: 70svh;
     background: var(--ui-background);
-    box-shadow: 0 0 10px 1px var(--box-shadow-color);
     border-radius: 5px;
     z-index: 1;
-    transition: 1s all ease;
+    /* transition: 1s all ease; */
 }
 .site-constructor-elements-hide{
     top: calc(100svh - 50px);
     transform: translateY(0);
-    transition: 1s all ease;
+    /* transition: 1s all ease; */
 }
 .blocks-header{
     margin-top: 5px;
@@ -99,14 +98,14 @@ body{
     right: 10px;
     border-radius: 50%;
     border: 1px solid #ffffff3d;
-    transition: 1s all ease;
+    /* transition: 1s all ease; */
     filter: invert(100%);
 }
 .hide-blocks:hover{
     opacity: 0.5;
 }
 .show-blocks{
-    transition: 1s all ease;
+    /* transition: 1s all ease; */
     transform: rotate(180deg);
 }
 /*  */
@@ -120,7 +119,6 @@ body{
     top: calc(50% - 225px);
     left: calc(50% - 600px);
     transform: scale(1);
-    box-shadow: 0 0 10px 1px var(--box-shadow-color);
 }
 /*  */
 
@@ -138,12 +136,11 @@ body{
     z-index: 9000;
     padding: 10px 25px;
     user-select: none;
-    box-shadow: 0 0 10px 1px var(--box-shadow-color);
     border-radius: 5px;
-    transition: 1s all ease;
+    /* transition: 1s all ease; */
 }
 .site-constructor-element-style-hide{
-    transition: 1s all ease;
+    /* transition: 1s all ease; */
     top: calc(100svh - 50px);
     transform: translateY(0);
 }
@@ -160,14 +157,14 @@ body{
     right: 10px;
     border-radius: 50%;
     border: 1px solid #ffffff3d;
-    transition: 1s all ease;
+    /* transition: 1s all ease; */
     filter: invert(100%);
 }
 .hide-styles:hover{
     opacity: 0.5;
 }
 .show-styles{
-    transition: 1s all ease;
+    /* transition: 1s all ease; */
     transform: rotate(180deg);
 }
 .style-constructor-header{
@@ -516,6 +513,10 @@ input[type=number]::-webkit-outer-spin-button {
     left: calc(50% - 80px);
     display: none;
 }
+.layoutList{
+    left: calc(50% + 150px);
+    display: none;
+}
 .btn{
     cursor: pointer;
     padding: 1px 5px;
@@ -552,6 +553,60 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .shape{
     background: #d1d1d1;
+}
+.hSmartphone{
+    width: 25px;
+    height: 25px;
+    background: url("../images/smartphone.png");
+    background-size: 25px auto;
+    background-repeat: no-repeat;
+    filter: invert(100%);
+}
+.vSmartphone{
+    width: 25px;
+    height: 25px;
+    background: url("../images/smartphone.png");
+    background-size: 25px auto;
+    background-repeat: no-repeat;
+    transform: rotate(90deg);
+    filter: invert(100%);
+}
+.hTablet{
+    width: 30px;
+    height: 30px;
+    background: url("../images/tablet.png");
+    background-size: 30px auto;
+    background-repeat: no-repeat;
+    filter: invert(100%);
+}
+.vTablet{
+    width: 35px;
+    height: 35px;
+    background: url("../images/tablet.png");
+    background-size: 35px auto;
+    background-repeat: no-repeat;
+    transform: rotate(90deg);
+    filter: invert(100%);
+}
+.laptop{
+    width: 40px;
+    height: 40px;
+    background: url("../images/laptop.png");
+    background-size: 40px auto;
+    background-repeat: no-repeat;
+    filter: invert(100%);
+}
+.layout-element{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    height: 40px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.layout-element:hover{
+    background: var(--background-color3);
+    color: #2b2828;
 }
 /*  */
 
