@@ -108,11 +108,12 @@ function createNewElement(element){
                     top:newElementStyles.top,
                     left:newElementStyles.left
                 }
-                layouts[320][id] = newElementLayoutStyles       // Сохраняем стартовые стили для каждого из layouts нового элемента
-                layouts[480][id] = newElementLayoutStyles
-                layouts[640][id] = newElementLayoutStyles
-                layouts[960][id] = newElementLayoutStyles
-                layouts[1200][id] = newElementLayoutStyles
+                layouts[320][id] = {...newElementLayoutStyles}       // Сохраняем стартовые стили для каждого из layouts нового элемента
+                layouts[480][id] = {...newElementLayoutStyles}
+                layouts[640][id] = {...newElementLayoutStyles}
+                layouts[960][id] = {...newElementLayoutStyles}
+                layouts[1200][id] = {...newElementLayoutStyles}
+                console.log(layouts)
 //Создаем ссылку на элемент
                 layoutElementLink = document.createElement(`div`)   //  Создается новый div ссылка на созданый основной элемент
                 layoutElementLink.classList.add("layout-element-link")  // Задаем новый класс
@@ -143,11 +144,15 @@ function createNewElement(element){
         })
         
         function moveElement({movementX,movementY}){ // Функция на отслеживание координат мышки и перемещения элемента на экране
+            let layoutStyle = window.getComputedStyle(siteConstructorContent)   //Получаем стили холста
+            let layout = parseInt(layoutStyle.width)                            // Приводим ширину холста к числовому значению
             let getStyle = window.getComputedStyle(newElement) // Получает стили элемента
             let left = parseInt(getStyle.left) // Преобразует строковые числа из стилей в обычное число
             let top = parseInt(getStyle.top)    // Преобразует строковые числа из стилей в обычное число
             newElement.style.top = `${top+movementY}px` // Просчитывает и задает параметр для движения элемента
             newElement.style.left = `${left+movementX}px` // Просчитывает и задает параметр для движения элемента
+            layouts[layout][id].top = `${top+movementY}px`  // Устонавливаем новое позиционирование в обьект хранящий стили layouts
+            layouts[layout][id].left = `${left+movementX}px`
         }
 
 

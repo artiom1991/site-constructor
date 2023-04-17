@@ -1,5 +1,6 @@
 function selectionElement(){    //Функция выделения элемента с классом target
-    
+    let layoutStyle = window.getComputedStyle(siteConstructorContent)   //Получаем стили холста
+    let layout = parseInt(layoutStyle.width)                            // Приводим ширину холста к числовому значению
     let target = document.querySelector(".target")  //Получение элемента с классом target
     let styles = window.getComputedStyle(target)    //Получение стилей элемента с классом target
     let selection = document.createElement("div")   // Создает div - контейнер для элементов управления выделением
@@ -58,6 +59,7 @@ function selectionElement(){    //Функция выделения элемен
         })
 
     function moveSelection({movementX,movementY}){          //функция которая задает позиционирование элементу selection и target
+        let id = target.id                                  // Поулчаем id элемента target
         let getStyle = window.getComputedStyle(selection)   // получение стилей элемента selection
         let left = parseInt(getStyle.left)                  // приводит позиционирование из left="100px" в число 100
         let top = parseInt(getStyle.top)  
@@ -65,6 +67,8 @@ function selectionElement(){    //Функция выделения элемен
         selection.style.left = `${left+movementX}px` 
         target.style.top = `${top+movementY}px` 
         target.style.left = `${left+movementX}px` 
+        // layouts[layout][id].top = `${top+movementY}px`  // Устонавливаем новое позиционирование в обьект хранящий стили layouts
+        // layouts[layout][id].left = `${left+movementX}px`
     }
 
 
@@ -82,6 +86,7 @@ function selectionElement(){    //Функция выделения элемен
 
     function scaleLeftBottomCorner({movementX,movementY}){  // функция которая получает координаты мышки и рассчитывает куда она движится по оси X и Y
         let targetElement = document.querySelector(".target")   // Получаем элемент с классом .target
+        let id = targetElement.id                               //Получаем Id элемента target
         let targetStyle = window.getComputedStyle(targetElement)    //получаем стили элемента .target
         let selectionStyle = window.getComputedStyle(selection)     //Получает стили элемента selection
         let targetWidth = parseInt(targetStyle.width)       // приводит значение ширины высоты и позицианирования из формата '100px' в численое значение 100
@@ -95,10 +100,13 @@ function selectionElement(){    //Функция выделения элемен
                 targetElement.style.width = `${targetWidth+(-movementX)}px`     // задает ширину обьекту target (старая ширина + движение по оси X с противоположным знаком) таким образом меняет ширину выделения
                 selection.style.left = `${selectionStyleLeft+movementX}px`       // Рассчитывает позиционирование по оси X
                 targetElement.style.left = `${targetLeft+movementX}px`
+                // layouts[layout][id].width = `${targetWidth+(-movementX)}px`  // Устонавливаем новое позиционирование в обьект хранящий стили layouts
+                // layouts[layout][id].left = `${targetLeft+movementX}px`
             }
             if(selectionStyleHeigth+movementY>=10){
                 selection.style.height = `${selectionStyleHeigth+movementY}px`  // Рассчитывает высоту
                 targetElement.style.height = `${targetHeigth+movementY}px`
+                // layouts[layout][id].height = `${targetHeigth+movementY}px`
             }
     }
 
