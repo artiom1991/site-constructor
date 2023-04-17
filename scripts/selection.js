@@ -67,8 +67,8 @@ function selectionElement(){    //Функция выделения элемен
         selection.style.left = `${left+movementX}px` 
         target.style.top = `${top+movementY}px` 
         target.style.left = `${left+movementX}px` 
-        // layouts[layout][id].top = `${top+movementY}px`  // Устонавливаем новое позиционирование в обьект хранящий стили layouts
-        // layouts[layout][id].left = `${left+movementX}px`
+        layouts[layout][id].top = `${top+movementY}px`  // Устонавливаем новое позиционирование в обьект хранящий стили layouts
+        layouts[layout][id].left = `${left+movementX}px`
     }
 
 
@@ -100,13 +100,13 @@ function selectionElement(){    //Функция выделения элемен
                 targetElement.style.width = `${targetWidth+(-movementX)}px`     // задает ширину обьекту target (старая ширина + движение по оси X с противоположным знаком) таким образом меняет ширину выделения
                 selection.style.left = `${selectionStyleLeft+movementX}px`       // Рассчитывает позиционирование по оси X
                 targetElement.style.left = `${targetLeft+movementX}px`
-                // layouts[layout][id].width = `${targetWidth+(-movementX)}px`  // Устонавливаем новое позиционирование в обьект хранящий стили layouts
-                // layouts[layout][id].left = `${targetLeft+movementX}px`
+                layouts[layout][id].width = `${targetWidth+(-movementX)}px`  // Устонавливаем новое позиционирование в обьект хранящий стили layouts
+                layouts[layout][id].left = `${targetLeft+movementX}px`
             }
             if(selectionStyleHeigth+movementY>=10){
                 selection.style.height = `${selectionStyleHeigth+movementY}px`  // Рассчитывает высоту
                 targetElement.style.height = `${targetHeigth+movementY}px`
-                // layouts[layout][id].height = `${targetHeigth+movementY}px`
+                layouts[layout][id].height = `${targetHeigth+movementY}px`
             }
     }
 
@@ -125,6 +125,7 @@ function selectionElement(){    //Функция выделения элемен
 
     function scaleLeftTopCorner({movementX,movementY}){
         let targetElement = document.querySelector(".target")
+        let id = targetElement.id
         let targetStyle = window.getComputedStyle(targetElement)
         let selectionStyle = window.getComputedStyle(selection)
         let targetWidth = parseInt(targetStyle.width)
@@ -140,12 +141,16 @@ function selectionElement(){    //Функция выделения элемен
                 targetElement.style.width = `${targetWidth+(-movementX)}px`
                 selection.style.left = `${selectionStyleLeft+movementX}px`
                 targetElement.style.left = `${targetLeft+movementX}px`
+                layouts[layout][id].left = `${targetLeft+movementX}px`
+                layouts[layout][id].width = `${targetWidth+(-movementX)}px`
             }
             if(selectionStyleHeigth+(-movementY)>=10){
                 selection.style.height = `${selectionStyleHeigth+(-movementY)}px`
                 targetElement.style.height = `${targetHeigth+(-movementY)}px`
                 selection.style.top = `${selectionStyleTop+movementY}px`
                 targetElement.style.top = `${targetTop+movementY}px`
+                layouts[layout][id].top = `${targetTop+movementY}px`
+                layouts[layout][id].height = `${targetHeigth+(-movementY)}px`
             }
     }
 
@@ -164,6 +169,7 @@ function selectionElement(){    //Функция выделения элемен
 
     function scaleRightTopCorner({movementX,movementY}){
         let targetElement = document.querySelector(".target")
+        let id = targetElement.id
         let targetStyle = window.getComputedStyle(targetElement)
         let selectionStyle = window.getComputedStyle(selection)
         let targetWidth = parseInt(targetStyle.width)
@@ -177,10 +183,13 @@ function selectionElement(){    //Функция выделения элемен
             targetElement.style.height = `${targetHeigth+(-movementY)}px`
             selection.style.top = `${selectionStyleTop+movementY}px`
             targetElement.style.top = `${targetTop+movementY}px`
+            layouts[layout][id].top = `${targetTop+movementY}px`
+            layouts[layout][id].height = `${targetHeigth+(-movementY)}px`
         }
         if(selectionStyleWidth+movementX>=10){
             selection.style.width = `${selectionStyleWidth+movementX}px`
             targetElement.style.width = `${targetWidth+movementX}px`
+            layouts[layout][id].width = `${targetWidth+movementX}px`
         }
     }
 
@@ -198,6 +207,7 @@ function selectionElement(){    //Функция выделения элемен
 
     function scaleRightBottomCorner({movementX,movementY}){
         let targetElement = document.querySelector(".target")
+        let id = targetElement.id
         let targetStyle = window.getComputedStyle(targetElement)
         let selectionStyle = window.getComputedStyle(selection)
         let targetWidth = parseInt(targetStyle.width)
@@ -207,10 +217,12 @@ function selectionElement(){    //Функция выделения элемен
             if(selectionStyleWidth+movementX>=10){
                 selection.style.width = `${selectionStyleWidth+movementX}px`
                 targetElement.style.width = `${targetWidth+movementX}px`
+                layouts[layout][id].width = `${targetWidth+movementX}px`
             }
             if(targetHeigth+movementY>=10){
                 targetElement.style.height = `${targetHeigth+movementY}px`
                 selection.style.height = `${selectionStyleHeight+movementY}px`
+                layouts[layout][id].height = `${targetHeigth+movementY}px`
             }
     }
 
@@ -229,6 +241,7 @@ function selectionElement(){    //Функция выделения элемен
 
     function scaleRightSelection({movementX}){
         let targetElement = document.querySelector(".target")
+        let id = targetElement.id
         let targetStyle = window.getComputedStyle(targetElement)
         let selectionStyle = window.getComputedStyle(selection)
         let targetWidth = parseInt(targetStyle.width)
@@ -236,9 +249,11 @@ function selectionElement(){    //Функция выделения элемен
             selection.style.height = targetStyle.height
             if(selectionStyleWidth+movementX>=10){
                 selection.style.width = `${selectionStyleWidth+movementX}px`
+
             }
             if(targetWidth+movementX>=10){
                 targetElement.style.width = `${targetWidth+movementX}px`
+                layouts[layout][id].width = `${targetWidth+movementX}px`
             }
     }
 
@@ -257,6 +272,7 @@ function selectionElement(){    //Функция выделения элемен
 
     function scaleBottomSelection({movementY}){
         let targetElement = document.querySelector(".target")
+        let id = targetElement.id
         let targetStyle = window.getComputedStyle(targetElement)
         let selectionStyle = window.getComputedStyle(selection)
         let targetHeigth = parseInt(targetStyle.height)
@@ -267,6 +283,7 @@ function selectionElement(){    //Функция выделения элемен
             }
             if(targetHeigth+movementY>=10){
                 targetElement.style.height = `${targetHeigth+movementY}px`
+                layouts[layout][id].height = `${targetHeigth+movementY}px`
             }
     }
 
@@ -285,6 +302,7 @@ function selectionElement(){    //Функция выделения элемен
 
     function scaleLeftSelection({movementX}){
         let targetElement = document.querySelector(".target")
+        let id = targetElement.id
         let targetStyle = window.getComputedStyle(targetElement)
         let selectionStyle = window.getComputedStyle(selection)
         let targetWidth = parseInt(targetStyle.width)
@@ -296,6 +314,8 @@ function selectionElement(){    //Функция выделения элемен
                 selection.style.width = `${selectionStyleWidth+(-movementX)}px`
                 targetElement.style.width = `${targetWidth+(-movementX)}px`
                 targetElement.style.left = `${targetLeft+movementX}px`
+                layouts[layout][id].left = `${targetLeft+movementX}px`
+                layouts[layout][id].width = `${targetWidth+(-movementX)}px`
             }
     }
 
@@ -314,6 +334,7 @@ function selectionElement(){    //Функция выделения элемен
 
     function scaleTopSelection({movementY}){
         let targetElement = document.querySelector(".target")
+        let id = targetElement.id
         let targetStyle = window.getComputedStyle(targetElement)
         let selectionStyle = window.getComputedStyle(selection)
         let targetHeigth = parseInt(targetStyle.height)
@@ -326,6 +347,8 @@ function selectionElement(){    //Функция выделения элемен
                 selection.style.top  = `${selectionStyleTop+movementY}px`
                 targetElement.style.height = `${targetHeigth+(-movementY)}px`
                 targetElement.style.top = `${targetTop+movementY}px`
+                layouts[layout][id].top = `${targetTop+movementY}px`
+                layouts[layout][id].height = `${targetHeigth+(-movementY)}px`
             }
     }
 }

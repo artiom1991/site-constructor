@@ -64,17 +64,17 @@ function createNewElement(element){
                 siteConstructorContainer.append(newElement) // помещает этот элемент на наш холст
 // Сохраняем стили в layouts
             let newElementStyles = window.getComputedStyle(newElement)      //Получаем стили нового элемента
-            let newElementLayoutStyles = {                                  //В новый обьекс сохраняем стили нового элемента для сохранения в layouts
+            let newElementLayoutStyles = {                                  //В новый обьект сохраняем стили нового элемента для сохранения в layouts
                     width:newElementStyles.width,
                     height:newElementStyles.height,
                     top:newElementStyles.top,
                     left:newElementStyles.left
                 }
-                layouts[320][id] = newElementLayoutStyles               // Сохраняем стартовые стили для каждого из layouts нового элемента
-                layouts[480][id] = newElementLayoutStyles
-                layouts[640][id] = newElementLayoutStyles
-                layouts[960][id] = newElementLayoutStyles
-                layouts[1200][id] = newElementLayoutStyles
+                layouts[320][id] = {...newElementLayoutStyles}       // Сохраняем стартовые стили для каждого из layouts нового элемента
+                layouts[480][id] = {...newElementLayoutStyles}
+                layouts[640][id] = {...newElementLayoutStyles}
+                layouts[960][id] = {...newElementLayoutStyles}
+                layouts[1200][id] = {...newElementLayoutStyles}
 //Создаем ссылку на элемент
                 layoutElementLink = document.createElement(`div`)   // Создается новый div ссылка на созданый основной элемент
                 layoutElementLink.classList.add("layout-element-link")  // задаетса класс
@@ -102,7 +102,7 @@ function createNewElement(element){
                 newElement.focus()                          //Авто выделение элемента
 // Сохраняем стили в layouts
             let newElementStyles = window.getComputedStyle(newElement)          //Получаем стили нового элемента
-            let newElementLayoutStyles = {                                  //В новый обьекс сохраняем стили нового элемента для сохранения в layouts
+            let newElementLayoutStyles = {                                  //В новый обьект сохраняем стили нового элемента для сохранения в layouts
                     width:newElementStyles.width,
                     height:newElementStyles.height,
                     top:newElementStyles.top,
@@ -113,7 +113,6 @@ function createNewElement(element){
                 layouts[640][id] = {...newElementLayoutStyles}
                 layouts[960][id] = {...newElementLayoutStyles}
                 layouts[1200][id] = {...newElementLayoutStyles}
-                console.log(layouts)
 //Создаем ссылку на элемент
                 layoutElementLink = document.createElement(`div`)   //  Создается новый div ссылка на созданый основной элемент
                 layoutElementLink.classList.add("layout-element-link")  // Задаем новый класс
