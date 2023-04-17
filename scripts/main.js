@@ -102,7 +102,6 @@ let showLayouts = document.querySelector(".showLayouts")
             hidenMenu.forEach(element => {
                 element.style.display = "none"
             })
-            console.log(layoutList)
             layoutList.style.display = "block"
             event.stopPropagation();
     })

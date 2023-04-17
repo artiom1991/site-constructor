@@ -62,6 +62,20 @@ function createNewElement(element){
                 newElement.style.left = "40%"               // задает позиционирование с лева 40%
                 newElement.style.top = "40%"                // задает позиционирование с верху 40%
                 siteConstructorContainer.append(newElement) // помещает этот элемент на наш холст
+// Сохраняем стили в layouts
+            let newElementStyles = window.getComputedStyle(newElement)      //Получаем стили нового элемента
+            let newElementLayoutStyles = {                                  //В новый обьекс сохраняем стили нового элемента для сохранения в layouts
+                    width:newElementStyles.width,
+                    height:newElementStyles.height,
+                    top:newElementStyles.top,
+                    left:newElementStyles.left
+                }
+                layouts[320][id] = newElementLayoutStyles               // Сохраняем стартовые стили для каждого из layouts нового элемента
+                layouts[480][id] = newElementLayoutStyles
+                layouts[640][id] = newElementLayoutStyles
+                layouts[960][id] = newElementLayoutStyles
+                layouts[1200][id] = newElementLayoutStyles
+//Создаем ссылку на элемент
                 layoutElementLink = document.createElement(`div`)   // Создается новый div ссылка на созданый основной элемент
                 layoutElementLink.classList.add("layout-element-link")  // задаетса класс
                 layoutElementLink.id = "link-"+id                       // задается уникальный id который состоит из link- + id основного элемента
@@ -86,6 +100,20 @@ function createNewElement(element){
                 newElement.style.top = "40%"                    // задает позиционирование с верху 40%
                 siteConstructorContainer.append(newElement) // Элемент помещается в родительский элемент конструктор
                 newElement.focus()                          //Авто выделение элемента
+// Сохраняем стили в layouts
+            let newElementStyles = window.getComputedStyle(newElement)          //Получаем стили нового элемента
+            let newElementLayoutStyles = {                                  //В новый обьекс сохраняем стили нового элемента для сохранения в layouts
+                    width:newElementStyles.width,
+                    height:newElementStyles.height,
+                    top:newElementStyles.top,
+                    left:newElementStyles.left
+                }
+                layouts[320][id] = newElementLayoutStyles       // Сохраняем стартовые стили для каждого из layouts нового элемента
+                layouts[480][id] = newElementLayoutStyles
+                layouts[640][id] = newElementLayoutStyles
+                layouts[960][id] = newElementLayoutStyles
+                layouts[1200][id] = newElementLayoutStyles
+//Создаем ссылку на элемент
                 layoutElementLink = document.createElement(`div`)   //  Создается новый div ссылка на созданый основной элемент
                 layoutElementLink.classList.add("layout-element-link")  // Задаем новый класс
                 layoutElementLink.id = "link-"+id                       // задаем уникальный id состоящий из link- + уникальный id основного элемента на который будет ссылаться

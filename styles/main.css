@@ -116,9 +116,9 @@ body{
     width: 1200px;
     height: 550px;
     position: fixed;
-    top: calc(50% - 225px);
-    left: calc(50% - 600px);
-    transform: scale(1);
+    top: 50%;
+    left: 50%;
+    transform: scale(1) translate(50%, 50%);
 }
 /*  */
 
@@ -560,6 +560,7 @@ input[type=number]::-webkit-outer-spin-button {
     background: url("../images/smartphone.png");
     background-size: 25px auto;
     background-repeat: no-repeat;
+    transform: rotate(90deg);
     filter: invert(100%);
 }
 .vSmartphone{
@@ -568,7 +569,6 @@ input[type=number]::-webkit-outer-spin-button {
     background: url("../images/smartphone.png");
     background-size: 25px auto;
     background-repeat: no-repeat;
-    transform: rotate(90deg);
     filter: invert(100%);
 }
 .hTablet{
@@ -577,15 +577,15 @@ input[type=number]::-webkit-outer-spin-button {
     background: url("../images/tablet.png");
     background-size: 30px auto;
     background-repeat: no-repeat;
+    transform: rotate(90deg);
     filter: invert(100%);
 }
 .vTablet{
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     background: url("../images/tablet.png");
-    background-size: 35px auto;
+    background-size: 30px auto;
     background-repeat: no-repeat;
-    transform: rotate(90deg);
     filter: invert(100%);
 }
 .laptop{
