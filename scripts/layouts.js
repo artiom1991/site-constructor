@@ -25,24 +25,32 @@ let hLaptop = document.querySelector(".horizontal-Laptop")
     })
 
 let newLayouts = { 
-    layouts:{320:{},480:{},640:{},960:{},1200:{}},
+    layouts:{1200:{},960:{},640:{},480:{},320:{}},
     addElement(id){
         for(let layout in this.layouts){
             let element = document.getElementById(id)
             let newElementStyles = window.getComputedStyle(element)
             let newElement = {
-                private:{
-                    width:null,
-                    height:null,
-                    top:null,
-                    left:null
-                },
-                inherid:{
-                    width:newElementStyles.width,
-                    height:newElementStyles.height,
-                    top:newElementStyles.top,
-                    left:newElementStyles.left
-                }
+                    width:{
+                        count:newElementStyles.width,
+                        isPrivate:false,
+                        inherided:1200
+                    },
+                    height:{
+                        count:newElementStyles.height,
+                        isPrivate:false,
+                        inherided:1200
+                    },
+                    top:{
+                        count:newElementStyles.top,
+                        isPrivate:false,
+                        inherided:1200
+                    },
+                    left:{
+                        count:newElementStyles.left,
+                        isPrivate:false,
+                        inherided:1200
+                    }
             }
             this.layouts[layout][id] = {...newElement}
         }
@@ -50,13 +58,18 @@ let newLayouts = {
     changeStyle(styles,id,layoutActive){
         for(let layout in this.layouts){
             if(layoutActive>layout){
-                for(let key in styles.inheridStyles){
-                this.layouts[layout][id]["inherid"][key] = styles.inheridStyles[key]
+                for(let key in styles){
+                    if(this.layouts[layout][id][key].isPrivate == false && layoutActive <= this.layouts[layout][id][key].inherided){
+                        this.layouts[layout][id][key].count = styles[key]
+                        this.layouts[layout][id][key].inherided = layoutActive
+                    }
                 }
             }
             if(layoutActive == layout){
-                for(let key in styles.privateStyles){
-                    this.layouts[layout][id]["private"][key] = styles.privateStyles[key]
+                for(let key in styles){
+                    this.layouts[layout][id][key].count = styles[key]
+                    this.layouts[layout][id][key].inherided = layoutActive
+                    this.layouts[layout][id][key].isPrivate = true
                 }
             }
         }
@@ -69,12 +82,8 @@ let newLayouts = {
             siteConstructorContent.style.top = "50%"
             allElements.forEach(el=>{
                 let id = el.id
-                for(let key in this.layouts[layout][id]["private"]){
-                    if(this.layouts[layout][id]["private"][key] !== null){
-                        el.style[key] = this.layouts[layout][id]["private"][key]
-                    }else{
-                        el.style[key] = this.layouts[layout][id]["inherid"][key]
-                    }
+                for(let key in this.layouts[layout][id]){
+                    el.style[key] =  this.layouts[layout][id][key].count
                 }
             })
             if(selection){selection.remove()}

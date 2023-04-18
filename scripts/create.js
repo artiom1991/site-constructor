@@ -53,12 +53,10 @@ function createNewElement(element){
             let getStyle = window.getComputedStyle(newElement) // Получает стили элемента
             let left = parseInt(getStyle.left) // Преобразует строковые числа из стилей в обычное число
             let top = parseInt(getStyle.top)    // Преобразует строковые числа из стилей в обычное число
-            newElement.style.top =  `${top+movementY}px`             // Просчитывает и задает параметр для движения элемента
-            newElement.style.left = `${left+movementX}px`            // Просчитывает и задает параметр для движения элемента
-            let newStyles = {
-                privateStyles :{ top:`${top+movementY}px`, left:`${left+movementX}px`}, inheridStyles: { top:`${top+movementY}px` , left:`${left+movementX}px`}
-            }
-            newLayouts.changeStyle(newStyles,id,layout)
+                newElement.style.top =  `${top+movementY}px`             // Просчитывает и задает параметр для движения элемента
+                newElement.style.left = `${left+movementX}px`            // Просчитывает и задает параметр для движения элемента
+            let newStyles = { top:`${top+movementY}px`, left:`${left+movementX}px`}
+                newLayouts.changeStyle(newStyles,id,layout)
         }
 
         newElement.addEventListener("dblclick",function(e){ // Задается созданому элементу событие по двойному клику
@@ -76,17 +74,17 @@ function createNewElement(element){
             let layout = parseInt(layoutStyle.width)                            // Приводим ширину холста к числовому значению
             let id = this.id
             let linkContent = document.querySelector(`#link-${id} .element-content`)
-            e.target.removeAttribute("contenteditable")     // Удаляет из элемента стрибут который позволяет редактировать текст
-            if( e.target.textContent.length < 1){           // проверка на длину строки
-                e.target.remove()                           // Если строка короче 1 символа удаляет ее
-            }
+                e.target.removeAttribute("contenteditable")     // Удаляет из элемента стрибут который позволяет редактировать текст
+                if( e.target.textContent.length < 1){           // проверка на длину строки
+                    e.target.remove()                           // Если строка короче 1 символа удаляет ее
+                }
             let txt =  e.target.innerHTML                   // Создает копию содержания элемента
             let newTxt = txt.replaceAll("<div><br></div>","<br>")   // Заменяет блоки с переносом из элемента на перенос строки
             let newTxt1 = newTxt.replaceAll("<div>","<br>")         // Заменяеняет  блок на перенос
             let newTxt2 = newTxt1.replaceAll("</div>","")            // Заменяеняет  блок на перенос
-            e.target.innerHTML = newTxt2                            // Задает элементу обработаный контент
-            e.target.style.height = `auto`
-            linkContent.textContent = newTxt2                       // Дублирует новый текст в span элемента ссылки для удобной навигации
-            newLayouts.changeStyle({privateStyles :{height:"auto"},inheridStyles :{height:"auto"}},id,layout)
+                e.target.innerHTML = newTxt2                            // Задает элементу обработаный контент
+                e.target.style.height = `auto`
+                linkContent.textContent = newTxt2                       // Дублирует новый текст в span элемента ссылки для удобной навигации
+                newLayouts.changeStyle({height:"auto"},id,layout)
         })
 }
