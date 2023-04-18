@@ -11,35 +11,25 @@ function selectionElement(){    //Функция выделения элемен
         selection.style.padding = styles.padding
         selection.style.left = styles.left
         selection.style.top = styles.top
-
     let topSelection = document.createElement("div")    //создается див который в последствии будет отвечать за разтягивание элемента по верхнему краю
         topSelection.classList.add("topSelection")      // задается класс topSelection
-
     let bottomSelection = document.createElement("div")
         bottomSelection.classList.add("bottomSelection")
-
     let leftSelection = document.createElement("div")
         leftSelection.classList.add("leftSelection")
-
     let leftTopCorner = document.createElement("div")
         leftTopCorner.classList.add("leftTopCorner")
-
     let leftBottomCorner = document.createElement("div")
         leftBottomCorner.classList.add("leftBottomCorner")
-
     let rightSelection = document.createElement("div")
         rightSelection.classList.add("rightSelection")
-
     let righTopCorner = document.createElement("div")
         righTopCorner.classList.add("righTopCorner")
-
     let righBottomCorner = document.createElement("div")
         righBottomCorner.classList.add("righBottomCorner")
         selection.append(topSelection,bottomSelection,leftSelection,leftTopCorner,leftBottomCorner,rightSelection,righTopCorner,righBottomCorner)   // все созданые элементы управления помещаются в родительский контейнер Selection
         siteConstructorContainer.append(selection)  // Div Selection помещается в родительский элемент siteConstructorContainer
 
-
-        
 //Создается событие для Selection
 
         selection.addEventListener("dblclick",function(){   //создается событие по двойному клику для элемента selection
@@ -64,54 +54,13 @@ function selectionElement(){    //Функция выделения элемен
         let getStyle = window.getComputedStyle(selection)   // получение стилей элемента selection
         let left = parseInt(getStyle.left)                  // приводит позиционирование из left="100px" в число 100
         let top = parseInt(getStyle.top)  
-        selection.style.top = `${top+movementY}px`          //считает сумму прошлого позиционирования элемента и длину передвижаения курсора а так же задает новое позиционирование
-        selection.style.left = `${left+movementX}px` 
-        target.style.top = `${top+movementY}px` 
-        target.style.left = `${left+movementX}px` 
-        switch (layout) {                               // Проверяем значение переменной layout
-            case 1200:                      // Если оно равно 1200 то задаются стили для обьекта layout
-                layouts[960][id].inheridTop = `${top+movementY}px`      //Задается наследуемое позиционирование сверху для элемента в ширине layout 960px
-                layouts[640][id].inheridTop = `${top+movementY}px`
-                layouts[480][id].inheridTop = `${top+movementY}px`
-                layouts[320][id].inheridTop = `${top+movementY}px`
-                layouts[960][id].inheridLeft = `${left+movementX}px`
-                layouts[640][id].inheridLeft = `${left+movementX}px`
-                layouts[480][id].inheridLeft = `${left+movementX}px`
-                layouts[320][id].inheridLeft = `${left+movementX}px`
-                layouts[1200][id].left = `${left+movementX}px`              //Задается персональное значение позиционирования
-                layouts[1200][id].top = `${top+movementY}px`
-                break;
-            case 960:
-                layouts[640][id].inheridTop = `${top+movementY}px`
-                layouts[480][id].inheridTop = `${top+movementY}px`
-                layouts[320][id].inheridTop = `${top+movementY}px`
-                layouts[640][id].inheridLeft = `${left+movementX}px`
-                layouts[480][id].inheridLeft = `${left+movementX}px`
-                layouts[320][id].inheridLeft = `${left+movementX}px`
-                layouts[960][id].left = `${left+movementX}px`
-                layouts[960][id].top = `${top+movementY}px` 
-                break;
-            case 640:
-                layouts[480][id].inheridTop = `${top+movementY}px`
-                layouts[320][id].inheridTop = `${top+movementY}px`
-                layouts[480][id].inheridLeft = `${left+movementX}px`
-                layouts[320][id].inheridLeft = `${left+movementX}px`
-                layouts[640][id].left = `${left+movementX}px`
-                layouts[640][id].top = `${top+movementY}px` 
-                break;
-            case 480:
-                layouts[320][id].inheridTop = `${top+movementY}px`
-                layouts[320][id].inheridLeft = `${left+movementX}px`
-                layouts[480][id].left = `${left+movementX}px`
-                layouts[480][id].top = `${top+movementY}px` 
-                break;
-            case 320:
-                layouts[320][id].left = `${left+movementX}px`
-                layouts[320][id].top = `${top+movementY}px`
-                break;
-            default:
-                break;
+            selection.style.top = `${top+movementY}px`          //считает сумму прошлого позиционирования элемента и длину передвижаения курсора а так же задает новое позиционирование
+            selection.style.left = `${left+movementX}px` 
+            target.style.top = `${top+movementY}px` 
+            target.style.left = `${left+movementX}px` 
+        let newStyles = { privateStyles :{top:`${top+movementY}px` , left:`${left+movementX}px` }, inheridStyles: {top:`${top+movementY}px`, left:`${left+movementX}px` }
         }
+            newLayouts.changeStyle(newStyles,id,layout)
     }
 
 // обработчик событий righBottomCorner
@@ -138,90 +87,20 @@ function selectionElement(){    //Функция выделения элемен
         let selectionStyleHeigth = parseInt(selectionStyle.height)
         let selectionStyleLeft = parseInt(selectionStyle.left)
             if(selectionStyleWidth+(-movementX)>=10){
-                selection.style.width = `${selectionStyleWidth+(-movementX)}px` // задает ширину обьекту selection (старая ширина + движение по оси X с противоположным знаком) таким образом меняет ширину выделения
-                targetElement.style.width = `${targetWidth+(-movementX)}px`     // задает ширину обьекту target (старая ширина + движение по оси X с противоположным знаком) таким образом меняет ширину выделения
-                selection.style.left = `${selectionStyleLeft+movementX}px`       // Рассчитывает позиционирование по оси X
-                targetElement.style.left = `${targetLeft+movementX}px`
-                switch (layout) {
-                    case 1200:
-                        layouts[960][id].inheridWidth = `${targetWidth+(-movementX)}px`
-                        layouts[640][id].inheridWidth = `${targetWidth+(-movementX)}px`
-                        layouts[480][id].inheridWidth = `${targetWidth+(-movementX)}px`
-                        layouts[320][id].inheridWidth = `${targetWidth+(-movementX)}px`
-                        layouts[960][id].inheridLeft = `${targetLeft+movementX}px`
-                        layouts[640][id].inheridLeft = `${targetLeft+movementX}px`
-                        layouts[480][id].inheridLeft = `${targetLeft+movementX}px`
-                        layouts[320][id].inheridLeft = `${targetLeft+movementX}px`
-                        layouts[1200][id].left = `${targetLeft+movementX}px`
-                        layouts[1200][id].width = `${targetWidth+(-movementX)}px`
-                        break;
-                    case 960:
-                        layouts[640][id].inheridWidth = `${targetWidth+(-movementX)}px`
-                        layouts[480][id].inheridWidth = `${targetWidth+(-movementX)}px`
-                        layouts[320][id].inheridWidth = `${targetWidth+(-movementX)}px`
-                        layouts[640][id].inheridLeft = `${targetLeft+movementX}px`
-                        layouts[480][id].inheridLeft = `${targetLeft+movementX}px`
-                        layouts[320][id].inheridLeft = `${targetLeft+movementX}px`
-                        layouts[960][id].left = `${targetLeft+movementX}px`
-                        layouts[960][id].width = `${targetWidth+(-movementX)}px`
-                        break;
-                    case 640:
-                        layouts[480][id].inheridWidth = `${targetWidth+(-movementX)}px`
-                        layouts[320][id].inheridWidth = `${targetWidth+(-movementX)}px`
-                        layouts[480][id].inheridLeft = `${targetLeft+movementX}px`
-                        layouts[320][id].inheridLeft = `${targetLeft+movementX}px`
-                        layouts[640][id].left = `${targetLeft+movementX}px`
-                        layouts[640][id].width = `${targetWidth+(-movementX)}px`
-                        break;
-                    case 480:
-                        layouts[320][id].inheridWidth = `${targetWidth+(-movementX)}px`
-                        layouts[320][id].inheridLeft = `${targetLeft+movementX}px`
-                        layouts[480][id].left = `${targetLeft+movementX}px`
-                        layouts[480][id].width = `${targetWidth+(-movementX)}px`
-                        break;
-                    case 320:
-                        layouts[320][id].left = `${targetLeft+movementX}px`
-                        layouts[320][id].width = `${targetWidth+(-movementX)}px`
-                        break;
-                    default:
-                        break;
-                }
+                    selection.style.width = `${selectionStyleWidth+(-movementX)}px` // задает ширину обьекту selection (старая ширина + движение по оси X с противоположным знаком) таким образом меняет ширину выделения
+                    targetElement.style.width = `${targetWidth+(-movementX)}px`     // задает ширину обьекту target (старая ширина + движение по оси X с противоположным знаком) таким образом меняет ширину выделения
+                    selection.style.left = `${selectionStyleLeft+movementX}px`       // Рассчитывает позиционирование по оси X
+                    targetElement.style.left = `${targetLeft+movementX}px`
+                let newStyles = { privateStyles :{ width:`${targetWidth+(-movementX)}px`, left:`${targetLeft+movementX}px`}, inheridStyles: { width:`${targetWidth+(-movementX)}px`, left:`${targetLeft+movementX}px`}}
+                    newLayouts.changeStyle(newStyles,id,layout)
             }
             if(selectionStyleHeigth+movementY>=10){
-                selection.style.height = `${selectionStyleHeigth+movementY}px`  // Рассчитывает высоту
-                targetElement.style.height = `${targetHeigth+movementY}px`
-                switch (layout) {
-                    case 1200:
-                        layouts[960][id].inheridHeight = `${targetHeigth+movementY}px`
-                        layouts[640][id].inheridHeight = `${targetHeigth+movementY}px`
-                        layouts[480][id].inheridHeight = `${targetHeigth+movementY}px`
-                        layouts[320][id].inheridHeight = `${targetHeigth+movementY}px`
-                        layouts[1200][id].height = `${targetHeigth+movementY}px`
-                        break;
-                    case 960:
-                        layouts[640][id].inheridHeight = `${targetHeigth+movementY}px`
-                        layouts[480][id].inheridHeight = `${targetHeigth+movementY}px`
-                        layouts[320][id].inheridHeight = `${targetHeigth+movementY}px`
-                        layouts[960][id].height = `${targetHeigth+movementY}px`
-                        break;
-                    case 640:
-                        layouts[480][id].inheridHeight = `${targetHeigth+movementY}px`
-                        layouts[320][id].inheridHeight = `${targetHeigth+movementY}px`
-                        layouts[640][id].height = `${targetHeigth+movementY}px`
-                        break;
-                    case 480:
-                        layouts[320][id].inheridHeight = `${targetHeigth+movementY}px`
-                        layouts[480][id].height = `${targetHeigth+movementY}px`
-                        break;
-                    case 320:
-                        layouts[320][id].height = `${targetHeigth+movementY}px`
-                        break;
-                    default:
-                        break;
-                }
+                    selection.style.height = `${selectionStyleHeigth+movementY}px`  // Рассчитывает высоту
+                    targetElement.style.height = `${targetHeigth+movementY}px`
+                let newStyles = { privateStyles :{ height:`${targetHeigth+movementY}px`}, inheridStyles: { height:`${targetHeigth+movementY}px`}}
+                    newLayouts.changeStyle(newStyles,id,layout)
             }
     }
-
 
 // обработчик событий righTopCorner
 
@@ -249,108 +128,22 @@ function selectionElement(){    //Функция выделения элемен
         let selectionStyleTop = parseInt(selectionStyle.top)
         let selectionStyleLeft = parseInt(selectionStyle.left)
             if(selectionStyleWidth+(-movementX)>=10){
-                selection.style.width = `${selectionStyleWidth+(-movementX)}px`
-                targetElement.style.width = `${targetWidth+(-movementX)}px`
-                selection.style.left = `${selectionStyleLeft+movementX}px`
-                targetElement.style.left = `${targetLeft+movementX}px`
-                switch (layout) {
-                    case 1200:
-                        layouts[960][id].inheridWidth = `${targetWidth+(-movementX)}px`
-                        layouts[640][id].inheridWidth = `${targetWidth+(-movementX)}px`
-                        layouts[480][id].inheridWidth = `${targetWidth+(-movementX)}px`
-                        layouts[320][id].inheridWidth = `${targetWidth+(-movementX)}px`
-                        layouts[960][id].inheridLeft = `${targetLeft+movementX}px`
-                        layouts[640][id].inheridLeft = `${targetLeft+movementX}px`
-                        layouts[480][id].inheridLeft = `${targetLeft+movementX}px`
-                        layouts[320][id].inheridLeft = `${targetLeft+movementX}px`
-                        layouts[1200][id].left = `${targetLeft+movementX}px`
-                        layouts[1200][id].width = `${targetWidth+(-movementX)}px`
-                        break;
-                    case 960:
-                        layouts[640][id].inheridWidth = `${targetWidth+(-movementX)}px`
-                        layouts[480][id].inheridWidth = `${targetWidth+(-movementX)}px`
-                        layouts[320][id].inheridWidth = `${targetWidth+(-movementX)}px`
-                        layouts[640][id].inheridLeft = `${targetLeft+movementX}px`
-                        layouts[480][id].inheridLeft = `${targetLeft+movementX}px`
-                        layouts[320][id].inheridLeft = `${targetLeft+movementX}px`
-                        layouts[960][id].left = `${targetLeft+movementX}px`
-                        layouts[960][id].width = `${targetWidth+(-movementX)}px`
-                        break;
-                    case 640:
-                        layouts[480][id].inheridWidth = `${targetWidth+(-movementX)}px`
-                        layouts[320][id].inheridWidth = `${targetWidth+(-movementX)}px`
-                        layouts[480][id].inheridLeft = `${targetLeft+movementX}px`
-                        layouts[320][id].inheridLeft = `${targetLeft+movementX}px`
-                        layouts[640][id].left = `${targetLeft+movementX}px`
-                        layouts[640][id].width = `${targetWidth+(-movementX)}px`
-                        break;
-                    case 480:
-                        layouts[320][id].inheridWidth = `${targetWidth+(-movementX)}px`
-                        layouts[320][id].inheridLeft = `${targetLeft+movementX}px`
-                        layouts[480][id].left = `${targetLeft+movementX}px`
-                        layouts[480][id].width = `${targetWidth+(-movementX)}px`
-                        break;
-                    case 320:
-                        layouts[320][id].left = `${targetLeft+movementX}px`
-                        layouts[320][id].width = `${targetWidth+(-movementX)}px`
-                        break;
-                    default:
-                        break;
-                }
+                    selection.style.width = `${selectionStyleWidth+(-movementX)}px`
+                    targetElement.style.width = `${targetWidth+(-movementX)}px`
+                    selection.style.left = `${selectionStyleLeft+movementX}px`
+                    targetElement.style.left = `${targetLeft+movementX}px`
+                let newStyles = { privateStyles :{ left:`${targetLeft+movementX}px`, width:`${targetWidth+(-movementX)}px`}, inheridStyles: { left:`${targetLeft+movementX}px`, width:`${targetWidth+(-movementX)}px`}}
+                    newLayouts.changeStyle(newStyles,id,layout)
             }
             if(selectionStyleHeigth+(-movementY)>=10){
                 selection.style.height = `${selectionStyleHeigth+(-movementY)}px`
                 targetElement.style.height = `${targetHeigth+(-movementY)}px`
                 selection.style.top = `${selectionStyleTop+movementY}px`
                 targetElement.style.top = `${targetTop+movementY}px`
-                switch (layout) {
-                    case 1200:
-                        layouts[960][id].inheridTop = `${targetTop+movementY}px`
-                        layouts[640][id].inheridTop = `${targetTop+movementY}px`
-                        layouts[480][id].inheridTop = `${targetTop+movementY}px`
-                        layouts[320][id].inheridTop = `${targetTop+movementY}px`
-                        layouts[960][id].inheridHeight = `${targetHeigth+(-movementY)}px`
-                        layouts[640][id].inheridHeight = `${targetHeigth+(-movementY)}px`
-                        layouts[480][id].inheridHeight = `${targetHeigth+(-movementY)}px`
-                        layouts[320][id].inheridHeight = `${targetHeigth+(-movementY)}px`
-                        layouts[1200][id].height = `${targetHeigth+(-movementY)}px`
-                        layouts[1200][id].top = `${targetTop+movementY}px`
-                        break;
-                    case 960:
-                        layouts[640][id].inheridTop = `${targetTop+movementY}px`
-                        layouts[480][id].inheridTop = `${targetTop+movementY}px`
-                        layouts[320][id].inheridTop = `${targetTop+movementY}px`
-                        layouts[640][id].inheridHeight = `${targetHeigth+(-movementY)}px`
-                        layouts[480][id].inheridHeight = `${targetHeigth+(-movementY)}px`
-                        layouts[320][id].inheridHeight = `${targetHeigth+(-movementY)}px`
-                        layouts[960][id].height = `${targetHeigth+(-movementY)}px`
-                        layouts[960][id].top = `${targetTop+movementY}px`
-                        break;
-                    case 640:
-                        layouts[480][id].inheridTop = `${targetTop+movementY}px`
-                        layouts[320][id].inheridTop = `${targetTop+movementY}px`
-                        layouts[480][id].inheridHeight = `${targetHeigth+(-movementY)}px`
-                        layouts[320][id].inheridHeight = `${targetHeigth+(-movementY)}px`
-                        layouts[640][id].height = `${targetHeigth+(-movementY)}px`
-                        layouts[640][id].top = `${targetTop+movementY}px`
-                        break;
-                    case 480:
-                        layouts[320][id].inheridTop = `${targetTop+movementY}px`
-                        layouts[320][id].inheridHeight = `${targetHeigth+(-movementY)}px`
-                        layouts[480][id].height = `${targetHeigth+(-movementY)}px`
-                        layouts[480][id].top = `${targetTop+movementY}px`
-                        break;
-                    case 320:
-                        layouts[320][id].height = `${targetHeigth+(-movementY)}px`
-                        layouts[320][id].top = `${targetTop+movementY}px`
-                        break;
-                    default:
-                        break;
-                }
+                let newStyles = { privateStyles :{ height:`${targetHeigth+(-movementY)}px`, top:`${targetTop+movementY}px`}, inheridStyles: { height:`${targetHeigth+(-movementY)}px`, top:`${targetTop+movementY}px`}}
+                    newLayouts.changeStyle(newStyles,id,layout)
             }
     }
-
-
 
 // обработчик событий righTopCorner
 
@@ -380,87 +173,16 @@ function selectionElement(){    //Функция выделения элемен
             targetElement.style.height = `${targetHeigth+(-movementY)}px`
             selection.style.top = `${selectionStyleTop+movementY}px`
             targetElement.style.top = `${targetTop+movementY}px`
-            switch (layout) {
-                case 1200:
-                    layouts[960][id].inheridTop = `${targetTop+movementY}px`
-                    layouts[640][id].inheridTop = `${targetTop+movementY}px`
-                    layouts[480][id].inheridTop = `${targetTop+movementY}px`
-                    layouts[320][id].inheridTop = `${targetTop+movementY}px`
-                    layouts[960][id].inheridHeight = `${targetHeigth+(-movementY)}px`
-                    layouts[640][id].inheridHeight = `${targetHeigth+(-movementY)}px`
-                    layouts[480][id].inheridHeight = `${targetHeigth+(-movementY)}px`
-                    layouts[320][id].inheridHeight = `${targetHeigth+(-movementY)}px`
-                    layouts[1200][id].height = `${targetHeigth+(-movementY)}px`
-                    layouts[1200][id].top = `${targetTop+movementY}px`
-                    break;
-                case 960:
-                    layouts[640][id].inheridTop = `${targetTop+movementY}px`
-                    layouts[480][id].inheridTop = `${targetTop+movementY}px`
-                    layouts[320][id].inheridTop = `${targetTop+movementY}px`
-                    layouts[640][id].inheridHeight = `${targetHeigth+(-movementY)}px`
-                    layouts[480][id].inheridHeight = `${targetHeigth+(-movementY)}px`
-                    layouts[320][id].inheridHeight = `${targetHeigth+(-movementY)}px`
-                    layouts[960][id].height = `${targetHeigth+(-movementY)}px`
-                    layouts[960][id].top = `${targetTop+movementY}px`
-                    break;
-                case 640:
-                    layouts[480][id].inheridTop = `${targetTop+movementY}px`
-                    layouts[320][id].inheridTop = `${targetTop+movementY}px`
-                    layouts[480][id].inheridHeight = `${targetHeigth+(-movementY)}px`
-                    layouts[320][id].inheridHeight = `${targetHeigth+(-movementY)}px`
-                    layouts[640][id].height = `${targetHeigth+(-movementY)}px`
-                    layouts[640][id].top = `${targetTop+movementY}px`
-                    break;
-                case 480:
-                    layouts[320][id].inheridTop = `${targetTop+movementY}px`
-                    layouts[320][id].inheridHeight = `${targetHeigth+(-movementY)}px`
-                    layouts[480][id].height = `${targetHeigth+(-movementY)}px`
-                    layouts[480][id].top = `${targetTop+movementY}px`
-                    break;
-                case 320:
-                    layouts[320][id].height = `${targetHeigth+(-movementY)}px`
-                    layouts[320][id].top = `${targetTop+movementY}px`
-                    break;
-                default:
-                    break;
-            }
+            let newStyles = { privateStyles :{ height:`${targetHeigth+(-movementY)}px`, top:`${targetTop+movementY}px`}, inheridStyles: { height:`${targetHeigth+(-movementY)}px`, top:`${targetTop+movementY}px`}}
+                newLayouts.changeStyle(newStyles,id,layout)
         }
         if(selectionStyleWidth+movementX>=10){
             selection.style.width = `${selectionStyleWidth+movementX}px`
             targetElement.style.width = `${targetWidth+movementX}px`
-            switch (layout) {
-                case 1200:
-                    layouts[960][id].inheridWidth = `${targetWidth+movementX}px`
-                    layouts[640][id].inheridWidth = `${targetWidth+movementX}px`
-                    layouts[480][id].inheridWidth = `${targetWidth+movementX}px`
-                    layouts[320][id].inheridWidth = `${targetWidth+movementX}px`
-                    layouts[1200][id].width = `${targetWidth+movementX}px`
-                    break;
-                case 960:
-                    layouts[640][id].inheridWidth = `${targetWidth+movementX}px`
-                    layouts[480][id].inheridWidth = `${targetWidth+movementX}px`
-                    layouts[320][id].inheridWidth = `${targetWidth+movementX}px`
-                    layouts[960][id].width = `${targetWidth+movementX}px`
-                    break;
-                case 640:
-                    layouts[480][id].inheridWidth = `${targetWidth+movementX}px`
-                    layouts[320][id].inheridWidth = `${targetWidth+movementX}px`
-                    layouts[640][id].width = `${targetWidth+movementX}px`
-                    break;
-                case 480:
-                    layouts[320][id].inheridWidth = `${targetWidth+movementX}px`
-                    layouts[480][id].width = `${targetWidth+movementX}px`
-                    break;
-                case 320:
-                    layouts[320][id].width = `${targetWidth+movementX}px`
-                    break;
-                default:
-                    break;
-            }
+            let newStyles = { privateStyles :{ width:`${targetWidth+movementX}px`}, inheridStyles: { width:`${targetWidth+movementX}px`}}
+                newLayouts.changeStyle(newStyles,id,layout)
         }
     }
-
-
 
 // обработчик событий righBottomCorner
 
@@ -485,72 +207,15 @@ function selectionElement(){    //Функция выделения элемен
             if(selectionStyleWidth+movementX>=10){
                 selection.style.width = `${selectionStyleWidth+movementX}px`
                 targetElement.style.width = `${targetWidth+movementX}px`
-                switch (layout) {
-                    case 1200:
-                        layouts[960][id].inheridWidth = `${targetWidth+movementX}px`
-                        layouts[640][id].inheridWidth = `${targetWidth+movementX}px`
-                        layouts[480][id].inheridWidth = `${targetWidth+movementX}px`
-                        layouts[320][id].inheridWidth = `${targetWidth+movementX}px`
-                        layouts[1200][id].width = `${targetWidth+movementX}px`
-                        break;
-                    case 960:
-                        layouts[640][id].inheridWidth = `${targetWidth+movementX}px`
-                        layouts[480][id].inheridWidth = `${targetWidth+movementX}px`
-                        layouts[320][id].inheridWidth = `${targetWidth+movementX}px`
-                        layouts[960][id].width = `${targetWidth+movementX}px`
-                        break;
-                    case 640:
-                        layouts[480][id].inheridWidth = `${targetWidth+movementX}px`
-                        layouts[320][id].inheridWidth = `${targetWidth+movementX}px`
-                        layouts[640][id].width = `${targetWidth+movementX}px`
-                        break;
-                    case 480:
-                        layouts[320][id].inheridWidth = `${targetWidth+movementX}px`
-                        layouts[480][id].width = `${targetWidth+movementX}px`
-                        break;
-                    case 320:
-                        layouts[320][id].width = `${targetWidth+movementX}px`
-                        break;
-                    default:
-                        break;
-                }
-            }
+                let newStyles = { privateStyles :{ width:`${targetWidth+movementX}px`}, inheridStyles: { width:`${targetWidth+movementX}px`}}
+                    newLayouts.changeStyle(newStyles,id,layout)}
             if(targetHeigth+movementY>=10){
                 targetElement.style.height = `${targetHeigth+movementY}px`
                 selection.style.height = `${selectionStyleHeight+movementY}px`
-                switch (layout) {
-                    case 1200:
-                        layouts[960][id].inheridHeight = `${targetHeigth+movementY}px`
-                        layouts[640][id].inheridHeight = `${targetHeigth+movementY}px`
-                        layouts[480][id].inheridHeight = `${targetHeigth+movementY}px`
-                        layouts[320][id].inheridHeight = `${targetHeigth+movementY}px`
-                        layouts[1200][id].height = `${targetHeigth+movementY}px`
-                        break;
-                    case 960:
-                        layouts[640][id].inheridHeight = `${targetHeigth+movementY}px`
-                        layouts[480][id].inheridHeight = `${targetHeigth+movementY}px`
-                        layouts[320][id].inheridHeight = `${targetHeigth+movementY}px`
-                        layouts[960][id].height = `${targetHeigth+movementY}px`
-                        break;
-                    case 640:
-                        layouts[480][id].inheridHeight = `${targetHeigth+movementY}px`
-                        layouts[320][id].inheridHeight = `${targetHeigth+movementY}px`
-                        layouts[640][id].height = `${targetHeigth+movementY}px`
-                        break;
-                    case 480:
-                        layouts[320][id].inheridHeight = `${targetHeigth+movementY}px`
-                        layouts[480][id].height = `${targetHeigth+movementY}px`
-                        break;
-                    case 320:
-                        layouts[320][id].height = `${targetHeigth+movementY}px`
-                        break;
-                    default:
-                        break;
-                }
+                let newStyles = {privateStyles :{height:`${selectionStyleHeight+movementY}px`},inheridStyles: {height:`${selectionStyleHeight+movementY}px`}}
+                    newLayouts.changeStyle(newStyles,id,layout)
             }
     }
-
-
 
 // обработчик событий rightSelection
 
@@ -576,40 +241,11 @@ function selectionElement(){    //Функция выделения элемен
                 selection.style.width = `${selectionStyleWidth+movementX}px`
             }
             if(targetWidth+movementX>=10){
-                targetElement.style.width = `${targetWidth+movementX}px`
-                switch (layout) {
-                    case 1200:
-                        layouts[960][id].inheridWidth = `${targetWidth+movementX}px`
-                        layouts[640][id].inheridWidth = `${targetWidth+movementX}px`
-                        layouts[480][id].inheridWidth = `${targetWidth+movementX}px`
-                        layouts[320][id].inheridWidth = `${targetWidth+movementX}px`
-                        layouts[1200][id].width = `${targetWidth+movementX}px`
-                        break;
-                    case 960:
-                        layouts[640][id].inheridWidth = `${targetWidth+movementX}px`
-                        layouts[480][id].inheridWidth = `${targetWidth+movementX}px`
-                        layouts[320][id].inheridWidth = `${targetWidth+movementX}px`
-                        layouts[960][id].width = `${targetWidth+movementX}px`
-                        break;
-                    case 640:
-                        layouts[480][id].inheridWidth = `${targetWidth+movementX}px`
-                        layouts[320][id].inheridWidth = `${targetWidth+movementX}px`
-                        layouts[640][id].width = `${targetWidth+movementX}px`
-                        break;
-                    case 480:
-                        layouts[320][id].inheridWidth = `${targetWidth+movementX}px`
-                        layouts[480][id].width = `${targetWidth+movementX}px`
-                        break;
-                    case 320:
-                        layouts[320][id].width = `${targetWidth+movementX}px`
-                        break;
-                    default:
-                        break;
-                }
+                    targetElement.style.width = `${targetWidth+movementX}px`
+                let newStyles = { privateStyles :{ width:`${targetWidth+movementX}px`}, inheridStyles: { width:`${targetWidth+movementX}px`}}
+                    newLayouts.changeStyle(newStyles,id,layout)
             }
     }
-
-
 
  // обработчик событий bottomSelection
 
@@ -635,40 +271,11 @@ function selectionElement(){    //Функция выделения элемен
                 selection.style.height = `${selectionStyleHeigth+movementY}px`
             }
             if(targetHeigth+movementY>=10){
-                targetElement.style.height = `${targetHeigth+movementY}px`
-                switch (layout) {
-                    case 1200:
-                        layouts[960][id].inheridHeight = `${targetHeigth+movementY}px`
-                        layouts[640][id].inheridHeight = `${targetHeigth+movementY}px`
-                        layouts[480][id].inheridHeight = `${targetHeigth+movementY}px`
-                        layouts[320][id].inheridHeight = `${targetHeigth+movementY}px`
-                        layouts[1200][id].height = `${targetHeigth+movementY}px`
-                        break;
-                    case 960:
-                        layouts[640][id].inheridHeight = `${targetHeigth+movementY}px`
-                        layouts[480][id].inheridHeight = `${targetHeigth+movementY}px`
-                        layouts[320][id].inheridHeight = `${targetHeigth+movementY}px`
-                        layouts[960][id].height = `${targetHeigth+movementY}px`
-                        break;
-                    case 640:
-                        layouts[480][id].inheridHeight = `${targetHeigth+movementY}px`
-                        layouts[320][id].inheridHeight = `${targetHeigth+movementY}px`
-                        layouts[640][id].height = `${targetHeigth+movementY}px`
-                        break;
-                    case 480:
-                        layouts[320][id].inheridHeight = `${targetHeigth+movementY}px`
-                        layouts[480][id].height = `${targetHeigth+movementY}px`
-                        break;
-                    case 320:
-                        layouts[320][id].height = `${targetHeigth+movementY}px`
-                        break;
-                    default:
-                        break;
-                }
+                    targetElement.style.height = `${targetHeigth+movementY}px`
+                let newStyles = { privateStyles :{ height:`${targetHeigth+movementY}px`}, inheridStyles: { height:`${targetHeigth+movementY}px`}}
+                    newLayouts.changeStyle(newStyles,id,layout)
             }
     }
-
-
 
 // обработчик событий leftSelection
 
@@ -696,54 +303,10 @@ function selectionElement(){    //Функция выделения элемен
                 selection.style.width = `${selectionStyleWidth+(-movementX)}px`
                 targetElement.style.width = `${targetWidth+(-movementX)}px`
                 targetElement.style.left = `${targetLeft+movementX}px`
-                switch (layout) {
-                    case 1200:
-                        layouts[960][id].inheridWidth = `${targetWidth+(-movementX)}px`
-                        layouts[640][id].inheridWidth = `${targetWidth+(-movementX)}px`
-                        layouts[480][id].inheridWidth = `${targetWidth+(-movementX)}px`
-                        layouts[320][id].inheridWidth = `${targetWidth+(-movementX)}px`
-                        layouts[960][id].inheridLeft = `${targetLeft+movementX}px`
-                        layouts[640][id].inheridLeft = `${targetLeft+movementX}px`
-                        layouts[480][id].inheridLeft = `${targetLeft+movementX}px`
-                        layouts[320][id].inheridLeft = `${targetLeft+movementX}px`
-                        layouts[1200][id].left = `${targetLeft+movementX}px`
-                        layouts[1200][id].width = `${targetWidth+(-movementX)}px`
-                        break;
-                    case 960:
-                        layouts[640][id].inheridWidth = `${targetWidth+(-movementX)}px`
-                        layouts[480][id].inheridWidth = `${targetWidth+(-movementX)}px`
-                        layouts[320][id].inheridWidth = `${targetWidth+(-movementX)}px`
-                        layouts[640][id].inheridLeft = `${targetLeft+movementX}px`
-                        layouts[480][id].inheridLeft = `${targetLeft+movementX}px`
-                        layouts[320][id].inheridLeft = `${targetLeft+movementX}px`
-                        layouts[960][id].left = `${targetLeft+movementX}px`
-                        layouts[960][id].width = `${targetWidth+(-movementX)}px`
-                        break;
-                    case 640:
-                        layouts[480][id].inheridWidth = `${targetWidth+(-movementX)}px`
-                        layouts[320][id].inheridWidth = `${targetWidth+(-movementX)}px`
-                        layouts[480][id].inheridLeft = `${targetLeft+movementX}px`
-                        layouts[320][id].inheridLeft = `${targetLeft+movementX}px`
-                        layouts[640][id].left = `${targetLeft+movementX}px`
-                        layouts[640][id].width = `${targetWidth+(-movementX)}px`
-                        break;
-                    case 480:
-                        layouts[320][id].inheridWidth = `${targetWidth+(-movementX)}px`
-                        layouts[320][id].inheridLeft = `${targetLeft+movementX}px`
-                        layouts[480][id].left = `${targetLeft+movementX}px`
-                        layouts[480][id].width = `${targetWidth+(-movementX)}px`
-                        break;
-                    case 320:
-                        layouts[320][id].left = `${targetLeft+movementX}px`
-                        layouts[320][id].width = `${targetWidth+(-movementX)}px`
-                        break;
-                    default:
-                        break;
-                }
+                let newStyles = { privateStyles :{ left:`${targetLeft+movementX}px`, width:`${targetWidth+(-movementX)}px`}, inheridStyles: { left:`${targetLeft+movementX}px`, width:`${targetWidth+(-movementX)}px`}}
+                    newLayouts.changeStyle(newStyles,id,layout)
             }
     }
-
-
 
 // обработчик событий topSelection
 
@@ -768,54 +331,12 @@ function selectionElement(){    //Функция выделения элемен
         let selectionStyleTop = parseInt(selectionStyle.top)
             selection.style.width = targetStyle.width
             if(selectionStyleHeigth+(-movementY)>=10){
-                selection.style.height = `${selectionStyleHeigth+(-movementY)}px`
-                selection.style.top  = `${selectionStyleTop+movementY}px`
-                targetElement.style.height = `${targetHeigth+(-movementY)}px`
-                targetElement.style.top = `${targetTop+movementY}px`
-                switch (layout) {
-                    case 1200:
-                        layouts[960][id].inheridTop = `${targetTop+movementY}px`
-                        layouts[640][id].inheridTop = `${targetTop+movementY}px`
-                        layouts[480][id].inheridTop = `${targetTop+movementY}px`
-                        layouts[320][id].inheridTop = `${targetTop+movementY}px`
-                        layouts[960][id].inheridHeight = `${targetHeigth+(-movementY)}px`
-                        layouts[640][id].inheridHeight = `${targetHeigth+(-movementY)}px`
-                        layouts[480][id].inheridHeight = `${targetHeigth+(-movementY)}px`
-                        layouts[320][id].inheridHeight = `${targetHeigth+(-movementY)}px`
-                        layouts[1200][id].height = `${targetHeigth+(-movementY)}px`
-                        layouts[1200][id].top = `${targetTop+movementY}px`
-                        break;
-                    case 960:
-                        layouts[640][id].inheridTop = `${targetTop+movementY}px`
-                        layouts[480][id].inheridTop = `${targetTop+movementY}px`
-                        layouts[320][id].inheridTop = `${targetTop+movementY}px`
-                        layouts[640][id].inheridHeight = `${targetHeigth+(-movementY)}px`
-                        layouts[480][id].inheridHeight = `${targetHeigth+(-movementY)}px`
-                        layouts[320][id].inheridHeight = `${targetHeigth+(-movementY)}px`
-                        layouts[960][id].height = `${targetHeigth+(-movementY)}px`
-                        layouts[960][id].top = `${targetTop+movementY}px`
-                        break;
-                    case 640:
-                        layouts[480][id].inheridTop = `${targetTop+movementY}px`
-                        layouts[320][id].inheridTop = `${targetTop+movementY}px`
-                        layouts[480][id].inheridHeight = `${targetHeigth+(-movementY)}px`
-                        layouts[320][id].inheridHeight = `${targetHeigth+(-movementY)}px`
-                        layouts[640][id].height = `${targetHeigth+(-movementY)}px`
-                        layouts[640][id].top = `${targetTop+movementY}px`
-                        break;
-                    case 480:
-                        layouts[320][id].inheridTop = `${targetTop+movementY}px`
-                        layouts[320][id].inheridHeight = `${targetHeigth+(-movementY)}px`
-                        layouts[480][id].height = `${targetHeigth+(-movementY)}px`
-                        layouts[480][id].top = `${targetTop+movementY}px`
-                        break;
-                    case 320:
-                        layouts[320][id].height = `${targetHeigth+(-movementY)}px`
-                        layouts[320][id].top = `${targetTop+movementY}px`
-                        break;
-                    default:
-                        break;
-                }
+                    selection.style.height = `${selectionStyleHeigth+(-movementY)}px`
+                    selection.style.top  = `${selectionStyleTop+movementY}px`
+                    targetElement.style.height = `${targetHeigth+(-movementY)}px`
+                    targetElement.style.top = `${targetTop+movementY}px`
+                let newStyles = { privateStyles :{ top:`${targetTop+movementY}px`, height:`${targetHeigth+(-movementY)}px`}, inheridStyles: { top:`${targetTop+movementY}px`, height:`${targetHeigth+(-movementY)}px`}}
+                    newLayouts.changeStyle(newStyles,id,layout)
             }
     }
 }

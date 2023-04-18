@@ -31,7 +31,7 @@ body{
 
 
 /* Left menu / Site-constructor elements navigator */
-.site-constructor-elements{
+.constructor-element-links{
     position: fixed;
     left: 5px;
     top: 50%;
@@ -44,7 +44,7 @@ body{
     z-index: 1;
     /* transition: 1s all ease; */
 }
-.site-constructor-elements-hide{
+.constructor-element-links-hide{
     top: calc(100svh - 50px);
     transform: translateY(0);
     /* transition: 1s all ease; */
@@ -55,7 +55,7 @@ body{
     justify-content: center;
     align-items: center;
 }
-.layout-element-link{
+.element-link{
     background: var(--background-color5);
     padding: 5px 5px;
     border-radius: 5px;
@@ -65,7 +65,7 @@ body{
     white-space: nowrap;
     text-overflow: ellipsis;
 }
-.layout-element-link:hover{
+.element-link:hover{
     background: var(--background-color4);
     color: var(--background-color2);
     transition: 1s all ease;

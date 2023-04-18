@@ -10,12 +10,12 @@
 //Скрываем панель навигации по элементам
 let hideBlock = document.querySelector(".hide-blocks")          // получаем элемент с классом hide-blocks
     hideBlock.addEventListener("click", function(event){        // задаем событие элементу по клику которое задает новый класс site-constructor-elements и тем самым скрывает его 
-        let siteConstructorElements = document.querySelector(".site-constructor-elements")  //получаем элемент site-constructor-elements в котором хранятся ссылки на блоки
+        let siteConstructorElements = document.querySelector(".constructor-element-links")  //получаем элемент site-constructor-elements в котором хранятся ссылки на блоки
             if(event.target.classList.contains('show-blocks')){                             // проверяем если у элемента есть класс show-blocks 
-                siteConstructorElements.classList.remove("site-constructor-elements-hide")     // удаляем класс site-constructor-elements-hide у site-constructor-elements
+                siteConstructorElements.classList.remove("constructor-element-links-hide")     // удаляем класс site-constructor-elements-hide у site-constructor-elements
                 event.target.classList.remove("show-blocks")                                    // удаляется класс show-blocks у элемента hide-blocks
             }else{
-                siteConstructorElements.classList.add("site-constructor-elements-hide")         //Добавляется класс site-constructor-elements-hide окну навигации чтобы его скрыть
+                siteConstructorElements.classList.add("constructor-element-links-hide")         //Добавляется класс site-constructor-elements-hide окну навигации чтобы его скрыть
                 event.target.classList.add("show-blocks")                                   // Добавляется класс цели события 
             }
     })

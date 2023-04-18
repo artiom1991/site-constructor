@@ -58,23 +58,23 @@
                                             <!-- Hiden menu-lists -->
         <div class="hidenMenuContainer">
             <div class="hidenMenu textList">
-                <div  title="Текстовый элемент для ввода обьемного текста" class="btn create p">paragraph</div>
-                <div  title="Текстовый элемент для ввода короткого текста" class="btn create span">span</div>
-                <div  title="Текстовый элемент для ввода короткого текста" class="btn create b">bold</div>
-                <div  title="Общий элемент контейнер" class="btn create div">division</div>
-                <div  title="Элемент список который маркеруется специальными символами" class="btn create ul">unordered list</div>
-                <div  title="Элемент нумерованный список который маркеруется арабскими или римскими числами а так же буквами" class="btn create ol">ordered list</div>
-                <div  title="Строка которая помещается в нумерованный или маркированный список" class="btn create li">list item</div>
-                <div  title="Элемент для создания ссылок с коротким текстом" class="btn create a">anchor</div>
-                <div  title="Главный заголовок имеющий самый большой шрифт и вес" class="btn create h1">heading level 1</div>
-                <div  title="Второстепенный заголовок, второй по размеру шрифта и весу" class="btn create h2">heading level 2</div>
-                <div  title="Второстепенный заголовок, средний по размеру шрифта и весу" class="btn create h3">heading level 3</div>
-                <div  title="Второстепенный заголовок, ниже среднего по размеру шрифта и весу" class="btn create h4">heading level 4</div>
-                <div  title="Второстепенный заголовок, предпоследний по размеру шрифта и весу" class="btn create h5">heading level 5</div>
-                <div  title="Второстепенный заголовок, последний по размеру шрифта и весу" class="btn create h6">heading level 6</div>
+                <div  title="Текстовый элемент для ввода обьемного текста" class="btn create p" onclick="createNewElement('p')">paragraph</div>
+                <div  title="Текстовый элемент для ввода короткого текста" class="btn create span" onclick="createNewElement('span')">span</div>
+                <div  title="Текстовый элемент для ввода короткого текста" class="btn create b" onclick="createNewElement('b')">bold</div>
+                <!-- <div  title="Общий элемент контейнер" class="btn create div" onclick="createNewElement('p')">division</div> -->
+                <!-- <div  title="Элемент список который маркеруется специальными символами" class="btn create ul">unordered list</div> -->
+                <!-- <div  title="Элемент нумерованный список который маркеруется арабскими или римскими числами а так же буквами" class="btn create ol">ordered list</div> -->
+                <!-- <div  title="Строка которая помещается в нумерованный или маркированный список" class="btn create li">list item</div> -->
+                <div  title="Элемент для создания ссылок с коротким текстом" class="btn create a" onclick="createNewElement('a')">anchor</div>
+                <div  title="Главный заголовок имеющий самый большой шрифт и вес" class="btn create h1" onclick="createNewElement('h1')">heading level 1</div>
+                <div  title="Второстепенный заголовок, второй по размеру шрифта и весу" class="btn create h2" onclick="createNewElement('h2')">heading level 2</div>
+                <div  title="Второстепенный заголовок, средний по размеру шрифта и весу" class="btn create h3" onclick="createNewElement('h3')">heading level 3</div>
+                <div  title="Второстепенный заголовок, ниже среднего по размеру шрифта и весу" class="btn create h4" onclick="createNewElement('h4')">heading level 4</div>
+                <div  title="Второстепенный заголовок, предпоследний по размеру шрифта и весу" class="btn create h5" onclick="createNewElement('h5')">heading level 5</div>
+                <div  title="Второстепенный заголовок, последний по размеру шрифта и весу" class="btn create h6" onclick="createNewElement('h6')">heading level 6</div>
             </div>
             <div class="hidenMenu figureList">
-                <div title="Создает квадрат" class="btn create rect">shape</div>
+                <div title="Создает квадрат" class="btn create rect"  onclick="createNewElement('div')">shape</div>
             </div>
             <div class="hidenMenu formList">
                 <div title="Создает поле для ввода текста" class="btn create inputText">input-text</div>
@@ -119,8 +119,8 @@
         </div>
     </div>
                                                         <!-- Elements navigation menu -->
-        <div class="site-constructor-elements">
-            <div class="blocks">
+        <div class="constructor-element-links">
+            <div class="block-links">
                 <div class="blocks-header">
                     <div class="header-text">блоки</div>
                     <div class="hide-blocks"></div>
