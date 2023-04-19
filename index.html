@@ -207,11 +207,10 @@
                             <span>font-style:</span>
                         </div>
                         <div class="style-interface flex">
-                            <select class="single-select" name="" id="">
+                            <select class="single-select" name="" id="font-style">
+                                <option value="unset">unset</option>
                                 <option value="normal">normal</option>
                                 <option value="italic">italic</option>
-                                <option value="oblique">oblique</option>
-                                <option value="unset">unset</option>
                             </select>
                         </div>
                     </div>
@@ -221,7 +220,7 @@
                             <span>font-weight:</span>
                         </div>
                         <div class="style-interface flex">
-                            <select class="single-select" name="" id="">
+                            <select class="single-select" name="" id="font-weight">
                                 <option value="normal">normal</option>
                                 <option value="bold">bold</option>
                                 <option value="bolder">bolder</option>
@@ -244,8 +243,8 @@
                             <span>font-spacing:</span>
                         </div>
                         <div class="style-interface multi-input flex">
-                            <input title="Задает отступы между буквами" class="input-number letter-spacing" type="number" name="" id="" value="0">
-                            <input title="Задает высоту строки" class="input-number line-height" type="number" name="" id="" value="0">
+                            <input title="Задает отступы между буквами" class="input-number letter-spacing" type="number" name="" id="letter-spacing" value="0">
+                            <input title="Задает высоту строки" class="input-number line-height" type="number" name="" id="line-height" value="0">
                         </div>
                     </div>
 
@@ -254,12 +253,11 @@
                             <span>text-align:</span>
                         </div>
                         <div class="style-interface flex">
-                            <select class="single-select" name="" id="">
+                            <select class="single-select" name="" id="text-align">
+                                <option value="start">start</option>
                                 <option value="center">center</option>
                                 <option value="end">end</option>
                                 <option value="justify">justify</option>
-                                <option value="left">left</option>
-                                <option value="start">start</option>
                             </select>
                         </div>
                     </div>
@@ -269,7 +267,7 @@
                             <span>text-transform:</span>
                         </div>
                         <div class="style-interface flex">
-                            <select class="single-select" name="" id="">
+                            <select class="single-select" name="" id="text-transform">
                                 <option value="none">none</option>
                                 <option value="capitalize">capitalize</option>
                                 <option value="uppercase">uppercase</option>
@@ -284,12 +282,12 @@
                         </div>
                         <div class="style-interface flex">
                             <div class="multi-input small-width">
-                                <input title="Выступ тени по оси X" class="input-number h-shadow" type="number" name="" id="" value="0">
-                                <input title="Выступ тени по оси Y" class="input-number v-shadow" type="number" name="" id="" value="0">
-                                <input title="Разсеивание тени" class="input-number blur-radius" type="number" name="" id="" value="0">
+                                <input title="Выступ тени по оси X" class="input-number h-shadow" type="number" name="" id="text-shadow-x" value="0">
+                                <input title="Выступ тени по оси Y" class="input-number v-shadow" type="number" name="" id="text-shadow-y" value="0">
+                                <input title="Разсеивание тени" class="input-number blur-radius" type="number" name="" id="text-shadow-blur" value="0">
                             </div>
-                            <div title="Цвет тени" class="small-input-color">
-                                <input class="color-select" type="color" name="" id="">
+                            <div id="pseudo-text-shadow-color" title="Цвет тени" class="small-input-color">
+                                <input class="color-select" type="color" name="" id="text-shadow-color">
                             </div>
                         </div>
                     </div>
