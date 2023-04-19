@@ -147,7 +147,7 @@
                         <div class="style-title">
                             <span>font:</span>
                         </div>
-                        <div class="style-interface">
+                        <div class="style-interface flex">
                             <select class="single-select" name="" id="">
                                 <option value="arial">Arial</option>
                                 <option value="inter">Inter</option>
@@ -171,7 +171,7 @@
                         <div class="style-title">
                             <span>text-decoration:</span>
                         </div>
-                        <div class="style-interface">
+                        <div class="style-interface flex">
                             <select class="single-select" name="" id="">
                                 <option value="none">none</option>
                                 <option value="underline">underline</option>
@@ -186,7 +186,7 @@
                         <div class="style-title">
                             <span>font-size:</span>
                         </div>
-                        <div class="style-interface bg">
+                        <div class="style-interface bg flex">
                             <input class="input-number" type="number" name="" id="" value="16">
                             <select name="" id="">
                                 <option value="px">px</option>
@@ -201,7 +201,7 @@
                         <div class="style-title">
                             <span>font-style:</span>
                         </div>
-                        <div class="style-interface">
+                        <div class="style-interface flex">
                             <select class="single-select" name="" id="">
                                 <option value="normal">normal</option>
                                 <option value="italic">italic</option>
@@ -215,7 +215,7 @@
                         <div class="style-title">
                             <span>font-weight:</span>
                         </div>
-                        <div class="style-interface">
+                        <div class="style-interface flex">
                             <select class="single-select" name="" id="">
                                 <option value="normal">normal</option>
                                 <option value="bold">bold</option>
@@ -238,7 +238,7 @@
                         <div class="style-title">
                             <span>font-spacing:</span>
                         </div>
-                        <div class="style-interface multi-input">
+                        <div class="style-interface multi-input flex">
                             <input class="input-number letter-spacing" type="number" name="" id="" value="0">
                             <input class="input-number line-height" type="number" name="" id="" value="0">
                         </div>
@@ -248,7 +248,7 @@
                         <div class="style-title">
                             <span>text-align:</span>
                         </div>
-                        <div class="style-interface">
+                        <div class="style-interface flex">
                             <select class="single-select" name="" id="">
                                 <option value="center">center</option>
                                 <option value="end">end</option>
@@ -263,7 +263,7 @@
                         <div class="style-title">
                             <span>text-transform:</span>
                         </div>
-                        <div class="style-interface">
+                        <div class="style-interface flex">
                             <select class="single-select" name="" id="">
                                 <option value="none">none</option>
                                 <option value="capitalize">capitalize</option>
@@ -277,7 +277,7 @@
                         <div class="style-title">
                             <span>text-shadow:</span>
                         </div>
-                        <div class="style-interface">
+                        <div class="style-interface flex">
                             <div class="multi-input small-width">
                                 <input class="input-number h-shadow" type="number" name="" id="" value="0">
                                 <input class="input-number v-shadow" type="number" name="" id="" value="0">
@@ -305,7 +305,7 @@
                     <div class="style-title">
                         <span>height:</span>
                     </div>
-                    <div class="style-interface bg">
+                    <div class="style-interface bg flex">
                         <input class="input-number" type="number" name="" id="" value="600">
                         <select class="small-select" name="" id="">
                             <option value="px">px</option>
@@ -320,7 +320,7 @@
                     <div class="style-title">
                         <span>width:</span>
                     </div>
-                    <div class="style-interface bg">
+                    <div class="style-interface bg flex">
                         <input class="input-number" type="number" name="" id="" value="1200">
                         <select class="small-select" name="" id="">
                             <option value="px">px</option>
@@ -335,7 +335,7 @@
                     <div class="style-title">
                         <span>margin:</span>
                     </div>
-                    <div class="style-interface multi-input">
+                    <div class="style-interface multi-input flex">
                         <input class="input-number margin-top" type="number" name="" id="" value="0">
                         <input class="input-number margin-right" type="number" name="" id="" value="0">
                         <input class="input-number margin-bottom" type="number" name="" id="" value="0">
@@ -347,7 +347,7 @@
                     <div class="style-title">
                         <span>padding:</span>
                     </div>
-                    <div class="style-interface multi-input">
+                    <div class="style-interface multi-input flex">
                         <input class="input-number padding-top" type="number" name="" id="" value="0">
                         <input class="input-number padding-right" type="number" name="" id="" value="0">
                         <input class="input-number padding-bottom" type="number" name="" id="" value="0">
@@ -359,7 +359,7 @@
                     <div class="style-title">
                         <span>position:</span>
                     </div>
-                    <div class="style-interface">
+                    <div class="style-interface flex">
                         <select class="single-select" name="" id="">
                             <option value="absolute">Absolute</option>
                             <option value="relative">Relative</option>
@@ -376,7 +376,7 @@
                     <div class="style-title">
                         <span>position-x:</span>
                     </div>
-                    <div class="style-interface bg">
+                    <div class="style-interface bg flex">
                         <input class="input-number" type="number" name="" id="" value="200">
                         <select class="small-select" name="" id="">
                             <option value="px">px</option>
@@ -391,7 +391,7 @@
                     <div class="style-title">
                         <span>position-y:</span>
                     </div>
-                    <div class="style-interface bg">
+                    <div class="style-interface bg flex">
                         <input class="input-number" type="number" name="" id="" value="200">
                         <select class="small-select" name="" id="">
                             <option value="px">px</option>
@@ -411,6 +411,165 @@
                         <span class="current-color">#f0f0f0</span>
                     </div>
                 </div>
+
+                <div class="style-element">
+                    <div class="style-title">
+                        <span>border:</span>
+                    </div>
+                    <div class="style-interface">
+                        <div class="multi-input">
+                            <input class="input-number border-top" type="number" name="" id="" value="0">
+                            <input class="input-number border-right" type="number" name="" id="" value="0">
+                            <input class="input-number border-bottom" type="number" name="" id="" value="0">
+                            <input class="input-number border-left" type="number" name="" id="" value="0">
+                        </div>
+                        <div class="input-color">
+                            <input class="color-select" type="color" name="" id="border-color">
+                            <span class="current-color">#f0f0f0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="style-element">
+                    <div class="style-title">
+                        <span>box-shadow:</span>
+                    </div>
+                    <div class="style-interface flex">
+                        <div class="multi-input small-width">
+                            <input class="input-number h-shadow" type="number" name="" id="" value="0">
+                            <input class="input-number v-shadow" type="number" name="" id="" value="0">
+                            <input class="input-number blur-radius" type="number" name="" id="" value="0">
+                        </div>
+                        <div class="small-input-color">
+                            <input class="color-select" type="color" name="" id="box-shadow-color">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="style-element">
+                    <div class="style-title">
+                        <span>opacity:</span>
+                    </div>
+                    <div class="style-interface flex">
+                        <div class="input-range-container">
+                            <input class="input-range" type="range" name="" id="" value="100">
+                        </div>
+                        <div class="input-range-percent">
+                            <span class="input-range-text">100</span><b>%</b>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="height style-element">
+                    <div class="style-title">
+                        <span>border-radius:</span>
+                    </div>
+                    <div class="style-interface bg flex">
+                        <input class="input-number" type="number" name="" id="" value="200">
+                        <select class="small-select" name="" id="">
+                            <option value="px">px</option>
+                            <option value="%">%</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="style-element"> 
+                    <div class="style-title">
+                        <span>display:</span>
+                    </div>
+                    <div class="style-interface flex">
+                        <select class="single-select" name="" id="">
+                            <option value="none">None</option>
+                            <option value="flex">Flex</option>
+                            <option value="block">Block</option>
+                            <option value="inline">Inline</option>
+                            <option value="inline-block">Inline-block</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="style-element"> 
+                    <div class="style-title">
+                        <span>align-items:</span>
+                    </div>
+                    <div class="style-interface flex">
+                        <select class="single-select" name="" id="">
+                            <option value="start">Start</option>
+                            <option value="end">End</option>
+                            <option value="center">Center</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="style-element"> 
+                    <div class="style-title">
+                        <span>justify-content:</span>
+                    </div>
+                    <div class="style-interface flex">
+                        <select class="single-select" name="" id="">
+                            <option value="start">Start</option>
+                            <option value="end">End</option>
+                            <option value="center">Center</option>
+                            <option value="space-between">Space-between</option>
+                            <option value="space-around">Space-around</option>
+                            <option value="space-evenly">Space-evenly</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="style-element"> 
+                    <div class="style-title">
+                        <span>flex-direction:</span>
+                    </div>
+                    <div class="style-interface flex">
+                        <select class="single-select" name="" id="">
+                            <option value="start">Column</option>
+                            <option value="end">Row</option>
+                            <option value="center">Row-reverse</option>
+                            <option value="space-between">Column-reverse</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="style-element"> 
+                    <div class="style-title">
+                        <span>overflow:</span>
+                    </div>
+                    <div class="style-interface flex">
+                        <select class="single-select" name="" id="">
+                            <option value="visible">Visible</option>
+                            <option value="hidden">Hidden</option>
+                            <option value="scroll">Scroll</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="style-element">
+                    <div title="Переносит элемент по одной или нескольким осям X,Y,Z" class="style-title">
+                        <span>translate:</span>
+                    </div>
+                    <div class="style-interface flex">
+                        <div class="multi-input">
+                            <input title="Переносит по оси X" class="input-number translate-x" type="number" name="" id="" value="0">
+                            <input title="Переносит по оси Y" class="input-number translate-y" type="number" name="" id="" value="0">
+                            <input title="Переносит по оси Z" class="input-number translate-z" type="number" name="" id="" value="0">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="style-element">
+                    <div title="Поворачивает элемент по одной или нескольким осям X,Y,Z" class="style-title">
+                        <span>rotate:</span>
+                    </div>
+                    <div class="style-interface flex">
+                        <div class="multi-input">
+                            <input title="Поворачивает по оси X" class="input-number rotate-x" type="number" name="" id="" value="0">
+                            <input title="Поворачивает по оси Y" class="input-number rotate-y" type="number" name="" id="" value="0">
+                            <input title="Поворачивает по оси Z" class="input-number rotate-z" type="number" name="" id="" value="0">
+                        </div>
+                    </div>
+                </div>
+
 
             </div>
         </div>

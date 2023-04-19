@@ -211,9 +211,13 @@ body{
 }
 .style-title{
     width: 150px;
+    display: flex;
+    align-items: center;
 }
 .style-interface{
     width: 150px;
+}
+.flex{
     display: flex;
     justify-content: space-between;
 }
@@ -276,6 +280,7 @@ input[type=number]::-webkit-outer-spin-button {
 .multi-input{
     display: flex;
     justify-content: space-between;
+    width: 150px;
 }
 .h-shadow,
 .v-shadow,
@@ -326,6 +331,61 @@ input[type=number]::-webkit-outer-spin-button {
     width: 35px;
     border-radius: 5px;
 }
+.border-top,
+.border-right,
+.border-bottom,
+.border-left{
+    color: var(--font-light-color);
+    text-align: center;
+    height: 20px;
+    outline: none;
+    border: none;
+    background: var(--background-color5);
+    width: 35px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+.input-range-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.input-range{
+    width: 100px;
+}
+.input-range-percent{
+    width: 50px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+
+}
+.translate-x,
+.translate-y,
+.translate-z{
+    color: var(--font-light-color);
+    text-align: center;
+    height: 20px;
+    outline: none;
+    border: none;
+    background: var(--background-color5);
+    width: 35px;
+    border-radius: 5px;
+}
+.rotate-x,
+.rotate-y,
+.rotate-z{
+    color: var(--font-light-color);
+    text-align: center;
+    height: 20px;
+    outline: none;
+    border: none;
+    background: var(--background-color5);
+    width: 35px;
+    border-radius: 5px;
+}
+
+
 /*  */
 
 
