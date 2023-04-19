@@ -459,10 +459,12 @@
                         <span>display:</span>
                     </div>
                     <div class="style-interface flex">
-                        <select class="single-select" name="" id="display-select">
+                        <select class="single-select" name="" id="display-input">
+                            <option value="none">None</option>
+                            <option value="flex">Flex</option>
                             <option value="block">Block</option>
                             <option value="inline">Inline</option>
-                            <option value="flex">Flex</option>
+                            <option value="inline-block">Inline-block</option>
                         </select>
                     </div>
                 </div>
@@ -472,10 +474,10 @@
                         <span>align-items:</span>
                     </div>
                     <div class="style-interface flex">
-                        <select class="single-select" name="" id="align-items-select">
+                        <select class="single-select" name="" id="">
                             <option value="start">Start</option>
-                            <option value="center">Center</option>
                             <option value="end">End</option>
+                            <option value="center">Center</option>
                         </select>
                     </div>
                 </div>
@@ -485,10 +487,10 @@
                         <span>justify-content:</span>
                     </div>
                     <div class="style-interface flex">
-                        <select class="single-select" name="" id="justify-content-select">
+                        <select class="single-select" name="" id="">
                             <option value="start">Start</option>
-                            <option value="center">Center</option>
                             <option value="end">End</option>
+                            <option value="center">Center</option>
                             <option value="space-between">Space-between</option>
                             <option value="space-around">Space-around</option>
                             <option value="space-evenly">Space-evenly</option>
@@ -496,25 +498,55 @@
                     </div>
                 </div>
 
+                <div class="style-element"> 
+                    <div title="Задает направление для элементов - строка или колона" class="style-title">
+                        <span>flex-direction:</span>
+                    </div>
+                    <div class="style-interface flex">
+                        <select class="single-select" name="" id="">
+                            <option value="start">Column</option>
+                            <option value="end">Row</option>
+                            <option value="center">Row-reverse</option>
+                            <option value="space-between">Column-reverse</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="style-element"> 
+                    <div title="Задает поведение для контена который не помещается в элементе" class="style-title">
+                        <span>overflow:</span>
+                    </div>
+                    <div class="style-interface flex">
+                        <select class="single-select" name="" id="">
+                            <option value="visible">Visible</option>
+                            <option value="hidden">Hidden</option>
+                            <option value="scroll">Scroll</option>
+                        </select>
+                    </div>
+                </div>
+
                 <div class="style-element">
-                    <div title="Переносит элемент по осям X,Y" class="style-title">
+                    <div title="Переносит элемент по одной или нескольким осям X,Y,Z" class="style-title">
                         <span>translate:</span>
                     </div>
                     <div class="style-interface flex">
                         <div class="multi-input">
-                            <input title="Переносит по оси X на указаное количество %" class="input-number translate-x" type="number" name="" id="translate-x-input" value="0">
-                            <input title="Переносит по оси Y на указаное количество %" class="input-number translate-y" type="number" name="" id="translate-y-input" value="0">
+                            <input title="Переносит по оси X" class="input-number translate-x" type="number" name="" id="" value="0">
+                            <input title="Переносит по оси Y" class="input-number translate-y" type="number" name="" id="" value="0">
+                            <input title="Переносит по оси Z" class="input-number translate-z" type="number" name="" id="" value="0">
                         </div>
                     </div>
                 </div>
 
                 <div class="style-element">
-                    <div title="Поворачивает элемент по осям X,Y" class="style-title">
+                    <div title="Поворачивает элемент по одной или нескольким осям X,Y,Z" class="style-title">
                         <span>rotate:</span>
                     </div>
                     <div class="style-interface flex">
                         <div class="multi-input">
-                            <input title="Поворачивает по оси X" class="input-number rotate-x" type="number" name="" id="rotate-x-input" value="0">
+                            <input title="Поворачивает по оси X" class="input-number rotate-x" type="number" name="" id="" value="0">
+                            <input title="Поворачивает по оси Y" class="input-number rotate-y" type="number" name="" id="" value="0">
+                            <input title="Поворачивает по оси Z" class="input-number rotate-z" type="number" name="" id="" value="0">
                         </div>
                     </div>
                 </div>

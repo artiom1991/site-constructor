@@ -11,6 +11,8 @@ function selectionElement(){    //Функция выделения элемен
         selection.style.padding = styles.padding
         selection.style.left = styles.left
         selection.style.top = styles.top
+        selection.style.border = styles.border
+        selection.style.transform = styles.transform
     let topSelection = document.createElement("div")    //создается див который в последствии будет отвечать за разтягивание элемента по верхнему краю
         topSelection.classList.add("topSelection")      // задается класс topSelection
     let bottomSelection = document.createElement("div")

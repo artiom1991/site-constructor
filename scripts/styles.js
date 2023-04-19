@@ -7,7 +7,7 @@ let font = document.getElementById("font")
         if(selection){ selection.remove(), selectionElement() }
     })
 
-let pseudeFontColor = document.querySelector(".input-color").addEventListener("click", function(){ color.click() })
+let pseudoFontColor = document.querySelector(".input-color").addEventListener("click", function(){ color.click() })
 let color = document.getElementById("color")
     color.addEventListener("input", function(event){
         let target = document.querySelector(".target")
@@ -197,6 +197,116 @@ let positionLeftSelect = document.getElementById("position-left-select")
             if(selection){ selection.remove(), selectionElement() }
     }
 
+let pseudoBackground = document.getElementById("pseudo-background").addEventListener("click", function(){ changeBackground.click() })
+let changeBackground = document.getElementById("change-background")
+    changeBackground.addEventListener("input", function(event){
+        let target = document.querySelector(".target")
+        let selection = document.querySelector(".selection")
+            if(target){ target.style.background = `${event.target.value}` }
+            if(selection){ selection.remove(), selectionElement() }
+    })
 
+let pseudoBorderColor = document.getElementById("pseudo-border-color").addEventListener("click", function(){ borderColorInput.click() })
+let borderInput = document.getElementById("border-input")
+let borderColorInput = document.getElementById("border-color-input")
+    borderInput.addEventListener("input", changeBorder)
+    borderColorInput.addEventListener("input", changeBorder)
+    function changeBorder(){
+        console.log("border")
+        let target = document.querySelector(".target")
+        let selection = document.querySelector(".selection")
+        let BorderValue = borderInput.value 
+        let borderColorValue = borderColorInput.value 
+            if(target){ target.style.border = `${BorderValue}px ${borderColorValue} solid` }
+            if(selection){ selection.remove(), selectionElement() }
+    }
 
+let pseudeBoxShadowColor = document.getElementById("pseudo-box-shadow-color").addEventListener("click", function(){ boxShadowColor.click() })
+let boxShadowLeft = document.getElementById("box-shadow-left")
+let boxShadowTop = document.getElementById("box-shadow-top")
+let boxShadowBlur = document.getElementById("box-shadow-blur")
+let boxShadowColor = document.getElementById("box-shadow-color")
+    boxShadowLeft.addEventListener("input", changeBoxShadow)
+    boxShadowTop.addEventListener("input", changeBoxShadow)
+    boxShadowBlur.addEventListener("input", changeBoxShadow)
+    boxShadowColor.addEventListener("input", changeBoxShadow)
+    function changeBoxShadow(){
+        let target = document.querySelector(".target")
+        let selection = document.querySelector(".selection")
+        let leftShadow = boxShadowLeft.value + "px"
+        let topShadow = boxShadowTop.value + "px"
+        let blurShadow = boxShadowBlur.value + "px"
+        let colorShadow = boxShadowColor.value
+            if(target){ target.style.boxShadow = `${leftShadow} ${topShadow} ${blurShadow} ${colorShadow}` }
+            if(selection){ selection.remove(), selectionElement() }
+    }
     
+
+let changeOpacity = document.getElementById("opacity-input")
+    changeOpacity.addEventListener("input", function(event){
+        let target = document.querySelector(".target")
+        let selection = document.querySelector(".selection")
+        let opacityText = document.getElementById("opacity-text")
+            opacityText.textContent = `${event.target.value}`
+            if(target){ target.style.opacity = `${event.target.value / 100}` }
+            if(selection){ selection.remove(), selectionElement() }
+    })
+
+let borderRadiusInput = document.getElementById("border-radius-input")
+let borderRadiusSelect = document.getElementById("border-radius-select")
+    borderRadiusInput.addEventListener("input", changeBorderRadius)
+    borderRadiusSelect.addEventListener("change", changeBorderRadius)
+    function changeBorderRadius(){
+        let target = document.querySelector(".target")
+        let selection = document.querySelector(".selection")
+        let borderRadiusValue = borderRadiusInput.value 
+        let borderRadiustUm = borderRadiusSelect.value
+            if(target){ target.style.borderRadius = `${borderRadiusValue}${borderRadiustUm}` }
+            if(selection){ selection.remove(), selectionElement() }
+    }
+let displaySelect = document.getElementById("display-select")
+    displaySelect.addEventListener("change", function(event){
+        let target = document.querySelector(".target")
+        let selection = document.querySelector(".selection")
+            if(target){ target.style.display = `${event.target.value}` }
+            if(selection){ selection.remove(), selectionElement() }
+    })
+
+let alignItemsSelect = document.getElementById("align-items-select")
+    alignItemsSelect.addEventListener("change", function(event){
+        let target = document.querySelector(".target")
+        let selection = document.querySelector(".selection")
+            if(target){ target.style.alignItems = `${event.target.value}` }
+            if(selection){ selection.remove(), selectionElement() }
+    })
+
+let justifyContentSelect = document.getElementById("justify-content-select")
+    justifyContentSelect.addEventListener("change", function(event){
+        let target = document.querySelector(".target")
+        let selection = document.querySelector(".selection")
+            if(target){ target.style.justifyContent = `${event.target.value}` }
+            if(selection){ selection.remove(), selectionElement() }
+    })
+
+
+
+let translateXInput = document.getElementById("translate-x-input")
+let translateYInput = document.getElementById("translate-y-input")
+    translateXInput.addEventListener("input", changeTranslate)
+    translateYInput.addEventListener("input", changeTranslate)
+    function changeTranslate(){
+        let target = document.querySelector(".target")
+        let selection = document.querySelector(".selection")
+        let translateXValue = translateXInput.value 
+        let translateYValue = translateYInput.value 
+            if(target){ target.style.transform  = ` translate(${translateXValue}%, ${translateYValue}%)` }
+            if(selection){ selection.remove(), selectionElement() }
+    }
+
+let rotateXInput = document.getElementById("rotate-x-input")
+    rotateXInput.addEventListener("input", function(event){
+        let target = document.querySelector(".target")
+        let selection = document.querySelector(".selection")
+            if(target){ target.style.transform  = ` rotate(${event.target.value}deg)` }
+            if(selection){ selection.remove(), selectionElement() }
+    })
