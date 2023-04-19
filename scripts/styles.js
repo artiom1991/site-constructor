@@ -142,6 +142,7 @@ let marginLeftInput = document.getElementById("margin-left-input")
     marginBottomInput.addEventListener("input", changeMargin)
     marginLeftInput.addEventListener("input", changeMargin)
     function changeMargin(){
+        console.log("margin")
         let target = document.querySelector(".target")
         let selection = document.querySelector(".selection")
         let martinTopValue = marginTopInput.value 
@@ -152,15 +153,15 @@ let marginLeftInput = document.getElementById("margin-left-input")
             if(selection){ selection.remove(), selectionElement() }
     }
 
-let paddinginTopInput = document.getElementById("padding-top")
-let paddingRightInput = document.getElementById("padding-right")
-let paddingBottomInput = document.getElementById("padding-bottom")
-let paddingLeftInput = document.getElementById("padding-left")
-    paddinginTopInput.addEventListener("input", changeMargin)
-    paddingRightInput.addEventListener("input", changeMargin)
-    paddingBottomInput.addEventListener("input", changeMargin)
-    paddingLeftInput.addEventListener("input", changeMargin)
-    function changeMargin(){
+let paddinginTopInput = document.getElementById("padding-top-input")
+let paddingRightInput = document.getElementById("padding-right-input")
+let paddingBottomInput = document.getElementById("padding-bottom-input")
+let paddingLeftInput = document.getElementById("padding-left-input")
+    paddinginTopInput.addEventListener("input", changePadding)
+    paddingRightInput.addEventListener("input", changePadding)
+    paddingBottomInput.addEventListener("input", changePadding)
+    paddingLeftInput.addEventListener("input", changePadding)
+    function changePadding(){
         let target = document.querySelector(".target")
         let selection = document.querySelector(".selection")
         let paddingTopValue = paddinginTopInput.value 
