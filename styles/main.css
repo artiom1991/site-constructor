@@ -26,6 +26,12 @@ body{
     font-family: 'Merriweather', serif;
     font-size: 16px;
 
+    /* font-family: 'Bebas Neue', cursive;
+font-family: 'Inter', sans-serif;
+font-family: 'Lobster', cursive;
+font-family: 'Oswald', sans-serif;
+font-family: 'Playfair Display', serif;
+font-family: 'Roboto', sans-serif; */
 }
 /*  */
 
@@ -236,7 +242,10 @@ select:focus{
     outline: none;
 }
 input[type=color]{
-    display: none;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+
 }
 .input-color{
     width: 146px;
