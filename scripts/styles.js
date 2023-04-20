@@ -289,25 +289,18 @@ let justifyContentSelect = document.getElementById("justify-content-select")
             if(selection){ selection.remove(), selectionElement() }
     })
 
-
-
 let translateXInput = document.getElementById("translate-x-input")
 let translateYInput = document.getElementById("translate-y-input")
-    translateXInput.addEventListener("input", changeTranslate)
-    translateYInput.addEventListener("input", changeTranslate)
-    function changeTranslate(){
+let rotateXInput = document.getElementById("rotate-input")
+    translateXInput.addEventListener("input", changeTransform)
+    translateYInput.addEventListener("input", changeTransform)
+    rotateXInput.addEventListener("input", changeTransform)
+    function changeTransform(){
         let target = document.querySelector(".target")
         let selection = document.querySelector(".selection")
         let translateXValue = translateXInput.value 
         let translateYValue = translateYInput.value 
-            if(target){ target.style.transform  = ` translate(${translateXValue}%, ${translateYValue}%)` }
+        let rotateValue = rotateXInput.value 
+            if(target){ target.style.transform  = ` translate(${translateXValue}%, ${translateYValue}%) rotate(${rotateValue}deg)` }
             if(selection){ selection.remove(), selectionElement() }
     }
-
-let rotateXInput = document.getElementById("rotate-x-input")
-    rotateXInput.addEventListener("input", function(event){
-        let target = document.querySelector(".target")
-        let selection = document.querySelector(".selection")
-            if(target){ target.style.transform  = ` rotate(${event.target.value}deg)` }
-            if(selection){ selection.remove(), selectionElement() }
-    })
