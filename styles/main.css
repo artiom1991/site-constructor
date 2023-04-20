@@ -511,7 +511,7 @@ input[type=number]::-webkit-outer-spin-button {
 .screen{
     width: 25px;
     height: 25px;
-    background: url("../images/screen.png");
+    background: url("../images/laptop.png");
     background-size: 25px auto;
     background-repeat: no-repeat;
     align-self: center;

@@ -1,26 +1,37 @@
 let siteConstructorContent = document.querySelector(".site-constructor-content")
+let screen = document.querySelector(".screen")
 let vSmartphone = document.querySelector(".vertical-Smartphone")    
     vSmartphone.addEventListener("click", function(){
+        screen.style.backgroundImage = "url('../images/smartphone.png')"
+        screen.style.transform = "rotate(0deg)"
         newLayouts.changeLayout(320)
     })
 
 let hSmartphone = document.querySelector(".horizontal-Smartphone")
     hSmartphone.addEventListener("click", function(){
+        screen.style.backgroundImage = "url('../images/smartphone.png')"
+        screen.style.transform = "rotate(90deg)"
         newLayouts.changeLayout(480)
     })
 
 let vTablet = document.querySelector(".vertical-Tablet")
     vTablet.addEventListener("click", function(){
+        screen.style.backgroundImage = "url('../images/tablet.png')"
+        screen.style.transform = "rotate(0deg)"
         newLayouts.changeLayout(640)
     })
 
 let hTablet = document.querySelector(".horizontal-Tablet")
     hTablet.addEventListener("click", function(){
+        screen.style.backgroundImage = "url('../images/tablet.png')"
+        screen.style.transform = "rotate(90deg)"
         newLayouts.changeLayout(960)
     })
 
 let hLaptop = document.querySelector(".horizontal-Laptop")
     hLaptop.addEventListener("click", function(){
+        screen.style.backgroundImage = "url('../images/laptop.png')"
+        screen.style.transform = "rotate(0deg)"
         newLayouts.changeLayout(1200)
     })
 
