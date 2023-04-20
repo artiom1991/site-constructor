@@ -33,9 +33,6 @@ let fontStyle = document.getElementById("font-style")
 let fontWeight = document.getElementById("font-weight")
     fontWeight.addEventListener("change", function(event){ changeStyle(event,"fontWeight") })
 
-let lineHeight  = document.getElementById("line-height")
-    lineHeight.addEventListener("input", function(event){ changeStyle(event,"lineHeight") })
-
 let textAlign = document.getElementById("text-align")
     textAlign.addEventListener("input", function(event){ changeStyle(event,"textAlign") })
 
@@ -54,6 +51,20 @@ let alignItemsSelect = document.getElementById("align-items-select")
 
 let justifyContentSelect = document.getElementById("justify-content-select")
     justifyContentSelect.addEventListener("change", function(event){ changeStyle(event,"justifyContent") })
+
+let lineHeight  = document.getElementById("line-height")
+    lineHeight.addEventListener("input", function(event){ 
+        let layoutStyle = window.getComputedStyle(siteConstructorContent)
+        let layout = parseInt(layoutStyle.width)
+        let target = document.querySelector(".target")
+        let selection = document.querySelector(".selection")
+            if(target){ 
+                let id = target.id  
+                    target.style.lineHeight  = `${event.target.value}px`
+                    newLayouts.changeStyle({ letterSpacing : `${event.target.value}px`},id,layout)
+            }
+            if(selection){ selection.remove(), selectionElement() }
+    })
 
 let letterSpacing = document.getElementById("letter-spacing")
     letterSpacing.addEventListener("input", function(event){
@@ -88,7 +99,8 @@ let fontSizeSelect = document.getElementById("font-px")
             if(selection){ selection.remove(), selectionElement() }
     }
 
-let pseudeTextShadowColor = document.getElementById("pseudo-text-shadow-color").addEventListener("click", function(){ textShadowColor.click() })
+let pseudeTextShadowColor = document.getElementById("pseudo-text-shadow-color")
+    pseudeTextShadowColor.addEventListener("click", function(){ textShadowColor.click() })
 let textShadowX = document.getElementById("text-shadow-x")
 let textShadowY = document.getElementById("text-shadow-y")
 let textShadowBlur = document.getElementById("text-shadow-blur")
@@ -109,6 +121,7 @@ let textShadowColor = document.getElementById("text-shadow-color")
             if(target){ 
                 let id = target.id 
                     target.style.textShadow = `${xShadow} ${yShadow} ${blurShadow} ${colorShadow}` 
+                    pseudeTextShadowColor.style.background = textShadowColor.value
                     newLayouts.changeStyle({ textShadow : `${xShadow} ${yShadow} ${blurShadow} ${colorShadow}`},id,layout)
             }
             if(selection){ selection.remove(), selectionElement() }
