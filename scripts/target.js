@@ -18,7 +18,6 @@ siteConstructorContainer.addEventListener("click", function(e){ // Событи�
             let targetStyle = window.getComputedStyle(targetClick)
                 targetClick.classList.add("target")        //Задает цели события класс target
             if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(targetClick.tagName)){
-
                 let font = document.getElementById("font")
                 font.value= targetStyle.fontFamily
                 let color = document.querySelector(".input-color")
@@ -32,9 +31,9 @@ siteConstructorContainer.addEventListener("click", function(e){ // Событи�
                 let fontWeight = document.getElementById("font-weight")
                     fontWeight.value = targetStyle.fontWeight
                 let letterSpacing = document.getElementById("letter-spacing")
-                    letterSpacing.value = parseInt(targetStyle.letterSpacing)
+                    letterSpacing.value = parseInt(targetStyle.letterSpacing)?parseInt(targetStyle.letterSpacing):0
                 let lineHeight = document.getElementById("line-height")
-                    lineHeight.value = parseInt(targetStyle.lineHeight)
+                    lineHeight.value = parseInt(targetStyle.lineHeight)?parseInt(targetStyle.lineHeight):0
                 let textAlign = document.getElementById("text-align")
                     textAlign.value = targetStyle.textAlign
                 let textTransform = document.getElementById("text-transform")
@@ -75,26 +74,43 @@ siteConstructorContainer.addEventListener("click", function(e){ // Событи�
                     positionLeft.value = parseInt(targetStyle.left)
                 let positionTop = document.getElementById("position-top-input")
                     positionTop.value = parseInt(targetStyle.top)
-                let background = document.getElementById("change-background")
+                let pseudoBackground = document.getElementById("pseudo-background")
+                    pseudoBackground.style.background = targetStyle.background
                 let border = document.getElementById("border-input")
-                let borderColor = document.getElementById("border-color-input")
+                    border.value = parseInt(targetStyle.borderBlockStartWidth)
+                let pseudoBorderColor = document.getElementById("pseudo-border-color")
+                    pseudoBorderColor.style.background = targetStyle.borderBlockColor
                 let boxShadowTop = document.getElementById("box-shadow-top")
+                let boxShadowStyle = targetStyle.boxShadow
+                let boxShadowSplit = boxShadowStyle.split(" ")
+                    boxShadowTop.value = boxShadowSplit[4] ? parseInt(boxShadowSplit[4]): 0
                 let boxShadowLeft = document.getElementById("box-shadow-left")
+                    boxShadowLeft.value = boxShadowSplit[3] ? parseInt(boxShadowSplit[3]): 0
                 let boxShadowBlur = document.getElementById("box-shadow-blur")
+                    boxShadowBlur.value = boxShadowSplit[5] ? parseInt(boxShadowSplit[5]): 0
+                let pseudoBoxShadowColor = document.getElementById("pseudo-box-shadow-color")
+                    pseudoBoxShadowColor.style.background = boxShadowSplit[1]?`${boxShadowSplit[0]}${boxShadowSplit[1]}${boxShadowSplit[2]}`: "rgb(0, 0, 0)"
                 let opacity = document.getElementById("opacity-input")
+                let opacityText = document.getElementById("opacity-text")
+                    opacityText.textContent = (targetStyle.opacity*100)
+                    opacity.value = (targetStyle.opacity*100)
                 let borderRadius = document.getElementById("border-radius-input")
+                    borderRadius.value = parseInt(targetStyle.borderRadius)
                 let display = document.getElementById("display-select")
+                    display.value = targetStyle.display
                 let alignItems = document.getElementById("align-items-select")
+                    alignItems.value = targetStyle.alignItems
                 let justifyContent = document.getElementById("justify-content-select")
+                    justifyContent.value = targetStyle.justifyContent
+                let matrixArr = targetStyle.transform.replace(/[^\d,-.\s]/g, "").trim().split(",")
+                let deg = Math.round(Math.atan2(matrixArr[2], matrixArr[0]) * 180 / Math.PI)
                 let translateX = document.getElementById("translate-x-input")
+                    translateX.value = matrixArr[4]?parseInt(matrixArr[4]):0
                 let translateY = document.getElementById("translate-y-input")
+                    translateY.value = matrixArr[5]?parseInt(matrixArr[5]):0
                 let rotate = document.getElementById("rotate-input")
-
-
-
-
-
-            generalStyleEditor.style.display = "block"
+                    rotate.value = -deg?-deg:0
+                    generalStyleEditor.style.display = "block"
             if(targetClick.hasAttribute("contenteditable")  === false){ // Проверяет есть ли у элемента клика атрибут contenteditable и если он отсутствует выполняет код
                 selectionElement()         // ВЫПОЛНЕНИЕ ФУНКЦИИ КОТОРАЯ СОЗДАСТ Selection
                 }

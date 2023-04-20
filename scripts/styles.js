@@ -39,9 +39,11 @@ let textAlign = document.getElementById("text-align")
 let textTransform = document.getElementById("text-transform")
     textTransform.addEventListener("input", function(event){ changeStyle(event,"textTransform") })
 
-let pseudoBackground = document.getElementById("pseudo-background").addEventListener("click", function(){ changeBackground.click() })
+let pseudoBackground = document.getElementById("pseudo-background")
+    pseudoBackground.addEventListener("click", function(){ changeBackground.click() })
 let changeBackground = document.getElementById("change-background")
     changeBackground.addEventListener("input", function(event){ changeStyle(event,"background") })
+    changeBackground.addEventListener("input", function(event){ pseudoBackground.style.background = `${event.target.value}` })
 
 let displaySelect = document.getElementById("display-select")
     displaySelect.addEventListener("change", function(event){ changeStyle(event,"display") })
@@ -255,7 +257,8 @@ let positionLeftSelect = document.getElementById("position-left-select")
             if(selection){ selection.remove(), selectionElement() }
     }
 
-let pseudoBorderColor = document.getElementById("pseudo-border-color").addEventListener("click", function(){ borderColorInput.click() })
+let pseudoBorderColor = document.getElementById("pseudo-border-color")
+    pseudoBorderColor.addEventListener("click", function(){ borderColorInput.click() })
 let borderInput = document.getElementById("border-input")
 let borderColorInput = document.getElementById("border-color-input")
     borderInput.addEventListener("input", changeBorder)
@@ -270,12 +273,14 @@ let borderColorInput = document.getElementById("border-color-input")
             if(target){ 
                 let id = target.id
                     target.style.border = `${BorderValue}px ${borderColorValue} solid` 
+                    pseudoBorderColor.style.background = borderColorValue
                     newLayouts.changeStyle({ border : `${BorderValue}px ${borderColorValue} solid` },id,layout)
             }
             if(selection){ selection.remove(), selectionElement() }
     }
 
-let pseudeBoxShadowColor = document.getElementById("pseudo-box-shadow-color").addEventListener("click", function(){ boxShadowColor.click() })
+let pseudeBoxShadowColor = document.getElementById("pseudo-box-shadow-color")
+    pseudeBoxShadowColor.addEventListener("click", function(){ boxShadowColor.click() })
 let boxShadowLeft = document.getElementById("box-shadow-left")
 let boxShadowTop = document.getElementById("box-shadow-top")
 let boxShadowBlur = document.getElementById("box-shadow-blur")
@@ -296,6 +301,7 @@ let boxShadowColor = document.getElementById("box-shadow-color")
             if(target){ 
                 let id = target.id
                     target.style.boxShadow = `${leftShadow} ${topShadow} ${blurShadow} ${colorShadow}` 
+                    pseudeBoxShadowColor.style.background = colorShadow
                     newLayouts.changeStyle({ boxShadow : `${leftShadow} ${topShadow} ${blurShadow} ${colorShadow}` },id,layout)
             }
             if(selection){ selection.remove(), selectionElement() }
@@ -357,3 +363,4 @@ let rotateXInput = document.getElementById("rotate-input")
             }
             if(selection){ selection.remove(), selectionElement() }
     }
+

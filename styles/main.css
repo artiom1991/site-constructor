@@ -202,6 +202,7 @@ font-family: 'Roboto', sans-serif; */
     justify-content: center;
     align-items: center;
     gap: 5px;
+
 }
 .header-text{
     text-transform: uppercase;
