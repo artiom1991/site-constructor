@@ -8,39 +8,48 @@ function changeStyle(event,styleName){
     if(target){ 
         let id = target.id  
         target.style[styleName] = `${event.target.value}`
-        newLayouts.changeStyle({ [styleName] : `${event.target.value}`},id,layout)
+        newLayouts.changeStyle({ fontFamily : `${event.target.value}`},id,layout)
     }
     if(selection){ selection.remove(), selectionElement() }
 }
 
 let font = document.getElementById("font")
     font.addEventListener("change", function(event){ changeStyle(event,"fontFamily") })
-let pseudoFontColor = document.querySelector(".input-color").addEventListener("click", function(){ color.click() })
 
-let color = document.getElementById("color")
-    color.addEventListener("input", function(event){ changeStyle(event,"color") })
+
+
+
+
+
 
 let textDecoration = document.getElementById("text-decoration")
-    textDecoration.addEventListener("change", function(event){ changeStyle(event,"textDecoration") })
-
+    textDecoration.addEventListener("change", function(event){
+        let target = document.querySelector(".target")
+        let selection = document.querySelector(".selection")
+            if(target){ target.style.textDecoration = `${event.target.value}` }
+            if(selection){ selection.remove(), selectionElement() }
+    })
 let fontStyle = document.getElementById("font-style")
-    fontStyle.addEventListener("change", function(event){ changeStyle(event,"fontStyle") })
-
+    fontStyle.addEventListener("change", function(event){
+        let target = document.querySelector(".target")
+        let selection = document.querySelector(".selection")
+            if(target){ target.style.fontStyle  = `${event.target.value}` }
+            if(selection){ selection.remove(), selectionElement() }
+    })
 let fontWeight = document.getElementById("font-weight")
-    fontWeight.addEventListener("change", function(event){ changeStyle(event,"fontWeight") })
-
+    fontWeight.addEventListener("change", function(event){
+        let target = document.querySelector(".target")
+        let selection = document.querySelector(".selection")
+            if(target){ target.style.fontWeight = `${event.target.value}` }
+            if(selection){ selection.remove(), selectionElement() }
+    })
 let lineHeight  = document.getElementById("line-height")
-    lineHeight.addEventListener("input", function(event){ changeStyle(event,"lineHeight") })
-
-
-
-
-
-
-
-
-
-
+    lineHeight.addEventListener("input", function(event){
+        let target = document.querySelector(".target")
+        let selection = document.querySelector(".selection")
+            if(target){ target.style.lineHeight = `${event.target.value}` }
+            if(selection){ selection.remove(), selectionElement() }
+    })
 let textAlign = document.getElementById("text-align")
     textAlign.addEventListener("input", function(event){
         let target = document.querySelector(".target")

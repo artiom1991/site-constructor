@@ -50,10 +50,41 @@ let newLayouts = {
                         count:newElementStyles.left,
                         isPrivate:false,
                         inherided:1200
+                    },
+                    fontFamily:{
+                        count:newElementStyles.fontFamily,
+                        isPrivate:false,
+                        inherided:1200
+                    },
+                    color:{
+                        count:newElementStyles.color,
+                        isPrivate:false,
+                        inherided:1200
+                    },
+                    textDecoration:{
+                        count:newElementStyles.textDecoration,
+                        isPrivate:false,
+                        inherided:1200
+                    },
+                    fontStyle:{
+                        count:newElementStyles.fontStyle,
+                        isPrivate:false,
+                        inherided:1200
+                    },
+                    fontWeight:{
+                        count:newElementStyles.fontWeight,
+                        isPrivate:false,
+                        inherided:1200
+                    },
+                    lineHeight:{
+                        count:newElementStyles.lineHeight,
+                        isPrivate:false,
+                        inherided:1200
                     }
             }
             this.layouts[layout][id] = {...newElement}
         }
+        console.log("addElement",this.layouts)
     },
     changeStyle(styles,id,layoutActive){
         for(let layout in this.layouts){
@@ -73,6 +104,7 @@ let newLayouts = {
                 }
             }
         }
+        console.log("changeStyle",this.layouts)
     },
     changeLayout(layout){
         let selection = document.querySelector(".selection")
@@ -87,5 +119,6 @@ let newLayouts = {
                 }
             })
             if(selection){selection.remove()}
+            console.log("changeLayout",this.layouts)
     }
 }
