@@ -7,9 +7,9 @@ function changeStyle(event,styleName){
     let selection = document.querySelector(".selection")
     if(target){ 
         let id = target.id  
-        target.style[styleName] = `${event.target.value}`
-        newLayouts.changeStyle({ [styleName] : `${event.target.value}`},id,layout)
-    }
+            target.style[styleName] = `${event.target.value}`
+            newLayouts.changeStyle({ [styleName] : `${event.target.value}`},id,layout)
+    }   
     if(selection){ selection.remove(), selectionElement() }
 }
 
@@ -32,73 +32,46 @@ let fontWeight = document.getElementById("font-weight")
 let lineHeight  = document.getElementById("line-height")
     lineHeight.addEventListener("input", function(event){ changeStyle(event,"lineHeight") })
 
-
-
-
-
-
-
-
-
-
 let textAlign = document.getElementById("text-align")
-    textAlign.addEventListener("input", function(event){
-        let target = document.querySelector(".target")
-        let selection = document.querySelector(".selection")
-            if(target){ target.style.textAlign = `${event.target.value}` }
-            if(selection){ selection.remove(), selectionElement() }
-    })
+    textAlign.addEventListener("input", function(event){ changeStyle(event,"textAlign") })
+
 let textTransform = document.getElementById("text-transform")
-    textTransform.addEventListener("input", function(event){
-        let target = document.querySelector(".target")
-        let selection = document.querySelector(".selection")
-            if(target){ target.style.textTransform = `${event.target.value}` }
-            if(selection){ selection.remove(), selectionElement() }
-    })
+    textTransform.addEventListener("input", function(event){ changeStyle(event,"textTransform") })
+
 let pseudoBackground = document.getElementById("pseudo-background").addEventListener("click", function(){ changeBackground.click() })
 let changeBackground = document.getElementById("change-background")
-    changeBackground.addEventListener("input", function(event){
-        let target = document.querySelector(".target")
-        let selection = document.querySelector(".selection")
-            if(target){ target.style.background = `${event.target.value}` }
-            if(selection){ selection.remove(), selectionElement() }
-    })
-    let displaySelect = document.getElementById("display-select")
-    displaySelect.addEventListener("change", function(event){
-        let target = document.querySelector(".target")
-        let selection = document.querySelector(".selection")
-            if(target){ target.style.display = `${event.target.value}` }
-            if(selection){ selection.remove(), selectionElement() }
-    })
+    changeBackground.addEventListener("input", function(event){ changeStyle(event,"background") })
+
+let displaySelect = document.getElementById("display-select")
+    displaySelect.addEventListener("change", function(event){ changeStyle(event,"display") })
 
 let alignItemsSelect = document.getElementById("align-items-select")
-    alignItemsSelect.addEventListener("change", function(event){
-        let target = document.querySelector(".target")
-        let selection = document.querySelector(".selection")
-            if(target){ target.style.alignItems = `${event.target.value}` }
-            if(selection){ selection.remove(), selectionElement() }
-    })
+    alignItemsSelect.addEventListener("change", function(event){ changeStyle(event,"alignItems") })
 
 let justifyContentSelect = document.getElementById("justify-content-select")
-    justifyContentSelect.addEventListener("change", function(event){
-        let target = document.querySelector(".target")
-        let selection = document.querySelector(".selection")
-            if(target){ target.style.justifyContent = `${event.target.value}` }
-            if(selection){ selection.remove(), selectionElement() }
-    })
-
-
-
-
-
+    justifyContentSelect.addEventListener("change", function(event){ changeStyle(event,"justifyContent") })
 
 let letterSpacing = document.getElementById("letter-spacing")
     letterSpacing.addEventListener("input", function(event){
+        let layoutStyle = window.getComputedStyle(siteConstructorContent)
+        let layout = parseInt(layoutStyle.width)
         let target = document.querySelector(".target")
         let selection = document.querySelector(".selection")
-            if(target){ target.style.letterSpacing  = `${event.target.value}px` }
+            if(target){ 
+                let id = target.id  
+                    target.style.letterSpacing  = `${event.target.value}px`
+                    newLayouts.changeStyle({ letterSpacing : `${event.target.value}px`},id,layout)
+            }
             if(selection){ selection.remove(), selectionElement() }
     })
+
+
+
+
+
+
+
+
 
 
 let fontSizeInput = document.getElementById("font-size")

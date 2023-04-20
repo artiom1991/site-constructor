@@ -80,6 +80,41 @@ let newLayouts = {
                         count:newElementStyles.lineHeight,
                         isPrivate:false,
                         inherided:1200
+                    },
+                    textAlign:{
+                        count:newElementStyles.textAlign,
+                        isPrivate:false,
+                        inherided:1200
+                    },
+                    textTransform:{
+                        count:newElementStyles.textTransform,
+                        isPrivate:false,
+                        inherided:1200
+                    },
+                    background:{
+                        count:newElementStyles.background,
+                        isPrivate:false,
+                        inherided:1200
+                    },
+                    display:{
+                        count:newElementStyles.display,
+                        isPrivate:false,
+                        inherided:1200
+                    },
+                    alignItems:{
+                        count:newElementStyles.alignItems,
+                        isPrivate:false,
+                        inherided:1200
+                    },
+                    justifyContent:{
+                        count:newElementStyles.justifyContent,
+                        isPrivate:false,
+                        inherided:1200
+                    },
+                    letterSpacing:{
+                        count:newElementStyles.letterSpacing,
+                        isPrivate:false,
+                        inherided:1200
                     }
             }
             this.layouts[layout][id] = {...newElement}
