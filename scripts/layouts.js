@@ -115,6 +115,51 @@ let newLayouts = {
                         count:newElementStyles.letterSpacing,
                         isPrivate:false,
                         inherided:1200
+                    },
+                    fontSize:{
+                        count:newElementStyles.fontSize,
+                        isPrivate:false,
+                        inherided:1200
+                    },
+                    textShadow:{
+                        count:newElementStyles.textShadow,
+                        isPrivate:false,
+                        inherided:1200
+                    },
+                    margin:{
+                        count:newElementStyles.margin,
+                        isPrivate:false,
+                        inherided:1200
+                    },
+                    padding:{
+                        count:newElementStyles.padding,
+                        isPrivate:false,
+                        inherided:1200
+                    },
+                    border:{
+                        count:newElementStyles.border,
+                        isPrivate:false,
+                        inherided:1200
+                    },
+                    boxShadow:{
+                        count:newElementStyles.boxShadow,
+                        isPrivate:false,
+                        inherided:1200
+                    },
+                    opacity:{
+                        count:newElementStyles.opacity,
+                        isPrivate:false,
+                        inherided:1200
+                    },
+                    borderRadius:{
+                        count:newElementStyles.borderRadius,
+                        isPrivate:false,
+                        inherided:1200
+                    },
+                    transform:{
+                        count:newElementStyles.transform,
+                        isPrivate:false,
+                        inherided:1200
                     }
             }
             this.layouts[layout][id] = {...newElement}

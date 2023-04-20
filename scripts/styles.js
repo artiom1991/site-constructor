@@ -65,25 +65,22 @@ let letterSpacing = document.getElementById("letter-spacing")
             if(selection){ selection.remove(), selectionElement() }
     })
 
-
-
-
-
-
-
-
-
-
 let fontSizeInput = document.getElementById("font-size")
 let fontSizeSelect = document.getElementById("font-px")
     fontSizeInput.addEventListener("input", changeFontSize)
     fontSizeSelect.addEventListener("change", changeFontSize)
     function changeFontSize(){
+        let layoutStyle = window.getComputedStyle(siteConstructorContent)
+        let layout = parseInt(layoutStyle.width)
         let target = document.querySelector(".target")
         let selection = document.querySelector(".selection")
         let fontSizeValue = fontSizeInput.value 
         let fontSizeUm = fontSizeSelect.value
-            if(target){ target.style.fontSize = `${fontSizeValue}${fontSizeUm}` }
+            if(target){ 
+                let id = target.id  
+                    target.style.fontSize = `${fontSizeValue}${fontSizeUm}` 
+                    newLayouts.changeStyle({ fontSize : `${fontSizeValue}${fontSizeUm}`},id,layout)
+            }
             if(selection){ selection.remove(), selectionElement() }
     }
 
@@ -97,13 +94,19 @@ let textShadowColor = document.getElementById("text-shadow-color")
     textShadowBlur.addEventListener("input", changeTextShadow)
     textShadowColor.addEventListener("input", changeTextShadow)
     function changeTextShadow(){
+        let layoutStyle = window.getComputedStyle(siteConstructorContent)
+        let layout = parseInt(layoutStyle.width)
         let target = document.querySelector(".target")
         let selection = document.querySelector(".selection")
         let xShadow = textShadowX.value + "px"
         let yShadow = textShadowY.value + "px"
         let blurShadow = textShadowBlur.value + "px"
         let colorShadow = textShadowColor.value
-            if(target){ target.style.textShadow = `${xShadow} ${yShadow} ${blurShadow} ${colorShadow}` }
+            if(target){ 
+                let id = target.id 
+                    target.style.textShadow = `${xShadow} ${yShadow} ${blurShadow} ${colorShadow}` 
+                    newLayouts.changeStyle({ textShadow : `${xShadow} ${yShadow} ${blurShadow} ${colorShadow}`},id,layout)
+            }
             if(selection){ selection.remove(), selectionElement() }
     }
 
@@ -114,11 +117,17 @@ let heightSelect = document.getElementById("height-select")
     heightInput.addEventListener("input", changeHeight)
     heightSelect.addEventListener("change", changeHeight)
     function changeHeight(){
+        let layoutStyle = window.getComputedStyle(siteConstructorContent)
+        let layout = parseInt(layoutStyle.width)
         let target = document.querySelector(".target")
         let selection = document.querySelector(".selection")
         let heightValue = heightInput.value 
         let heightUm = heightSelect.value
-            if(target){ target.style.height = `${heightValue}${heightUm}` }
+            if(target){ 
+                let id = target.id 
+                    target.style.height = `${heightValue}${heightUm}` 
+                    newLayouts.changeStyle({ height : `${heightValue}${heightUm}`},id,layout)
+            }
             if(selection){ selection.remove(), selectionElement() }
     }
 
@@ -127,11 +136,17 @@ let widthSelect = document.getElementById("width-select")
     widthInput.addEventListener("input", changeWidth)
     widthSelect.addEventListener("change", changeWidth)
     function changeWidth(){
+        let layoutStyle = window.getComputedStyle(siteConstructorContent)
+        let layout = parseInt(layoutStyle.width)
         let target = document.querySelector(".target")
         let selection = document.querySelector(".selection")
         let widthValue = widthInput.value 
         let widthUm = widthSelect.value
-            if(target){ target.style.width = `${widthValue}${widthUm}` }
+            if(target){ 
+                let id = target.id 
+                    target.style.width = `${widthValue}${widthUm}` 
+                    newLayouts.changeStyle({ width : `${widthValue}${widthUm}` },id,layout)
+            }
             if(selection){ selection.remove(), selectionElement() }
     }
 
@@ -144,14 +159,19 @@ let marginLeftInput = document.getElementById("margin-left-input")
     marginBottomInput.addEventListener("input", changeMargin)
     marginLeftInput.addEventListener("input", changeMargin)
     function changeMargin(){
-        console.log("margin")
+        let layoutStyle = window.getComputedStyle(siteConstructorContent)
+        let layout = parseInt(layoutStyle.width)
         let target = document.querySelector(".target")
         let selection = document.querySelector(".selection")
         let martinTopValue = marginTopInput.value 
         let martinRightValue = marginRightInput.value 
         let martinBottomValue = marginBottomInput.value 
         let martinLeftValue = marginLeftInput.value 
-            if(target){ target.style.margin = `${martinTopValue}px ${martinRightValue}px ${martinBottomValue}px ${martinLeftValue}px` }
+            if(target){ 
+                let id = target.id 
+                    target.style.margin = `${martinTopValue}px ${martinRightValue}px ${martinBottomValue}px ${martinLeftValue}px` 
+                    newLayouts.changeStyle({ margin : `${martinTopValue}px ${martinRightValue}px ${martinBottomValue}px ${martinLeftValue}px` },id,layout)
+            }
             if(selection){ selection.remove(), selectionElement() }
     }
 
@@ -164,13 +184,19 @@ let paddingLeftInput = document.getElementById("padding-left-input")
     paddingBottomInput.addEventListener("input", changePadding)
     paddingLeftInput.addEventListener("input", changePadding)
     function changePadding(){
+        let layoutStyle = window.getComputedStyle(siteConstructorContent)
+        let layout = parseInt(layoutStyle.width)
         let target = document.querySelector(".target")
         let selection = document.querySelector(".selection")
         let paddingTopValue = paddinginTopInput.value 
         let paddingRightValue = paddingRightInput.value 
         let paddingBottomValue = paddingBottomInput.value 
         let paddingLeftValue = paddingLeftInput.value 
-            if(target){ target.style.padding = `${paddingTopValue}px ${paddingRightValue}px ${paddingBottomValue}px ${paddingLeftValue}px` }
+            if(target){ 
+                let id = target.id 
+                    target.style.padding = `${paddingTopValue}px ${paddingRightValue}px ${paddingBottomValue}px ${paddingLeftValue}px` 
+                    newLayouts.changeStyle({ padding : `${paddingTopValue}px ${paddingRightValue}px ${paddingBottomValue}px ${paddingLeftValue}px` },id,layout)
+            }
             if(selection){ selection.remove(), selectionElement() }
     }
 
@@ -179,11 +205,17 @@ let positionTopSelect = document.getElementById("position-top-select")
     positionTopInput.addEventListener("input", changePositionTop)
     positionTopSelect.addEventListener("change", changePositionTop)
     function changePositionTop(){
+        let layoutStyle = window.getComputedStyle(siteConstructorContent)
+        let layout = parseInt(layoutStyle.width)
         let target = document.querySelector(".target")
         let selection = document.querySelector(".selection")
         let topValue = positionTopInput.value 
         let topUm = positionTopSelect.value
-            if(target){ target.style.top = `${topValue}${topUm}` }
+            if(target){ 
+                let id = target.id
+                    target.style.top = `${topValue}${topUm}` 
+                    newLayouts.changeStyle({ top : `${topValue}${topUm}` },id,layout)
+            }
             if(selection){ selection.remove(), selectionElement() }
     }
 
@@ -192,11 +224,17 @@ let positionLeftSelect = document.getElementById("position-left-select")
     positionLeftInput.addEventListener("input", changePositionLeft)
     positionLeftSelect.addEventListener("change", changePositionLeft)
     function changePositionLeft(){
+        let layoutStyle = window.getComputedStyle(siteConstructorContent)
+        let layout = parseInt(layoutStyle.width)
         let target = document.querySelector(".target")
         let selection = document.querySelector(".selection")
         let leftValue = positionLeftInput.value 
         let LeftUm = positionLeftSelect.value
-            if(target){ target.style.left = `${leftValue}${LeftUm}` }
+            if(target){ 
+                let id = target.id
+                    target.style.left = `${leftValue}${LeftUm}` 
+                    newLayouts.changeStyle({ left : `${leftValue}${LeftUm}` },id,layout)
+            }
             if(selection){ selection.remove(), selectionElement() }
     }
 
@@ -206,12 +244,17 @@ let borderColorInput = document.getElementById("border-color-input")
     borderInput.addEventListener("input", changeBorder)
     borderColorInput.addEventListener("input", changeBorder)
     function changeBorder(){
-        console.log("border")
+        let layoutStyle = window.getComputedStyle(siteConstructorContent)
+        let layout = parseInt(layoutStyle.width)
         let target = document.querySelector(".target")
         let selection = document.querySelector(".selection")
         let BorderValue = borderInput.value 
         let borderColorValue = borderColorInput.value 
-            if(target){ target.style.border = `${BorderValue}px ${borderColorValue} solid` }
+            if(target){ 
+                let id = target.id
+                    target.style.border = `${BorderValue}px ${borderColorValue} solid` 
+                    newLayouts.changeStyle({ border : `${BorderValue}px ${borderColorValue} solid` },id,layout)
+            }
             if(selection){ selection.remove(), selectionElement() }
     }
 
@@ -225,24 +268,35 @@ let boxShadowColor = document.getElementById("box-shadow-color")
     boxShadowBlur.addEventListener("input", changeBoxShadow)
     boxShadowColor.addEventListener("input", changeBoxShadow)
     function changeBoxShadow(){
+        let layoutStyle = window.getComputedStyle(siteConstructorContent)
+        let layout = parseInt(layoutStyle.width)
         let target = document.querySelector(".target")
         let selection = document.querySelector(".selection")
         let leftShadow = boxShadowLeft.value + "px"
         let topShadow = boxShadowTop.value + "px"
         let blurShadow = boxShadowBlur.value + "px"
         let colorShadow = boxShadowColor.value
-            if(target){ target.style.boxShadow = `${leftShadow} ${topShadow} ${blurShadow} ${colorShadow}` }
+            if(target){ 
+                let id = target.id
+                    target.style.boxShadow = `${leftShadow} ${topShadow} ${blurShadow} ${colorShadow}` 
+                    newLayouts.changeStyle({ boxShadow : `${leftShadow} ${topShadow} ${blurShadow} ${colorShadow}` },id,layout)
+            }
             if(selection){ selection.remove(), selectionElement() }
     }
-    
 
 let changeOpacity = document.getElementById("opacity-input")
     changeOpacity.addEventListener("input", function(event){
+        let layoutStyle = window.getComputedStyle(siteConstructorContent)
+        let layout = parseInt(layoutStyle.width)
         let target = document.querySelector(".target")
         let selection = document.querySelector(".selection")
         let opacityText = document.getElementById("opacity-text")
             opacityText.textContent = `${event.target.value}`
-            if(target){ target.style.opacity = `${event.target.value / 100}` }
+            if(target){ 
+                let id = target.id
+                    target.style.opacity = `${event.target.value / 100}` 
+                    newLayouts.changeStyle({ opacity : `${event.target.value / 100}` },id,layout)
+            }
             if(selection){ selection.remove(), selectionElement() }
     })
 
@@ -251,11 +305,17 @@ let borderRadiusSelect = document.getElementById("border-radius-select")
     borderRadiusInput.addEventListener("input", changeBorderRadius)
     borderRadiusSelect.addEventListener("change", changeBorderRadius)
     function changeBorderRadius(){
+        let layoutStyle = window.getComputedStyle(siteConstructorContent)
+        let layout = parseInt(layoutStyle.width)
         let target = document.querySelector(".target")
         let selection = document.querySelector(".selection")
         let borderRadiusValue = borderRadiusInput.value 
         let borderRadiustUm = borderRadiusSelect.value
-            if(target){ target.style.borderRadius = `${borderRadiusValue}${borderRadiustUm}` }
+            if(target){ 
+                let id = target.id
+                    target.style.borderRadius = `${borderRadiusValue}${borderRadiustUm}` 
+                    newLayouts.changeStyle({ borderRadius : `${borderRadiusValue}${borderRadiustUm}` },id,layout)
+        }
             if(selection){ selection.remove(), selectionElement() }
     }
 
@@ -266,11 +326,17 @@ let rotateXInput = document.getElementById("rotate-input")
     translateYInput.addEventListener("input", changeTransform)
     rotateXInput.addEventListener("input", changeTransform)
     function changeTransform(){
+        let layoutStyle = window.getComputedStyle(siteConstructorContent)
+        let layout = parseInt(layoutStyle.width)
         let target = document.querySelector(".target")
         let selection = document.querySelector(".selection")
         let translateXValue = translateXInput.value 
         let translateYValue = translateYInput.value 
         let rotateValue = rotateXInput.value 
-            if(target){ target.style.transform  = ` translate(${translateXValue}%, ${translateYValue}%) rotate(${rotateValue}deg)` }
+            if(target){ 
+                let id = target.id
+                    target.style.transform  = ` translate(${translateXValue}%, ${translateYValue}%) rotate(${rotateValue}deg)` 
+                    newLayouts.changeStyle({ transform : ` translate(${translateXValue}%, ${translateYValue}%) rotate(${rotateValue}deg)`  },id,layout)
+            }
             if(selection){ selection.remove(), selectionElement() }
     }
