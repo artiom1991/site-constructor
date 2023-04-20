@@ -15,10 +15,14 @@ function changeStyle(event,styleName){
 
 let font = document.getElementById("font")
     font.addEventListener("change", function(event){ changeStyle(event,"fontFamily") })
-let pseudoFontColor = document.querySelector(".input-color").addEventListener("click", function(){ color.click() })
 
+let pseudoFontColor = document.querySelector(".input-color")
+    pseudoFontColor.addEventListener("click", function(){ color.click() })
 let color = document.getElementById("color")
     color.addEventListener("input", function(event){ changeStyle(event,"color") })
+    color.addEventListener("input", function(event){ 
+        pseudoFontColor.style.background = `${event.target.value}`
+     })
 
 let textDecoration = document.getElementById("text-decoration")
     textDecoration.addEventListener("change", function(event){ changeStyle(event,"textDecoration") })

@@ -1,9 +1,13 @@
 let siteConstructorContent = document.querySelector(".site-constructor-content")
+let textStyleEditor = document.querySelector(".text-style-editor")
+let generalStyleEditor = document.querySelector(".general-style-editor")
 let screen = document.querySelector(".screen")
 let vSmartphone = document.querySelector(".vertical-Smartphone")    
     vSmartphone.addEventListener("click", function(){
         screen.style.backgroundImage = "url('../images/smartphone.png')"
         screen.style.transform = "rotate(0deg)"
+        textStyleEditor.style.display = "none"
+        generalStyleEditor.style.display = "none"
         newLayouts.changeLayout(320)
     })
 
@@ -11,6 +15,8 @@ let hSmartphone = document.querySelector(".horizontal-Smartphone")
     hSmartphone.addEventListener("click", function(){
         screen.style.backgroundImage = "url('../images/smartphone.png')"
         screen.style.transform = "rotate(90deg)"
+        textStyleEditor.style.display = "none"
+        generalStyleEditor.style.display = "none"
         newLayouts.changeLayout(480)
     })
 
@@ -18,6 +24,8 @@ let vTablet = document.querySelector(".vertical-Tablet")
     vTablet.addEventListener("click", function(){
         screen.style.backgroundImage = "url('../images/tablet.png')"
         screen.style.transform = "rotate(0deg)"
+        textStyleEditor.style.display = "none"
+        generalStyleEditor.style.display = "none"
         newLayouts.changeLayout(640)
     })
 
@@ -25,6 +33,8 @@ let hTablet = document.querySelector(".horizontal-Tablet")
     hTablet.addEventListener("click", function(){
         screen.style.backgroundImage = "url('../images/tablet.png')"
         screen.style.transform = "rotate(90deg)"
+        textStyleEditor.style.display = "none"
+        generalStyleEditor.style.display = "none"
         newLayouts.changeLayout(960)
     })
 
@@ -32,6 +42,8 @@ let hLaptop = document.querySelector(".horizontal-Laptop")
     hLaptop.addEventListener("click", function(){
         screen.style.backgroundImage = "url('../images/laptop.png')"
         screen.style.transform = "rotate(0deg)"
+        textStyleEditor.style.display = "none"
+        generalStyleEditor.style.display = "none"
         newLayouts.changeLayout(1200)
     })
 
@@ -175,7 +187,6 @@ let newLayouts = {
             }
             this.layouts[layout][id] = {...newElement}
         }
-        console.log("addElement",this.layouts)
     },
     changeStyle(styles,id,layoutActive){
         for(let layout in this.layouts){
@@ -195,7 +206,6 @@ let newLayouts = {
                 }
             }
         }
-        console.log("changeStyle",this.layouts)
     },
     changeLayout(layout){
         let selection = document.querySelector(".selection")
@@ -210,6 +220,5 @@ let newLayouts = {
                 }
             })
             if(selection){selection.remove()}
-            console.log("changeLayout",this.layouts)
     }
 }

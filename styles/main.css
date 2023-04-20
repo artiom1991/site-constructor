@@ -192,6 +192,10 @@ font-family: 'Roboto', sans-serif; */
 /* Block text-style-editor */
 .text-style-editor{
     border-bottom: 1px solid var(--background-color3);
+    display: none;
+}
+.general-style-editor{
+    display: none;
 }
 .style-header{
     display: flex;
