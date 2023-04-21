@@ -52,10 +52,9 @@ function createNewElement(element,elementClass,inputId){
                 newElement.style.padding = "5px 10px" 
                 elementContent.textContent = "button"   
                 newElement.style.background = "#d1d1d1" 
+                }
 
-             }
-
-             if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(newElement.tagName)){     
+            if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(newElement.tagName)){     
                 newElement.textContent = "Введите новый текст" 
                 newElement.setAttribute("contenteditable", "true")    
                 newElement.focus()            

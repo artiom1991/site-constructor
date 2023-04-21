@@ -31,7 +31,21 @@ function selectionElement(){    //Функция выделения элемен
         righTopCorner.classList.add("righTopCorner")
     let righBottomCorner = document.createElement("div")
         righBottomCorner.classList.add("righBottomCorner")
-        selection.append(topSelection,bottomSelection,leftSelection,leftTopCorner,leftBottomCorner,rightSelection,righTopCorner,righBottomCorner)   // все созданые элементы управления помещаются в родительский контейнер Selection
+    let selectionSize = document.createElement("div")
+    let selectionSizeH = document.createElement("span")
+    let selectionSizeW = document.createElement("span")
+        selectionSize.classList.add("selectionSize")
+        selectionSizeH.textContent = ` : ${styles.height}`
+        selectionSizeW.textContent = `${styles.width}`
+        selectionSize.append(selectionSizeW,selectionSizeH)
+    let targetLeft = document.createElement("span")
+        targetLeft.classList.add("targetLeft")
+    let targetTop = document.createElement("span")
+        targetTop.classList.add("targetTop")
+        targetLeft.textContent = `${styles.left}`
+        targetTop.textContent = ` ${styles.top}`
+        selectionSize.addEventListener('mousedown', function(event) {event.stopPropagation()})
+        selection.append(topSelection,bottomSelection,leftSelection,leftTopCorner,leftBottomCorner,rightSelection,righTopCorner,righBottomCorner,selectionSize,targetTop,targetLeft)   // все созданые элементы управления помещаются в родительский контейнер Selection
         siteConstructorContainer.append(selection)  // Div Selection помещается в родительский элемент siteConstructorContainer
 
 //Создается событие для Selection
@@ -48,12 +62,17 @@ if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(target.t
 }
 
 
-
         selection.addEventListener("mousedown", function(){     // создается событие по удержанию лкм по элементу выделения selection
+            targetLeft.style.display = "block"
+            targetTop.style.display = "block"
+            selectionSize.style.display = "none"
             window.addEventListener("mousemove",moveSelection)  // задается событие окну window которое отслеживает перемещение мышки и запускает функцию moveSelection
         })
 
         selection.addEventListener("mouseup", function(){       // создается событие по отпусканию лкм с элемента выделения selection
+            targetLeft.style.display = "none"
+            targetTop.style.display = "none"
+            selectionSize.style.display = "block"
             window.removeEventListener("mousemove",moveSelection)   // удаляется событие которое отслеживает координаты курсора
         })
 
@@ -67,6 +86,8 @@ if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(target.t
             selection.style.left = `${left+movementX}px` 
             target.style.top = `${top+movementY}px` 
             target.style.left = `${left+movementX}px` 
+            targetLeft.textContent = `${left+movementX}px` 
+            targetTop.textContent = `${top+movementY}px` 
         let newStyles = {top:`${top+movementY}px` , left:`${left+movementX}px` }
             newLayouts.changeStyle(newStyles,id,layout)
     }
@@ -99,12 +120,14 @@ if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(target.t
                     targetElement.style.width = `${targetWidth+(-movementX)}px`     // задает ширину обьекту target (старая ширина + движение по оси X с противоположным знаком) таким образом меняет ширину выделения
                     selection.style.left = `${selectionStyleLeft+movementX}px`       // Рассчитывает позиционирование по оси X
                     targetElement.style.left = `${targetLeft+movementX}px`
+                    selectionSizeW.textContent = `${targetWidth+(-movementX)}px`
                 let newStyles = { width:`${targetWidth+(-movementX)}px`, left:`${targetLeft+movementX}px`}
                     newLayouts.changeStyle(newStyles,id,layout)
             }
             if(selectionStyleHeigth+movementY>=10){
                     selection.style.height = `${selectionStyleHeigth+movementY}px`  // Рассчитывает высоту
                     targetElement.style.height = `${targetHeigth+movementY}px`
+                    selectionSizeH.textContent = `${targetHeigth+movementY}px`
                 let newStyles = { height:`${targetHeigth+movementY}px`}
                     newLayouts.changeStyle(newStyles,id,layout)
             }
@@ -140,6 +163,7 @@ if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(target.t
                     targetElement.style.width = `${targetWidth+(-movementX)}px`
                     selection.style.left = `${selectionStyleLeft+movementX}px`
                     targetElement.style.left = `${targetLeft+movementX}px`
+                    selectionSizeW.textContent = `${targetWidth+(-movementX)}px`
                 let newStyles = { left:`${targetLeft+movementX}px`, width:`${targetWidth+(-movementX)}px`}
                     newLayouts.changeStyle(newStyles,id,layout)
             }
@@ -148,6 +172,7 @@ if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(target.t
                 targetElement.style.height = `${targetHeigth+(-movementY)}px`
                 selection.style.top = `${selectionStyleTop+movementY}px`
                 targetElement.style.top = `${targetTop+movementY}px`
+                selectionSizeH.textContent = `${targetHeigth+(-movementY)}px`
                 let newStyles = { height:`${targetHeigth+(-movementY)}px`, top:`${targetTop+movementY}px`}
                     newLayouts.changeStyle(newStyles,id,layout)
             }
@@ -181,12 +206,14 @@ if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(target.t
             targetElement.style.height = `${targetHeigth+(-movementY)}px`
             selection.style.top = `${selectionStyleTop+movementY}px`
             targetElement.style.top = `${targetTop+movementY}px`
+            selectionSizeH.textContent = `${targetHeigth+(-movementY)}px`
             let newStyles = { height:`${targetHeigth+(-movementY)}px`, top:`${targetTop+movementY}px`}
                 newLayouts.changeStyle(newStyles,id,layout)
         }
         if(selectionStyleWidth+movementX>=10){
             selection.style.width = `${selectionStyleWidth+movementX}px`
             targetElement.style.width = `${targetWidth+movementX}px`
+            selectionSizeW.textContent = `${targetWidth+movementX}px`
             let newStyles = { width:`${targetWidth+movementX}px`}
                 newLayouts.changeStyle(newStyles,id,layout)
         }
@@ -215,11 +242,13 @@ if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(target.t
             if(selectionStyleWidth+movementX>=10){
                 selection.style.width = `${selectionStyleWidth+movementX}px`
                 targetElement.style.width = `${targetWidth+movementX}px`
+                selectionSizeW.textContent = `${targetWidth+movementX}px`
                 let newStyles = { width:`${targetWidth+movementX}px`}
                     newLayouts.changeStyle(newStyles,id,layout)}
             if(targetHeigth+movementY>=10){
                 targetElement.style.height = `${targetHeigth+movementY}px`
                 selection.style.height = `${selectionStyleHeight+movementY}px`
+                selectionSizeH.textContent = `${selectionStyleHeight+movementY}px`
                 let newStyles = {height:`${selectionStyleHeight+movementY}px`}
                     newLayouts.changeStyle(newStyles,id,layout)
             }
@@ -250,6 +279,7 @@ if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(target.t
             }
             if(targetWidth+movementX>=10){
                     targetElement.style.width = `${targetWidth+movementX}px`
+                    selectionSizeW.textContent = `${targetWidth+movementX}px`
                 let newStyles = { width:`${targetWidth+movementX}px`}
                     newLayouts.changeStyle(newStyles,id,layout)
             }
@@ -278,6 +308,7 @@ if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(target.t
             if(selectionStyleHeigth+movementY>=10 || selectionStyleHeigth+movementY > targetHeigth){
                 selection.style.height = `${selectionStyleHeigth+movementY}px`
                 targetElement.style.height = `${targetHeigth+movementY}px`
+                selectionSizeH.textContent = `${targetHeigth+movementY}px`
                 let newStyles = { height:`${targetHeigth+movementY}px`}
                     newLayouts.changeStyle(newStyles,id,layout)
             }
@@ -309,6 +340,7 @@ if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(target.t
                 selection.style.width = `${selectionStyleWidth+(-movementX)}px`
                 targetElement.style.width = `${targetWidth+(-movementX)}px`
                 targetElement.style.left = `${targetLeft+movementX}px`
+                selectionSizeW.textContent = `${targetWidth+(-movementX)}px`
                 let newStyles = { left:`${targetLeft+movementX}px`, width:`${targetWidth+(-movementX)}px`}
                     newLayouts.changeStyle(newStyles,id,layout)
             }
@@ -341,6 +373,7 @@ if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(target.t
                     selection.style.top  = `${selectionStyleTop+movementY}px`
                     targetElement.style.height = `${targetHeigth+(-movementY)}px`
                     targetElement.style.top = `${targetTop+movementY}px`
+                    selectionSizeH.textContent = `${selectionStyleHeigth+(-movementY)}px`
                 let newStyles = { top:`${targetTop+movementY}px`, height:`${targetHeigth+(-movementY)}px`}
                     newLayouts.changeStyle(newStyles,id,layout)
             }
