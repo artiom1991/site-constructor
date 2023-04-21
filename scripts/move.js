@@ -28,4 +28,3 @@ function moveConstructorArea({movementX,movementY}){ // Функция на от
     siteConstructorContainer.style.top = `${top+movementY}px` // Просчитывает и задает параметр для движения элемента      
     siteConstructorContainer.style.left = `${left+movementX}px` // Просчитывает и задает параметр для движения элемента 
 } 
-

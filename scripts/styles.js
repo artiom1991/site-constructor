@@ -363,4 +363,3 @@ let rotateXInput = document.getElementById("rotate-input")
             }
             if(selection){ selection.remove(), selectionElement() }
     }
-

@@ -192,8 +192,8 @@ let newLayouts = {
             }
             this.layouts[layout][id] = {...elementStyle}
             this.elements[id] = {...elementContent}
+            console.log()
         }
-        console.log(this)
     },
     changeStyle(styles,id,layoutActive){
         for(let layout in this.layouts){
@@ -227,5 +227,12 @@ let newLayouts = {
                 }
             })
             if(selection){selection.remove()}
+    },
+    deleteElement(id){
+        delete this.elements[id]
+        for(let layout in this.layouts){
+            delete this.layouts[layout][id]
+        }
     }
+
 }

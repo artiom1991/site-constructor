@@ -11,7 +11,9 @@ function selectionElement(){    //Функция выделения элемен
         selection.style.padding = styles.padding
         selection.style.left = styles.left
         selection.style.top = styles.top
+        selection.style.boxSizing = styles.boxSizing
         selection.style.border = styles.border
+        console.log(styles.height)
         selection.style.transform = styles.transform
         selection.style.translate = styles.translate
     let topSelection = document.createElement("div")    //создается див который в последствии будет отвечать за разтягивание элемента по верхнему краю
@@ -35,13 +37,19 @@ function selectionElement(){    //Функция выделения элемен
 
 //Создается событие для Selection
 
-        selection.addEventListener("dblclick",function(){   //создается событие по двойному клику для элемента selection
-            if(!target.classList.contains("shape")){        // проверка есть ли у цели события  class shape и если отсутствует выполняет код
-                target.setAttribute("contenteditable", "true")  //элементу с классом target задается атрибут contenteditable со значением true чтобы редактировать текст
-                target.focus()                                  // создается фокус на элемент с классом target
-                selection.remove()                              // удаляется элемент выделения selection
-            }
-        })
+
+if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(target.tagName)){
+    selection.addEventListener("dblclick",function(){   //создается событие по двойному клику для элемента selection
+        console.log("dableckick")
+        if(!target.classList.contains("shape")){        // проверка есть ли у цели события  class shape и если отсутствует выполняет код
+            target.setAttribute("contenteditable", "true")  //элементу с классом target задается атрибут contenteditable со значением true чтобы редактировать текст
+            target.focus()                                  // создается фокус на элемент с классом target
+            selection.remove()                              // удаляется элемент выделения selection
+        }
+    })
+}
+
+
 
         selection.addEventListener("mousedown", function(){     // создается событие по удержанию лкм по элементу выделения selection
             window.addEventListener("mousemove",moveSelection)  // задается событие окну window которое отслеживает перемещение мышки и запускает функцию moveSelection
