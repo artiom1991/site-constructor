@@ -18,7 +18,6 @@
     color: var(--font-light-color);
 }
 button{
-
     outline: none;
     color: var(--font-light-color);
 }
@@ -284,6 +283,19 @@ input[type=number]::-webkit-outer-spin-button {
     border: none;
     background: transparent;
     text-align: center;
+}
+.input-text{
+    width: 150px;
+    height: 20px;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    background: transparent;
+    text-align: center;
+}
+.input-text::placeholder{
+    color: var(--background-color3);
 }
 .bg{
     background: var(--background-color5);
@@ -643,9 +655,8 @@ input[type=number]::-webkit-outer-spin-button {
 .h6{
     font-size: 0.8em;
 }
-.shape{
-    background: #d1d1d1;
-}
+
+
 .hSmartphone{
     width: 25px;
     height: 25px;
@@ -744,11 +755,15 @@ input[type=number]::-webkit-outer-spin-button {
 .target{
     outline:1px #4042b5 solid; 
 }
+.CIRCLE{
+    outline:none; 
+}
 /*  */
 
 /* Selection styles */
 .selection{
     position: absolute;
+    outline:1px #4042b5 solid; 
     z-index: 999;
 }
 .topSelection,.bottomSelection{

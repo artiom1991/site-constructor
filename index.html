@@ -80,7 +80,9 @@
                 <div  title="Второстепенный заголовок, последний по размеру шрифта и весу" class="btn create h6" onclick="createNewElement('H6')">heading level 6</div>
             </div>
             <div class="hidenMenu figureList">
-                <div title="Создает квадрат" class="btn create rect"  onclick="createNewElement('DIV')">shape</div>
+                <div title="Создает квадрат" class="btn create"  onclick="createNewElement('DIV','RECTANGLE')">rectangle</div>
+                <div title="Создает круг" class="btn create"  onclick="createNewElement('DIV','CIRCLE')">circle</div>
+                <div title="Создает линию" class="btn create"  onclick="createNewElement('DIV','LINE')">line</div>
             </div>
             <div class="hidenMenu formList">
                 <div title="Создает поле для ввода текста" class="btn create inputText">input-text</div>
@@ -301,6 +303,36 @@
 
 
                                                 <!--  General styles / For all elements -->
+
+        <div class="button-style-editor">
+            <div class="style-header">
+                <div class="header-text">кнопки</div>
+                <div class="style-helper"></div>
+            </div>
+
+            <div class="style-list">
+                <div class="style-element">
+                    <div title="Добавляет текст элементу" class="style-title">
+                        <span>text-content:</span>
+                    </div>
+                    <div class="style-interface bg flex">
+                        <input class="input-text" type="text" name="" id="add-text" value="" placeholder="введите текст кнопки">
+                    </div>
+                </div>
+            </div>
+
+            <div class="style-list">
+                <div class="style-element">
+                    <div title="Добавляет ссылку элементу" class="style-title">
+                        <span>link:</span>
+                    </div>
+                    <div class="style-interface bg flex">
+                        <input class="input-text" type="text" name="" id="add-link" value="" placeholder="введите ссылку">
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="general-style-editor">
             <div class="style-header">
                 <div class="header-text">общие</div>

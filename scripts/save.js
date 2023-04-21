@@ -17,7 +17,7 @@ let load = document.querySelector(".loadBlock")
             newLayouts.elements = {...jsonParseElements}
             for(let id in newLayouts.elements){
                 let element = newLayouts.elements[id]
-                    createNewElement(element.tagName,id)
+                    createNewElement(element.tagName,undefined,id)
             }
             newLayouts.layouts = {...jsonParseLayouts}
             screen.style.backgroundImage = "url('../images/laptop.png')"

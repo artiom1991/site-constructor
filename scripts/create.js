@@ -1,5 +1,5 @@
 //Функция которая создает ноый элемент
-function createNewElement(element,inputId){
+function createNewElement(element,elementClass,inputId){
     let date = new Date()
     let id = inputId?inputId:date.getTime()
     let blockLinks = document.querySelector(".block-links")
@@ -23,15 +23,39 @@ function createNewElement(element,inputId){
         elementContent.classList.add("element-content")
 
 //Создание нового элемента
-        if(element==="DIV"){     
-                newElement.classList.add("shape")         
-                newElement.style.width = "120px"          
-                newElement.style.height = "200px"        
-            }else if(element==="BUTTON"){                   
+        if(elementClass==="RECTANGLE"){     
+                newElement.classList.add("RECTANGLE")         
+                newElement.style.width = "200px"          
+                newElement.style.height = "200px"       
+                newElement.style.background = "#d1d1d1" 
+                elementContent.textContent = "RECTANGLE"   
+            }
+            if(elementClass==="CIRCLE"){     
+                newElement.classList.add("CIRCLE")         
+                newElement.style.width = "200px"          
+                newElement.style.height = "200px"    
+                newElement.style.borderRadius = "100%"  
+                newElement.style.background = "#d1d1d1"  
+                elementContent.textContent = "CIRCLE"     
+            }
+            if(elementClass==="LINE"){     
+                newElement.classList.add("LINE")         
+                newElement.style.width = "200px"          
+                newElement.style.height = "1px"   
+                newElement.style.minHeight = "1px" 
+                newElement.style.background = "#d1d1d1"    
+                elementContent.textContent = "LINE"   
+            }
+
+            if(element==="BUTTON"){                  
                 newElement.textContent = "button"   
-                newElement.style.padding = "20px" 
+                newElement.style.padding = "5px 10px" 
                 elementContent.textContent = "button"   
-             }else{     
+                newElement.style.background = "#d1d1d1" 
+
+             }
+
+             if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(newElement.tagName)){     
                 newElement.textContent = "Введите новый текст" 
                 newElement.setAttribute("contenteditable", "true")    
                 newElement.focus()            

@@ -275,11 +275,9 @@ if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(target.t
         let targetHeigth = parseInt(targetStyle.height)
         let selectionStyleHeigth = parseInt(selectionStyle.height)
             selection.style.width = targetStyle.width
-            if(selectionStyleHeigth+movementY>=10){
+            if(selectionStyleHeigth+movementY>=10 || selectionStyleHeigth+movementY > targetHeigth){
                 selection.style.height = `${selectionStyleHeigth+movementY}px`
-            }
-            if(targetHeigth+movementY>=10){
-                    targetElement.style.height = `${targetHeigth+movementY}px`
+                targetElement.style.height = `${targetHeigth+movementY}px`
                 let newStyles = { height:`${targetHeigth+movementY}px`}
                     newLayouts.changeStyle(newStyles,id,layout)
             }
@@ -338,7 +336,7 @@ if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(target.t
         let selectionStyleHeigth = parseInt(selectionStyle.height)
         let selectionStyleTop = parseInt(selectionStyle.top)
             selection.style.width = targetStyle.width
-            if(selectionStyleHeigth+(-movementY)>=10){
+            if(selectionStyleHeigth+(-movementY)>=10 || selectionStyleHeigth+(-movementY)> targetHeigth){
                     selection.style.height = `${selectionStyleHeigth+(-movementY)}px`
                     selection.style.top  = `${selectionStyleTop+movementY}px`
                     targetElement.style.height = `${targetHeigth+(-movementY)}px`

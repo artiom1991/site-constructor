@@ -36,6 +36,25 @@ let fontWeight = document.getElementById("font-weight")
 let textAlign = document.getElementById("text-align")
     textAlign.addEventListener("input", function(event){ changeStyle(event,"textAlign") })
 
+
+let textContent = document.getElementById("add-text")
+    textContent.addEventListener("input", function(event){ 
+        let target = document.querySelector(".target")
+        let selection = document.querySelector(".selection")
+        if(target){ target.textContent= `${event.target.value}` }   
+        if(selection){ selection.remove(), selectionElement() }
+     })
+
+// let addLink = document.getElementById("add-link")
+//     textContent.addEventListener("input", function(event){ 
+//         let target = document.querySelector(".target")
+//         let selection = document.querySelector(".selection")
+//         if(target){ window.location.href = `${event.target.value}` }   
+//         if(selection){ selection.remove(), selectionElement() }
+//      })
+
+
+
 let textTransform = document.getElementById("text-transform")
     textTransform.addEventListener("input", function(event){ changeStyle(event,"textTransform") })
 
