@@ -66,7 +66,7 @@ function createNewElement(element,inputId){
 
 
 
-        if(["DIV","P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(newElement.tagName)){
+        if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(newElement.tagName)){
             newElement.addEventListener("dblclick",function(e){ // Задается созданому элементу событие по двойному клику
                 e.target.setAttribute("contenteditable", "true") // Элементу задается атрибут который позволяет редактировать текст
                 e.target.focus()                        // Создается фокус на элемент
