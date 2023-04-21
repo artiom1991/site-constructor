@@ -49,11 +49,16 @@ let hLaptop = document.querySelector(".horizontal-Laptop")
 
 let newLayouts = { 
     layouts:{1200:{},960:{},640:{},480:{},320:{}},
+    elements:{},
     addElement(id){
         for(let layout in this.layouts){
             let element = document.getElementById(id)
             let newElementStyles = window.getComputedStyle(element)
-            let newElement = {
+            let elementContent = {
+                tagName:element.tagName,
+                textContent:element.textContent
+            }
+            let elementStyle = {
                     width:{
                         count:newElementStyles.width,
                         isPrivate:false,
@@ -185,8 +190,10 @@ let newLayouts = {
                         inherided:1200
                     }
             }
-            this.layouts[layout][id] = {...newElement}
+            this.layouts[layout][id] = {...elementStyle}
+            this.elements[id] = {...elementContent}
         }
+        console.log(this)
     },
     changeStyle(styles,id,layoutActive){
         for(let layout in this.layouts){

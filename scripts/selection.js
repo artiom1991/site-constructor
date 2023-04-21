@@ -13,6 +13,7 @@ function selectionElement(){    //Функция выделения элемен
         selection.style.top = styles.top
         selection.style.border = styles.border
         selection.style.transform = styles.transform
+        selection.style.translate = styles.translate
     let topSelection = document.createElement("div")    //создается див который в последствии будет отвечать за разтягивание элемента по верхнему краю
         topSelection.classList.add("topSelection")      // задается класс topSelection
     let bottomSelection = document.createElement("div")

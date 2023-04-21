@@ -1,7 +1,7 @@
 //Функция которая создает ноый элемент
-function createNewElement(element){
+function createNewElement(element,inputId){
     let date = new Date()
-    let id = date.getTime()
+    let id = inputId?inputId:date.getTime()
     let blockLinks = document.querySelector(".block-links")
     let ElementLink = document.createElement(`div`)
     let elementType = document.createElement(`span`)
@@ -23,7 +23,7 @@ function createNewElement(element){
         elementContent.classList.add("element-content")
 
 //Создание нового элемента
-        if(element==="div"){     
+        if(element==="DIV"){     
                 newElement.classList.add("shape")         
                 newElement.style.width = "100px"          
                 newElement.style.height = "100px"          
@@ -74,9 +74,11 @@ function createNewElement(element){
             let layout = parseInt(layoutStyle.width)                            // Приводим ширину холста к числовому значению
             let id = this.id
             let linkContent = document.querySelector(`#link-${id} .element-content`)
+            let link = document.querySelector(`#link-${id}`)
                 e.target.removeAttribute("contenteditable")     // Удаляет из элемента стрибут который позволяет редактировать текст
                 if( e.target.textContent.length < 1){           // проверка на длину строки
                     e.target.remove()                           // Если строка короче 1 символа удаляет ее
+                    link.remove()
                 }
             let txt =  e.target.innerHTML                   // Создает копию содержания элемента
             let newTxt = txt.replaceAll("<div><br></div>","<br>")   // Заменяет блоки с переносом из элемента на перенос строки

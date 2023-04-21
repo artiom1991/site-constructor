@@ -22,6 +22,9 @@
             <div class="menu-container">
                 <!-- create-elements -->
                 <div class="create-navigation">
+                    <div title="Загрузить" class="menuBtn loadBlock">
+                        <div class="load"></div>
+                    </div>
                     <div title="Сохранить" class="menuBtn saveBlock">
                         <div class="save"></div>
                     </div>
@@ -68,16 +71,16 @@
                 <!-- <div  title="Элемент список который маркеруется специальными символами" class="btn create ul">unordered list</div> -->
                 <!-- <div  title="Элемент нумерованный список который маркеруется арабскими или римскими числами а так же буквами" class="btn create ol">ordered list</div> -->
                 <!-- <div  title="Строка которая помещается в нумерованный или маркированный список" class="btn create li">list item</div> -->
-                <div  title="Элемент для создания ссылок с коротким текстом" class="btn create a" onclick="createNewElement('a')">anchor</div>
-                <div  title="Главный заголовок имеющий самый большой шрифт и вес" class="btn create h1" onclick="createNewElement('h1')">heading level 1</div>
-                <div  title="Второстепенный заголовок, второй по размеру шрифта и весу" class="btn create h2" onclick="createNewElement('h2')">heading level 2</div>
-                <div  title="Второстепенный заголовок, средний по размеру шрифта и весу" class="btn create h3" onclick="createNewElement('h3')">heading level 3</div>
-                <div  title="Второстепенный заголовок, ниже среднего по размеру шрифта и весу" class="btn create h4" onclick="createNewElement('h4')">heading level 4</div>
-                <div  title="Второстепенный заголовок, предпоследний по размеру шрифта и весу" class="btn create h5" onclick="createNewElement('h5')">heading level 5</div>
-                <div  title="Второстепенный заголовок, последний по размеру шрифта и весу" class="btn create h6" onclick="createNewElement('h6')">heading level 6</div>
+                <div  title="Элемент для создания ссылок с коротким текстом" class="btn create a" onclick="createNewElement('H')">anchor</div>
+                <div  title="Главный заголовок имеющий самый большой шрифт и вес" class="btn create h1" onclick="createNewElement('H1')">heading level 1</div>
+                <div  title="Второстепенный заголовок, второй по размеру шрифта и весу" class="btn create h2" onclick="createNewElement('hH')">heading level 2</div>
+                <div  title="Второстепенный заголовок, средний по размеру шрифта и весу" class="btn create h3" onclick="createNewElement('H3')">heading level 3</div>
+                <div  title="Второстепенный заголовок, ниже среднего по размеру шрифта и весу" class="btn create h4" onclick="createNewElement('H4')">heading level 4</div>
+                <div  title="Второстепенный заголовок, предпоследний по размеру шрифта и весу" class="btn create h5" onclick="createNewElement('H5')">heading level 5</div>
+                <div  title="Второстепенный заголовок, последний по размеру шрифта и весу" class="btn create h6" onclick="createNewElement('H6')">heading level 6</div>
             </div>
             <div class="hidenMenu figureList">
-                <div title="Создает квадрат" class="btn create rect"  onclick="createNewElement('div')">shape</div>
+                <div title="Создает квадрат" class="btn create rect"  onclick="createNewElement('DIV')">shape</div>
             </div>
             <div class="hidenMenu formList">
                 <div title="Создает поле для ввода текста" class="btn create inputText">input-text</div>
@@ -533,6 +536,7 @@
     <script src="scripts/target.js"></script>
     <script src="scripts/selection.js"></script>
     <script src="scripts/styles.js"></script>
+    <script src="scripts/save.js"></script>
 
 </body>
 </html>

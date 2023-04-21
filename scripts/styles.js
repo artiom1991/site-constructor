@@ -358,8 +358,8 @@ let rotateXInput = document.getElementById("rotate-input")
         let rotateValue = rotateXInput.value 
             if(target){ 
                 let id = target.id
-                    target.style.transform  = ` translate(${translateXValue}%, ${translateYValue}%) rotate(${rotateValue}deg)` 
-                    newLayouts.changeStyle({ transform : ` translate(${translateXValue}%, ${translateYValue}%) rotate(${rotateValue}deg)`  },id,layout)
+                    target.style.transform  = ` translate(${translateXValue}px, ${translateYValue}px) rotate(${rotateValue}deg)` 
+                    newLayouts.changeStyle({ transform : ` translate(${translateXValue}px, ${translateYValue}px) rotate(${rotateValue}deg)`  },id,layout)
             }
             if(selection){ selection.remove(), selectionElement() }
     }

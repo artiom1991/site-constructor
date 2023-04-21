@@ -448,6 +448,13 @@ input[type=number]::-webkit-outer-spin-button {
     background-size: 25px auto;
     background-repeat: no-repeat;
 }
+.load{
+    width: 25px;
+    height: 25px;
+    background: url("../images/load.png");
+    background-size: 25px auto;
+    background-repeat: no-repeat;
+}
 .text{
     width: 25px;
     height: 25px;
