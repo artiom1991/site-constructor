@@ -10,9 +10,12 @@ function createNewElement(element,elementClass,inputId){
         newElement.classList.add("element")
         newElement.id = id
         newElement.style.left = "40%"      
-        newElement.style.top = "40%"        
+        newElement.style.top = "40%"      
         siteConstructorContainer.style.width = "1200px"
         siteConstructorContainer.append(newElement) 
+        newElement.style.zIndex =  siteConstructorContainer.childElementCount
+        newElement.setAttribute("childElementNumber",`${siteConstructorContainer.childElementCount}`) 
+        console.log(siteConstructorContainer.childElementCount)
         ElementLink.classList.add("element-link")  
         ElementLink.id = "link-"+id                
         ElementLink.addEventListener("click", function(){newElement.click()})

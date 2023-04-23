@@ -500,6 +500,51 @@ input[type=number]::-webkit-outer-spin-button {
     background-size: 25px auto;
     background-repeat: no-repeat;
 }
+
+.zIndexBtn{
+    height: 25px;
+    padding: 5px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: 0.7s all ease;
+    filter: invert(100%);
+}
+.zIndexBtn:hover{
+    background: var(--font-light-color);
+    transition: 0.5s all ease;
+    color: var(--font-light-color);
+    filter: invert(0%);
+}
+.zIndexPlus{
+    width: 25px;
+    height: 25px;
+    background: url("../images/zIndexMinus.png");
+    background-size: 25px auto;
+    background-repeat: no-repeat;
+}
+.zIndexMinus{
+    width: 25px;
+    height: 25px;
+    background: url("../images/zIndexPlus.png");
+    background-size: 25px auto;
+    background-repeat: no-repeat;
+}
+.zIndexFirst{
+    width: 25px;
+    height: 25px;
+    background: url("../images/zIndexFirst.png");
+    background-size: 25px auto;
+    background-repeat: no-repeat;
+}
+.zIndexLast{
+    width: 25px;
+    height: 25px;
+    background: url("../images/zindexLast.png");
+    background-size: 25px auto;
+    background-repeat: no-repeat;
+}
 /*  */
 
 
