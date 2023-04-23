@@ -1,5 +1,6 @@
 //Функция которая создает ноый элемент
 function createNewElement(element,elementClass,inputId){
+    let elements = document.getElementById("elements")
     let date = new Date()
     let id = inputId?inputId:date.getTime()
     let blockLinks = document.querySelector(".block-links")
@@ -12,10 +13,9 @@ function createNewElement(element,elementClass,inputId){
         newElement.style.left = "40%"      
         newElement.style.top = "40%"      
         siteConstructorContainer.style.width = "1200px"
-        siteConstructorContainer.append(newElement) 
-        newElement.style.zIndex =  siteConstructorContainer.childElementCount
-        newElement.setAttribute("childElementNumber",`${siteConstructorContainer.childElementCount}`) 
-        console.log(siteConstructorContainer.childElementCount)
+        elements.append(newElement) 
+        newElement.style.zIndex =  elements.childElementCount
+        newElement.setAttribute("childElementNumber",`${elements.childElementCount}`) 
         ElementLink.classList.add("element-link")  
         ElementLink.id = "link-"+id                
         ElementLink.addEventListener("click", function(){newElement.click()})

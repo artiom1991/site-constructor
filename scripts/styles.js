@@ -483,3 +483,76 @@ let topCenter = document.getElementById("top-center")
             if(target){ target.style.top = `${count}px` }
             if(selection){ selection.remove(), selectionElement() }
     })
+
+let zIndexPlus = document.getElementById("z-index-plus")
+    zIndexPlus.addEventListener("click", function(){
+        let elements = document.getElementById("elements")
+        let target = document.querySelector(".target")
+        let childelementnumber = parseInt(target.getAttribute("childelementnumber"))
+        let childelementnumberAll = document.querySelectorAll('[childelementnumber]')
+            childelementnumberAll.forEach((el,i)=>{
+                let atributeValue = parseInt(el.getAttribute('childelementnumber'))
+                if(atributeValue === childelementnumber+1){
+                    el.setAttribute("childElementNumber",`${atributeValue-1}`)
+                    el.style.zIndex = atributeValue-1
+                }
+            })
+            if(elements.childNodes.length>childelementnumber){
+                target.setAttribute("childElementNumber",`${childelementnumber+1}`)
+                target.style.zIndex = childelementnumber+1
+            }
+    })
+
+let zIndexMinus = document.getElementById("z-index-minus")
+    zIndexMinus.addEventListener("click", function(){
+        let elements = document.getElementById("elements")
+        let target = document.querySelector(".target")
+        let childelementnumber = parseInt(target.getAttribute("childelementnumber"))
+        let childelementnumberAll = document.querySelectorAll('[childelementnumber]')
+            childelementnumberAll.forEach((el,i)=>{
+                let atributeValue = parseInt(el.getAttribute('childelementnumber'))
+                if(atributeValue === childelementnumber-1){
+                    el.setAttribute("childElementNumber",`${atributeValue+1}`)
+                    el.style.zIndex = atributeValue+1
+                }
+            })
+            if(childelementnumber>1){
+                target.setAttribute("childElementNumber",`${childelementnumber-1}`)
+                target.style.zIndex = childelementnumber-1
+            }
+    })
+
+
+let zIndexFirst = document.getElementById("z-index-first")
+    zIndexFirst.addEventListener("click", function(){
+        let elements = document.getElementById("elements")
+        let target = document.querySelector(".target")
+        let childelementnumber = parseInt(target.getAttribute("childelementnumber"))  
+        let childelementnumberAll = document.querySelectorAll('[childelementnumber]')
+            childelementnumberAll.forEach((el,i)=>{
+                let atributeValue = parseInt(el.getAttribute('childelementnumber'))
+                if(atributeValue < childelementnumber){
+                    el.setAttribute("childElementNumber",`${atributeValue+1}`)
+                    el.style.zIndex = atributeValue+1
+                }
+            })
+                target.setAttribute("childElementNumber",`1`)
+                target.style.zIndex = 1
+    })
+
+let zIndexLast = document.getElementById("z-index-last")
+    zIndexLast.addEventListener("click", function(){
+        let elements = document.getElementById("elements")
+        let target = document.querySelector(".target")
+        let childelementnumber = parseInt(target.getAttribute("childelementnumber"))  
+        let childelementnumberAll = document.querySelectorAll('[childelementnumber]')
+            childelementnumberAll.forEach((el,i)=>{
+                let atributeValue = parseInt(el.getAttribute('childelementnumber'))
+                if(atributeValue > childelementnumber){
+                    el.setAttribute("childElementNumber",`${atributeValue-1}`)
+                    el.style.zIndex = atributeValue-1
+                }
+            })
+                target.setAttribute("childElementNumber",`${elements.childNodes.length}`)
+                target.style.zIndex = elements.childNodes.length
+    })

@@ -520,14 +520,14 @@ input[type=number]::-webkit-outer-spin-button {
 .zIndexPlus{
     width: 25px;
     height: 25px;
-    background: url("../images/zIndexMinus.png");
+    background: url("../images/zIndexPlus.png");
     background-size: 25px auto;
     background-repeat: no-repeat;
 }
 .zIndexMinus{
     width: 25px;
     height: 25px;
-    background: url("../images/zIndexPlus.png");
+    background: url("../images/zIndexMinus.png");
     background-size: 25px auto;
     background-repeat: no-repeat;
 }
