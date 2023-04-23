@@ -385,12 +385,7 @@ let rotateXInput = document.getElementById("rotate-input")
     }
 
 let leftZero = document.getElementById("left-zero")
-    leftZero.addEventListener("click", function(){
-        let leftAlign  = document.querySelectorAll(".leftAlign  .activeAlign")
-            leftAlign.forEach(el=>{
-                el.classList.remove("activeAlign")
-            })
-            leftZero.classList.add("activeAlign")    
+    leftZero.addEventListener("click", function(){   
         let target = document.querySelector(".target")
         let selection = document.querySelector(".selection")
             if(target){ target.style.left = `0px` }
@@ -399,11 +394,6 @@ let leftZero = document.getElementById("left-zero")
 
 let rightZero = document.getElementById("right-zero")
     rightZero.addEventListener("click", function(){
-        let leftAlign  = document.querySelectorAll(".leftAlign  .activeAlign")
-            leftAlign.forEach(el=>{
-                el.classList.remove("activeAlign")
-            })
-            rightZero.classList.add("activeAlign")   
         let layoutStyle = window.getComputedStyle(siteConstructorContent)
         let layout = parseInt(layoutStyle.width)    
         let target = document.querySelector(".target")
@@ -417,11 +407,6 @@ let rightZero = document.getElementById("right-zero")
 
 let leftCenter = document.getElementById("left-center")
     leftCenter.addEventListener("click", function(){
-        let leftAlign  = document.querySelectorAll(".leftAlign  .activeAlign")
-            leftAlign.forEach(el=>{
-                el.classList.remove("activeAlign")
-            })
-            leftCenter.classList.add("activeAlign") 
         let layoutStyle = window.getComputedStyle(siteConstructorContent)
         let layout = parseInt(layoutStyle.width)
         let target = document.querySelector(".target")
@@ -436,12 +421,7 @@ let leftCenter = document.getElementById("left-center")
 
 
 let topZero = document.getElementById("top-zero")
-    topZero.addEventListener("click", function(){
-        let leftAlign  = document.querySelectorAll(".topAlign  .activeAlign")
-            leftAlign.forEach(el=>{
-                el.classList.remove("activeAlign")
-            })
-            topZero.classList.add("activeAlign")    
+    topZero.addEventListener("click", function(){  
         let target = document.querySelector(".target")
         let selection = document.querySelector(".selection")
             if(target){ target.style.top = `0px` }
@@ -449,12 +429,7 @@ let topZero = document.getElementById("top-zero")
     })
 
 let bottomZero = document.getElementById("bottom-zero")
-    bottomZero.addEventListener("click", function(){
-        let leftAlign  = document.querySelectorAll(".topAlign  .activeAlign")
-            leftAlign.forEach(el=>{
-                el.classList.remove("activeAlign")
-            })
-            bottomZero.classList.add("activeAlign")   
+    bottomZero.addEventListener("click", function(){  
         let layoutStyle = window.getComputedStyle(siteConstructorContent)
         let layout = parseInt(layoutStyle.height)    
         let target = document.querySelector(".target")
@@ -468,11 +443,6 @@ let bottomZero = document.getElementById("bottom-zero")
 
 let topCenter = document.getElementById("top-center")
     topCenter.addEventListener("click", function(){
-        let leftAlign  = document.querySelectorAll(".topAlign  .activeAlign")
-            leftAlign.forEach(el=>{
-                el.classList.remove("activeAlign")
-            })
-            topCenter.classList.add("activeAlign") 
         let layoutStyle = window.getComputedStyle(siteConstructorContent)
         let layout = parseInt(layoutStyle.height)
         let target = document.querySelector(".target")
@@ -544,6 +514,7 @@ let zIndexLast = document.getElementById("z-index-last")
     zIndexLast.addEventListener("click", function(){
         let elements = document.getElementById("elements")
         let target = document.querySelector(".target")
+        let ElementLink = document.getElementById(`link-${target.id}`)
         let childelementnumber = parseInt(target.getAttribute("childelementnumber"))  
         let childelementnumberAll = document.querySelectorAll('[childelementnumber]')
             childelementnumberAll.forEach((el,i)=>{

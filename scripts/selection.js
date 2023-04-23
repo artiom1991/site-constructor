@@ -77,10 +77,6 @@ if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(target.t
         })
 
     function moveSelection({movementX,movementY}){          //функция которая задает позиционирование элементу selection и target
-        let leftAlign  = document.querySelectorAll(".activeAlign")
-        leftAlign.forEach(el=>{
-            el.classList.remove("activeAlign")
-        })
         let layout = parseInt(layoutStyle.width)            // Приводим ширину холста к числовому значению
         let id = target.id                                  // Поулчаем id элемента target
         let getStyle = window.getComputedStyle(selection)   // получение стилей элемента selection
@@ -108,10 +104,6 @@ if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(target.t
         })
 
     function scaleLeftBottomCorner({movementX,movementY}){  // функция которая получает координаты мышки и рассчитывает куда она движится по оси X и Y
-        let leftAlign  = document.querySelectorAll(".activeAlign")
-        leftAlign.forEach(el=>{
-            el.classList.remove("activeAlign")
-        })
         let layout = parseInt(layoutStyle.width) 
         let targetElement = document.querySelector(".target")   // Получаем элемент с классом .target
         let id = targetElement.id                               //Получаем Id элемента target
@@ -153,10 +145,6 @@ if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(target.t
         })
 
     function scaleLeftTopCorner({movementX,movementY}){
-        let leftAlign  = document.querySelectorAll(".activeAlign")
-        leftAlign.forEach(el=>{
-            el.classList.remove("activeAlign")
-        })
         let layout = parseInt(layoutStyle.width) 
         let targetElement = document.querySelector(".target")
         let id = targetElement.id
@@ -202,10 +190,6 @@ if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(target.t
         })
 
     function scaleRightTopCorner({movementX,movementY}){
-        let leftAlign  = document.querySelectorAll(".activeAlign")
-        leftAlign.forEach(el=>{
-            el.classList.remove("activeAlign")
-        })
         let layout = parseInt(layoutStyle.width) 
         let targetElement = document.querySelector(".target")
         let id = targetElement.id
@@ -246,10 +230,6 @@ if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(target.t
         })
 
     function scaleRightBottomCorner({movementX,movementY}){
-        let leftAlign  = document.querySelectorAll(".activeAlign")
-        leftAlign.forEach(el=>{
-            el.classList.remove("activeAlign")
-        })
         let layout = parseInt(layoutStyle.width) 
         let targetElement = document.querySelector(".target")
         let id = targetElement.id
@@ -286,10 +266,6 @@ if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(target.t
         })
 
     function scaleRightSelection({movementX}){
-        let leftAlign  = document.querySelectorAll(".activeAlign")
-        leftAlign.forEach(el=>{
-            el.classList.remove("activeAlign")
-        })
         let layout = parseInt(layoutStyle.width) 
         let targetElement = document.querySelector(".target")
         let id = targetElement.id
@@ -321,10 +297,6 @@ if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(target.t
         })
 
     function scaleBottomSelection({movementY}){
-        let leftAlign  = document.querySelectorAll(".activeAlign")
-        leftAlign.forEach(el=>{
-            el.classList.remove("activeAlign")
-        })
         let layout = parseInt(layoutStyle.width) 
         let targetElement = document.querySelector(".target")
         let id = targetElement.id
@@ -354,10 +326,6 @@ if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(target.t
         })
 
     function scaleLeftSelection({movementX}){
-        let leftAlign  = document.querySelectorAll(".activeAlign")
-        leftAlign.forEach(el=>{
-            el.classList.remove("activeAlign")
-        })
         let layout = parseInt(layoutStyle.width) 
         let targetElement = document.querySelector(".target")
         let id = targetElement.id
@@ -390,10 +358,6 @@ if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(target.t
         })
 
     function scaleTopSelection({movementY}){
-        let leftAlign  = document.querySelectorAll(".activeAlign")
-        leftAlign.forEach(el=>{
-            el.classList.remove("activeAlign")
-        })
         let layout = parseInt(layoutStyle.width) 
         let targetElement = document.querySelector(".target")
         let id = targetElement.id

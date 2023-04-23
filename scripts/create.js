@@ -79,10 +79,6 @@ function createNewElement(element,elementClass,inputId){
         })
         
         function moveElement({movementX,movementY}){ // Функция на отслеживание координат мышки и перемещения элемента на экране
-            let leftAlign  = document.querySelectorAll(".activeAlign")
-            leftAlign.forEach(el=>{
-                el.classList.remove("activeAlign")
-            })
             let layoutStyle = window.getComputedStyle(siteConstructorContent)   //Получаем стили холста
             let layout = parseInt(layoutStyle.width)                            // Приводим ширину холста к числовому значению
             let getStyle = window.getComputedStyle(newElement) // Получает стили элемента
