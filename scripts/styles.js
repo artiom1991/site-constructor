@@ -22,7 +22,7 @@ let color = document.getElementById("color")
     color.addEventListener("input", function(event){ changeStyle(event,"color") })
     color.addEventListener("input", function(event){ 
         pseudoFontColor.style.background = `${event.target.value}`
-     })
+    })
 
 let textDecoration = document.getElementById("text-decoration")
     textDecoration.addEventListener("change", function(event){ changeStyle(event,"textDecoration") })
@@ -43,16 +43,17 @@ let textContent = document.getElementById("add-text")
         let selection = document.querySelector(".selection")
         if(target){ target.textContent= `${event.target.value}` }   
         if(selection){ selection.remove(), selectionElement() }
-     })
+    })
 
-// let addLink = document.getElementById("add-link")
-//     textContent.addEventListener("input", function(event){ 
-//         let target = document.querySelector(".target")
-//         let selection = document.querySelector(".selection")
-//         if(target){ window.location.href = `${event.target.value}` }   
-//         if(selection){ selection.remove(), selectionElement() }
-//      })
-
+let butttonLink = document.getElementById("add-link")
+    butttonLink.addEventListener("input", function(event){ 
+        let target = document.querySelector(".target")
+        let selection = document.querySelector(".selection")
+        if(target){
+             target.setAttribute('button-link', `${event.target.value}`)
+            }   
+        if(selection){ selection.remove(), selectionElement() }
+    })
 
 
 let textTransform = document.getElementById("text-transform")
@@ -382,3 +383,103 @@ let rotateXInput = document.getElementById("rotate-input")
             }
             if(selection){ selection.remove(), selectionElement() }
     }
+
+let leftZero = document.getElementById("left-zero")
+    leftZero.addEventListener("click", function(){
+        let leftAlign  = document.querySelectorAll(".leftAlign  .activeAlign")
+            leftAlign.forEach(el=>{
+                el.classList.remove("activeAlign")
+            })
+            leftZero.classList.add("activeAlign")    
+        let target = document.querySelector(".target")
+        let selection = document.querySelector(".selection")
+            if(target){ target.style.left = `0px` }
+            if(selection){ selection.remove(), selectionElement() }
+    })
+
+let rightZero = document.getElementById("right-zero")
+    rightZero.addEventListener("click", function(){
+        let leftAlign  = document.querySelectorAll(".leftAlign  .activeAlign")
+            leftAlign.forEach(el=>{
+                el.classList.remove("activeAlign")
+            })
+            rightZero.classList.add("activeAlign")   
+        let layoutStyle = window.getComputedStyle(siteConstructorContent)
+        let layout = parseInt(layoutStyle.width)    
+        let target = document.querySelector(".target")
+        let selection = document.querySelector(".selection")
+        let targetStyles = window.getComputedStyle(target)
+        let targetWidth = parseInt(targetStyles.width)
+        let count = layout-targetWidth
+            if(target){ target.style.left = `${count}px`}
+            if(selection){ selection.remove(), selectionElement() }
+    })
+
+let leftCenter = document.getElementById("left-center")
+    leftCenter.addEventListener("click", function(){
+        let leftAlign  = document.querySelectorAll(".leftAlign  .activeAlign")
+            leftAlign.forEach(el=>{
+                el.classList.remove("activeAlign")
+            })
+            leftCenter.classList.add("activeAlign") 
+        let layoutStyle = window.getComputedStyle(siteConstructorContent)
+        let layout = parseInt(layoutStyle.width)
+        let target = document.querySelector(".target")
+        let selection = document.querySelector(".selection")
+        let targetStyles = window.getComputedStyle(target)
+        let targetWidth = parseInt(targetStyles.width)
+        let count = (layout/2)-(targetWidth/2)
+            if(target){ target.style.left = `${count}px` }
+            if(selection){ selection.remove(), selectionElement() }
+    })
+
+
+
+let topZero = document.getElementById("top-zero")
+    topZero.addEventListener("click", function(){
+        let leftAlign  = document.querySelectorAll(".topAlign  .activeAlign")
+            leftAlign.forEach(el=>{
+                el.classList.remove("activeAlign")
+            })
+            topZero.classList.add("activeAlign")    
+        let target = document.querySelector(".target")
+        let selection = document.querySelector(".selection")
+            if(target){ target.style.top = `0px` }
+            if(selection){ selection.remove(), selectionElement() }
+    })
+
+let bottomZero = document.getElementById("bottom-zero")
+    bottomZero.addEventListener("click", function(){
+        let leftAlign  = document.querySelectorAll(".topAlign  .activeAlign")
+            leftAlign.forEach(el=>{
+                el.classList.remove("activeAlign")
+            })
+            bottomZero.classList.add("activeAlign")   
+        let layoutStyle = window.getComputedStyle(siteConstructorContent)
+        let layout = parseInt(layoutStyle.height)    
+        let target = document.querySelector(".target")
+        let selection = document.querySelector(".selection")
+        let targetStyles = window.getComputedStyle(target)
+        let targetHeight = parseInt(targetStyles.height)
+        let count = layout-targetHeight
+            if(target){ target.style.top = `${count}px`}
+            if(selection){ selection.remove(), selectionElement() }
+    })
+
+let topCenter = document.getElementById("top-center")
+    topCenter.addEventListener("click", function(){
+        let leftAlign  = document.querySelectorAll(".topAlign  .activeAlign")
+            leftAlign.forEach(el=>{
+                el.classList.remove("activeAlign")
+            })
+            topCenter.classList.add("activeAlign") 
+        let layoutStyle = window.getComputedStyle(siteConstructorContent)
+        let layout = parseInt(layoutStyle.height)
+        let target = document.querySelector(".target")
+        let selection = document.querySelector(".selection")
+        let targetStyles = window.getComputedStyle(target)
+        let targetHeight = parseInt(targetStyles.height)
+        let count = (layout/2)-(targetHeight/2)
+            if(target){ target.style.top = `${count}px` }
+            if(selection){ selection.remove(), selectionElement() }
+    })

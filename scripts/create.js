@@ -52,13 +52,14 @@ function createNewElement(element,elementClass,inputId){
                 newElement.style.padding = "5px 10px" 
                 elementContent.textContent = "button"   
                 newElement.style.background = "#d1d1d1" 
+
                 }
 
             if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(newElement.tagName)){     
                 newElement.textContent = "Введите новый текст" 
                 newElement.setAttribute("contenteditable", "true")    
                 newElement.focus()            
-                elementContent.textContent = "Введите новый текст"        
+                elementContent.textContent = "Введите новый текст"      
             }
 
         newLayouts.addElement(id)                       //Создаем стили новому элементу в layouts
@@ -75,6 +76,10 @@ function createNewElement(element,elementClass,inputId){
         })
         
         function moveElement({movementX,movementY}){ // Функция на отслеживание координат мышки и перемещения элемента на экране
+            let leftAlign  = document.querySelectorAll(".activeAlign")
+            leftAlign.forEach(el=>{
+                el.classList.remove("activeAlign")
+            })
             let layoutStyle = window.getComputedStyle(siteConstructorContent)   //Получаем стили холста
             let layout = parseInt(layoutStyle.width)                            // Приводим ширину холста к числовому значению
             let getStyle = window.getComputedStyle(newElement) // Получает стили элемента
@@ -85,9 +90,6 @@ function createNewElement(element,elementClass,inputId){
             let newStyles = { top:`${top+movementY}px`, left:`${left+movementX}px`}
                 newLayouts.changeStyle(newStyles,id,layout)
         }
-
-
-
 
         if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(newElement.tagName)){
             newElement.addEventListener("dblclick",function(e){ // Задается созданому элементу событие по двойному клику

@@ -1,6 +1,8 @@
 let siteConstructorContent = document.querySelector(".site-constructor-content")
 let textStyleEditor = document.querySelector(".text-style-editor")
 let generalStyleEditor = document.querySelector(".general-style-editor")
+let buttonStyleEditor = document.querySelector(".button-style-editor")
+
 let screen = document.querySelector(".screen")
 let vSmartphone = document.querySelector(".vertical-Smartphone")    
     vSmartphone.addEventListener("click", function(){
@@ -8,6 +10,7 @@ let vSmartphone = document.querySelector(".vertical-Smartphone")
         screen.style.transform = "rotate(0deg)"
         textStyleEditor.style.display = "none"
         generalStyleEditor.style.display = "none"
+        buttonStyleEditor.style.display = "none"
         newLayouts.changeLayout(320)
     })
 
@@ -17,6 +20,7 @@ let hSmartphone = document.querySelector(".horizontal-Smartphone")
         screen.style.transform = "rotate(90deg)"
         textStyleEditor.style.display = "none"
         generalStyleEditor.style.display = "none"
+        buttonStyleEditor.style.display = "none"
         newLayouts.changeLayout(480)
     })
 
@@ -26,6 +30,7 @@ let vTablet = document.querySelector(".vertical-Tablet")
         screen.style.transform = "rotate(0deg)"
         textStyleEditor.style.display = "none"
         generalStyleEditor.style.display = "none"
+        buttonStyleEditor.style.display = "none"
         newLayouts.changeLayout(640)
     })
 
@@ -35,6 +40,7 @@ let hTablet = document.querySelector(".horizontal-Tablet")
         screen.style.transform = "rotate(90deg)"
         textStyleEditor.style.display = "none"
         generalStyleEditor.style.display = "none"
+        buttonStyleEditor.style.display = "none"
         newLayouts.changeLayout(960)
     })
 
@@ -44,6 +50,7 @@ let hLaptop = document.querySelector(".horizontal-Laptop")
         screen.style.transform = "rotate(0deg)"
         textStyleEditor.style.display = "none"
         generalStyleEditor.style.display = "none"
+        buttonStyleEditor.style.display = "none"
         newLayouts.changeLayout(1200)
     })
 

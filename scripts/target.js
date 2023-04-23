@@ -1,23 +1,27 @@
 
-siteConstructorContainer.addEventListener("click", function(e){ // Событие по клику которое  задает элементу класс target
-    let targetClick = e.target      //Переменная в которой хранится ссылка на обьект по которому был клик
-    let target = document.querySelectorAll(".target") // Получение всех элементов с классом target
-    let selection = document.querySelector(".selection")    //Получение обьекта выделения
+siteConstructorContainer.addEventListener("click", function(e){ 
+    let targetClick = e.target      
+    let target = document.querySelectorAll(".target") 
+    let selection = document.querySelector(".selection")  
         if(targetClick.classList.contains("selection") == false){
-            if(selection){              // проверка найден ли элемент selection
-                selection.remove()  // удаляется обьект выделения
+            if(selection){        
+                selection.remove()  
                 textStyleEditor.style.display = "none"
                 generalStyleEditor.style.display = "none"
+                buttonStyleEditor.style.display = "none"
                 }
-            target.forEach(el=>{         // перебок каждого элемента target
-                el.classList.remove("target") // удаление класса target
+            target.forEach(el=>{ 
+                el.classList.remove("target") 
                 })
         }
 
-        if(targetClick.classList.contains("element")){  // Проверка если у обьекта по которому кликнули есть класс element
+        if(targetClick.classList.contains("element")){
             let targetStyle = window.getComputedStyle(targetClick)
-                targetClick.classList.add("target")        //Задает цели события класс target
-            if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(targetClick.tagName)){
+                targetClick.classList.add("target") 
+                if(targetClick.tagName === "BUTTON"){
+                    buttonStyleEditor.style.display = "block"
+                }
+            if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6","BUTTON"].includes(targetClick.tagName)){
                 let font = document.getElementById("font")
                 font.value= targetStyle.fontFamily
                 let color = document.querySelector(".input-color")
@@ -111,8 +115,8 @@ siteConstructorContainer.addEventListener("click", function(e){ // Событи�
                 let rotate = document.getElementById("rotate-input")
                     rotate.value = -deg?-deg:0
                     generalStyleEditor.style.display = "block"
-            if(targetClick.hasAttribute("contenteditable")  === false){ // Проверяет есть ли у элемента клика атрибут contenteditable и если он отсутствует выполняет код
-                selectionElement()         // ВЫПОЛНЕНИЕ ФУНКЦИИ КОТОРАЯ СОЗДАСТ Selection
+            if(targetClick.hasAttribute("contenteditable")  === false){
+                selectionElement()        
                 }
         }
 })
