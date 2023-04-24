@@ -195,11 +195,15 @@ let newLayouts = {
                         count:newElementStyles.transform,
                         isPrivate:false,
                         inherided:1200
+                    },
+                    zIndex:{
+                        count:newElementStyles.zIndex,
+                        isPrivate:false,
+                        inherided:1200
                     }
             }
             this.layouts[layout][id] = {...elementStyle}
             this.elements[id] = {...elementContent}
-            console.log()
         }
     },
     changeStyle(styles,id,layoutActive){

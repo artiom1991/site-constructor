@@ -388,7 +388,11 @@ let leftZero = document.getElementById("left-zero")
     leftZero.addEventListener("click", function(){   
         let target = document.querySelector(".target")
         let selection = document.querySelector(".selection")
-            if(target){ target.style.left = `0px` }
+            if(target){ 
+                let id = target.id
+                    target.style.left = `0px` 
+                    newLayouts.changeStyle({ left : `0px` },id,layout)
+                }
             if(selection){ selection.remove(), selectionElement() }
     })
 
@@ -401,7 +405,11 @@ let rightZero = document.getElementById("right-zero")
         let targetStyles = window.getComputedStyle(target)
         let targetWidth = parseInt(targetStyles.width)
         let count = layout-targetWidth
-            if(target){ target.style.left = `${count}px`}
+            if(target){ 
+                let id = target.id
+                    target.style.left = `${count}px`
+                    newLayouts.changeStyle({ left : `${count}px` },id,layout)
+                }
             if(selection){ selection.remove(), selectionElement() }
     })
 
@@ -414,7 +422,11 @@ let leftCenter = document.getElementById("left-center")
         let targetStyles = window.getComputedStyle(target)
         let targetWidth = parseInt(targetStyles.width)
         let count = (layout/2)-(targetWidth/2)
-            if(target){ target.style.left = `${count}px` }
+            if(target){ 
+                let id = target.id
+                    target.style.left = `${count}px` 
+                    newLayouts.changeStyle({ left : `${count}px` },id,layout)
+                }
             if(selection){ selection.remove(), selectionElement() }
     })
 
@@ -422,108 +434,156 @@ let leftCenter = document.getElementById("left-center")
 
 let topZero = document.getElementById("top-zero")
     topZero.addEventListener("click", function(){  
+        let layoutStyle = window.getComputedStyle(siteConstructorContent)
+        let layout = parseInt(layoutStyle.width)
         let target = document.querySelector(".target")
         let selection = document.querySelector(".selection")
-            if(target){ target.style.top = `0px` }
+            if(target){ 
+                let id = target.id
+                    target.style.top = `0px` 
+                    newLayouts.changeStyle({ top : `0px` },id,layout)
+                }
             if(selection){ selection.remove(), selectionElement() }
     })
 
 let bottomZero = document.getElementById("bottom-zero")
     bottomZero.addEventListener("click", function(){  
         let layoutStyle = window.getComputedStyle(siteConstructorContent)
-        let layout = parseInt(layoutStyle.height)    
+        let containerHeight = parseInt(layoutStyle.height)
+        let layout = parseInt(layoutStyle.width)    
         let target = document.querySelector(".target")
         let selection = document.querySelector(".selection")
         let targetStyles = window.getComputedStyle(target)
         let targetHeight = parseInt(targetStyles.height)
-        let count = layout-targetHeight
-            if(target){ target.style.top = `${count}px`}
+        let count = containerHeight-targetHeight
+            if(target){ 
+                let id = target.id
+                    target.style.top = `${count}px`
+                    newLayouts.changeStyle({ top : `${count}px` },id,layout)
+                }
             if(selection){ selection.remove(), selectionElement() }
     })
 
 let topCenter = document.getElementById("top-center")
     topCenter.addEventListener("click", function(){
         let layoutStyle = window.getComputedStyle(siteConstructorContent)
-        let layout = parseInt(layoutStyle.height)
+        let containerHeight = parseInt(layoutStyle.height)
+        let layout = parseInt(layoutStyle.width)
         let target = document.querySelector(".target")
         let selection = document.querySelector(".selection")
         let targetStyles = window.getComputedStyle(target)
         let targetHeight = parseInt(targetStyles.height)
-        let count = (layout/2)-(targetHeight/2)
-            if(target){ target.style.top = `${count}px` }
+        let count = (containerHeight/2)-(targetHeight/2)
+            if(target){ 
+                let id = target.id
+                    target.style.top = `${count}px` 
+                    newLayouts.changeStyle({ top : `${count}px` },id,layout)
+                }
             if(selection){ selection.remove(), selectionElement() }
     })
 
 let zIndexPlus = document.getElementById("z-index-plus")
     zIndexPlus.addEventListener("click", function(){
+        let layoutStyle = window.getComputedStyle(siteConstructorContent)
+        let layout = parseInt(layoutStyle.width)
         let elements = document.getElementById("elements")
         let target = document.querySelector(".target")
-        let childelementnumber = parseInt(target.getAttribute("childelementnumber"))
-        let childelementnumberAll = document.querySelectorAll('[childelementnumber]')
-            childelementnumberAll.forEach((el,i)=>{
+        let selection = document.querySelector(".selection")
+            if(target){
+                let id = target.id
+                let childelementnumber = parseInt(target.getAttribute("childelementnumber"))
+                let childelementnumberAll = document.querySelectorAll('[childelementnumber]')
+                    childelementnumberAll.forEach((el,i)=>{
                 let atributeValue = parseInt(el.getAttribute('childelementnumber'))
-                if(atributeValue === childelementnumber+1){
-                    el.setAttribute("childElementNumber",`${atributeValue-1}`)
-                    el.style.zIndex = atributeValue-1
+                    if(atributeValue === childelementnumber+1){
+                        el.setAttribute("childElementNumber",`${atributeValue-1}`)
+                        el.style.zIndex = atributeValue-1
+                        }
+                    })
+                    if(elements.childNodes.length>childelementnumber){
+                        target.setAttribute("childElementNumber",`${childelementnumber+1}`)
+                        target.style.zIndex = childelementnumber+1
+                        newLayouts.changeStyle({ zIndex : childelementnumber+1 },id,layout)
+                        }
                 }
-            })
-            if(elements.childNodes.length>childelementnumber){
-                target.setAttribute("childElementNumber",`${childelementnumber+1}`)
-                target.style.zIndex = childelementnumber+1
-            }
+            if(selection){ selection.remove(), selectionElement() }
     })
 
 let zIndexMinus = document.getElementById("z-index-minus")
     zIndexMinus.addEventListener("click", function(){
+        let layoutStyle = window.getComputedStyle(siteConstructorContent)
+        let layout = parseInt(layoutStyle.width)
         let elements = document.getElementById("elements")
         let target = document.querySelector(".target")
-        let childelementnumber = parseInt(target.getAttribute("childelementnumber"))
-        let childelementnumberAll = document.querySelectorAll('[childelementnumber]')
-            childelementnumberAll.forEach((el,i)=>{
-                let atributeValue = parseInt(el.getAttribute('childelementnumber'))
+        let selection = document.querySelector(".selection")
+        if(target){
+            let id = target.id
+            let childelementnumber = parseInt(target.getAttribute("childelementnumber"))
+            let childelementnumberAll = document.querySelectorAll('[childelementnumber]')
+                childelementnumberAll.forEach((el,i)=>{
+            let atributeValue = parseInt(el.getAttribute('childelementnumber'))
                 if(atributeValue === childelementnumber-1){
                     el.setAttribute("childElementNumber",`${atributeValue+1}`)
                     el.style.zIndex = atributeValue+1
+                    }
+                })
+                if(childelementnumber>1){
+                    target.setAttribute("childElementNumber",`${childelementnumber-1}`)
+                    target.style.zIndex = childelementnumber-1
+                    newLayouts.changeStyle({ zIndex : childelementnumber-1 },id,layout)
                 }
-            })
-            if(childelementnumber>1){
-                target.setAttribute("childElementNumber",`${childelementnumber-1}`)
-                target.style.zIndex = childelementnumber-1
             }
+        if(selection){ selection.remove(), selectionElement() }
     })
 
 
 let zIndexFirst = document.getElementById("z-index-first")
     zIndexFirst.addEventListener("click", function(){
+        let layoutStyle = window.getComputedStyle(siteConstructorContent)
+        let layout = parseInt(layoutStyle.width)
         let elements = document.getElementById("elements")
         let target = document.querySelector(".target")
-        let childelementnumber = parseInt(target.getAttribute("childelementnumber"))  
-        let childelementnumberAll = document.querySelectorAll('[childelementnumber]')
-            childelementnumberAll.forEach((el,i)=>{
+        let selection = document.querySelector(".selection")
+            if(target){
+                let id = target.id
+                let childelementnumber = parseInt(target.getAttribute("childelementnumber"))  
+                let childelementnumberAll = document.querySelectorAll('[childelementnumber]')
+                    childelementnumberAll.forEach((el,i)=>{
                 let atributeValue = parseInt(el.getAttribute('childelementnumber'))
-                if(atributeValue < childelementnumber){
-                    el.setAttribute("childElementNumber",`${atributeValue+1}`)
-                    el.style.zIndex = atributeValue+1
+                    if(atributeValue < childelementnumber){
+                        el.setAttribute("childElementNumber",`${atributeValue+1}`)
+                        el.style.zIndex = atributeValue+1
+                        }
+                    })
+                    target.setAttribute("childElementNumber",`1`)
+                    target.style.zIndex = 1
+                    newLayouts.changeStyle({ zIndex : 1 },id,layout)
                 }
-            })
-                target.setAttribute("childElementNumber",`1`)
-                target.style.zIndex = 1
+            if(selection){ selection.remove(), selectionElement() }
     })
 
 let zIndexLast = document.getElementById("z-index-last")
     zIndexLast.addEventListener("click", function(){
+        let layoutStyle = window.getComputedStyle(siteConstructorContent)
+        let layout = parseInt(layoutStyle.width)
         let elements = document.getElementById("elements")
         let target = document.querySelector(".target")
-        let ElementLink = document.getElementById(`link-${target.id}`)
-        let childelementnumber = parseInt(target.getAttribute("childelementnumber"))  
-        let childelementnumberAll = document.querySelectorAll('[childelementnumber]')
-            childelementnumberAll.forEach((el,i)=>{
+        let selection = document.querySelector(".selection")
+            if(target){
+                let id = target.id
+                let ElementLink = document.getElementById(`link-${target.id}`)
+                let childelementnumber = parseInt(target.getAttribute("childelementnumber"))  
+                let childelementnumberAll = document.querySelectorAll('[childelementnumber]')
+                    childelementnumberAll.forEach((el,i)=>{
                 let atributeValue = parseInt(el.getAttribute('childelementnumber'))
-                if(atributeValue > childelementnumber){
-                    el.setAttribute("childElementNumber",`${atributeValue-1}`)
-                    el.style.zIndex = atributeValue-1
+                    if(atributeValue > childelementnumber){
+                        el.setAttribute("childElementNumber",`${atributeValue-1}`)
+                        el.style.zIndex = atributeValue-1
+                        }
+                    })
+                    target.setAttribute("childElementNumber",`${elements.childNodes.length}`)
+                    target.style.zIndex = elements.childNodes.length
+                    newLayouts.changeStyle({ zIndex : elements.childNodes.length },id,layout)
                 }
-            })
-                target.setAttribute("childElementNumber",`${elements.childNodes.length}`)
-                target.style.zIndex = elements.childNodes.length
+            if(selection){ selection.remove(), selectionElement() }
     })
