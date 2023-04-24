@@ -597,6 +597,13 @@ input[type=number]::-webkit-outer-spin-button {
     background-size: 25px auto;
     background-repeat: no-repeat;
 }
+.html{
+    width: 25px;
+    height: 25px;
+    background: url("../images/html.png");
+    background-size: 25px auto;
+    background-repeat: no-repeat;
+}
 .text{
     width: 25px;
     height: 25px;
