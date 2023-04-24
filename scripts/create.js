@@ -1,5 +1,5 @@
 //Функция которая создает ноый элемент
-function createNewElement(element,elementClass,inputId){
+function createNewElement(element,elementClass,zIndex,inputId){
     let elements = document.getElementById("elements")
     let date = new Date()
     let id = inputId?inputId:date.getTime()
@@ -14,8 +14,8 @@ function createNewElement(element,elementClass,inputId){
         newElement.style.top = "40%"      
         siteConstructorContainer.style.width = "1200px"
         elements.append(newElement) 
-        newElement.style.zIndex =  elements.childElementCount
-        newElement.setAttribute("childElementNumber",`${elements.childElementCount}`) 
+        newElement.style.zIndex = zIndex? zIndex:  elements.childElementCount
+        newElement.setAttribute("childElementNumber",`${zIndex?zIndex:elements.childElementCount}`) 
         ElementLink.classList.add("element-link")  
         ElementLink.id = "link-"+id                
         ElementLink.addEventListener("click", function(){newElement.click()})
@@ -66,7 +66,6 @@ function createNewElement(element,elementClass,inputId){
             }
 
         newLayouts.addElement(id)                       //Создаем стили новому элементу в layouts
-
 //Создает событие для нового элемента
         newElement.addEventListener("mousedown",(e)=>{ // Собтие удержания элемента для перемещения
             if(e.target.hasAttribute("contenteditable")  === false && document.body.classList.contains("movable")=== false){ // проверка наличие атрибута для редактирования

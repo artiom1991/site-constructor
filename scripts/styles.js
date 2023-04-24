@@ -482,7 +482,7 @@ let topCenter = document.getElementById("top-center")
             if(selection){ selection.remove(), selectionElement() }
     })
 
-let zIndexPlus = document.getElementById("z-index-plus")
+let zIndexPlus = document.getElementById("z-index-plus")    
     zIndexPlus.addEventListener("click", function(){
         let layoutStyle = window.getComputedStyle(siteConstructorContent)
         let layout = parseInt(layoutStyle.width)
@@ -494,17 +494,20 @@ let zIndexPlus = document.getElementById("z-index-plus")
                 let childelementnumber = parseInt(target.getAttribute("childelementnumber"))
                 let childelementnumberAll = document.querySelectorAll('[childelementnumber]')
                     childelementnumberAll.forEach((el,i)=>{
-                let atributeValue = parseInt(el.getAttribute('childelementnumber'))
-                    if(atributeValue === childelementnumber+1){
-                        el.setAttribute("childElementNumber",`${atributeValue-1}`)
-                        el.style.zIndex = atributeValue-1
-                        }
+                        let elId = el.id
+                        let atributeValue = parseInt(el.getAttribute('childelementnumber'))
+                        if(atributeValue === childelementnumber+1){
+                            el.setAttribute("childElementNumber",`${atributeValue-1}`)
+                            el.style.zIndex = atributeValue-1
+                            newLayouts.changeStyle({ zIndex : atributeValue-1 },elId,layout)
+                            }
                     })
-                    if(elements.childNodes.length>childelementnumber){
-                        target.setAttribute("childElementNumber",`${childelementnumber+1}`)
-                        target.style.zIndex = childelementnumber+1
-                        newLayouts.changeStyle({ zIndex : childelementnumber+1 },id,layout)
-                        }
+                if(elements.childNodes.length>childelementnumber){
+                    target.setAttribute("childElementNumber",`${childelementnumber+1}`)
+                    target.style.zIndex = childelementnumber+1
+                    newLayouts.changeStyle({ zIndex : childelementnumber+1 },id,layout)
+                    newLayouts.updateElements()
+                    }
                 }
             if(selection){ selection.remove(), selectionElement() }
     })
@@ -521,16 +524,19 @@ let zIndexMinus = document.getElementById("z-index-minus")
             let childelementnumber = parseInt(target.getAttribute("childelementnumber"))
             let childelementnumberAll = document.querySelectorAll('[childelementnumber]')
                 childelementnumberAll.forEach((el,i)=>{
+                    let elId = el.id
             let atributeValue = parseInt(el.getAttribute('childelementnumber'))
                 if(atributeValue === childelementnumber-1){
                     el.setAttribute("childElementNumber",`${atributeValue+1}`)
                     el.style.zIndex = atributeValue+1
+                    newLayouts.changeStyle({ zIndex : atributeValue+1 },elId,layout)
                     }
                 })
                 if(childelementnumber>1){
                     target.setAttribute("childElementNumber",`${childelementnumber-1}`)
                     target.style.zIndex = childelementnumber-1
                     newLayouts.changeStyle({ zIndex : childelementnumber-1 },id,layout)
+                    newLayouts.updateElements()
                 }
             }
         if(selection){ selection.remove(), selectionElement() }
@@ -549,15 +555,18 @@ let zIndexFirst = document.getElementById("z-index-first")
                 let childelementnumber = parseInt(target.getAttribute("childelementnumber"))  
                 let childelementnumberAll = document.querySelectorAll('[childelementnumber]')
                     childelementnumberAll.forEach((el,i)=>{
-                let atributeValue = parseInt(el.getAttribute('childelementnumber'))
-                    if(atributeValue < childelementnumber){
-                        el.setAttribute("childElementNumber",`${atributeValue+1}`)
-                        el.style.zIndex = atributeValue+1
-                        }
+                        let elId = el.id
+                        let atributeValue = parseInt(el.getAttribute('childelementnumber'))
+                        if(atributeValue < childelementnumber){
+                            el.setAttribute("childElementNumber",`${atributeValue+1}`)
+                            el.style.zIndex = atributeValue+1
+                            newLayouts.changeStyle({ zIndex : atributeValue+1 },elId,layout)
+                            }
                     })
                     target.setAttribute("childElementNumber",`1`)
                     target.style.zIndex = 1
                     newLayouts.changeStyle({ zIndex : 1 },id,layout)
+                    newLayouts.updateElements()
                 }
             if(selection){ selection.remove(), selectionElement() }
     })
@@ -575,15 +584,18 @@ let zIndexLast = document.getElementById("z-index-last")
                 let childelementnumber = parseInt(target.getAttribute("childelementnumber"))  
                 let childelementnumberAll = document.querySelectorAll('[childelementnumber]')
                     childelementnumberAll.forEach((el,i)=>{
+                        let elId = el.id
                 let atributeValue = parseInt(el.getAttribute('childelementnumber'))
                     if(atributeValue > childelementnumber){
                         el.setAttribute("childElementNumber",`${atributeValue-1}`)
                         el.style.zIndex = atributeValue-1
+                        newLayouts.changeStyle({ zIndex : atributeValue-1 },elId,layout)
                         }
                     })
                     target.setAttribute("childElementNumber",`${elements.childNodes.length}`)
                     target.style.zIndex = elements.childNodes.length
                     newLayouts.changeStyle({ zIndex : elements.childNodes.length },id,layout)
+                    newLayouts.updateElements()
                 }
             if(selection){ selection.remove(), selectionElement() }
     })

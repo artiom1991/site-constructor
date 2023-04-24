@@ -63,7 +63,8 @@ let newLayouts = {
             let newElementStyles = window.getComputedStyle(element)
             let elementContent = {
                 tagName:element.tagName,
-                textContent:element.textContent
+                textContent:element.textContent,
+                childElementNumber:element.getAttribute("childElementNumber")
             }
             let elementStyle = {
                     width:{
@@ -205,6 +206,7 @@ let newLayouts = {
             this.layouts[layout][id] = {...elementStyle}
             this.elements[id] = {...elementContent}
         }
+        console.log(this)
     },
     changeStyle(styles,id,layoutActive){
         for(let layout in this.layouts){
@@ -221,6 +223,7 @@ let newLayouts = {
                     this.layouts[layout][id][key].count = styles[key]
                     this.layouts[layout][id][key].inherided = layoutActive
                     this.layouts[layout][id][key].isPrivate = true
+                    console.log("key",key,styles[key])
                 }
             }
         }
@@ -238,6 +241,14 @@ let newLayouts = {
                 }
             })
             if(selection){selection.remove()}
+    },
+    updateElements(){
+        let elementsAll = document.querySelectorAll(".element")
+            elementsAll.forEach(el=>{
+                let id = el.id
+                    this.elements[id].childElementNumber = el.getAttribute("childElementNumber")
+            })
+        console.log('updatedElements',this)
     },
     deleteElement(id){
         delete this.elements[id]
