@@ -2,6 +2,8 @@ let htmlBlock = document.querySelector(".htmlBlock")
     htmlBlock.addEventListener("click", generateHtml)
 
 function generateHtml(){
+    let containerInner = document.createElement('div')
+        containerInner.classList.add("containerInner")
     let container = document.createElement('div')
         container.classList.add("container")
     let getLayouts = localStorage.getItem('layouts')
@@ -10,11 +12,14 @@ function generateHtml(){
         margin: 0;
         padding: 0;
         width: 100%;
-        display: flex;
-        justify-content: center;
         overflow: hidden;
     }
     .container{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .containerInner{
         width: 1200px;
         height: 550px;
         background: #00000028;
@@ -25,13 +30,13 @@ function generateHtml(){
         if(leyout == "320"){
             console.log(leyout)
             media = `@media (max-width: 480px){
-                .container{
+                .containerInner{
                     width: ${leyout}px;
                 }`
             
         }else{
             media = `@media (min-width: ${leyout}px){
-                .container{
+                .containerInner{
                     width: ${leyout}px;
                 }`
         }
@@ -75,13 +80,14 @@ function generateHtml(){
             let createELement = document.createElement(jsonParseElements[el].tagName)
                     createELement.textContent = jsonParseElements[el].textContent
                     createELement.id = "e"+el
-                    container.append(createELement)
+                    containerInner.append(createELement)
+                    container.append(containerInner)
         }
-        let style = document.createElement("style")
+    let style = document.createElement("style")
         style.innerHTML = styles
-        let newWindow = window.open('', '', 'width=1400px,height=900px')
+    let newWindow = window.open('', '', 'width=1400px,height=900px')
         newWindow.document.write('<html><head><title>Новое окно</title></head><body></body></html>')
-        newWindow.document.body.append(style,container);
+        newWindow.document.body.append(style,container)
 }
 
 
