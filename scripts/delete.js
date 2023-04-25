@@ -13,6 +13,7 @@ document.addEventListener("keydown", function(event) {  // Создает соб
                     target.remove()             //Удаляем target
                     textStyleEditor.style.display = "none"
                     generalStyleEditor.style.display = "none"
+                    buttonStyleEditor.style.display = "none"
                     link.remove()               //Удаляем ссылку на элемент target
             }
       }

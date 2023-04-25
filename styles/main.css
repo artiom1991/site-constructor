@@ -150,7 +150,15 @@ font-family: 'Roboto', sans-serif; */
     padding: 10px 25px;
     user-select: none;
     border-radius: 5px;
+
     /* transition: 1s all ease; */
+}
+.constructor-element-style-container{
+    height: calc(100% - 60px);
+    overflow-y: scroll;
+}
+.constructor-element-style-container::-webkit-scrollbar {
+    display: none;
 }
 .site-constructor-element-style-hide{
     /* transition: 1s all ease; */

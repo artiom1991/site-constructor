@@ -2,7 +2,7 @@ let htmlBlock = document.querySelector(".htmlBlock")
     htmlBlock.addEventListener("click", generateHtml)
 
 function generateHtml(){
-    let styles = `*{transition:1s all ease;}body{margin:0;padding:0;width:100%;overflow:hidden;}.container{width:100%;display:flex;justify-content:center;}.containerInner{width:1200px;height:550px;background:#00000028;position:relative;}`
+    let styles = `*{transition:1s all ease;}body{margin:0;padding:0;width:100%;overflow:hidden;}.container{width:100%;display:flex;justify-content:center;}.containerInner{width:1200px;height:550px;position:relative;}`
     let newWindow = window.open('', '', 'width=1400px,height=900px')
     let styleElement = document.createElement("style")
     let containerInner = document.createElement('div')
