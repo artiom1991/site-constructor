@@ -14,27 +14,27 @@ function changeStyle(event,styleName){
 }
 
 let font = document.getElementById("font")
-    font.addEventListener("change", function(event){ changeStyle(event,"fontFamily") })
+    font.addEventListener("change", function(event){ changeStyle(event,"font-family") })
 
 let pseudoFontColor = document.querySelector(".input-color")
     pseudoFontColor.addEventListener("click", function(){ color.click() })
 let color = document.getElementById("color")
     color.addEventListener("input", function(event){ changeStyle(event,"color") })
     color.addEventListener("input", function(event){ 
-        pseudoFontColor.style.background = `${event.target.value}`
+        pseudoFontColor.style.backgroundColor = `${event.target.value}`
     })
 
 let textDecoration = document.getElementById("text-decoration")
-    textDecoration.addEventListener("change", function(event){ changeStyle(event,"textDecoration") })
+    textDecoration.addEventListener("change", function(event){ changeStyle(event,"text-decoration") })
 
 let fontStyle = document.getElementById("font-style")
-    fontStyle.addEventListener("change", function(event){ changeStyle(event,"fontStyle") })
+    fontStyle.addEventListener("change", function(event){ changeStyle(event,"font-style") })
 
 let fontWeight = document.getElementById("font-weight")
-    fontWeight.addEventListener("change", function(event){ changeStyle(event,"fontWeight") })
+    fontWeight.addEventListener("change", function(event){ changeStyle(event,"font-weight") })
 
 let textAlign = document.getElementById("text-align")
-    textAlign.addEventListener("input", function(event){ changeStyle(event,"textAlign") })
+    textAlign.addEventListener("input", function(event){ changeStyle(event,"text-align") })
 
 
 let textContent = document.getElementById("add-text")
@@ -57,22 +57,22 @@ let butttonLink = document.getElementById("add-link")
 
 
 let textTransform = document.getElementById("text-transform")
-    textTransform.addEventListener("input", function(event){ changeStyle(event,"textTransform") })
+    textTransform.addEventListener("input", function(event){ changeStyle(event,"text-transform") })
 
 let pseudoBackground = document.getElementById("pseudo-background")
     pseudoBackground.addEventListener("click", function(){ changeBackground.click() })
 let changeBackground = document.getElementById("change-background")
-    changeBackground.addEventListener("input", function(event){ changeStyle(event,"background") })
-    changeBackground.addEventListener("input", function(event){ pseudoBackground.style.background = `${event.target.value}` })
+    changeBackground.addEventListener("input", function(event){ changeStyle(event,"background-color") })
+    changeBackground.addEventListener("input", function(event){ pseudoBackground.style.backgroundColor = `${event.target.value}` })
 
 let displaySelect = document.getElementById("display-select")
     displaySelect.addEventListener("change", function(event){ changeStyle(event,"display") })
 
 let alignItemsSelect = document.getElementById("align-items-select")
-    alignItemsSelect.addEventListener("change", function(event){ changeStyle(event,"alignItems") })
+    alignItemsSelect.addEventListener("change", function(event){ changeStyle(event,"align-items") })
 
 let justifyContentSelect = document.getElementById("justify-content-select")
-    justifyContentSelect.addEventListener("change", function(event){ changeStyle(event,"justifyContent") })
+    justifyContentSelect.addEventListener("change", function(event){ changeStyle(event,"justify-content") })
 
 let lineHeight  = document.getElementById("line-height")
     lineHeight.addEventListener("input", function(event){ 
@@ -83,7 +83,7 @@ let lineHeight  = document.getElementById("line-height")
             if(target){ 
                 let id = target.id  
                     target.style.lineHeight  = `${event.target.value}px`
-                    newLayouts.changeStyle({ letterSpacing : `${event.target.value}px`},id,layout)
+                    newLayouts.changeStyle({ "line-height" : `${event.target.value}px`},id,layout)
             }
             if(selection){ selection.remove(), selectionElement() }
     })
@@ -97,7 +97,7 @@ let letterSpacing = document.getElementById("letter-spacing")
             if(target){ 
                 let id = target.id  
                     target.style.letterSpacing  = `${event.target.value}px`
-                    newLayouts.changeStyle({ letterSpacing : `${event.target.value}px`},id,layout)
+                    newLayouts.changeStyle({ "letter-spacing" : `${event.target.value}px`},id,layout)
             }
             if(selection){ selection.remove(), selectionElement() }
     })
@@ -116,7 +116,7 @@ let fontSizeSelect = document.getElementById("font-px")
             if(target){ 
                 let id = target.id  
                     target.style.fontSize = `${fontSizeValue}${fontSizeUm}` 
-                    newLayouts.changeStyle({ fontSize : `${fontSizeValue}${fontSizeUm}`},id,layout)
+                    newLayouts.changeStyle({ "font-size" : `${fontSizeValue}${fontSizeUm}`},id,layout)
             }
             if(selection){ selection.remove(), selectionElement() }
     }
@@ -143,8 +143,8 @@ let textShadowColor = document.getElementById("text-shadow-color")
             if(target){ 
                 let id = target.id 
                     target.style.textShadow = `${xShadow} ${yShadow} ${blurShadow} ${colorShadow}` 
-                    pseudeTextShadowColor.style.background = textShadowColor.value
-                    newLayouts.changeStyle({ textShadow : `${xShadow} ${yShadow} ${blurShadow} ${colorShadow}`},id,layout)
+                    pseudeTextShadowColor.style.backgroundColor = textShadowColor.value
+                    newLayouts.changeStyle({ "text-shadow" : `${xShadow} ${yShadow} ${blurShadow} ${colorShadow}`},id,layout)
             }
             if(selection){ selection.remove(), selectionElement() }
     }
@@ -165,7 +165,7 @@ let heightSelect = document.getElementById("height-select")
             if(target){ 
                 let id = target.id 
                     target.style.height = `${heightValue}${heightUm}` 
-                    newLayouts.changeStyle({ height : `${heightValue}${heightUm}`},id,layout)
+                    newLayouts.changeStyle({ "height" : `${heightValue}${heightUm}`},id,layout)
             }
             if(selection){ selection.remove(), selectionElement() }
     }
@@ -184,7 +184,7 @@ let widthSelect = document.getElementById("width-select")
             if(target){ 
                 let id = target.id 
                     target.style.width = `${widthValue}${widthUm}` 
-                    newLayouts.changeStyle({ width : `${widthValue}${widthUm}` },id,layout)
+                    newLayouts.changeStyle({ "width" : `${widthValue}${widthUm}` },id,layout)
             }
             if(selection){ selection.remove(), selectionElement() }
     }
@@ -209,7 +209,7 @@ let marginLeftInput = document.getElementById("margin-left-input")
             if(target){ 
                 let id = target.id 
                     target.style.margin = `${martinTopValue}px ${martinRightValue}px ${martinBottomValue}px ${martinLeftValue}px` 
-                    newLayouts.changeStyle({ margin : `${martinTopValue}px ${martinRightValue}px ${martinBottomValue}px ${martinLeftValue}px` },id,layout)
+                    newLayouts.changeStyle({ "margin" : `${martinTopValue}px ${martinRightValue}px ${martinBottomValue}px ${martinLeftValue}px` },id,layout)
             }
             if(selection){ selection.remove(), selectionElement() }
     }
@@ -234,7 +234,7 @@ let paddingLeftInput = document.getElementById("padding-left-input")
             if(target){ 
                 let id = target.id 
                     target.style.padding = `${paddingTopValue}px ${paddingRightValue}px ${paddingBottomValue}px ${paddingLeftValue}px` 
-                    newLayouts.changeStyle({ padding : `${paddingTopValue}px ${paddingRightValue}px ${paddingBottomValue}px ${paddingLeftValue}px` },id,layout)
+                    newLayouts.changeStyle({ "padding" : `${paddingTopValue}px ${paddingRightValue}px ${paddingBottomValue}px ${paddingLeftValue}px` },id,layout)
             }
             if(selection){ selection.remove(), selectionElement() }
     }
@@ -253,7 +253,7 @@ let positionTopSelect = document.getElementById("position-top-select")
             if(target){ 
                 let id = target.id
                     target.style.top = `${topValue}${topUm}` 
-                    newLayouts.changeStyle({ top : `${topValue}${topUm}` },id,layout)
+                    newLayouts.changeStyle({ "top" : `${topValue}${topUm}` },id,layout)
             }
             if(selection){ selection.remove(), selectionElement() }
     }
@@ -272,7 +272,7 @@ let positionLeftSelect = document.getElementById("position-left-select")
             if(target){ 
                 let id = target.id
                     target.style.left = `${leftValue}${LeftUm}` 
-                    newLayouts.changeStyle({ left : `${leftValue}${LeftUm}` },id,layout)
+                    newLayouts.changeStyle({ "left" : `${leftValue}${LeftUm}` },id,layout)
             }
             if(selection){ selection.remove(), selectionElement() }
     }
@@ -293,8 +293,8 @@ let borderColorInput = document.getElementById("border-color-input")
             if(target){ 
                 let id = target.id
                     target.style.border = `${BorderValue}px ${borderColorValue} solid` 
-                    pseudoBorderColor.style.background = borderColorValue
-                    newLayouts.changeStyle({ border : `${BorderValue}px ${borderColorValue} solid` },id,layout)
+                    pseudoBorderColor.style.backgroundColor = borderColorValue
+                    newLayouts.changeStyle({ "border" : `${BorderValue}px ${borderColorValue} solid` },id,layout)
             }
             if(selection){ selection.remove(), selectionElement() }
     }
@@ -321,7 +321,7 @@ let boxShadowColor = document.getElementById("box-shadow-color")
             if(target){ 
                 let id = target.id
                     target.style.boxShadow = `${leftShadow} ${topShadow} ${blurShadow} ${colorShadow}` 
-                    pseudeBoxShadowColor.style.background = colorShadow
+                    pseudeBoxShadowColor.style.backgroundColor = colorShadow
                     newLayouts.changeStyle({ "box-shadow" : `${leftShadow} ${topShadow} ${blurShadow} ${colorShadow}` },id,layout)
             }
             if(selection){ selection.remove(), selectionElement() }
@@ -338,7 +338,7 @@ let changeOpacity = document.getElementById("opacity-input")
             if(target){ 
                 let id = target.id
                     target.style.opacity = `${event.target.value / 100}` 
-                    newLayouts.changeStyle({ opacity : `${event.target.value / 100}` },id,layout)
+                    newLayouts.changeStyle({ "opacity" : `${event.target.value / 100}` },id,layout)
             }
             if(selection){ selection.remove(), selectionElement() }
     })
@@ -357,7 +357,7 @@ let borderRadiusSelect = document.getElementById("border-radius-select")
             if(target){ 
                 let id = target.id
                     target.style.borderRadius = `${borderRadiusValue}${borderRadiustUm}` 
-                    newLayouts.changeStyle({ borderRadius : `${borderRadiusValue}${borderRadiustUm}` },id,layout)
+                    newLayouts.changeStyle({ "border-radius" : `${borderRadiusValue}${borderRadiustUm}` },id,layout)
         }
             if(selection){ selection.remove(), selectionElement() }
     }
@@ -379,19 +379,21 @@ let rotateXInput = document.getElementById("rotate-input")
             if(target){ 
                 let id = target.id
                     target.style.transform  = ` translate(${translateXValue}px, ${translateYValue}px) rotate(${rotateValue}deg)` 
-                    newLayouts.changeStyle({ transform : ` translate(${translateXValue}px, ${translateYValue}px) rotate(${rotateValue}deg)`  },id,layout)
+                    newLayouts.changeStyle({ "transform" : ` translate(${translateXValue}px, ${translateYValue}px) rotate(${rotateValue}deg)`  },id,layout)
             }
             if(selection){ selection.remove(), selectionElement() }
     }
 
 let leftZero = document.getElementById("left-zero")
     leftZero.addEventListener("click", function(){   
+        let layoutStyle = window.getComputedStyle(siteConstructorContent)
+        let layout = parseInt(layoutStyle.width)
         let target = document.querySelector(".target")
         let selection = document.querySelector(".selection")
             if(target){ 
                 let id = target.id
                     target.style.left = `0px` 
-                    newLayouts.changeStyle({ left : `0px` },id,layout)
+                    newLayouts.changeStyle({ "left" : `0px` },id,layout)
                 }
             if(selection){ selection.remove(), selectionElement() }
     })
@@ -408,7 +410,7 @@ let rightZero = document.getElementById("right-zero")
             if(target){ 
                 let id = target.id
                     target.style.left = `${count}px`
-                    newLayouts.changeStyle({ left : `${count}px` },id,layout)
+                    newLayouts.changeStyle({ "left" : `${count}px` },id,layout)
                 }
             if(selection){ selection.remove(), selectionElement() }
     })
@@ -425,7 +427,7 @@ let leftCenter = document.getElementById("left-center")
             if(target){ 
                 let id = target.id
                     target.style.left = `${count}px` 
-                    newLayouts.changeStyle({ left : `${count}px` },id,layout)
+                    newLayouts.changeStyle({ "left" : `${count}px` },id,layout)
                 }
             if(selection){ selection.remove(), selectionElement() }
     })
@@ -441,7 +443,7 @@ let topZero = document.getElementById("top-zero")
             if(target){ 
                 let id = target.id
                     target.style.top = `0px` 
-                    newLayouts.changeStyle({ top : `0px` },id,layout)
+                    newLayouts.changeStyle({ "top" : `0px` },id,layout)
                 }
             if(selection){ selection.remove(), selectionElement() }
     })
@@ -459,7 +461,7 @@ let bottomZero = document.getElementById("bottom-zero")
             if(target){ 
                 let id = target.id
                     target.style.top = `${count}px`
-                    newLayouts.changeStyle({ top : `${count}px` },id,layout)
+                    newLayouts.changeStyle({ "top" : `${count}px` },id,layout)
                 }
             if(selection){ selection.remove(), selectionElement() }
     })
@@ -477,7 +479,7 @@ let topCenter = document.getElementById("top-center")
             if(target){ 
                 let id = target.id
                     target.style.top = `${count}px` 
-                    newLayouts.changeStyle({ top : `${count}px` },id,layout)
+                    newLayouts.changeStyle({ "top" : `${count}px` },id,layout)
                 }
             if(selection){ selection.remove(), selectionElement() }
     })
@@ -499,13 +501,13 @@ let zIndexPlus = document.getElementById("z-index-plus")
                         if(atributeValue === childelementnumber+1){
                             el.setAttribute("childElementNumber",`${atributeValue-1}`)
                             el.style.zIndex = atributeValue-1
-                            newLayouts.changeStyle({ zIndex : atributeValue-1 },elId,layout)
+                            newLayouts.changeStyle({ "z-index" : atributeValue-1 },elId,layout)
                             }
                     })
                 if(elements.childNodes.length>childelementnumber){
                     target.setAttribute("childElementNumber",`${childelementnumber+1}`)
                     target.style.zIndex = childelementnumber+1
-                    newLayouts.changeStyle({ zIndex : childelementnumber+1 },id,layout)
+                    newLayouts.changeStyle({ "z-index" : childelementnumber+1 },id,layout)
                     newLayouts.updateElements()
                     }
                 }
@@ -529,13 +531,13 @@ let zIndexMinus = document.getElementById("z-index-minus")
                 if(atributeValue === childelementnumber-1){
                     el.setAttribute("childElementNumber",`${atributeValue+1}`)
                     el.style.zIndex = atributeValue+1
-                    newLayouts.changeStyle({ zIndex : atributeValue+1 },elId,layout)
+                    newLayouts.changeStyle({ "z-index" : atributeValue+1 },elId,layout)
                     }
                 })
                 if(childelementnumber>1){
                     target.setAttribute("childElementNumber",`${childelementnumber-1}`)
                     target.style.zIndex = childelementnumber-1
-                    newLayouts.changeStyle({ zIndex : childelementnumber-1 },id,layout)
+                    newLayouts.changeStyle({ "z-index" : childelementnumber-1 },id,layout)
                     newLayouts.updateElements()
                 }
             }
@@ -560,12 +562,12 @@ let zIndexFirst = document.getElementById("z-index-first")
                         if(atributeValue < childelementnumber){
                             el.setAttribute("childElementNumber",`${atributeValue+1}`)
                             el.style.zIndex = atributeValue+1
-                            newLayouts.changeStyle({ zIndex : atributeValue+1 },elId,layout)
+                            newLayouts.changeStyle({ "z-index" : atributeValue+1 },elId,layout)
                             }
                     })
                     target.setAttribute("childElementNumber",`1`)
                     target.style.zIndex = 1
-                    newLayouts.changeStyle({ zIndex : 1 },id,layout)
+                    newLayouts.changeStyle({ "z-index" : 1 },id,layout)
                     newLayouts.updateElements()
                 }
             if(selection){ selection.remove(), selectionElement() }
@@ -589,12 +591,12 @@ let zIndexLast = document.getElementById("z-index-last")
                     if(atributeValue > childelementnumber){
                         el.setAttribute("childElementNumber",`${atributeValue-1}`)
                         el.style.zIndex = atributeValue-1
-                        newLayouts.changeStyle({ zIndex : atributeValue-1 },elId,layout)
+                        newLayouts.changeStyle({ "z-index" : atributeValue-1 },elId,layout)
                         }
                     })
                     target.setAttribute("childElementNumber",`${elements.childNodes.length}`)
                     target.style.zIndex = elements.childNodes.length
-                    newLayouts.changeStyle({ zIndex : elements.childNodes.length },id,layout)
+                    newLayouts.changeStyle({ "z-index" : elements.childNodes.length },id,layout)
                     newLayouts.updateElements()
                 }
             if(selection){ selection.remove(), selectionElement() }

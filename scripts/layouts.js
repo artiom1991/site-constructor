@@ -67,112 +67,112 @@ let newLayouts = {
                 childElementNumber:element.getAttribute("childElementNumber")
             }
             let elementStyle = {
-                    width:{
+                    "width":{
                         count:newElementStyles.width,
                         isPrivate:false,
                         inherided:1200
                     },
-                    height:{
+                    "height":{
                         count:newElementStyles.height,
                         isPrivate:false,
                         inherided:1200
                     },
-                    top:{
+                    "top":{
                         count:newElementStyles.top,
                         isPrivate:false,
                         inherided:1200
                     },
-                    left:{
+                    "left":{
                         count:newElementStyles.left,
                         isPrivate:false,
                         inherided:1200
                     },
-                    fontFamily:{
+                    "font-family":{
                         count:newElementStyles.fontFamily,
                         isPrivate:false,
                         inherided:1200
                     },
-                    color:{
+                    "color":{
                         count:newElementStyles.color,
                         isPrivate:false,
                         inherided:1200
                     },
-                    textDecoration:{
+                    "text-decoration":{
                         count:newElementStyles.textDecoration,
                         isPrivate:false,
                         inherided:1200
                     },
-                    fontStyle:{
+                    "font-style":{
                         count:newElementStyles.fontStyle,
                         isPrivate:false,
                         inherided:1200
                     },
-                    fontWeight:{
+                    "font-weight":{
                         count:newElementStyles.fontWeight,
                         isPrivate:false,
                         inherided:1200
                     },
-                    lineHeight:{
+                    "line-height":{
                         count:newElementStyles.lineHeight,
                         isPrivate:false,
                         inherided:1200
                     },
-                    textAlign:{
+                    "text-align":{
                         count:newElementStyles.textAlign,
                         isPrivate:false,
                         inherided:1200
                     },
-                    textTransform:{
+                    "text-transform":{
                         count:newElementStyles.textTransform,
                         isPrivate:false,
                         inherided:1200
                     },
-                    background:{
-                        count:newElementStyles.background,
+                    "background-color":{
+                        count:newElementStyles.backgroundColor,
                         isPrivate:false,
                         inherided:1200
                     },
-                    display:{
+                    "display":{
                         count:newElementStyles.display,
                         isPrivate:false,
                         inherided:1200
                     },
-                    alignItems:{
+                    "align-items":{
                         count:newElementStyles.alignItems,
                         isPrivate:false,
                         inherided:1200
                     },
-                    justifyContent:{
+                    "justify-content":{
                         count:newElementStyles.justifyContent,
                         isPrivate:false,
                         inherided:1200
                     },
-                    letterSpacing:{
+                    "letter-spacing":{
                         count:newElementStyles.letterSpacing,
                         isPrivate:false,
                         inherided:1200
                     },
-                    fontSize:{
+                    "font-size":{
                         count:newElementStyles.fontSize,
                         isPrivate:false,
                         inherided:1200
                     },
-                    textShadow:{
+                    "text-shadow":{
                         count:newElementStyles.textShadow,
                         isPrivate:false,
                         inherided:1200
                     },
-                    margin:{
+                    "margin":{
                         count:newElementStyles.margin,
                         isPrivate:false,
                         inherided:1200
                     },
-                    padding:{
+                    "padding":{
                         count:newElementStyles.padding,
                         isPrivate:false,
                         inherided:1200
                     },
-                    border:{
+                    "border":{
                         count:newElementStyles.border,
                         isPrivate:false,
                         inherided:1200
@@ -182,23 +182,28 @@ let newLayouts = {
                         isPrivate:false,
                         inherided:1200
                     },
-                    opacity:{
+                    "opacity":{
                         count:newElementStyles.opacity,
                         isPrivate:false,
                         inherided:1200
                     },
-                    borderRadius:{
+                    "border-radius":{
                         count:newElementStyles.borderRadius,
                         isPrivate:false,
                         inherided:1200
                     },
-                    transform:{
+                    "transform":{
                         count:newElementStyles.transform,
                         isPrivate:false,
                         inherided:1200
                     },
-                    zIndex:{
+                    "z-index":{
                         count:newElementStyles.zIndex,
+                        isPrivate:false,
+                        inherided:1200
+                    },
+                    "position":{
+                        count:newElementStyles.position,
                         isPrivate:false,
                         inherided:1200
                     }

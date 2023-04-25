@@ -11,7 +11,8 @@ function createNewElement(element,elementClass,zIndex,inputId){
         newElement.classList.add("element")
         newElement.id = id
         newElement.style.left = "40%"      
-        newElement.style.top = "40%"      
+        newElement.style.top = "40%"   
+        newElement.style.position = "absolute"     
         siteConstructorContainer.style.width = "1200px"
         elements.append(newElement) 
         newElement.style.zIndex = zIndex? zIndex:  elements.childElementCount
@@ -30,7 +31,7 @@ function createNewElement(element,elementClass,zIndex,inputId){
                 newElement.classList.add("RECTANGLE")         
                 newElement.style.width = "200px"          
                 newElement.style.height = "200px"       
-                newElement.style.background = "#d1d1d1" 
+                newElement.style.backgroundColor = "#d1d1d1" 
                 elementContent.textContent = "RECTANGLE"   
             }
             if(elementClass==="CIRCLE"){     
@@ -38,7 +39,7 @@ function createNewElement(element,elementClass,zIndex,inputId){
                 newElement.style.width = "200px"          
                 newElement.style.height = "200px"    
                 newElement.style.borderRadius = "100%"  
-                newElement.style.background = "#d1d1d1"  
+                newElement.style.backgroundColor = "#d1d1d1"  
                 elementContent.textContent = "CIRCLE"     
             }
             if(elementClass==="LINE"){     
@@ -46,7 +47,7 @@ function createNewElement(element,elementClass,zIndex,inputId){
                 newElement.style.width = "200px"          
                 newElement.style.height = "1px"   
                 newElement.style.minHeight = "1px" 
-                newElement.style.background = "#d1d1d1"    
+                newElement.style.backgroundColor = "#d1d1d1"    
                 elementContent.textContent = "LINE"   
             }
 
@@ -54,8 +55,7 @@ function createNewElement(element,elementClass,zIndex,inputId){
                 newElement.textContent = "button"   
                 newElement.style.padding = "5px 10px" 
                 elementContent.textContent = "button"   
-                newElement.style.background = "#d1d1d1" 
-
+                newElement.style.backgroundColor = "#d1d1d1" 
                 }
 
             if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(newElement.tagName)){     
@@ -85,7 +85,7 @@ function createNewElement(element,elementClass,zIndex,inputId){
             let top = parseInt(getStyle.top)    // Преобразует строковые числа из стилей в обычное число
                 newElement.style.top =  `${top+movementY}px`             // Просчитывает и задает параметр для движения элемента
                 newElement.style.left = `${left+movementX}px`            // Просчитывает и задает параметр для движения элемента
-            let newStyles = { top:`${top+movementY}px`, left:`${left+movementX}px`}
+            let newStyles = { "top":`${top+movementY}px`, "left":`${left+movementX}px`}
                 newLayouts.changeStyle(newStyles,id,layout)
         }
 
@@ -117,7 +117,7 @@ function createNewElement(element,elementClass,zIndex,inputId){
                     e.target.innerHTML = newTxt2                            // Задает элементу обработаный контент
                     e.target.style.height = `auto`
                     linkContent.textContent = newTxt2                       // Дублирует новый текст в span элемента ссылки для удобной навигации
-                    newLayouts.changeStyle({height:"auto"},id,layout)
+                    newLayouts.changeStyle({"height":"auto"},id,layout)
             })
 
         }
