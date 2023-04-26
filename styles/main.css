@@ -537,6 +537,12 @@ input[type=number]::-webkit-outer-spin-button {
 }
 /* create-menu */
 .create-navigation{
+    margin-right: 100px;
+    display: flex;
+    align-items: center;
+    width: min-content;
+}
+.save-menu{
     display: flex;
     align-items: center;
     width: min-content;
@@ -621,6 +627,7 @@ input[type=number]::-webkit-outer-spin-button {
     display: flex;
 }
 .scale{
+    margin-right: 100px;
     display: flex;
     align-items: center;
 }
@@ -678,27 +685,27 @@ input[type=number]::-webkit-outer-spin-button {
     font-weight: 200;
 }
 .textList{
-    left: calc(50% - 390px);
+    left: calc(50% - 580px);
     display: none;
 }
 .figureList{
-    left: calc(50% - 260px);
+    left: calc(50% - 505px);
     display: none;
 }
 .formList{
-    left: calc(50% - 210px);
+    left: calc(50% - 430px);
     display: none;
 }
 .mediaList{
-    left: calc(50% - 110px);
+    left: calc(50% - 355px);
     display: none;
 }
 .tableList{
-    left: calc(50% - 80px);
+    left: calc(50% - 280px);
     display: none;
 }
 .layoutList{
-    left: calc(50% + 150px);
+    left: calc(50% + 45px);
     display: none;
 }
 .btn{
