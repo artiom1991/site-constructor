@@ -2,6 +2,8 @@ function selectionElement(){    //Функция выделения элемен
     let layoutStyle = window.getComputedStyle(siteConstructorContent)   //Получаем стили холста
     let layout = parseInt(layoutStyle.width)                            // Приводим ширину холста к числовому значению
     let target = document.querySelector(".target")  //Получение элемента с классом target
+    let targetLink = document.getElementById(`link-${target.id}`) 
+    targetLink.classList.add("selected-link")
     let styles = window.getComputedStyle(target)    //Получение стилей элемента с классом target
     let selection = document.createElement("div")   // Создает div - контейнер для элементов управления выделением
         selection.classList.add("selection")        // задается контейнеру класса selection
