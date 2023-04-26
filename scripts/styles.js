@@ -554,34 +554,6 @@ let zIndexFirst = document.getElementById("z-index-first")
         let selection = document.querySelector(".selection")
             if(target){
                 let id = target.id
-                let childelementnumber = parseInt(target.getAttribute("childelementnumber"))  
-                let childelementnumberAll = document.querySelectorAll('[childelementnumber]')
-                    childelementnumberAll.forEach((el,i)=>{
-                        let elId = el.id
-                        let atributeValue = parseInt(el.getAttribute('childelementnumber'))
-                        if(atributeValue < childelementnumber){
-                            el.setAttribute("childElementNumber",`${atributeValue+1}`)
-                            el.style.zIndex = atributeValue+1
-                            newLayouts.changeStyle({ "z-index" : atributeValue+1 },elId,layout)
-                            }
-                    })
-                    target.setAttribute("childElementNumber",`1`)
-                    target.style.zIndex = 1
-                    newLayouts.changeStyle({ "z-index" : 1 },id,layout)
-                    newLayouts.updateElements()
-                }
-            if(selection){ selection.remove(), selectionElement() }
-    })
-
-let zIndexLast = document.getElementById("z-index-last")
-    zIndexLast.addEventListener("click", function(){
-        let layoutStyle = window.getComputedStyle(siteConstructorContent)
-        let layout = parseInt(layoutStyle.width)
-        let elements = document.getElementById("elements")
-        let target = document.querySelector(".target")
-        let selection = document.querySelector(".selection")
-            if(target){
-                let id = target.id
                 let ElementLink = document.getElementById(`link-${target.id}`)
                 let childelementnumber = parseInt(target.getAttribute("childelementnumber"))  
                 let childelementnumberAll = document.querySelectorAll('[childelementnumber]')
@@ -601,3 +573,46 @@ let zIndexLast = document.getElementById("z-index-last")
                 }
             if(selection){ selection.remove(), selectionElement() }
     })
+
+let zIndexLast = document.getElementById("z-index-last")
+    zIndexLast.addEventListener("click", function(){
+        let layoutStyle = window.getComputedStyle(siteConstructorContent)
+        let layout = parseInt(layoutStyle.width)
+        let elements = document.getElementById("elements")
+        let target = document.querySelector(".target")
+        let selection = document.querySelector(".selection")
+            if(target){
+                let id = target.id
+                let childelementnumber = parseInt(target.getAttribute("childelementnumber"))  
+                let childelementnumberAll = document.querySelectorAll('[childelementnumber]')
+                    childelementnumberAll.forEach((el,i)=>{
+                        let elId = el.id
+                        let atributeValue = parseInt(el.getAttribute('childelementnumber'))
+                        if(atributeValue < childelementnumber){
+                            el.setAttribute("childElementNumber",`${atributeValue+1}`)
+                            el.style.zIndex = atributeValue+1
+                            newLayouts.changeStyle({ "z-index" : atributeValue+1 },elId,layout)
+                            }
+                    })
+                    target.setAttribute("childElementNumber",`1`)
+                    target.style.zIndex = 1
+                    newLayouts.changeStyle({ "z-index" : 1 },id,layout)
+                    newLayouts.updateElements()
+                }
+            if(selection){ selection.remove(), selectionElement() }
+    })
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

@@ -473,38 +473,39 @@ input[type=number]::-webkit-outer-spin-button {
     cursor: pointer;
     display: flex;
     align-items: center;
-    filter: invert(100%);
+
+
 }
 .zIndexBtn:hover{
     background: var(--font-light-color);
     color: var(--font-light-color);
-    filter: invert(0%);
+
 }
 .zIndexPlus{
     width: 25px;
     height: 25px;
-    background: url("../images/zIndexPlus.png");
+    background: url("../images/z-index-up.png");
     background-size: 25px auto;
     background-repeat: no-repeat;
 }
 .zIndexMinus{
     width: 25px;
     height: 25px;
-    background: url("../images/zIndexMinus.png");
+    background: url("../images/z-index-down.png");
     background-size: 25px auto;
     background-repeat: no-repeat;
 }
 .zIndexFirst{
     width: 25px;
     height: 25px;
-    background: url("../images/zIndexFirst.png");
+    background: url("../images/z-index-first.png");
     background-size: 25px auto;
     background-repeat: no-repeat;
 }
 .zIndexLast{
     width: 25px;
     height: 25px;
-    background: url("../images/zindexLast.png");
+    background: url("../images/z-index-last.png");
     background-size: 25px auto;
     background-repeat: no-repeat;
 }
