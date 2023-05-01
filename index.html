@@ -71,8 +71,8 @@
         <div class="hidenMenuContainer">
             <div class="hidenMenu textList">
                 <div  title="Текстовый элемент для ввода обьемного текста" class="btn create p" onclick="createNewElement('P')">paragraph</div>
-                <div  title="Текстовый элемент для ввода короткого текста" class="btn create span" onclick="createNewElement('SPAN')">span</div>
-                <div  title="Текстовый элемент для ввода короткого текста" class="btn create b" onclick="createNewElement('B')">bold</div>
+                <!-- <div  title="Текстовый элемент для ввода короткого текста" class="btn create span" onclick="createNewElement('SPAN')">span</div>
+                <div  title="Текстовый элемент для ввода короткого текста" class="btn create b" onclick="createNewElement('B')">bold</div> -->
                 <!-- <div  title="Общий элемент контейнер" class="btn create div" onclick="createNewElement('p')">division</div> -->
                 <!-- <div  title="Элемент список который маркеруется специальными символами" class="btn create ul">unordered list</div> -->
                 <!-- <div  title="Элемент нумерованный список который маркеруется арабскими или римскими числами а так же буквами" class="btn create ol">ordered list</div> -->
@@ -311,6 +311,32 @@
 
 
                                                 <!--  General styles / For all elements -->
+                <!-- Layout styles -->
+        <div class="layout-style-editor">
+            <div class="style-header">
+                <div class="header-text">контейнер</div>
+                <div class="style-helper"></div>
+            </div>
+
+            <div class="style-element">
+                <div title="Высота элемента" class="style-title">
+                    <span>layout-height:</span>
+                </div>
+                <div class="style-interface bg flex">
+                    <input class="input-number" type="number" name="" id="layout-height-input" value="550">
+                    <select class="small-select" name="" id="layout-height-select">
+                        <option value="px">px</option>
+                        <option value="%">%</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+                <!-- / Layout styles -->
+
+
+
+
 
         <div class="button-style-editor">
             <div class="style-header">
@@ -610,10 +636,41 @@
             </div>
         </div>
     </div>
+
                                         <!-- Editable area / Site constructor content  -->
     <div class="site-constructor-content">
-        <div id="elements"></div>
+        <div class="text-focus-menu">
+            <div class="menuBtn setBold">
+                <div class="set-bold"></div>
+            </div>
+            <div class="menuBtn setItalic">
+                <div class="set-italic"></div>
+            </div>
+            <div class="menuBtn setUndeline">
+                <div class="set-underline"></div>
+            </div>
+            <div class="menuBtn setStrikethrough">
+                <div class="set-strikethrough"></div>
+            </div>
+            <div class="menuBtn setOl">
+                <div class="set-ol"></div>
+            </div>
+            <div class="menuBtn setUl">
+                <div class="set-ul"></div>
+            </div>
+            <div class="menuBtn setColor">
+                <div class="set-color">
+                    <input type="color" name="" id="text-color">
+                </div>
+            </div>
+            <div class="menuBtn clearStyles">
+                <div class="clear-styles"></div>
+            </div>
+        </div>
+        <div id="elements">
+        </div>
     </div>
+
     <script src="scripts/layouts.js"></script>
     <script src="scripts/main.js"></script>
     <script src="scripts/scale.js"></script>
@@ -625,6 +682,6 @@
     <script src="scripts/styles.js"></script>
     <script src="scripts/save.js"></script>
     <script src="scripts/jsToHtmlCss.js"></script>
-
+    <script src="scripts/textStyleToolbar.js"></script>
 </body>
 </html>

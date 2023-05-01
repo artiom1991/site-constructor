@@ -3,59 +3,33 @@ let textStyleEditor = document.querySelector(".text-style-editor")
 let generalStyleEditor = document.querySelector(".general-style-editor")
 let buttonStyleEditor = document.querySelector(".button-style-editor")
 
-let screen = document.querySelector(".screen")
 let vSmartphone = document.querySelector(".vertical-Smartphone")    
     vSmartphone.addEventListener("click", function(){
-        screen.style.backgroundImage = "url('../images/smartphone.png')"
-        screen.style.transform = "rotate(0deg)"
-        textStyleEditor.style.display = "none"
-        generalStyleEditor.style.display = "none"
-        buttonStyleEditor.style.display = "none"
-        newLayouts.changeLayout(320)
+        newLayouts.changeLayout(320,"vSmartphone")
     })
 
 let hSmartphone = document.querySelector(".horizontal-Smartphone")
     hSmartphone.addEventListener("click", function(){
-        screen.style.backgroundImage = "url('../images/smartphone.png')"
-        screen.style.transform = "rotate(90deg)"
-        textStyleEditor.style.display = "none"
-        generalStyleEditor.style.display = "none"
-        buttonStyleEditor.style.display = "none"
-        newLayouts.changeLayout(480)
+        newLayouts.changeLayout(480,"hSmartphone")
     })
 
 let vTablet = document.querySelector(".vertical-Tablet")
     vTablet.addEventListener("click", function(){
-        screen.style.backgroundImage = "url('../images/tablet.png')"
-        screen.style.transform = "rotate(0deg)"
-        textStyleEditor.style.display = "none"
-        generalStyleEditor.style.display = "none"
-        buttonStyleEditor.style.display = "none"
-        newLayouts.changeLayout(640)
+        newLayouts.changeLayout(640,"vTablet")
     })
 
 let hTablet = document.querySelector(".horizontal-Tablet")
     hTablet.addEventListener("click", function(){
-        screen.style.backgroundImage = "url('../images/tablet.png')"
-        screen.style.transform = "rotate(90deg)"
-        textStyleEditor.style.display = "none"
-        generalStyleEditor.style.display = "none"
-        buttonStyleEditor.style.display = "none"
-        newLayouts.changeLayout(960)
+            newLayouts.changeLayout(960,"hTablet")
     })
 
 let hLaptop = document.querySelector(".horizontal-Laptop")
     hLaptop.addEventListener("click", function(){
-        screen.style.backgroundImage = "url('../images/laptop.png')"
-        screen.style.transform = "rotate(0deg)"
-        textStyleEditor.style.display = "none"
-        generalStyleEditor.style.display = "none"
-        buttonStyleEditor.style.display = "none"
-        newLayouts.changeLayout(1200)
+        newLayouts.changeLayout(1200,"laptop")
     })
 
 let newLayouts = { 
-    layouts:{1200:{},960:{},640:{},480:{},320:{}},
+    layouts:{1200:{elements:{},styles:{}},960:{elements:{},styles:{}},640:{elements:{},styles:{}},480:{elements:{},styles:{}},320:{elements:{},styles:{}}},
     elements:{},
     addElement(id){
         for(let layout in this.layouts){
@@ -63,7 +37,7 @@ let newLayouts = {
             let newElementStyles = window.getComputedStyle(element)
             let elementContent = {
                 tagName:element.tagName,
-                textContent:element.textContent,
+                innerHTML:element.innerHTML,
                 childElementNumber:element.getAttribute("childElementNumber")
             }
             let elementStyle = {
@@ -208,41 +182,49 @@ let newLayouts = {
                         inherided:1200
                     }
             }
-            this.layouts[layout][id] = {...elementStyle}
+            this.layouts[layout].elements[id] = {...elementStyle}
             this.elements[id] = {...elementContent}
         }
-        console.log(this)
     },
     changeStyle(styles,id,layoutActive){
         for(let layout in this.layouts){
             if(layoutActive>layout){
                 for(let key in styles){
-                    if(this.layouts[layout][id][key].isPrivate == false && layoutActive <= this.layouts[layout][id][key].inherided){
-                        this.layouts[layout][id][key].count = styles[key]
-                        this.layouts[layout][id][key].inherided = layoutActive
+                    if(this.layouts[layout].elements[id][key].isPrivate == false && layoutActive <= this.layouts[layout].elements[id][key].inherided){
+                        this.layouts[layout].elements[id][key].count = styles[key]
+                        this.layouts[layout].elements[id][key].inherided = layoutActive
                     }
                 }
             }
             if(layoutActive == layout){
                 for(let key in styles){
-                    this.layouts[layout][id][key].count = styles[key]
-                    this.layouts[layout][id][key].inherided = layoutActive
-                    this.layouts[layout][id][key].isPrivate = true
-                    console.log("key",key,styles[key])
+                    this.layouts[layout].elements[id][key].count = styles[key]
+                    this.layouts[layout].elements[id][key].inherided = layoutActive
+                    this.layouts[layout].elements[id][key].isPrivate = true
                 }
             }
         }
     },
-    changeLayout(layout){
+    changeLayout(layout,element){
+        let layoutHeight = this.layouts[layout].styles.height
+        let screen = document.querySelector(".screen")
+        let elementImg = document.querySelector(`.${element}`)
+        let elementImgStyles = window.getComputedStyle(elementImg)
+            screen.style.backgroundImage = elementImgStyles.backgroundImage
+            screen.style.transform = elementImgStyles.transform
+            textStyleEditor.style.display = "none"
+            generalStyleEditor.style.display = "none"
+            buttonStyleEditor.style.display = "none"
         let selection = document.querySelector(".selection")
         let allElements = document.querySelectorAll(".element")
             siteConstructorContent.style.width = `${layout}px`
+            siteConstructorContent.style.height = layoutHeight ? layoutHeight : "550px";
             siteConstructorContent.style.left = "50%"
             siteConstructorContent.style.top = "50%"
             allElements.forEach(el=>{
                 let id = el.id
-                for(let key in this.layouts[layout][id]){
-                    el.style[key] =  this.layouts[layout][id][key].count
+                for(let key in this.layouts[layout].elements[id]){
+                    el.style[key] =  this.layouts[layout].elements[id][key].count
                 }
             })
             if(selection){selection.remove()}
@@ -252,14 +234,20 @@ let newLayouts = {
             elementsAll.forEach(el=>{
                 let id = el.id
                     this.elements[id].childElementNumber = el.getAttribute("childElementNumber")
+                    this.elements[id].innerHTML = el.innerHTML
             })
-        console.log('updatedElements',this)
     },
     deleteElement(id){
         delete this.elements[id]
         for(let layout in this.layouts){
-            delete this.layouts[layout][id]
+            delete this.layouts[layout].elements[id]
         }
+    },
+    changeInnerHTML(id){
+        let element = document.getElementById(id)
+        this.elements[id].innerHTML = element.innerHTML
+    },
+    setLayoutHeight(styles,layout){
+        this.layouts[layout].styles.height = styles.height
     }
-
 }

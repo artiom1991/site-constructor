@@ -22,9 +22,9 @@ button{
     outline: none;
     color: var(--font-light-color);
 }
-.element div{
+/* .element div{
     color: var(--font-black-color);
-}
+} */
 body{
     background: var(--background-color3);
     width: 100%;
@@ -115,6 +115,9 @@ body{
     left: 50%;
     transform: scale(1) translate(50%, 50%);
 }
+.site-constructor-content  * {
+    color: var(--font-black-color);
+  }
 /*  */
 
 
@@ -825,22 +828,26 @@ input[type=number]::-webkit-outer-spin-button {
     word-wrap: break-word;
     color: var(--font-black-color);
 }
+
+.text-stylize{
+    color: inherit;
+}
 .element:hover{
     cursor:auto;
     user-select: none;
-    outline:1px #4042b5 solid; 
+    outline:1px #9191a8 solid; 
 }
 .element:active{
     cursor:move;
     user-select: none;
-    outline:1px #4042b5 solid; 
+    outline:1px #9191a8 solid; 
 }
 .element:focus{
-    outline:1px #4042b5 solid; 
+    outline:1px #9191a8 solid; 
     cursor:text;
 }
 .target{
-    outline:1px #4042b5 solid; 
+    outline:1px #9191a8 solid;  
 }
 .CIRCLE{
     outline:none; 
@@ -850,7 +857,7 @@ input[type=number]::-webkit-outer-spin-button {
 /* Selection styles */
 .selection{
     position: absolute;
-    outline:1px #4042b5 solid; 
+    outline:1px #9191a8 solid; 
     z-index: 999;
 }
 .topSelection,.bottomSelection{
@@ -949,3 +956,93 @@ input[type=number]::-webkit-outer-spin-button {
     display: none;
 }
 /*  */
+
+/* text-focus-menu */
+.text-focus-menu{
+    display: none;
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 50px;
+    background-color: var(--ui-background);
+}
+.text-focus-menu-show{
+    display: flex;
+}
+.set-bold{
+    width: 20px;
+    height: 20px;
+    background: url("../images/bold.png");
+    background-size: 20px auto;
+    background-repeat: no-repeat;
+}
+.set-italic{
+    width: 20px;
+    height: 20px;
+    background: url("../images/italic.png");
+    background-size: 20px auto;
+    background-repeat: no-repeat;
+}
+.set-underline{
+    width: 20px;
+    height: 20px;
+    background: url("../images/underline.png");
+    background-size: 20px auto;
+    background-repeat: no-repeat;
+}
+.set-strikethrough{
+    width: 20px;
+    height: 20px;
+    background: url("../images/strikethrough.png");
+    background-size: 20px auto;
+    background-repeat: no-repeat;
+}
+.set-ol{
+    width: 20px;
+    height: 20px;
+    background: url("../images/ol.png");
+    background-size: 20px auto;
+    background-repeat: no-repeat;
+}
+.set-color{
+    width: 20px;
+    height: 20px;
+    background: url("../images/color.png");
+    background-size: 20px auto;
+    background-repeat: no-repeat;
+}
+.set-ul{
+    width: 20px;
+    height: 20px;
+    background: url("../images/ul.png");
+    background-size: 20px auto;
+    background-repeat: no-repeat;
+}
+.clear-styles{
+    width: 20px;
+    height: 20px;
+    background: url("../images/clear.png");
+    background-size: 20px auto;
+    background-repeat: no-repeat;
+}
+.text-style{
+    color: var(--font-black-color);
+}
+/*  */
+.element ol,ul{
+    list-style-position: inside;
+  }
+.element ul, 
+.element ol, 
+.element li, 
+.element i, 
+.element span, 
+.element b, 
+.element p, 
+.element u,
+.element strong,
+.element strike,
+.element div{
+    color: inherit;
+}

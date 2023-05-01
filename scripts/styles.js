@@ -601,18 +601,17 @@ let zIndexLast = document.getElementById("z-index-last")
                 }
             if(selection){ selection.remove(), selectionElement() }
     })
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+    // layoutHeight
+let layoutHeightInput = document.getElementById("layout-height-input")
+let layoutHeightSelect = document.getElementById("layout-height-select")
+    layoutHeightInput.addEventListener("input", changeLayoutHeight)
+    layoutHeightSelect.addEventListener("change", changeLayoutHeight)
+    function changeLayoutHeight(){
+        let layoutStyle = window.getComputedStyle(siteConstructorContent)
+        let layout = parseInt(layoutStyle.width)
+        let layoutHeightValue = layoutHeightInput.value 
+        let layoutHeightUm = layoutHeightSelect.value
+            siteConstructorContent.style.height = `${layoutHeightValue}${layoutHeightUm}` 
+            newLayouts.setLayoutHeight({ "height" : `${layoutHeightValue}${layoutHeightUm}`},layout)
+    }

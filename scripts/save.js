@@ -17,12 +17,8 @@ let load = document.querySelector(".loadBlock")
             newLayouts.elements = {...jsonParseElements}
             for(let id in newLayouts.elements){
                 let element = newLayouts.elements[id]
-                    createNewElement(element.tagName,undefined,element.childElementNumber,id)
+                    createNewElement(element.tagName,undefined,element.childElementNumber,element.innerHTML,id)
             }
             newLayouts.layouts = {...jsonParseLayouts}
-            screen.style.backgroundImage = "url('../images/laptop.png')"
-            screen.style.transform = "rotate(0deg)"
-            textStyleEditor.style.display = "none"
-            generalStyleEditor.style.display = "none"
-            newLayouts.changeLayout(1200)
+            newLayouts.changeLayout(1200,"laptop")
     })

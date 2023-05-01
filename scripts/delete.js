@@ -1,5 +1,5 @@
 document.addEventListener("keydown", function(event) {  // Создает событие для документа которое отслеживает нажатие delete
-    if(event.key === "Delete" || event.key === "Del" || event.code === "46") {     //Проверяет если нажата клавиша delete
+    if(event.target.hasAttribute("contenteditable")  === false && event.key === "Delete" || event.key === "Del" || event.code === "46") {     //Проверяет если нажата клавиша delete
         let target = document.querySelector(".target")         // Получает все элементы с классом target
         let id = target.id
         newLayouts.deleteElement(id)
