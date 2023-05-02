@@ -83,7 +83,6 @@ let newLayouts = {
     changeLayout(layout,element){
         let layoutHeight = this.layouts[layout].styles.height.count
         let layoutColor = this.layouts[layout].styles["background-color"].count
-            console.log(layoutColor)
         let screen = document.querySelector(".screen")
         let elementImg = document.querySelector(`.${element}`)
         let elementImgStyles = window.getComputedStyle(elementImg)
@@ -95,6 +94,10 @@ let newLayouts = {
             layoutStylesEditor.style.display = "block"
         let selection = document.querySelector(".selection")
         let allElements = document.querySelectorAll(".element")
+        let layoutHeightInputValue = document.getElementById("layout-height-input")
+            layoutHeightInputValue.value = parseInt(layoutHeight)
+        let inputLayoutColorValue = document.querySelector(".input-layout-color")
+            inputLayoutColorValue.style["background-color"] = layoutColor
             siteConstructorContent.style.width = `${layout}px`
             siteConstructorContent.style.height = layoutHeight ? layoutHeight : "550px";
             siteConstructorContent.style["background-color"] = layoutColor ? layoutColor : "#fff";
@@ -127,8 +130,6 @@ let newLayouts = {
         this.elements[id].innerHTML = element.innerHTML
     },
     setLayoutStyle(styles,layoutActive){
-        console.log(styles)
-        console.log(this)
         for(let layout in this.layouts){
             if(layoutActive>layout){
                 for(let key in styles){

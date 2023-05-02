@@ -1,22 +1,32 @@
 
-siteConstructorContent.addEventListener("click", function(e){ 
+document.body.addEventListener("click", function(e){ 
     let targetClick = e.target   
-    let target = document.querySelectorAll(".target") 
-    let selectedLink = document.querySelectorAll(".selected-link") 
-    let selection = document.querySelector(".selection")  
-        if(targetClick.classList.contains("selection") == false){
-            if(selection){     
-                selection.remove()  
-                textStyleEditor.style.display = "none"
-                generalStyleEditor.style.display = "none"
-                buttonStyleEditor.style.display = "none"
-                layoutStylesEditor.style.display = "block"
-                }
-            target.forEach(el=>{ 
-                el.classList.remove("target") 
-                })
-            selectedLink.forEach(el=>{ 
-                el.classList.remove("selected-link")
-                })
-        }
+    
+    // если кликнули непосредственно на body или на siteConstructorContent
+    if ( targetClick == document.body || targetClick == siteConstructorContent ) {
+        console.log( 'Сброс выделенного элемента')
+
+        let target = document.querySelectorAll(".target") 
+        let selectedLink = document.querySelectorAll(".selected-link") 
+        let selection = document.querySelector(".selection")  
+            if(targetClick.classList.contains("selection") == false){
+                if(selection){     
+                    selection.remove()  
+                    textStyleEditor.style.display = "none"
+                    generalStyleEditor.style.display = "none"
+                    buttonStyleEditor.style.display = "none"
+                    layoutStylesEditor.style.display = "block"
+                    }
+                target.forEach(el=>{ 
+                    el.classList.remove("target") 
+                    })
+                selectedLink.forEach(el=>{ 
+                    el.classList.remove("selected-link")
+                    })
+            }
+
+    }
+
+
+    
 })
