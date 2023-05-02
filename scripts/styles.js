@@ -50,7 +50,7 @@ let butttonLink = document.getElementById("add-link")
         let target = document.querySelector(".target")
         let selection = document.querySelector(".selection")
         if(target){
-             target.setAttribute('button-link', `${event.target.value}`)
+            target.setAttribute('button-link', `${event.target.value}`)
             }   
         if(selection){ selection.remove(), selectionElement() }
     })
@@ -613,5 +613,18 @@ let layoutHeightSelect = document.getElementById("layout-height-select")
         let layoutHeightValue = layoutHeightInput.value 
         let layoutHeightUm = layoutHeightSelect.value
             siteConstructorContent.style.height = `${layoutHeightValue}${layoutHeightUm}` 
-            newLayouts.setLayoutHeight({ "height" : `${layoutHeightValue}${layoutHeightUm}`},layout)
+            newLayouts.setLayoutStyle({ "height" : `${layoutHeightValue}${layoutHeightUm}`},layout)
+    }
+
+let pseudoLayoutColor = document.querySelector(".input-layout-color")
+    pseudoLayoutColor.addEventListener("click", function(){ layoutColor.click() })
+let layoutColor = document.getElementById("layout-color")
+    layoutColor.addEventListener("input", changeLayoutColor)
+    function changeLayoutColor(){
+        let layoutStyle = window.getComputedStyle(siteConstructorContent)
+        let layout = parseInt(layoutStyle.width)
+        let layoutColorValue = layoutColor.value 
+            siteConstructorContent.style["background-color"] = `${layoutColorValue}` 
+            pseudoLayoutColor.style["background-color"] = `${layoutColorValue}` 
+            newLayouts.setLayoutStyle({ "background-color" : `${layoutColorValue}`},layout)
     }

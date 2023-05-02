@@ -255,6 +255,18 @@ input[type=color]{
     background: #6d0a0a;
     border: 2px solid var(--background-color5);
 }
+.input-layout-color{
+    width: 146px;
+    height: 16px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    background: #ffffff;
+    border: 2px solid var(--background-color5);
+}
+.input-layout-color .current-color{
+    color: var(--box-shadow-color);
+}
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;

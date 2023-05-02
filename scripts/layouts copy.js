@@ -11,22 +11,18 @@ let hLaptop = document.querySelector(".horizontal-Laptop").addEventListener("cli
 
 let newLayouts = { 
     layouts:{
-        1200:{elements:{},styles:{"height":{count:"550px",isPrivate:false,inherided:1200},"background-color":{count:"#fff",isPrivate:false,inherided:1200}}},
-        960:{elements:{},styles:{"height":{count:"550px",isPrivate:false,inherided:1200},"background-color":{count:"#fff",isPrivate:false,inherided:1200}}},
-        640:{elements:{},styles:{"height":{count:"550px",isPrivate:false,inherided:1200},"background-color":{count:"#fff",isPrivate:false,inherided:1200}}},
-        480:{elements:{},styles:{"height":{count:"550px",isPrivate:false,inherided:1200},"background-color":{count:"#fff",isPrivate:false,inherided:1200}}},
-        320:{elements:{},styles:{"height":{count:"550px",isPrivate:false,inherided:1200},"background-color":{count:"#fff",isPrivate:false,inherided:1200}}}
+        1200:{elements:{},styles:{"height":{count:"550px",isPrivate:false,inherided:1200},"color":{count:"#fff",isPrivate:false,inherided:1200}}},
+        960:{elements:{},styles:{"height":{count:"550px",isPrivate:false,inherided:1200},"color":{count:"#fff",isPrivate:false,inherided:1200}}},
+        640:{elements:{},styles:{"height":{count:"550px",isPrivate:false,inherided:1200},"color":{count:"#fff",isPrivate:false,inherided:1200}}},
+        480:{elements:{},styles:{"height":{count:"550px",isPrivate:false,inherided:1200},"color":{count:"#fff",isPrivate:false,inherided:1200}}},
+        320:{elements:{},styles:{"height":{count:"550px",isPrivate:false,inherided:1200},"color":{count:"#fff",isPrivate:false,inherided:1200}}}
         },
     elements:{},
     addElement(id){
         for(let layout in this.layouts){
             let element = document.getElementById(id)
             let newElementStyles = window.getComputedStyle(element)
-            let elementContent = {
-                tagName:element.tagName,
-                innerHTML:element.innerHTML,
-                childElementNumber:element.getAttribute("childElementNumber")
-                }
+            let elementContent = {tagName:element.tagName,innerHTML:element.innerHTML,childElementNumber:element.getAttribute("childElementNumber")}
             let elementStyle = {
                     "width":{count:newElementStyles.width,isPrivate:false,inherided:1200},
                     "height":{count:newElementStyles.height,isPrivate:false,inherided:1200},
@@ -81,9 +77,7 @@ let newLayouts = {
         }
     },
     changeLayout(layout,element){
-        let layoutHeight = this.layouts[layout].styles.height.count
-        let layoutColor = this.layouts[layout].styles["background-color"].count
-            console.log(layoutColor)
+        let layoutHeight = this.layouts[layout].styles.height
         let screen = document.querySelector(".screen")
         let elementImg = document.querySelector(`.${element}`)
         let elementImgStyles = window.getComputedStyle(elementImg)
@@ -97,7 +91,6 @@ let newLayouts = {
         let allElements = document.querySelectorAll(".element")
             siteConstructorContent.style.width = `${layout}px`
             siteConstructorContent.style.height = layoutHeight ? layoutHeight : "550px";
-            siteConstructorContent.style["background-color"] = layoutColor ? layoutColor : "#fff";
             siteConstructorContent.style.left = "50%"
             siteConstructorContent.style.top = "50%"
             allElements.forEach(el=>{
@@ -128,24 +121,19 @@ let newLayouts = {
     },
     setLayoutStyle(styles,layoutActive){
         console.log(styles)
-        console.log(this)
-        for(let layout in this.layouts){
-            if(layoutActive>layout){
-                for(let key in styles){
-                    if(this.layouts[layout].styles[key].isPrivate == false && layoutActive <= this.layouts[layoutActive].styles[key].inherided){
-                        this.layouts[layout].styles[key].count = styles[key]
-                        this.layouts[layout].styles[key].inherided = layoutActive
-                        }
-                    }
-                }
-            if(layoutActive == layout){
-                for(let key in styles){
-                    this.layouts[layout].styles[key].count = styles[key]
-                    this.layouts[layout].styles[key].inherided = layoutActive
-                    this.layouts[layout].styles[key].isPrivate = true
-                }
-            }
+        // for(let layout in this.layouts){
+        //     if(layoutActive>layout){
+        //         if(this.layouts[layout].styles[id][key].isPrivate == false && layoutActive <= this.layouts[layout].elements[id][key].inherided){
+
+        //         }
+        //         console.log(">",layout)
+        //     }
+        //     if(layoutActive == layout){
+        //         console.log("=",layout)
+        //     }
             
-        }
+        // }
+        this.layouts[layoutActive].styles["height"] = styles.height
+        console.log(this)
     }
 }

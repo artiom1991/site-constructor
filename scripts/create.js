@@ -236,6 +236,7 @@ function createNewElement(element,elementClass,zIndex,content,inputId){
                     let rotate = document.getElementById("rotate-input")
                         rotate.value = -deg?-deg:0
                         generalStyleEditor.style.display = "block"
+                        layoutStylesEditor.style.display = "none"
                 if(newElement.hasAttribute("contenteditable")  === false){
                     selectionElement()        
                     }

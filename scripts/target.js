@@ -10,6 +10,7 @@ siteConstructorContent.addEventListener("click", function(e){
                 textStyleEditor.style.display = "none"
                 generalStyleEditor.style.display = "none"
                 buttonStyleEditor.style.display = "none"
+                layoutStylesEditor.style.display = "block"
                 }
             target.forEach(el=>{ 
                 el.classList.remove("target") 
