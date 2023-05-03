@@ -166,6 +166,13 @@ let heightSelect = document.getElementById("height-select")
                 let id = target.id 
                     target.style.height = `${heightValue}${heightUm}` 
                     newLayouts.changeStyle({ "height" : `${heightValue}${heightUm}`},id,layout)
+                    if(target.tagName === "IMG"){
+                        target.style.width = "auto"
+                        let targetStyles = window.getComputedStyle(target)
+                        let newWidth = Math.floor(parseInt(targetStyles.width))
+                            widthInput.value = newWidth
+                        newLayouts.changeStyle({ "width" : `${newWidth}px` },id,layout)
+                    }
             }
             if(selection){ selection.remove(), selectionElement() }
     }
@@ -184,6 +191,13 @@ let widthSelect = document.getElementById("width-select")
             if(target){ 
                 let id = target.id 
                     target.style.width = `${widthValue}${widthUm}` 
+                    if(target.tagName === "IMG"){
+                        target.style.height = "auto"
+                        let targetStyles = window.getComputedStyle(target)
+                        let newHeight = Math.floor(parseInt(targetStyles.height))
+                        heightInput.value = newHeight
+                        newLayouts.changeStyle({ "height" : `${newHeight}px` },id,layout)
+                    }
                     newLayouts.changeStyle({ "width" : `${widthValue}${widthUm}` },id,layout)
             }
             if(selection){ selection.remove(), selectionElement() }
@@ -628,3 +642,26 @@ let layoutColor = document.getElementById("layout-color")
             pseudoLayoutColor.style["background-color"] = `${layoutColorValue}` 
             newLayouts.setLayoutStyle({ "background-color" : `${layoutColorValue}`},layout)
     }
+
+let imageLink = document.getElementById("image-link")
+    imageLink.addEventListener("change", function(event){
+        let layoutStyle = window.getComputedStyle(siteConstructorContent)
+        let layout = parseInt(layoutStyle.width)
+        const reg = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
+        let target = document.querySelector(".target")
+        let selection = document.querySelector(".selection")
+        let linkValue = event.target.value
+            if(reg.test(linkValue) == true){
+                if(target){  
+                    let id = target.id
+                    let img = new Image()
+                        img.src = linkValue
+                        img.onload = function() {
+                            target.src = linkValue
+                            newLayouts.changeImageSrc(id)
+                            newLayouts.changeStyle({ "width" : `${target.style.width}`,"height" : `${target.style.height}`},id,layout)
+                            if(selection){selection.remove(), selectionElement() }
+                            }
+                    }
+                }
+    })

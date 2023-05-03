@@ -3,6 +3,7 @@ let textStyleEditor = document.querySelector(".text-style-editor")
 let generalStyleEditor = document.querySelector(".general-style-editor")
 let buttonStyleEditor = document.querySelector(".button-style-editor")
 let layoutStylesEditor = document.querySelector(".layout-style-editor")
+let imageStylesEditor = document.querySelector(".image-style-editor")
 let vSmartphone = document.querySelector(".vertical-Smartphone").addEventListener("click", function(){newLayouts.changeLayout(320,"vSmartphone")})
 let hSmartphone = document.querySelector(".horizontal-Smartphone").addEventListener("click", function(){newLayouts.changeLayout(480,"hSmartphone")})
 let vTablet = document.querySelector(".vertical-Tablet").addEventListener("click", function(){newLayouts.changeLayout(640,"vTablet")})
@@ -25,6 +26,7 @@ let newLayouts = {
             let elementContent = {
                 tagName:element.tagName,
                 innerHTML:element.innerHTML,
+                src:element.src,
                 childElementNumber:element.getAttribute("childElementNumber")
                 }
             let elementStyle = {
@@ -62,6 +64,7 @@ let newLayouts = {
         }
     },
     changeStyle(styles,id,layoutActive){
+        console.log(styles)
         for(let layout in this.layouts){
             if(layoutActive>layout){
                 for(let key in styles){
@@ -91,6 +94,7 @@ let newLayouts = {
             textStyleEditor.style.display = "none"
             generalStyleEditor.style.display = "none"
             buttonStyleEditor.style.display = "none"
+            imageStylesEditor.style.display = "none"
             layoutStylesEditor.style.display = "block"
         let selection = document.querySelector(".selection")
         let allElements = document.querySelectorAll(".element")
@@ -128,6 +132,10 @@ let newLayouts = {
     changeInnerHTML(id){
         let element = document.getElementById(id)
         this.elements[id].innerHTML = element.innerHTML
+    },
+    changeImageSrc(id){
+        let element = document.getElementById(id)
+        this.elements[id].src = element.src
     },
     setLayoutStyle(styles,layoutActive){
         for(let layout in this.layouts){

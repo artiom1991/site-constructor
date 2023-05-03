@@ -17,7 +17,7 @@ let load = document.querySelector(".loadBlock")
             newLayouts.elements = {...jsonParseElements}
             for(let id in newLayouts.elements){
                 let element = newLayouts.elements[id]
-                    createNewElement(element.tagName,undefined,element.childElementNumber,element.innerHTML,id)
+                    createNewElement(element.tagName,undefined,element.childElementNumber,element.innerHTML,element.src,id)
             }
             newLayouts.layouts = {...jsonParseLayouts}
             newLayouts.changeLayout(1200,"laptop")

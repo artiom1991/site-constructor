@@ -1,5 +1,5 @@
 //Функция которая создает ноый элемент
-function createNewElement(element,elementClass,zIndex,content,inputId){
+function createNewElement(element,elementClass,zIndex,content,src,inputId){
     let elements = document.getElementById("elements")
     let date = new Date()
     let id = inputId?inputId:date.getTime()
@@ -66,6 +66,13 @@ function createNewElement(element,elementClass,zIndex,content,inputId){
                 newElement.focus()            
                 elementContent.innerHTML = content?content:"Введите новый текст"      
             }
+            
+            if(element==="IMG"){         
+                newElement.style.height = "200px"
+                newElement.style.width = "auto"
+                newElement.src = src?src:"./images/image.png"
+                newElement.draggable = false
+                }
 
         newLayouts.addElement(id)                       //Создаем стили новому элементу в layouts
 //Создает событие для нового элемента
@@ -139,6 +146,12 @@ function createNewElement(element,elementClass,zIndex,content,inputId){
 
                 if(newElement.tagName === "BUTTON"){
                     buttonStyleEditor.style.display = "block"
+                    }
+                if(newElement.tagName === "IMG"){
+                    let baseImage = "http://127.0.0.1:5500/images/image.png"
+                    let imageLink = document.getElementById("image-link")
+                        imageLink.value = newElement.src==baseImage?"":newElement.src
+                    imageStylesEditor.style.display = "block"
                     }
 
                 if(["P", "H1", "H2", "H3", "H4", "H5", "H6","BUTTON"].includes(newElement.tagName)){

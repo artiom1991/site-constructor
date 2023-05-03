@@ -1,7 +1,9 @@
-document.addEventListener("keydown", function(event) {  // Создает событие для документа которое отслеживает нажатие delete
-    if(event.target.hasAttribute("contenteditable")  === false && event.key === "Delete" || event.target.hasAttribute("contenteditable")  === false && event.key === "Backspace") {     //Проверяет если нажата клавиша delete
-        deleteElement(event)
-    }
+document.addEventListener("keydown", function(event) {
+    if(event.target.tagName !== "INPUT" && event.target.hasAttribute("contenteditable") === false){
+            if(event.key === "Delete" || event.key === "Backspace") { 
+                deleteElement(event)
+                }
+        }
 })
 
 function deleteElement(event){

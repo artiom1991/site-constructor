@@ -28,10 +28,16 @@ let scaleMinus = document.querySelector(".scaleMinus")  // Получаем эл
     })
 
     window.addEventListener('wheel', function(event) {      // Создается событие для окна window которое отслеживает прокрутку ролика мышки
+            console.log("wheel")
         let containerWidth = siteConstructorContainer.offsetWidth / 20
         let containerHeight = siteConstructorContainer.offsetHeight / 20
-        let count = event.deltaY                            //Получаем значение прокрутки 100 или -100
-            count = count / 1000                            // Полученое число делится на 1000 чтобы получить необходимое число для прокрутки равное 10% увеличения
+        let count 
+            if(event.deltaY < 0){
+                count = -0.1
+            }else{
+                count = 0.1
+            }
+                           // Полученое число делится на 1000 чтобы получить необходимое число для прокрутки равное 10% увеличения
         if (event.ctrlKey === true) {                       // проверка если зажат ctrl то выполняет код
             event.preventDefault();                         //  анулирует стандартное поведение для события
             if(count === -0.1 &&scale > 0.2){               // проверка знакаа числа + или -

@@ -26,6 +26,7 @@ function generateHtml(){
         for(let el in jsonParseElements){
             let createELement = document.createElement(jsonParseElements[el].tagName)
                 createELement.innerHTML = jsonParseElements[el].innerHTML
+                createELement.src = jsonParseElements[el].src
                 createELement.id = "e"+el
                 containerInner.append(createELement)
                 container.append(containerInner)

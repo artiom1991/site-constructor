@@ -97,7 +97,7 @@
                 <div title="Создает поле для ввода даты" class="btn create pinutDate">input-date</div>
             </div>
             <div class="hidenMenu mediaList">
-                <div title="Создает фото элемент" class="btn create image">image</div>
+                <div title="Создает фото элемент" class="btn create image"  onclick="createNewElement('IMG')">image</div>
                 <div title="Создает галлерею фото" class="btn create gallery">gallery</div>
                 <div title="Обьеденяет выделеные фото в слайдер" class="btn create slider">slider</div> 
                 <div title="Создает видео элемент" class="btn create video">video</div>
@@ -309,6 +309,26 @@
                 </div>
             </div>
 
+            <!-- Image styles -->
+            <div class="image-style-editor">
+                <div class="style-header">
+                    <div class="header-text">медиа</div>
+                    <div class="style-helper"></div>
+                </div>
+    
+                <div class="style-element">
+                    <div title="Задает цвет текста" class="style-title">
+                        <span>image-link:</span>
+                    </div>
+                    <div class="style-interface bg flex">
+                        <input class="input-text" type="text" name="" id="image-link">
+                    </div>
+                </div>
+    
+            </div>
+            <!-- Image styles / -->
+
+
 
                                                 <!--  General styles / For all elements -->
                 <!-- Layout styles -->
@@ -437,7 +457,7 @@
                         <span>height:</span>
                     </div>
                     <div class="style-interface bg flex">
-                        <input class="input-number" type="number" name="" id="height-input" value="600">
+                        <input class="input-number" type="number" name="" id="height-input" value="600" placeholder="auto">
                         <select class="small-select" name="" id="height-select">
                             <option value="px">px</option>
                             <option value="%">%</option>
@@ -450,7 +470,7 @@
                         <span>width:</span>
                     </div>
                     <div class="style-interface bg flex">
-                        <input class="input-number" type="number" name="" id="width-input" value="1200">
+                        <input class="input-number" type="number" name="" id="width-input" value="1200" placeholder="auto">
                         <select class="small-select" name="" id="width-select">
                             <option value="px">px</option>
                             <option value="%">%</option>

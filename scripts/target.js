@@ -4,8 +4,6 @@ document.body.addEventListener("click", function(e){
     
     // если кликнули непосредственно на body или на siteConstructorContent
     if ( targetClick == document.body || targetClick == siteConstructorContent ) {
-        console.log( 'Сброс выделенного элемента')
-
         let target = document.querySelectorAll(".target") 
         let selectedLink = document.querySelectorAll(".selected-link") 
         let selection = document.querySelector(".selection")  
@@ -15,6 +13,7 @@ document.body.addEventListener("click", function(e){
                     textStyleEditor.style.display = "none"
                     generalStyleEditor.style.display = "none"
                     buttonStyleEditor.style.display = "none"
+                    imageStylesEditor.style.display = "none"
                     layoutStylesEditor.style.display = "block"
                     }
                 target.forEach(el=>{ 
@@ -24,9 +23,5 @@ document.body.addEventListener("click", function(e){
                     el.classList.remove("selected-link")
                     })
             }
-
     }
-
-
-    
 })
