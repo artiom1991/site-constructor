@@ -64,7 +64,6 @@ let newLayouts = {
         }
     },
     changeStyle(styles,id,layoutActive){
-        console.log(styles)
         for(let layout in this.layouts){
             if(layoutActive>layout){
                 for(let key in styles){

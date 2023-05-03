@@ -13,7 +13,7 @@ function createNewElement(element,elementClass,zIndex,content,src,inputId){
         newElement.style.left = "40%"      
         newElement.style.top = "40%"   
         newElement.style.position = "absolute"     
-        siteConstructorContainer.style.width = "1200px"
+        newLayouts.changeLayout(1200,"laptop")
         elements.append(newElement) 
         newElement.style.zIndex = zIndex? zIndex:  elements.childElementCount
         newElement.setAttribute("childElementNumber",`${zIndex?zIndex:elements.childElementCount}`) 
@@ -59,6 +59,8 @@ function createNewElement(element,elementClass,zIndex,content,src,inputId){
                 }
 
             if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(newElement.tagName)){   
+                let createElementMenu = document.querySelector(".menu-container")
+                    createElementMenu.classList.toggle("menu-container-show")
                 let textFocusMenu = document.querySelector(".text-focus-menu")
                     textFocusMenu.classList.add("text-focus-menu-show")  
                 newElement.innerHTML = content?content:"Введите новый текст"
@@ -100,8 +102,10 @@ function createNewElement(element,elementClass,zIndex,content,src,inputId){
 
         if(["P","H1", "H2", "H3", "H4", "H5", "H6"].includes(newElement.tagName)){
             newElement.addEventListener("blur",function(e){    // Событие которое отслеживает прекращение выделения
+                let createElementMenu = document.querySelector(".menu-container")
+                    createElementMenu.classList.toggle("menu-container-show")
                 let textFocusMenu = document.querySelector(".text-focus-menu")
-                textFocusMenu.classList.remove("text-focus-menu-show")
+                    textFocusMenu.classList.toggle("text-focus-menu-show")
                 let layoutStyle = window.getComputedStyle(siteConstructorContent)   //Получаем стили холста
                 let layout = parseInt(layoutStyle.width)                            // Приводим ширину холста к числовому значению
                 let id = this.id
@@ -144,14 +148,16 @@ function createNewElement(element,elementClass,zIndex,content,src,inputId){
 
                 newElement.classList.add("target") 
 
-                if(newElement.tagName === "BUTTON"){
-                    buttonStyleEditor.style.display = "block"
-                    }
+                if(newElement.tagName === "BUTTON"){buttonStyleEditor.style.display = "block"}
+                    else{buttonStyleEditor.style.display = "none"}
+
                 if(newElement.tagName === "IMG"){
                     let baseImage = "http://127.0.0.1:5500/images/image.png"
                     let imageLink = document.getElementById("image-link")
                         imageLink.value = newElement.src==baseImage?"":newElement.src
                     imageStylesEditor.style.display = "block"
+                    }else{
+                        imageStylesEditor.style.display = "none"
                     }
 
                 if(["P", "H1", "H2", "H3", "H4", "H5", "H6","BUTTON"].includes(newElement.tagName)){
@@ -186,6 +192,8 @@ function createNewElement(element,elementClass,zIndex,content,src,inputId){
                     let pseudoTextShadowColor = document.getElementById("pseudo-text-shadow-color")
                         pseudoTextShadowColor.style.background = textShadowSplit[1]?`${textShadowSplit[0]}${textShadowSplit[1]}${textShadowSplit[2]}`: "rgb(0, 0, 0)"
                         textStyleEditor.style.display = "block"
+                        }else{
+                            textStyleEditor.style.display = "none"
                         }
 
                     let height = document.getElementById("height-input")

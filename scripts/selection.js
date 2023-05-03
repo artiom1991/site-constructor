@@ -23,16 +23,19 @@ function selectionElement(){    //Функция выделения элемен
         bottomSelection.classList.add("bottomSelection")
     let leftSelection = document.createElement("div")
         leftSelection.classList.add("leftSelection")
+    let rightSelection = document.createElement("div")
+        rightSelection.classList.add("rightSelection")
+
+
     let leftTopCorner = document.createElement("div")
         leftTopCorner.classList.add("leftTopCorner")
     let leftBottomCorner = document.createElement("div")
         leftBottomCorner.classList.add("leftBottomCorner")
-    let rightSelection = document.createElement("div")
-        rightSelection.classList.add("rightSelection")
     let righTopCorner = document.createElement("div")
         righTopCorner.classList.add("righTopCorner")
     let righBottomCorner = document.createElement("div")
         righBottomCorner.classList.add("righBottomCorner")
+
     let selectionSize = document.createElement("div")
     let selectionSizeH = document.createElement("span")
     let selectionSizeW = document.createElement("span")
@@ -56,6 +59,8 @@ function selectionElement(){    //Функция выделения элемен
 if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(target.tagName)){
     selection.addEventListener("dblclick",function(){   //создается событие по двойному клику для элемента selection
         if(!target.classList.contains("shape")){        // проверка есть ли у цели события  class shape и если отсутствует выполняет код
+            let createElementMenu = document.querySelector(".menu-container")
+                createElementMenu.classList.toggle("menu-container-show")
             let textFocusMenu = document.querySelector(".text-focus-menu")
             textFocusMenu.classList.add("text-focus-menu-show")
             target.setAttribute("contenteditable", "true")  //элементу с классом target задается атрибут contenteditable со значением true чтобы редактировать текст
@@ -64,15 +69,13 @@ if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(target.t
         }
     })
 }
-
-
+        //Перенос всего элемента
         selection.addEventListener("mousedown", function(){     // создается событие по удержанию лкм по элементу выделения selection
             targetLeft.style.display = "block"
             targetTop.style.display = "block"
             selectionSize.style.display = "none"
             window.addEventListener("mousemove",moveSelection)  // задается событие окну window которое отслеживает перемещение мышки и запускает функцию moveSelection
         })
-
         selection.addEventListener("mouseup", function(){       // создается событие по отпусканию лкм с элемента выделения selection
             targetLeft.style.display = "none"
             targetTop.style.display = "none"
@@ -80,6 +83,36 @@ if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(target.t
             window.removeEventListener("mousemove",moveSelection)   // удаляется событие которое отслеживает координаты курсора
         })
 
+
+// обработчик событий leftBottomCorner
+        leftBottomCorner.addEventListener("mousedown", function(event){  window.addEventListener("mousemove",scaleLeftBottomCorner),event.stopPropagation()})
+        window.addEventListener("mouseup", function(){window.removeEventListener("mousemove", scaleLeftBottomCorner) })
+// обработчик событий leftTopCorner
+        leftTopCorner.addEventListener("mousedown", function(event){window.addEventListener("mousemove",scaleLeftTopCorner),event.stopPropagation()})
+        window.addEventListener("mouseup", function(){window.removeEventListener("mousemove", scaleLeftTopCorner)})
+// обработчик событий righTopCorner
+        righTopCorner.addEventListener("mousedown", function(event){window.addEventListener("mousemove",scaleRightTopCorner),event.stopPropagation()})
+        window.addEventListener("mouseup", function(){window.removeEventListener("mousemove", scaleRightTopCorner)})
+// обработчик событий righBottomCorner
+        righBottomCorner.addEventListener("mousedown", function(event){window.addEventListener("mousemove",scaleRightBottomCorner),event.stopPropagation()})
+        window.addEventListener("mouseup", function(){window.removeEventListener("mousemove", scaleRightBottomCorner)})
+
+
+// обработчик событий rightSelection
+        rightSelection.addEventListener("mousedown", function(event){window.addEventListener("mousemove",scaleRightSelection),event.stopPropagation()})
+        window.addEventListener("mouseup", function(){window.removeEventListener("mousemove", scaleRightSelection)})
+ // обработчик событий bottomSelection
+        bottomSelection.addEventListener("mousedown", function(event){window.addEventListener("mousemove",scaleBottomSelection),event.stopPropagation()})
+        window.addEventListener("mouseup", function(){window.removeEventListener("mousemove", scaleBottomSelection)})
+// обработчик событий leftSelection
+        leftSelection.addEventListener("mousedown", function(event){window.addEventListener("mousemove",scaleLeftSelection),event.stopPropagation()})
+        window.addEventListener("mouseup", function(){window.removeEventListener("mousemove", scaleLeftSelection)})
+// обработчик событий topSelection
+        topSelection.addEventListener("mousedown", function(event){window.addEventListener("mousemove",scaleTopSelection),event.stopPropagation()})
+        window.addEventListener("mouseup", function(){window.removeEventListener("mousemove", scaleTopSelection)})
+
+
+// Функции
     function moveSelection({movementX,movementY}){          //функция которая задает позиционирование элементу selection и target
         let layout = parseInt(layoutStyle.width)            // Приводим ширину холста к числовому значению
         let id = target.id                                  // Поулчаем id элемента target
@@ -95,17 +128,6 @@ if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(target.t
         let newStyles = {top:`${top+movementY}px` , left:`${left+movementX}px` }
             newLayouts.changeStyle(newStyles,id,layout)
     }
-
-// обработчик событий righBottomCorner
-
-        leftBottomCorner.addEventListener("mousedown", function(event){  // создается событие для элемента управления leftBottomCorner по удержанию левой кнопки мыши
-            window.addEventListener("mousemove",scaleLeftBottomCorner)  // задается событие для window которое вызывает функцию scaleLeftBottomCorner по движению мышки
-            event.stopPropagation()                                     // не позволяет событию спуститься ниже к родительскому элементу по DOM
-        })
-
-        window.addEventListener("mouseup", function(){  // создается событие для window при отпускании левой кнопки мыши
-            window.removeEventListener("mousemove", scaleLeftBottomCorner)  //удаляется событие для window которое отслеживало движения курсора
-        })
 
     function scaleLeftBottomCorner({movementX,movementY}){  // функция которая получает координаты мышки и рассчитывает куда она движится по оси X и Y
         let layout = parseInt(layoutStyle.width) 
@@ -136,17 +158,6 @@ if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(target.t
                     newLayouts.changeStyle(newStyles,id,layout)
             }
     }
-
-// обработчик событий righTopCorner
-
-        leftTopCorner.addEventListener("mousedown", function(event){
-            window.addEventListener("mousemove",scaleLeftTopCorner)
-            event.stopPropagation()
-        })
-
-        window.addEventListener("mouseup", function(){
-            window.removeEventListener("mousemove", scaleLeftTopCorner)
-        })
 
     function scaleLeftTopCorner({movementX,movementY}){
         let layout = parseInt(layoutStyle.width) 
@@ -182,92 +193,60 @@ if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(target.t
             }
     }
 
-// обработчик событий righTopCorner
-
-        righTopCorner.addEventListener("mousedown", function(event){
-            window.addEventListener("mousemove",scaleRightTopCorner)
-            event.stopPropagation()
-        })
-
-        window.addEventListener("mouseup", function(){
-            window.removeEventListener("mousemove", scaleRightTopCorner)
-        })
-
-    function scaleRightTopCorner({movementX,movementY}){
-        let layout = parseInt(layoutStyle.width) 
-        let targetElement = document.querySelector(".target")
-        let id = targetElement.id
-        let targetStyle = window.getComputedStyle(targetElement)
-        let selectionStyle = window.getComputedStyle(selection)
-        let targetWidth = parseInt(targetStyle.width)
-        let targetHeigth = parseInt(targetStyle.height)
-        let targetTop = parseInt(targetStyle.top)
-        let selectionStyleWidth = parseInt(selectionStyle.width)
-        let selectionStyleHeigth = parseInt(selectionStyle.height)
-        let selectionStyleTop = parseInt(selectionStyle.top)
-        if(selectionStyleHeigth+(-movementY)>=10){
-            selection.style.height = `${selectionStyleHeigth+(-movementY)}px`
-            targetElement.style.height = `${targetHeigth+(-movementY)}px`
-            selection.style.top = `${selectionStyleTop+movementY}px`
-            targetElement.style.top = `${targetTop+movementY}px`
-            selectionSizeH.textContent = `${targetHeigth+(-movementY)}px`
-            let newStyles = { height:`${targetHeigth+(-movementY)}px`, top:`${targetTop+movementY}px`}
-                newLayouts.changeStyle(newStyles,id,layout)
-        }
-        if(selectionStyleWidth+movementX>=10){
-            selection.style.width = `${selectionStyleWidth+movementX}px`
-            targetElement.style.width = `${targetWidth+movementX}px`
-            selectionSizeW.textContent = `${targetWidth+movementX}px`
-            let newStyles = { width:`${targetWidth+movementX}px`}
-                newLayouts.changeStyle(newStyles,id,layout)
-        }
-    }
-
-// обработчик событий righBottomCorner
-
-        righBottomCorner.addEventListener("mousedown", function(event){
-            window.addEventListener("mousemove",scaleRightBottomCorner)
-            event.stopPropagation()
-        })
-        window.addEventListener("mouseup", function(){
-            window.removeEventListener("mousemove", scaleRightBottomCorner)
-        })
-
-    function scaleRightBottomCorner({movementX,movementY}){
-        let layout = parseInt(layoutStyle.width) 
-        let targetElement = document.querySelector(".target")
-        let id = targetElement.id
-        let targetStyle = window.getComputedStyle(targetElement)
-        let selectionStyle = window.getComputedStyle(selection)
-        let targetWidth = parseInt(targetStyle.width)
-        let targetHeigth = parseInt(targetStyle.height)
-        let selectionStyleWidth = parseInt(selectionStyle.width)
-        let selectionStyleHeight = parseInt(selectionStyle.height)
+        function scaleRightTopCorner({movementX,movementY}){
+            let layout = parseInt(layoutStyle.width) 
+            let targetElement = document.querySelector(".target")
+            let id = targetElement.id
+            let targetStyle = window.getComputedStyle(targetElement)
+            let selectionStyle = window.getComputedStyle(selection)
+            let targetWidth = parseInt(targetStyle.width)
+            let targetHeigth = parseInt(targetStyle.height)
+            let targetTop = parseInt(targetStyle.top)
+            let selectionStyleWidth = parseInt(selectionStyle.width)
+            let selectionStyleHeigth = parseInt(selectionStyle.height)
+            let selectionStyleTop = parseInt(selectionStyle.top)
+            if(selectionStyleHeigth+(-movementY)>=10){
+                selection.style.height = `${selectionStyleHeigth+(-movementY)}px`
+                targetElement.style.height = `${targetHeigth+(-movementY)}px`
+                selection.style.top = `${selectionStyleTop+movementY}px`
+                targetElement.style.top = `${targetTop+movementY}px`
+                selectionSizeH.textContent = `${targetHeigth+(-movementY)}px`
+                let newStyles = { height:`${targetHeigth+(-movementY)}px`, top:`${targetTop+movementY}px`}
+                    newLayouts.changeStyle(newStyles,id,layout)
+            }
             if(selectionStyleWidth+movementX>=10){
                 selection.style.width = `${selectionStyleWidth+movementX}px`
                 targetElement.style.width = `${targetWidth+movementX}px`
                 selectionSizeW.textContent = `${targetWidth+movementX}px`
                 let newStyles = { width:`${targetWidth+movementX}px`}
-                    newLayouts.changeStyle(newStyles,id,layout)}
-            if(targetHeigth+movementY>=10){
-                targetElement.style.height = `${targetHeigth+movementY}px`
-                selection.style.height = `${selectionStyleHeight+movementY}px`
-                selectionSizeH.textContent = `${selectionStyleHeight+movementY}px`
-                let newStyles = {height:`${selectionStyleHeight+movementY}px`}
                     newLayouts.changeStyle(newStyles,id,layout)
             }
-    }
+        }
 
-// обработчик событий rightSelection
-
-        rightSelection.addEventListener("mousedown", function(event){
-            window.addEventListener("mousemove",scaleRightSelection)
-            event.stopPropagation()
-        })
-
-        window.addEventListener("mouseup", function(){
-            window.removeEventListener("mousemove", scaleRightSelection)
-        })
+        function scaleRightBottomCorner({movementX,movementY}){
+            let layout = parseInt(layoutStyle.width) 
+            let targetElement = document.querySelector(".target")
+            let id = targetElement.id
+            let targetStyle = window.getComputedStyle(targetElement)
+            let selectionStyle = window.getComputedStyle(selection)
+            let targetWidth = parseInt(targetStyle.width)
+            let targetHeigth = parseInt(targetStyle.height)
+            let selectionStyleWidth = parseInt(selectionStyle.width)
+            let selectionStyleHeight = parseInt(selectionStyle.height)
+                if(selectionStyleWidth+movementX>=10){
+                    selection.style.width = `${selectionStyleWidth+movementX}px`
+                    targetElement.style.width = `${targetWidth+movementX}px`
+                    selectionSizeW.textContent = `${targetWidth+movementX}px`
+                    let newStyles = { width:`${targetWidth+movementX}px`}
+                        newLayouts.changeStyle(newStyles,id,layout)}
+                if(targetHeigth+movementY>=10){
+                    targetElement.style.height = `${targetHeigth+movementY}px`
+                    selection.style.height = `${selectionStyleHeight+movementY}px`
+                    selectionSizeH.textContent = `${selectionStyleHeight+movementY}px`
+                    let newStyles = {height:`${selectionStyleHeight+movementY}px`}
+                        newLayouts.changeStyle(newStyles,id,layout)
+                }
+        }
 
     function scaleRightSelection({movementX}){
         let layout = parseInt(layoutStyle.width) 
@@ -289,45 +268,27 @@ if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(target.t
             }
     }
 
- // обработчик событий bottomSelection
-
-        bottomSelection.addEventListener("mousedown", function(event){
-            window.addEventListener("mousemove",scaleBottomSelection)
-            event.stopPropagation()
-        })
-
-        window.addEventListener("mouseup", function(){
-            window.removeEventListener("mousemove", scaleBottomSelection)
-        })
-
-    function scaleBottomSelection({movementY}){
+    function scaleTopSelection({movementY}){
         let layout = parseInt(layoutStyle.width) 
         let targetElement = document.querySelector(".target")
         let id = targetElement.id
         let targetStyle = window.getComputedStyle(targetElement)
         let selectionStyle = window.getComputedStyle(selection)
         let targetHeigth = parseInt(targetStyle.height)
+        let targetTop = parseInt(targetStyle.top)
         let selectionStyleHeigth = parseInt(selectionStyle.height)
+        let selectionStyleTop = parseInt(selectionStyle.top)
             selection.style.width = targetStyle.width
-            if(selectionStyleHeigth+movementY>=10 || selectionStyleHeigth+movementY > targetHeigth){
-                selection.style.height = `${selectionStyleHeigth+movementY}px`
-                targetElement.style.height = `${targetHeigth+movementY}px`
-                selectionSizeH.textContent = `${targetHeigth+movementY}px`
-                let newStyles = { height:`${targetHeigth+movementY}px`}
+            if(selectionStyleHeigth+(-movementY)>=10 || selectionStyleHeigth+(-movementY)> targetHeigth){
+                    selection.style.height = `${selectionStyleHeigth+(-movementY)}px`
+                    selection.style.top  = `${selectionStyleTop+movementY}px`
+                    targetElement.style.height = `${targetHeigth+(-movementY)}px`
+                    targetElement.style.top = `${targetTop+movementY}px`
+                    selectionSizeH.textContent = `${selectionStyleHeigth+(-movementY)}px`
+                let newStyles = { top:`${targetTop+movementY}px`, height:`${targetHeigth+(-movementY)}px`}
                     newLayouts.changeStyle(newStyles,id,layout)
             }
     }
-
-// обработчик событий leftSelection
-
-        leftSelection.addEventListener("mousedown", function(event){
-            window.addEventListener("mousemove",scaleLeftSelection)
-            event.stopPropagation()
-        })
-
-        window.addEventListener("mouseup", function(){
-            window.removeEventListener("mousemove", scaleLeftSelection)
-        })
 
     function scaleLeftSelection({movementX}){
         let layout = parseInt(layoutStyle.width) 
@@ -350,35 +311,20 @@ if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(target.t
             }
     }
 
-// обработчик событий topSelection
-
-        topSelection.addEventListener("mousedown", function(event){
-            window.addEventListener("mousemove",scaleTopSelection)
-            event.stopPropagation()
-        })
-
-        window.addEventListener("mouseup", function(){
-            window.removeEventListener("mousemove", scaleTopSelection)
-        })
-
-    function scaleTopSelection({movementY}){
+    function scaleBottomSelection({movementY}){
         let layout = parseInt(layoutStyle.width) 
         let targetElement = document.querySelector(".target")
         let id = targetElement.id
         let targetStyle = window.getComputedStyle(targetElement)
         let selectionStyle = window.getComputedStyle(selection)
         let targetHeigth = parseInt(targetStyle.height)
-        let targetTop = parseInt(targetStyle.top)
         let selectionStyleHeigth = parseInt(selectionStyle.height)
-        let selectionStyleTop = parseInt(selectionStyle.top)
             selection.style.width = targetStyle.width
-            if(selectionStyleHeigth+(-movementY)>=10 || selectionStyleHeigth+(-movementY)> targetHeigth){
-                    selection.style.height = `${selectionStyleHeigth+(-movementY)}px`
-                    selection.style.top  = `${selectionStyleTop+movementY}px`
-                    targetElement.style.height = `${targetHeigth+(-movementY)}px`
-                    targetElement.style.top = `${targetTop+movementY}px`
-                    selectionSizeH.textContent = `${selectionStyleHeigth+(-movementY)}px`
-                let newStyles = { top:`${targetTop+movementY}px`, height:`${targetHeigth+(-movementY)}px`}
+            if(selectionStyleHeigth+movementY>=10 || selectionStyleHeigth+movementY > targetHeigth){
+                selection.style.height = `${selectionStyleHeigth+movementY}px`
+                targetElement.style.height = `${targetHeigth+movementY}px`
+                selectionSizeH.textContent = `${targetHeigth+movementY}px`
+                let newStyles = { height:`${targetHeigth+movementY}px`}
                     newLayouts.changeStyle(newStyles,id,layout)
             }
     }

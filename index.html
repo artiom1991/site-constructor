@@ -16,10 +16,56 @@
 </head>
 <body>
 
+
+
     <div class="site-constructor-menu">
         <div class="site-constructor-instruments">
+
+            <div class="text-focus-menu">
+                <div class="menuBtn setBold">
+                    <div class="set-bold"></div>
+                </div>
+                <div class="menuBtn setItalic">
+                    <div class="set-italic"></div>
+                </div>
+                <div class="menuBtn setUndeline">
+                    <div class="set-underline"></div>
+                </div>
+                <div class="menuBtn setStrikethrough">
+                    <div class="set-strikethrough"></div>
+                </div>
+                <div class="menuBtn setOl">
+                    <div class="set-ol"></div>
+                </div>
+                <div class="menuBtn setUl">
+                    <div class="set-ul"></div>
+                </div>
+                <div class="menuBtn setColor">
+                    <div class="set-color">
+                        <input type="color" name="" id="text-color">
+                    </div>
+                </div>
+                <div class="menuBtn clearStyles">
+                    <div class="clear-styles"></div>
+                </div>
+            </div>
+
             <!-- Top navigation menu -->
-            <div class="menu-container">
+            <div class="menu-container menu-container-show">
+
+                <div class="save-menu">
+                    <div title="Сохранить" class="menuBtn saveBlock">
+                        <div class="save"></div>
+                    </div>
+                    <div title="Загрузить" class="menuBtn loadBlock">
+                        <div class="load"></div>
+                    </div>
+                    <div title="Сгенерировать HTML" class="menuBtn htmlBlock">
+                        <div class="html"></div>
+                    </div>
+                </div>
+
+
                 <!-- create-elements -->
                 <div class="create-navigation">
                     <div title="Создать текстовый элемент" class="menuBtn createText">
@@ -45,6 +91,7 @@
                     </div>
                 </div>
                 <!-- Layouts and scale -->
+
                 <div class="menuScreen scale">
                     <div  title="Задать размер блока" class="menuBtn showLayouts">
                         <div class="screen"></div>
@@ -53,17 +100,11 @@
                     <div class="scaleCount"><span class="curentCount">100</span><span>%</span></div>
                     <div class="scalePlus"></div>
                 </div>
-                <div class="save-menu">
-                </div>
-                <div title="Сохранить" class="menuBtn saveBlock">
-                    <div class="save"></div>
-                </div>
-                <div title="Загрузить" class="menuBtn loadBlock">
-                    <div class="load"></div>
-                </div>
-                <div title="Сгенерировать HTML" class="menuBtn htmlBlock">
-                    <div class="html"></div>
-                </div>
+
+
+
+
+
 
             </div>
         </div>
@@ -149,254 +190,10 @@
                 <div class="styles">Стили</div>
                 <div class="hide-styles"></div>
             </div>
+
             <div class="constructor-element-style-container">
-                                                            <!-- Style-menu for text-elements -->
-            <div class="text-style-editor">
-                <div class="style-header">
-                    <div class="header-text">текст</div>
-                    <div class="style-helper"></div>
-                </div>
-                <div class="style-list">
 
-                    <div class="style-element"> 
-                        <div title="Задает шрифт текста" class="style-title">
-                            <span>font:</span>
-                        </div>
-                        <div class="style-interface flex">
-                            <select class="single-select" name="" id="font">
-                                <option value="arial">Arial</option>
-                                <option value="inter">Inter</option>
-                                <option value="roboto">Roboto</option>
-                                <option value="lobster">Lobster</option>
-                                <option value="oswald">Oswald</option>
-                                <option value="playfair">Playfair</option>
-                                <option value="bebas-neue">Bebas Neue</option>
-                                <option value="Merriweather, serif">Merriweather, serif</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="style-element">
-                        <div title="Задает цвет текста" class="style-title">
-                            <span>color:</span>
-                        </div>
-                        <div class="input-color">
-                            <input class="color-select" type="color" name="" id="color">
-                            <span class="current-color">#f0f0f0</span>
-                        </div>
-                    </div>
-
-                    <div class="style-element">
-                        <div title="Задает дополнительные декорации для текстаы" class="style-title">
-                            <span>text-decoration:</span>
-                        </div>
-                        <div class="style-interface flex">
-                            <select class="single-select" name="" id="text-decoration">
-                                <option value="none">none</option>
-                                <option value="underline">underline</option>
-                                <option value="line-through">line-through</option>
-                                <option value="overline">overline</option>
-                            </select>
-                        </div>
-                        
-                    </div>
-
-                    <div class="style-element">
-                        <div title="Задает размер шрифта" class="style-title">
-                            <span>font-size:</span>
-                        </div>
-                        <div class="style-interface bg flex">
-                            <input class="input-number" type="number" name="" id="font-size" value="16">
-                            <select name="" id="font-px">
-                                <option value="px">px</option>
-                                <option value="%">%</option>
-                                <option value="em">em</option>
-                                <option value="rem">rem</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="style-element">
-                        <div title="Задает дополнительные стили для текста" class="style-title">
-                            <span>font-style:</span>
-                        </div>
-                        <div class="style-interface flex">
-                            <select class="single-select" name="" id="font-style">
-                                <option value="unset">unset</option>
-                                <option value="normal">normal</option>
-                                <option value="italic">italic</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="style-element">
-                        <div title="Задает вес шрифта" class="style-title">
-                            <span>font-weight:</span>
-                        </div>
-                        <div class="style-interface flex">
-                            <select class="single-select" name="" id="font-weight">
-                                <option value="normal">normal</option>
-                                <option value="bold">bold</option>
-                                <option value="bolder">bolder</option>
-                                <option value="lighter">lighter</option>
-                                <option value="100">100</option>
-                                <option value="200">200</option>
-                                <option value="300">300</option>
-                                <option value="400">400</option>
-                                <option value="500">500</option>
-                                <option value="600">600</option>
-                                <option value="700">700</option>
-                                <option value="800">800</option>
-                                <option value="900">900</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="style-element">
-                        <div title="Задает межстрочный и межбуквенный отступ" class="style-title">
-                            <span>font-spacing:</span>
-                        </div>
-                        <div class="style-interface multi-input flex">
-                            <input title="Задает отступы между буквами" class="input-number letter-spacing" type="number" name="" id="letter-spacing" value="0">
-                            <input title="Задает высоту строки" class="input-number line-height" type="number" name="" id="line-height" value="0">
-                        </div>
-                    </div>
-
-                    <div class="style-element">
-                        <div title="Выравнивает текст" class="style-title">
-                            <span>text-align:</span>
-                        </div>
-                        <div class="style-interface flex">
-                            <select class="single-select" name="" id="text-align">
-                                <option value="start">start</option>
-                                <option value="center">center</option>
-                                <option value="end">end</option>
-                                <option value="justify">justify</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="style-element">
-                        <div  title="Задает регистр для текста" class="style-title">
-                            <span>text-transform:</span>
-                        </div>
-                        <div class="style-interface flex">
-                            <select class="single-select" name="" id="text-transform">
-                                <option value="none">none</option>
-                                <option value="capitalize">capitalize</option>
-                                <option value="uppercase">uppercase</option>
-                                <option value="lowercase">lowercase</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="style-element">
-                        <div title="Добавляет тень для текста" class="style-title">
-                            <span>text-shadow:</span>
-                        </div>
-                        <div class="style-interface flex">
-                            <div class="multi-input small-width">
-                                <input title="Выступ тени по оси X" class="input-number h-shadow" type="number" name="" id="text-shadow-x" value="0">
-                                <input title="Выступ тени по оси Y" class="input-number v-shadow" type="number" name="" id="text-shadow-y" value="0">
-                                <input title="Разсеивание тени" class="input-number blur-radius" type="number" name="" id="text-shadow-blur" value="0">
-                            </div>
-                            <div id="pseudo-text-shadow-color" title="Цвет тени" class="small-input-color">
-                                <input class="color-select" type="color" name="" id="text-shadow-color">
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Image styles -->
-            <div class="image-style-editor">
-                <div class="style-header">
-                    <div class="header-text">медиа</div>
-                    <div class="style-helper"></div>
-                </div>
-    
-                <div class="style-element">
-                    <div title="Задает цвет текста" class="style-title">
-                        <span>image-link:</span>
-                    </div>
-                    <div class="style-interface bg flex">
-                        <input class="input-text" type="text" name="" id="image-link">
-                    </div>
-                </div>
-    
-            </div>
-            <!-- Image styles / -->
-
-
-
-                                                <!--  General styles / For all elements -->
-                <!-- Layout styles -->
-        <div class="layout-style-editor">
-            <div class="style-header">
-                <div class="header-text">контейнер</div>
-                <div class="style-helper"></div>
-            </div>
-
-            <div class="style-element">
-                <div title="Высота элемента" class="style-title">
-                    <span>layout-height:</span>
-                </div>
-                <div class="style-interface bg flex">
-                    <input class="input-number" type="number" name="" id="layout-height-input" value="550">
-                    <select class="small-select" name="" id="layout-height-select">
-                        <option value="px">px</option>
-                        <option value="%">%</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="style-element">
-                <div title="Задает цвет текста" class="style-title">
-                    <span>color:</span>
-                </div>
-                <div class="input-layout-color">
-                    <input class="color-select" type="color" name="" id="layout-color">
-                    <span class="current-color">#f0f0f0</span>
-                </div>
-            </div>
-
-        </div>
-                <!-- / Layout styles -->
-
-
-
-
-
-        <div class="button-style-editor">
-            <div class="style-header">
-                <div class="header-text">кнопки</div>
-                <div class="style-helper"></div>
-            </div>
-
-            <div class="style-list">
-                <div class="style-element">
-                    <div title="Добавляет текст элементу" class="style-title">
-                        <span>text-content:</span>
-                    </div>
-                    <div class="style-interface bg flex">
-                        <input class="input-text" type="text" name="" id="add-text" value="" placeholder="введите текст кнопки">
-                    </div>
-                </div>
-            </div>
-
-            <div class="style-list">
-                <div class="style-element">
-                    <div title="Добавляет ссылку элементу" class="style-title">
-                        <span>link:</span>
-                    </div>
-                    <div class="style-interface bg flex">
-                        <input class="input-text" type="text" name="" id="add-link" value="" placeholder="введите ссылку">
-                    </div>
-                </div>
-            </div>
-        </div>
-
+            <!-- General Styles -->
         <div class="general-style-editor">
             <div class="style-header">
                 <div class="header-text">общие</div>
@@ -673,43 +470,259 @@
                         </div>
                     </div>
                 </div>
+                </div>
+            </div>
+                    <!-- General Styles -->
 
+
+                                                                                <!-- Style-menu for text-elements -->
+            <div class="text-style-editor">
+                <div class="style-header">
+                    <div class="header-text">текст</div>
+                    <div class="style-helper"></div>
+                </div>
+                <div class="style-list">
+
+                    <div class="style-element"> 
+                        <div title="Задает шрифт текста" class="style-title">
+                            <span>font:</span>
+                        </div>
+                        <div class="style-interface flex">
+                            <select class="single-select" name="" id="font">
+                                <option value="arial">Arial</option>
+                                <option value="inter">Inter</option>
+                                <option value="roboto">Roboto</option>
+                                <option value="lobster">Lobster</option>
+                                <option value="oswald">Oswald</option>
+                                <option value="playfair">Playfair</option>
+                                <option value="bebas-neue">Bebas Neue</option>
+                                <option value="Merriweather, serif">Merriweather, serif</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="style-element">
+                        <div title="Задает цвет текста" class="style-title">
+                            <span>color:</span>
+                        </div>
+                        <div class="input-color">
+                            <input class="color-select" type="color" name="" id="color">
+                            <span class="current-color">#f0f0f0</span>
+                        </div>
+                    </div>
+
+                    <div class="style-element">
+                        <div title="Задает дополнительные декорации для текстаы" class="style-title">
+                            <span>text-decoration:</span>
+                        </div>
+                        <div class="style-interface flex">
+                            <select class="single-select" name="" id="text-decoration">
+                                <option value="none">none</option>
+                                <option value="underline">underline</option>
+                                <option value="line-through">line-through</option>
+                                <option value="overline">overline</option>
+                            </select>
+                        </div>
+                        
+                    </div>
+
+                    <div class="style-element">
+                        <div title="Задает размер шрифта" class="style-title">
+                            <span>font-size:</span>
+                        </div>
+                        <div class="style-interface bg flex">
+                            <input class="input-number" type="number" name="" id="font-size" value="16">
+                            <select name="" id="font-px">
+                                <option value="px">px</option>
+                                <option value="%">%</option>
+                                <option value="em">em</option>
+                                <option value="rem">rem</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="style-element">
+                        <div title="Задает дополнительные стили для текста" class="style-title">
+                            <span>font-style:</span>
+                        </div>
+                        <div class="style-interface flex">
+                            <select class="single-select" name="" id="font-style">
+                                <option value="unset">unset</option>
+                                <option value="normal">normal</option>
+                                <option value="italic">italic</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="style-element">
+                        <div title="Задает вес шрифта" class="style-title">
+                            <span>font-weight:</span>
+                        </div>
+                        <div class="style-interface flex">
+                            <select class="single-select" name="" id="font-weight">
+                                <option value="normal">normal</option>
+                                <option value="bold">bold</option>
+                                <option value="bolder">bolder</option>
+                                <option value="lighter">lighter</option>
+                                <option value="100">100</option>
+                                <option value="200">200</option>
+                                <option value="300">300</option>
+                                <option value="400">400</option>
+                                <option value="500">500</option>
+                                <option value="600">600</option>
+                                <option value="700">700</option>
+                                <option value="800">800</option>
+                                <option value="900">900</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="style-element">
+                        <div title="Задает межстрочный и межбуквенный отступ" class="style-title">
+                            <span>font-spacing:</span>
+                        </div>
+                        <div class="style-interface multi-input flex">
+                            <input title="Задает отступы между буквами" class="input-number letter-spacing" type="number" name="" id="letter-spacing" value="0">
+                            <input title="Задает высоту строки" class="input-number line-height" type="number" name="" id="line-height" value="0">
+                        </div>
+                    </div>
+
+                    <div class="style-element">
+                        <div title="Выравнивает текст" class="style-title">
+                            <span>text-align:</span>
+                        </div>
+                        <div class="style-interface flex">
+                            <select class="single-select" name="" id="text-align">
+                                <option value="start">start</option>
+                                <option value="center">center</option>
+                                <option value="end">end</option>
+                                <option value="justify">justify</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="style-element">
+                        <div  title="Задает регистр для текста" class="style-title">
+                            <span>text-transform:</span>
+                        </div>
+                        <div class="style-interface flex">
+                            <select class="single-select" name="" id="text-transform">
+                                <option value="none">none</option>
+                                <option value="capitalize">capitalize</option>
+                                <option value="uppercase">uppercase</option>
+                                <option value="lowercase">lowercase</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="style-element">
+                        <div title="Добавляет тень для текста" class="style-title">
+                            <span>text-shadow:</span>
+                        </div>
+                        <div class="style-interface flex">
+                            <div class="multi-input small-width">
+                                <input title="Выступ тени по оси X" class="input-number h-shadow" type="number" name="" id="text-shadow-x" value="0">
+                                <input title="Выступ тени по оси Y" class="input-number v-shadow" type="number" name="" id="text-shadow-y" value="0">
+                                <input title="Разсеивание тени" class="input-number blur-radius" type="number" name="" id="text-shadow-blur" value="0">
+                            </div>
+                            <div id="pseudo-text-shadow-color" title="Цвет тени" class="small-input-color">
+                                <input class="color-select" type="color" name="" id="text-shadow-color">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        <!-- Style-menu for text-elements -->
+
+                                <!-- Image styles -->
+            <div class="image-style-editor">
+                <div class="style-header">
+                    <div class="header-text">медиа</div>
+                    <div class="style-helper"></div>
+                </div>
+    
+                <div class="style-element">
+                    <div title="Задает цвет текста" class="style-title">
+                        <span>image-link:</span>
+                    </div>
+                    <div class="style-interface bg flex">
+                        <input class="input-text" type="text" name="" id="image-link">
+                    </div>
                 </div>
 
             </div>
+            <!-- Image styles / -->
+
+
+                <!--  Layout styles -->
+        <div class="layout-style-editor">
+            <div class="style-header">
+                <div class="header-text">контейнер</div>
+                <div class="style-helper"></div>
+            </div>
+
+            <div class="style-element">
+                <div title="Высота элемента" class="style-title">
+                    <span>layout-height:</span>
+                </div>
+                <div class="style-interface bg flex">
+                    <input class="input-number" type="number" name="" id="layout-height-input" value="550">
+                    <select class="small-select" name="" id="layout-height-select">
+                        <option value="px">px</option>
+                        <option value="%">%</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="style-element">
+                <div title="Задает цвет текста" class="style-title">
+                    <span>color:</span>
+                </div>
+                <div class="input-layout-color">
+                    <input class="color-select" type="color" name="" id="layout-color">
+                    <span class="current-color">#f0f0f0</span>
+                </div>
+            </div>
+
+        </div>
+                <!--  Layout styles -->
+
+                <!-- Button Styles -->
+        <div class="button-style-editor">
+            <div class="style-header">
+                <div class="header-text">кнопки</div>
+                <div class="style-helper"></div>
+            </div>
+
+            <div class="style-list">
+                <div class="style-element">
+                    <div title="Добавляет текст элементу" class="style-title">
+                        <span>text-content:</span>
+                    </div>
+                    <div class="style-interface bg flex">
+                        <input class="input-text" type="text" name="" id="add-text" value="" placeholder="введите текст кнопки">
+                    </div>
+                </div>
+            </div>
+
+            <div class="style-list">
+                <div class="style-element">
+                    <div title="Добавляет ссылку элементу" class="style-title">
+                        <span>link:</span>
+                    </div>
+                    <div class="style-interface bg flex">
+                        <input class="input-text" type="text" name="" id="add-link" value="" placeholder="введите ссылку">
+                    </div>
+                </div>
+            </div>
+        </div>
+                        <!-- Button Styles -->
         </div>
     </div>
 
                                         <!-- Editable area / Site constructor content  -->
     <div class="site-constructor-content">
-        <div class="text-focus-menu">
-            <div class="menuBtn setBold">
-                <div class="set-bold"></div>
-            </div>
-            <div class="menuBtn setItalic">
-                <div class="set-italic"></div>
-            </div>
-            <div class="menuBtn setUndeline">
-                <div class="set-underline"></div>
-            </div>
-            <div class="menuBtn setStrikethrough">
-                <div class="set-strikethrough"></div>
-            </div>
-            <div class="menuBtn setOl">
-                <div class="set-ol"></div>
-            </div>
-            <div class="menuBtn setUl">
-                <div class="set-ul"></div>
-            </div>
-            <div class="menuBtn setColor">
-                <div class="set-color">
-                    <input type="color" name="" id="text-color">
-                </div>
-            </div>
-            <div class="menuBtn clearStyles">
-                <div class="clear-styles"></div>
-            </div>
-        </div>
         <div id="elements">
         </div>
     </div>
