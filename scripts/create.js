@@ -58,6 +58,8 @@ function createNewElement(element,elementClass,zIndex,content,src,inputId){
                 newElement.style.backgroundColor = "#d1d1d1" 
                 }
 
+
+
             if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(newElement.tagName)){   
                 let createElementMenu = document.querySelector(".menu-container")
                     createElementMenu.classList.toggle("menu-container-show")
@@ -66,17 +68,19 @@ function createNewElement(element,elementClass,zIndex,content,src,inputId){
                 newElement.innerHTML = content?content:"Введите новый текст"
                 newElement.setAttribute("contenteditable", "true")    
                 newElement.focus()            
-                elementContent.innerHTML = content?content:"Введите новый текст"      
+                elementContent.innerHTML = content?content:"Введите новый текст"   
+                textStyleEditor.style.display = "block"
+                generalStyleEditor.style.display = "block"   
             }
             
             if(element==="IMG"){         
-                newElement.style.height = "200px"
-                newElement.style.width = "auto"
-                newElement.src = src?src:"./images/image.png"
+                newElement.style.width = "400px"
+                newElement.src = src?src:"https://thumbs.dreamstime.com/b/environment-earth-day-hands-trees-growing-seedlings-bokeh-green-background-female-hand-holding-tree-nature-field-gra-130247647.jpg"
                 newElement.draggable = false
                 }
 
         newLayouts.addElement(id)                       //Создаем стили новому элементу в layouts
+
 //Создает событие для нового элемента
         newElement.addEventListener("mousedown",(e)=>{ // Собтие удержания элемента для перемещения
             if(newElement.hasAttribute("contenteditable")  === false && document.body.classList.contains("movable")=== false){ // проверка наличие атрибута для редактирования
@@ -126,6 +130,9 @@ function createNewElement(element,elementClass,zIndex,content,src,inputId){
                     newLayouts.changeStyle({"height":"auto"},id,layout)
                     newLayouts.updateElements(id)
                     newLayouts.changeInnerHTML(id)
+                    textStyleEditor.style.display = "none"
+                    generalStyleEditor.style.display = "none"
+                    layoutStylesEditor.style.display = "block"
             })
         }
 

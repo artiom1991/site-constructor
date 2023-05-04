@@ -61,7 +61,10 @@ let newLayouts = {
                 }
             this.layouts[layout].elements[id] = {...elementStyle}
             this.elements[id] = {...elementContent}
+            console.log(newElementStyles.height)
+            console.log(this)
         }
+
     },
     changeStyle(styles,id,layoutActive){
         for(let layout in this.layouts){
