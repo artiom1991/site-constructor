@@ -3,8 +3,8 @@ let curentCount = document.querySelector(".curentCount")    // Элемент к
 let siteConstructorContainer = document.querySelector(".site-constructor-content") // Поле для элементов конструктора
     siteConstructorContainer.style.setProperty("transform", `scale(${scale}) translate(-50%, -50%)`)      // Холсту задается текующее значение scale как параметр увеличения 
 
-let scalePlus = document.querySelector(".scalePlus")        // Получаем элемент с классом scalePluc который отвечает за приближение
-    scalePlus.addEventListener("click", function(){         // создается событие для scalePlus по клику которое будет увеличивать текущее значение scale
+let scalePlus = document.querySelector(".scalePlus").addEventListener("click", zoomIn)
+    function zoomIn(){         // создается событие для scalePlus по клику которое будет увеличивать текущее значение scale
         if(scale < 3){                                  // проверка если scale меньше 3 то выполняет код
             let containerWidth = siteConstructorContainer.offsetWidth / 20
             let containerHeight = siteConstructorContainer.offsetHeight / 20
@@ -13,10 +13,10 @@ let scalePlus = document.querySelector(".scalePlus")        // Получаем 
                 curentCount.textContent = Math.round(scale*100)                             // отображает текущее значение scale в %
                 window.scrollTo(scrollX - containerWidth,scrollY - containerHeight)
         }
-    })
+    }
 
-let scaleMinus = document.querySelector(".scaleMinus")  // Получаем элемент с классом scaleMinus который отвечает за приближение
-    scaleMinus.addEventListener("click", function(){        // создается событие для scaleMinus по клику которое будет уменьшать текущее значение scale
+let scaleMinus = document.querySelector(".scaleMinus").addEventListener("click", zoomOut)
+    function zoomOut(){        // создается событие для scaleMinus по клику которое будет уменьшать текущее значение scale
         if(scale >= 0.2){                                   // проверка если scale меньше 0.2 что равно 20% то выполняет код
             let containerWidth = siteConstructorContainer.offsetWidth / 20
             let containerHeight = siteConstructorContainer.offsetHeight / 20
@@ -25,10 +25,9 @@ let scaleMinus = document.querySelector(".scaleMinus")  // Получаем эл
                 curentCount.textContent = Math.round(scale*100)
                 window.scrollTo(scrollX + containerWidth,scrollY + containerHeight)
         }
-    })
+    }
 
     window.addEventListener('wheel', function(event) {      // Создается событие для окна window которое отслеживает прокрутку ролика мышки
-            console.log("wheel")
         let containerWidth = siteConstructorContainer.offsetWidth / 20
         let containerHeight = siteConstructorContainer.offsetHeight / 20
         let count 

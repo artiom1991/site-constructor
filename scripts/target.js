@@ -1,9 +1,10 @@
 
 document.body.addEventListener("click", function(e){ 
     let targetClick = e.target   
-    
+    let contextContainer = document.getElementById("contextContainer")
+        if(contextContainer){contextContainer.remove()}
     // если кликнули непосредственно на body или на siteConstructorContent
-    if ( targetClick == document.body || targetClick == siteConstructorContent ) {
+    if ( targetClick == document.body || targetClick == siteConstructorContent) {
         let target = document.querySelectorAll(".target") 
         let selectedLink = document.querySelectorAll(".selected-link") 
         let selection = document.querySelector(".selection")  

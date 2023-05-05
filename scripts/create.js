@@ -142,6 +142,8 @@ function createNewElement(element,elementClass,zIndex,content,src,inputId){
             let target = document.querySelectorAll(".target") 
             let selectedLink = document.querySelectorAll(".selected-link")
             let selection = document.querySelector(".selection")  
+            let contextContainer = document.getElementById("contextContainer")
+                if(contextContainer){contextContainer.remove()}
                 if(selection){
                     selection.remove() 
                 }

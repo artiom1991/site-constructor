@@ -1083,3 +1083,16 @@ input::placeholder{
 .element div{
     color: inherit;
 }
+
+#contextContainer{
+    padding: 5px;
+    position: absolute;
+    background: var(--background-color2);
+}
+.context-btn{
+    padding: 5px 20px;
+}
+.context-btn:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
