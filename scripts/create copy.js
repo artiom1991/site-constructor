@@ -271,5 +271,4 @@ function createNewElement(element,elementClass,zIndex,content,src,inputId){
                     selectionElement()        
                     }
         })
-        return newElement
 }

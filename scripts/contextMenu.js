@@ -12,18 +12,20 @@ let сontextMenu = {
                     createContextContainer.style.top = `${scrollY+event.clientY}px`             //Нужно предусмотреть вариант когда элемент находится низко к краю и может выйти за рамку
                     createContextContainer.style.left = `${scrollX+event.clientX}px`      
                     document.body.append(createContextContainer)
+                    this.createContextBtn("Paste", function(event){сontextMenu.copyPasteElement.pasteCopy()},createContextContainer)
                     this.createContextBtn("Zoom In", zoomIn,createContextContainer)
                     this.createContextBtn("Zoom Out", zoomOut,createContextContainer)
                     }
             if(targetClick.classList.contains("element")  || targetClick.classList.contains("selection")){
+                let targetElement = document.querySelector(".target")
                 let createContextContainer = document.createElement("div")
                     createContextContainer.id = "contextContainer"
                     createContextContainer.style.top = `${scrollY+event.clientY}px`             //Нужно предусмотреть вариант когда элемент находится низко к краю и может выйти за рамку
                     createContextContainer.style.left = `${scrollX+event.clientX}px`      
                     document.body.append(createContextContainer)
-                    this.createContextBtn("Copy", function(event){deleteElement(event)},createContextContainer)
-                    this.createContextBtn("Paste", function(event){deleteElement(event)},createContextContainer)
-                    this.createContextBtn("Duplicate", function(event){deleteElement(event)},createContextContainer)
+                    this.createContextBtn("Copy", function(event){сontextMenu.copyPasteElement.getCopy(targetElement)},createContextContainer)
+                    this.createContextBtn("Paste", function(event){сontextMenu.copyPasteElement.pasteCopy()},createContextContainer)
+                    this.createContextBtn("Duplicate", function(event){сontextMenu.copyPasteElement.duplicate(targetElement)},createContextContainer)
                     this.createContextBtn("Delete", function(event){deleteElement(event)},createContextContainer)
                 }
             event.preventDefault()
@@ -38,21 +40,33 @@ let сontextMenu = {
     copyPasteElement:{
         clonedNode:null,
         getCopy(target){
-            let date = new Date()
-            let id = date.getTime()
-            let newElement = target.cloneNode(true)
-                newElement.id = id
-            this.clonedNode = newElement
-            // console.log(this)
+            this.clonedNode = target.cloneNode(true)
         },
-        pasteCopy(){              //Нужно переделать  createNewElement() в метод обьекта и события для элемента сделать отдельными методами чтобы
-            siteConstructorContent.appendChild(this.clonedNode)     // не писать код два раза а испозьзовать только нужную его часть
+        pasteCopy(){
+            if(this.clonedNode){
+                let className
+                this.clonedNode.classList.forEach(el => {
+                    if(el !== "element" && el !== "target"){
+                        className = el
+                    }
+                })
+                let newEl = createNewElement(`${this.clonedNode.tagName}`,className)
+                newEl.innerHTML = this.clonedNode.innerHTML
+                newEl.style.cssText = this.clonedNode.style.cssText
+                newLayouts.copyElementStyles(this.clonedNode.id,newEl.id)
+            }
         },
-        duplicate(){
-            
-        },
-        delete(){
-            
+        duplicate(target){
+            let className
+                target.classList.forEach(el => {
+                    if(el !== "element" && el !== "target"){
+                        className = el
+                    }
+                })
+                let newEl = createNewElement(`${target.tagName}`,className)
+                newEl.innerHTML = target.innerHTML
+                newEl.style.cssText = target.style.cssText
+                newLayouts.copyElementStyles(target.id,newEl.id)
+            }
         }
     }
-}

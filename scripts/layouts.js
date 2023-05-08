@@ -156,5 +156,12 @@ let newLayouts = {
             }
             
         }
+    },
+    copyElementStyles(oldElement,newElement){
+        for(let layout in this.layouts){
+                for(let style in this.layouts[layout].elements[oldElement]){
+                    this.layouts[layout].elements[newElement][style] = {...this.layouts[layout].elements[oldElement][style]}
+                }
+        }
     }
 }
