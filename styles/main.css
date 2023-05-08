@@ -1094,5 +1094,5 @@ input::placeholder{
 }
 .context-btn:hover{
     cursor: pointer;
-    opacity: 0.8;
+    background: var(--background-color5);
 }

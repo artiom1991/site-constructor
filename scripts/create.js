@@ -83,8 +83,10 @@ function createNewElement(element,elementClass,zIndex,content,src,inputId){
 
 //Создает событие для нового элемента
         newElement.addEventListener("mousedown",(e)=>{ // Собтие удержания элемента для перемещения
-            if(newElement.hasAttribute("contenteditable")  === false && document.body.classList.contains("movable")=== false){ // проверка наличие атрибута для редактирования
-                window.addEventListener("mousemove",moveElement) // событие окна для установления координат
+            if (e.button === 0){
+                if(newElement.hasAttribute("contenteditable")  === false && document.body.classList.contains("movable")=== false){ // проверка наличие атрибута для редактирования
+                    window.addEventListener("mousemove",moveElement) // событие окна для установления координат
+                }
             }
         })
 

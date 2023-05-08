@@ -163,5 +163,7 @@ let newLayouts = {
                     this.layouts[layout].elements[newElement][style] = {...this.layouts[layout].elements[oldElement][style]}
                 }
         }
+        this.elements[newElement] = {...this.elements[oldElement]}
+        console.log(this)
     }
 }

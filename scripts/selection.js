@@ -70,11 +70,13 @@ if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(target.t
     })
 }
         //Перенос всего элемента
-        selection.addEventListener("mousedown", function(){     // создается событие по удержанию лкм по элементу выделения selection
-            targetLeft.style.display = "block"
-            targetTop.style.display = "block"
-            selectionSize.style.display = "none"
-            window.addEventListener("mousemove",moveSelection)  // задается событие окну window которое отслеживает перемещение мышки и запускает функцию moveSelection
+        selection.addEventListener("mousedown", function(e){     // создается событие по удержанию лкм по элементу выделения selection
+            if (e.button === 0){
+                targetLeft.style.display = "block"
+                targetTop.style.display = "block"
+                selectionSize.style.display = "none"
+                window.addEventListener("mousemove",moveSelection)  // задается событие окну window которое отслеживает перемещение мышки и запускает функцию moveSelection
+            }
         })
         selection.addEventListener("mouseup", function(){       // создается событие по отпусканию лкм с элемента выделения selection
             targetLeft.style.display = "none"

@@ -57,6 +57,7 @@ let сontextMenu = {
                 let newEl = createNewElement(`${this.clonedNode.tagName}`,className)
                 newEl.innerHTML = this.clonedNode.innerHTML
                 newEl.style.cssText = this.clonedNode.style.cssText
+                newEl.src = this.clonedNode.src
                 newLayouts.copyElementStyles(this.clonedNode.id,newEl.id)
             }
         },
@@ -70,6 +71,7 @@ let сontextMenu = {
                 let newEl = createNewElement(`${target.tagName}`,className)
                 newEl.innerHTML = target.innerHTML
                 newEl.style.cssText = target.style.cssText
+                newEl.src = target.src
                 newLayouts.copyElementStyles(target.id,newEl.id)
             }
         }
