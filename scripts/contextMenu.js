@@ -27,6 +27,10 @@ let сontextMenu = {
                     this.createContextBtn("Paste", function(event){сontextMenu.copyPasteElement.pasteCopy()},createContextContainer)
                     this.createContextBtn("Duplicate", function(event){сontextMenu.copyPasteElement.duplicate(targetElement)},createContextContainer)
                     this.createContextBtn("Delete", function(event){deleteElement(event)},createContextContainer)
+                    this.createContextBtn("Bring to Front", function(event){bringToFront(event)},createContextContainer)
+                    this.createContextBtn("Send to Back", function(event){sendToBack(event)},createContextContainer)
+                    this.createContextBtn("Bring Forward", function(event){bringForward(event)},createContextContainer)
+                    this.createContextBtn("send Backward", function(event){sendBackward(event)},createContextContainer)
                 }
             event.preventDefault()
     },

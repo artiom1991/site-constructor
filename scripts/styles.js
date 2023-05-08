@@ -498,8 +498,8 @@ let topCenter = document.getElementById("top-center")
             if(selection){ selection.remove(), selectionElement() }
     })
 
-let zIndexPlus = document.getElementById("z-index-plus")    
-    zIndexPlus.addEventListener("click", function(){
+let zIndexPlus = document.getElementById("z-index-plus").addEventListener("click", bringForward)
+    function bringForward(){
         let layoutStyle = window.getComputedStyle(siteConstructorContent)
         let layout = parseInt(layoutStyle.width)
         let elements = document.getElementById("elements")
@@ -526,10 +526,11 @@ let zIndexPlus = document.getElementById("z-index-plus")
                     }
                 }
             if(selection){ selection.remove(), selectionElement() }
-    })
+    }
 
-let zIndexMinus = document.getElementById("z-index-minus")
-    zIndexMinus.addEventListener("click", function(){
+
+let zIndexMinus = document.getElementById("z-index-minus").addEventListener("click", sendBackward)
+    function sendBackward(){
         let layoutStyle = window.getComputedStyle(siteConstructorContent)
         let layout = parseInt(layoutStyle.width)
         let elements = document.getElementById("elements")
@@ -556,11 +557,11 @@ let zIndexMinus = document.getElementById("z-index-minus")
                 }
             }
         if(selection){ selection.remove(), selectionElement() }
-    })
+    }
 
 
-let zIndexFirst = document.getElementById("z-index-first")
-    zIndexFirst.addEventListener("click", function(){
+let zIndexFirst = document.getElementById("z-index-first").addEventListener("click",bringToFront)
+    function bringToFront(){
         let layoutStyle = window.getComputedStyle(siteConstructorContent)
         let layout = parseInt(layoutStyle.width)
         let elements = document.getElementById("elements")
@@ -586,10 +587,13 @@ let zIndexFirst = document.getElementById("z-index-first")
                     newLayouts.updateElements()
                 }
             if(selection){ selection.remove(), selectionElement() }
-    })
+    }
 
-let zIndexLast = document.getElementById("z-index-last")
-    zIndexLast.addEventListener("click", function(){
+
+
+
+let zIndexLast = document.getElementById("z-index-last").addEventListener("click", sendToBack)
+    function sendToBack(){
         let layoutStyle = window.getComputedStyle(siteConstructorContent)
         let layout = parseInt(layoutStyle.width)
         let elements = document.getElementById("elements")
@@ -614,7 +618,9 @@ let zIndexLast = document.getElementById("z-index-last")
                     newLayouts.updateElements()
                 }
             if(selection){ selection.remove(), selectionElement() }
-    })
+    }
+
+
 
     // layoutHeight
 let layoutHeightInput = document.getElementById("layout-height-input")
