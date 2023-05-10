@@ -1,4 +1,3 @@
-let deleteBtn = document.getElementById("delete-btn").addEventListener("click",deleteElement)
 document.addEventListener("keydown", function(event) {
     if(event.target.tagName !== "INPUT" && event.target.hasAttribute("contenteditable") === false){
             if(event.key === "Delete" || event.key === "Backspace") { 

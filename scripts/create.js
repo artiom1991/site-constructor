@@ -32,7 +32,7 @@ function createNewElement(element,elementClass,zIndex,content,src,inputId){
                 newElement.style.width = "200px"          
                 newElement.style.height = "200px"       
                 newElement.style.backgroundColor = "#d1d1d1" 
-                elementContent.textContent = "RECTANGLE"   
+                elementType.textContent = "RECTANGLE"   
             }
             if(elementClass==="CIRCLE"){     
                 newElement.classList.add("CIRCLE")         
@@ -40,37 +40,28 @@ function createNewElement(element,elementClass,zIndex,content,src,inputId){
                 newElement.style.height = "200px"    
                 newElement.style.borderRadius = "100%"  
                 newElement.style.backgroundColor = "#d1d1d1"  
-                elementContent.textContent = "CIRCLE"     
+                elementType.textContent = "CIRCLE"     
             }
             if(elementClass==="LINE"){     
                 newElement.classList.add("LINE")         
                 newElement.style.width = "200px"          
                 newElement.style.height = "1px"   
-                newElement.style.minHeight = "1px" 
+                newElement.style.minHeight = "1px"
                 newElement.style.backgroundColor = "#d1d1d1"    
-                elementContent.textContent = "LINE"   
+                elementType.textContent = "LINE"   
             }
 
             if(element==="BUTTON"){                  
-                newElement.textContent = "button"   
+                newElement.textContent = "Введите текст кнопки"   
                 newElement.style.padding = "5px 10px" 
-                elementContent.textContent = "button"   
+                elementContent.textContent = "Введите текст кнопки"   
                 newElement.style.backgroundColor = "#d1d1d1" 
                 }
 
 
-
             if(["P", "SPAN", "B", "A", "H1", "H2", "H3", "H4", "H5", "H6"].includes(newElement.tagName)){   
-                let createElementMenu = document.querySelector(".menu-container")
-                    createElementMenu.classList.toggle("menu-container-show")
-                let textFocusMenu = document.querySelector(".text-focus-menu")
-                    textFocusMenu.classList.add("text-focus-menu-show")  
-                newElement.innerHTML = content?content:"Введите новый текст"
-                newElement.setAttribute("contenteditable", "true")    
-                newElement.focus()            
+                newElement.innerHTML = content?content:"Введите новый текст"       
                 elementContent.innerHTML = content?content:"Введите новый текст"   
-                textStyleEditor.style.display = "block"
-                generalStyleEditor.style.display = "block"   
             }
             
             if(element==="IMG"){         

@@ -17,6 +17,7 @@
     padding: 0;
     color: var(--font-light-color);
     font-family: Arial;
+    box-sizing: content-box;
 }
 button{
     outline: none;
@@ -54,7 +55,7 @@ body{
     transform: translateY(0);
 }
 .blocks-header{
-    margin-top: 5px;
+    margin-top: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -124,7 +125,7 @@ body{
 
 /* Right menu / Style apply menu */
 .site-constructor-element-style{
-    width: 300px;
+    /* width: 300px; */
     height: calc(100svh - 200px);
     /* height: 70svh; */
     position: fixed;
@@ -167,6 +168,7 @@ body{
     transform: rotate(180deg);
 }
 .style-constructor-header{
+    height: 20px;
     display: flex;
 }
 .design,.styles{
@@ -617,7 +619,7 @@ input::placeholder{
 .figure{
     width: 25px;
     height: 25px;
-    background: url("../images/rectangle.png");
+    background: url("../images/rect.png");
     background-size: 25px auto;
     background-repeat: no-repeat;
 }
@@ -723,19 +725,23 @@ input::placeholder{
     font-weight: 200;
 }
 .textList{
-    left: calc(50% - 310px);
+    left: calc(50% - 100px);
     display: none;
 }
 .figureList{
-    left: calc(50% - 195px);
+    left: calc(50% - 25px);
     display: none;
 }
 .formList{
-    left: calc(50% - 130px);
+    left: calc(50% - 150px);
     display: none;
 }
 .mediaList{
-    left: calc(50% - 35px);
+    left: calc(50% + 50px);
+    display: none;
+}
+.buttonList{
+    left: calc(50% + 125px);
     display: none;
 }
 .tableList{
@@ -1095,4 +1101,7 @@ input::placeholder{
 .context-btn:hover{
     cursor: pointer;
     background: var(--background-color5);
+}
+.close{
+    color: var(--font-black-color);
 }

@@ -63,9 +63,6 @@
                     <div title="Сгенерировать HTML" class="menuBtn htmlBlock">
                         <div class="html"></div>
                     </div>
-                    <div title="Сгенерировать HTML" class="menuBtn htmlBlock">
-                        <div class="close">close</div>
-                    </div>
                 </div>
 
 
@@ -77,11 +74,20 @@
                     <div title="Создать геометрическую фигуру" class="menuBtn createFigure">
                         <div class="figure"></div>
                     </div>
+                    <div title="Создать форму" class="menuBtn createForm">
+                        <div class="form"></div>
+                    </div>
                     <div title="Создать медиа элемент" class="menuBtn createMedia">
                         <div class="media"></div>
                     </div>
-                    <div  title="Создать кнопку" class="menuBtn createBtn">
+                    <div title="Создать таблицу" class="menuBtn createTable">
+                        <div class="table"></div>
+                    </div>
+                    <div  title="Создать кнопку" class="menuBtn" onclick="createNewElement('BUTTON')">
                         <div class="button"></div>
+                    </div>
+                    <div title="Добавить ссылку" class="menuBtn">
+                        <div class="link"></div>
                     </div>
                 </div>
                 <!-- Layouts and scale -->
@@ -98,12 +104,21 @@
 
 
 
+
+
             </div>
         </div>
                                             <!-- Hiden menu-lists -->
         <div class="hidenMenuContainer">
             <div class="hidenMenu textList">
                 <div  title="Текстовый элемент для ввода обьемного текста" class="btn create p" onclick="createNewElement('P')">paragraph</div>
+                <!-- <div  title="Текстовый элемент для ввода короткого текста" class="btn create span" onclick="createNewElement('SPAN')">span</div>
+                <div  title="Текстовый элемент для ввода короткого текста" class="btn create b" onclick="createNewElement('B')">bold</div> -->
+                <!-- <div  title="Общий элемент контейнер" class="btn create div" onclick="createNewElement('p')">division</div> -->
+                <!-- <div  title="Элемент список который маркеруется специальными символами" class="btn create ul">unordered list</div> -->
+                <!-- <div  title="Элемент нумерованный список который маркеруется арабскими или римскими числами а так же буквами" class="btn create ol">ordered list</div> -->
+                <!-- <div  title="Строка которая помещается в нумерованный или маркированный список" class="btn create li">list item</div> -->
+                <!-- <div  title="Элемент для создания ссылок с коротким текстом" class="btn create a" onclick="createNewElement('A')">anchor</div> -->
                 <div  title="Главный заголовок имеющий самый большой шрифт и вес" class="btn create h1" onclick="createNewElement('H1')">heading level 1</div>
                 <div  title="Второстепенный заголовок, второй по размеру шрифта и весу" class="btn create h2" onclick="createNewElement('H2')">heading level 2</div>
                 <div  title="Второстепенный заголовок, средний по размеру шрифта и весу" class="btn create h3" onclick="createNewElement('H3')">heading level 3</div>
@@ -116,14 +131,24 @@
                 <div title="Создает круг" class="btn create"  onclick="createNewElement('DIV','CIRCLE')">circle</div>
                 <div title="Создает линию" class="btn create"  onclick="createNewElement('DIV','LINE')">line</div>
             </div>
+            <div class="hidenMenu formList">
+                <div title="Создает поле для ввода текста" class="btn create inputText">input-text</div>
+                <div title="Создает поле для ввода почты" class="btn create inputEmail">input-email</div>
+                <div title="Создает поле для ввода чисел" class="btn create inputNumber">input-number</div>
+                <div title="Создает поле для ввода даты" class="btn create pinutDate">input-date</div>
+            </div>
             <div class="hidenMenu mediaList">
                 <div title="Создает фото элемент" class="btn create image"  onclick="createNewElement('IMG')">image</div>
+                <div title="Создает галлерею фото" class="btn create gallery">gallery</div>
+                <div title="Обьеденяет выделеные фото в слайдер" class="btn create slider">slider</div> 
+                <div title="Создает видео элемент" class="btn create video">video</div>
+                <div title="Создает фрейм в который можно поместить видео с другого сайта по типу youtube" class="btn create iframe">iframe</div>
             </div>
-
-            <div class="hidenMenu buttonList">
-                <div title="Создает кнопкут" class="btn create image"   onclick="createNewElement('BUTTON')">button</div>
+            <div class="hidenMenu tableList">
+                <div title="Создает элемент таблицу" class="btn create createNewTable">create-new-table</div>
+                <div title="Добавляет новую строку в таблицу" class="btn create addNewRow">add-row</div>
+                <div title="Добавляет новую строку в таблицу" class="btn create addNewColomn">add-column</div>
             </div>
-
             <div class="hidenMenu layoutList">
                 <div title="Создает элемент таблицу" class="layout-element  vertical-Smartphone">
                     <div class="vSmartphone"></div>
@@ -161,6 +186,8 @@
                                                         <!-- Right menu / Style apply -->
         <div class="site-constructor-element-style">
             <div class="style-constructor-header">
+                <div class="design active-style">Дизайн</div>
+                <div class="styles">Стили</div>
                 <div class="hide-styles"></div>
             </div>
 

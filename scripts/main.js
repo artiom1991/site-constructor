@@ -62,16 +62,19 @@ createFigure.addEventListener("click", function(event){
         event.stopPropagation();
 })
 
-let createForm = document.querySelector(".createForm")
-createForm.addEventListener("click", function(event){
-    let formList = document.querySelector(".formList")
-    let hidenMenu = document.querySelectorAll(".hidenMenu")
-        hidenMenu.forEach(element => {
-            element.style.display = "none"
-        })
-        formList.style.display = "block"
-        event.stopPropagation();
-})
+
+let createBtn = document.querySelector(".createBtn")
+    createBtn.addEventListener("click", function(event){
+        let buttonList = document.querySelector(".buttonList")
+        let hidenMenu = document.querySelectorAll(".hidenMenu")
+            hidenMenu.forEach(element => {
+                element.style.display = "none"
+            })
+            buttonList.style.display = "block"
+            event.stopPropagation();
+    })
+
+
 
 let createMedia = document.querySelector(".createMedia")
 createMedia.addEventListener("click", function(event){
@@ -84,16 +87,7 @@ createMedia.addEventListener("click", function(event){
         event.stopPropagation();
 })
 
-let createTable = document.querySelector(".createTable")
-createTable.addEventListener("click", function(event){
-    let tableList = document.querySelector(".tableList")
-    let hidenMenu = document.querySelectorAll(".hidenMenu")
-        hidenMenu.forEach(element => {
-            element.style.display = "none"
-        })
-        tableList.style.display = "block"
-        event.stopPropagation();
-})
+
 
 let showLayouts = document.querySelector(".showLayouts")
 showLayouts.addEventListener("click", function(event){
